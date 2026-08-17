@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn lint *)",
+      "Bash(npx eslint *)",
+      "Bash(npm -v)",
+      "Bash(corepack --version)",
+      "Bash(corepack yarn *)",
+      "Bash(curl -s -o /dev/null -w \"/ -> %{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"/terms -> %{http_code}\\\\n\" http://localhost:3000/terms)",
+      "Bash(curl -s http://localhost:3000/)"
+    ]
+  }
+}

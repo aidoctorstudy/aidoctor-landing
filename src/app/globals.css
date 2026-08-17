@@ -1,0 +1,378 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   TIER 1 — PRIMITIVES  (`--raw-*`)
+   Raw literal values. The only tier allowed to contain a hex/px/ms literal.
+   Never referenced in markup, never bound into @theme. Rename freely.
+   Grammar: --raw-<category>-<name>[-<shade>]
+   See obsidian/frontend/design-system.md → "Token naming convention".
+   --------------------------------------------------------------------------- */
+:root {
+  --raw-color-white: #ffffff;
+  --raw-color-black: #000000;
+  --raw-color-neutral-100: #ededed;
+  --raw-color-neutral-900: #171717;
+  --raw-color-neutral-950: #0a0a0a;
+
+  /* AI Doctor Study brand ramp — re-themed from the Dantora starter (Figma
+     "Concept 4", node 1518:1970) to a cyan/sky palette. Layout, spacing and
+     radii are unchanged; only the raw color values below were swapped. */
+  --raw-color-brand-500: #0ea5e9;
+  --raw-color-brand-600: #0284c7;
+  --raw-color-brand-900: #0c4a6e;
+  --raw-color-lime-200: #e0f2fe;
+  --raw-color-lime-400: #7dd3fc;
+  --raw-color-mint-50: #070d17;
+  --raw-color-mint-100: #0c1524;
+  --raw-color-white-alpha-40: rgba(255, 255, 255, 0.4);
+  --raw-color-white-alpha-50: rgba(255, 255, 255, 0.5);
+  --raw-color-white-alpha-80: rgba(255, 255, 255, 0.8);
+  --raw-color-white-alpha-90: rgba(255, 255, 255, 0.9);
+
+  /* ADR-0024 dark-mode-polish palette — cyan-tinted "glass" and card surfaces,
+     replacing the neutral-black glass from ADR-0023 with the brand's own ink
+     navy, per the project owner's exact rgba spec. */
+  --raw-color-ink-alpha-85: rgba(7, 13, 23, 0.85);
+  --raw-color-ink-alpha-90: rgba(7, 13, 23, 0.9);
+  --raw-color-card-alpha-60: rgba(12, 21, 36, 0.6);
+  --raw-color-card-alpha-80: rgba(12, 21, 36, 0.8);
+  --raw-color-brand-alpha-10: rgba(14, 165, 233, 0.1);
+  --raw-color-brand-alpha-15: rgba(14, 165, 233, 0.15);
+  --raw-color-brand-alpha-20: rgba(14, 165, 233, 0.2);
+  --raw-color-brand-alpha-40: rgba(14, 165, 233, 0.4);
+  --raw-color-slate-alpha-80: rgba(148, 163, 184, 0.8);
+
+  /* Decorative background images. Not a Tailwind namespace (no `--bg-image-*`
+     in v4 — see the namespace table below), so these are consumed via an
+     arbitrary value (`bg-[image:var(--raw-gradient-hero-glow)]`) rather than a
+     generated utility — the sanctioned escape hatch per design-system.md
+     "Token naming convention". */
+  --raw-gradient-hero-glow: radial-gradient(
+    ellipse at center,
+    rgba(14, 165, 233, 0.06) 0%,
+    transparent 70%
+  );
+  --raw-pattern-dot: radial-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+  /* Composite of the two layers above, for the Hero's single `background-image`
+     property — CSS only takes one value there, so the two named layers are
+     combined here rather than fighting over the same utility. */
+  --raw-background-hero: var(--raw-gradient-hero-glow), var(--raw-pattern-dot);
+  /* Testimonial initials-avatar fill — same two brand shades as
+     `--action-primary-border`/`--accent`, composed at Tier 1 so this stays a
+     literal-only primitive per the tier rule (Tier 2 may not reference Tier 2). */
+  --raw-gradient-avatar: linear-gradient(
+    135deg,
+    var(--raw-color-brand-900),
+    var(--raw-color-brand-500)
+  );
+
+  --raw-radius-xs: 4px;
+  --raw-radius-sm: 8px;
+  --raw-radius-lg: 24px;
+  --raw-radius-section: 48px;
+  --raw-radius-chip: 37px;
+  --raw-radius-pill: 46px;
+  --raw-blur-glass: 12px;
+  --raw-blur-glass-strong: 20px;
+
+  --raw-duration-fast: 150ms;
+  --raw-duration-normal: 250ms;
+
+  /* Dev-tooling chrome — the DNA Ink controls panel. Ported from the
+     dna-ink.html sketch's inline CSS; see
+     obsidian/frontend/components/dna-ink-scene.md. */
+  --raw-color-ink-950-alpha-75: rgba(10, 10, 12, 0.75);
+  --raw-color-white-alpha-05: rgba(255, 255, 255, 0.05);
+  --raw-color-white-alpha-08: rgba(255, 255, 255, 0.08);
+  --raw-color-white-alpha-12: rgba(255, 255, 255, 0.12);
+  --raw-color-white-alpha-16: rgba(255, 255, 255, 0.16);
+  --raw-color-white-alpha-18: rgba(255, 255, 255, 0.18);
+  --raw-color-white-alpha-20: rgba(255, 255, 255, 0.2);
+  --raw-color-white-alpha-88: rgba(255, 255, 255, 0.88);
+
+  --raw-size-panel-width: 240px;
+  --raw-size-panel-height: 80lvh;
+  --raw-size-panel-snapshot-height: 240px;
+  --raw-size-panel-slider-width: 110px;
+  --raw-size-panel-blur: 10px;
+  --raw-size-panel-text: 11px;
+  --raw-size-panel-code-text: 10px;
+}
+
+/* ---------------------------------------------------------------------------
+   TIER 2 — SEMANTIC  (role names, no namespace prefix)
+   Purpose, not appearance. Always `var(--raw-*)` — never a literal.
+   This is the themeable layer: dark mode overrides happen HERE, which is why
+   these are separate from the @theme bindings below (see the note there).
+   Grammar: --<role>[-<variant>][-<state>]
+   --------------------------------------------------------------------------- */
+:root {
+  /* Full dark theme (ADR-0023, superseding the two-tone version from
+     ADR-0022): `--background` now shares the same dark-navy primitive as
+     `--surface-section`, so Hero and the Why/Services bands read as one flat
+     dark canvas instead of dark-panel-on-white-page. `--foreground` flipped to
+     white to match — every role below that used to assume "dark text on a
+     light surface" was re-pointed in the same pass; see the comments on
+     `--surface-glass*`, `--border-subtle` and `--foreground-muted/subtle`. */
+  --background: var(--raw-color-mint-50);
+  --foreground: var(--raw-color-white);
+
+  /* Full-bleed section panel — mint, with 48px corners on the edge that meets
+     the white page. */
+  --surface-section: var(--raw-color-mint-50);
+  /* The About/Team panel is a deeper mint than the other sections
+     (node 1546:162), which is what separates it from the block it slides over. */
+  --surface-section-deep: var(--raw-color-mint-100);
+
+  /* Eyebrow labels, logo mark, primary actions. */
+  --accent: var(--raw-color-brand-500);
+  /* Lighter cyan accent — stat numbers, chip text. Same primitive as the old
+     "lime-400" role, kept as a named alias now that nothing is actually lime. */
+  --accent-soft: var(--raw-color-lime-400);
+  --action-primary: var(--raw-color-brand-500);
+  --action-primary-border: var(--raw-color-brand-900);
+  --action-primary-foreground: var(--raw-color-white);
+  /* Hover fill, distinct from the border colour — ADR-0024: the two used to be
+     the same value, which left no way to give hover its own, slightly darker
+     step without also changing the button's resting border. */
+  --action-primary-hover: var(--raw-color-brand-600);
+  --action-secondary: var(--raw-color-lime-200);
+  --action-secondary-border: var(--raw-color-lime-400);
+  --action-secondary-foreground: var(--raw-color-black);
+  /* Outline/ghost button — the secondary CTA's new treatment (ADR-0024):
+     transparent fill, cyan border and text, instead of the old solid-lime
+     pill. Deliberately separate from `--action-secondary*`, which stays a
+     light-cyan *fill* role still used by the header/contact icon badges and
+     the button's own trailing arrow disc — repointing that shared role would
+     have broken those. */
+  --action-outline-border: var(--raw-color-brand-alpha-40);
+  --action-outline-foreground: var(--accent-soft);
+  --action-outline-hover: var(--raw-color-brand-alpha-10);
+
+  /* Card surface — the generic dark glass card (feature cards, testimonial
+     cards, the team rail's closing card). */
+  --surface-card: var(--raw-color-card-alpha-80);
+  --border-card: var(--raw-color-brand-alpha-15);
+  /* Chip / pill labels floating over the scene (hero service chips). */
+  --surface-chip: var(--raw-color-brand-alpha-10);
+  --border-chip: var(--raw-color-brand-alpha-20);
+  /* Form fields. */
+  --surface-input: var(--raw-color-card-alpha-60);
+  --border-input: var(--raw-color-brand-alpha-20);
+
+  /* Frosted panels: header shell, logo card, mobile menu. Ink-navy frosted
+     glass (ADR-0024), not neutral black — the brand's own dark tone at the
+     opacity the header actually wants. */
+  --surface-glass: var(--raw-color-ink-alpha-85);
+  /* Opaque enough to read a form against the scene — a near-opaque dark navy
+     card, paired with a stronger blur (`--glass-blur-strong`) than the header
+     needs, since it has no image behind it to soften. */
+  --surface-glass-strong: var(--raw-color-ink-alpha-90);
+  /* Light-alpha, not dark: this draws on top of the dark page (Hero divider,
+     Team's slider track), so it needs to lighten, not darken. */
+  --border-subtle: var(--raw-color-white-alpha-12);
+
+  /* De-emphasised copy: the About paragraph greys the clauses that aren't the
+     point, and testimonial captions sit back from the name. A slate-blue tint
+     (ADR-0024) rather than plain white-alpha, so muted text reads as "toned
+     down" instead of merely "faded". */
+  --foreground-muted: var(--raw-color-slate-alpha-80);
+  --foreground-subtle: var(--raw-color-white-alpha-50);
+
+  /* Corner roles. Named `--corner-*`, not `--radius-*`: Tailwind owns the
+     `--radius-*` namespace, so a Tier 2 token of that name would collide with
+     its own @theme binding. */
+  --corner-mark: var(--raw-radius-xs);
+  --corner-panel: var(--raw-radius-sm);
+  --corner-card: var(--raw-radius-lg);
+  --corner-section: var(--raw-radius-section);
+  --corner-chip: var(--raw-radius-chip);
+  --corner-action: var(--raw-radius-pill);
+  --glass-blur: var(--raw-blur-glass);
+  --glass-blur-strong: var(--raw-blur-glass-strong);
+
+  --duration-fast: var(--raw-duration-fast);
+  --duration-normal: var(--raw-duration-normal);
+
+  /* Debug-panel role tokens. Deliberately NOT themed by prefers-color-scheme:
+     the panel floats over an arbitrary scene and must stay legible on any
+     backdrop, so it is dark in both schemes. */
+  --debug-surface: var(--raw-color-ink-950-alpha-75);
+  --debug-border: var(--raw-color-white-alpha-12);
+  --debug-foreground: var(--raw-color-white);
+  --debug-control: var(--raw-color-white-alpha-08);
+  --debug-control-hover: var(--raw-color-white-alpha-16);
+  --debug-control-border: var(--raw-color-white-alpha-18);
+  --debug-swatch-border: var(--raw-color-white-alpha-20);
+  --debug-code-surface: var(--raw-color-white-alpha-05);
+  --debug-code-foreground: var(--raw-color-white-alpha-88);
+
+  --debug-panel-width: var(--raw-size-panel-width);
+  --debug-panel-height: var(--raw-size-panel-height);
+  --debug-snapshot-height: var(--raw-size-panel-snapshot-height);
+  --debug-slider-width: var(--raw-size-panel-slider-width);
+  --debug-panel-blur: var(--raw-size-panel-blur);
+  --debug-text: var(--raw-size-panel-text);
+  --debug-code-text: var(--raw-size-panel-code-text);
+}
+
+/* No `prefers-color-scheme: dark` override — there is only one theme, and as
+   of ADR-0023 it is dark: `--background` and `--foreground` are dark-navy and
+   white. See design-system.md → "Full dark theme" for the full list of roles
+   that had to move with them.
+
+   The DNA Ink canvas's own `bgColor` (`src/lib/scene/dna-ink/config.ts`) also
+   went dark under ADR-0024, at the project owner's explicit, informed request
+   — overriding ADR-0022/0023's decision to keep it light. The scene's
+   MULTIPLY blending only reads on a light backdrop (dna-ink-scene.md), so this
+   is expected to leave the helix/ink visibly faint; that trade-off was made
+   knowingly, not a bug to "fix" by an agent that finds this later. */
+
+/* ---------------------------------------------------------------------------
+   THEME BINDINGS — map semantic tokens into Tailwind namespaces.
+   Every entry is exactly `--<tw-namespace>-<role>: var(--<role>)`.
+   `inline` is required: it inlines the var() into each utility, so the
+   dark-mode overrides on the Tier 2 tokens above cascade. Binding a literal
+   here instead would freeze the value and break theming.
+
+   Only these namespaces generate utilities (verified against tailwindcss
+   v4.3.3): --color-* --spacing-* --radius-* --leading-* --tracking-* --text-*
+   --font-* --ease-* --breakpoint-* --container-* --shadow-* --blur-* --animate-*
+   NOTE: there is NO --duration-* namespace in v4 — `duration-fast` compiles to
+   nothing. Durations stay Tier 2 only and are used as duration-[var(--duration-fast)].
+   --------------------------------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-action-primary: var(--action-primary);
+  --color-action-primary-border: var(--action-primary-border);
+  --color-action-primary-foreground: var(--action-primary-foreground);
+  --color-action-primary-hover: var(--action-primary-hover);
+  --color-action-secondary: var(--action-secondary);
+  --color-action-secondary-border: var(--action-secondary-border);
+  --color-action-secondary-foreground: var(--action-secondary-foreground);
+  --color-action-outline-border: var(--action-outline-border);
+  --color-action-outline-foreground: var(--action-outline-foreground);
+  --color-action-outline-hover: var(--action-outline-hover);
+  --color-surface-section: var(--surface-section);
+  --color-surface-section-deep: var(--surface-section-deep);
+  --color-surface-card: var(--surface-card);
+  --color-border-card: var(--border-card);
+  --color-surface-chip: var(--surface-chip);
+  --color-border-chip: var(--border-chip);
+  --color-surface-input: var(--surface-input);
+  --color-border-input: var(--border-input);
+  --color-surface-glass: var(--surface-glass);
+  --color-surface-glass-strong: var(--surface-glass-strong);
+  --color-border-subtle: var(--border-subtle);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+
+  --radius-mark: var(--corner-mark);
+  --radius-panel: var(--corner-panel);
+  --radius-card: var(--corner-card);
+  --radius-section: var(--corner-section);
+  --radius-chip: var(--corner-chip);
+  --radius-action: var(--corner-action);
+  --blur-glass: var(--glass-blur);
+  --blur-glass-strong: var(--glass-blur-strong);
+
+  --font-sans: var(--font-google-sans-flex);
+
+  --color-debug-surface: var(--debug-surface);
+  --color-debug-border: var(--debug-border);
+  --color-debug-foreground: var(--debug-foreground);
+  --color-debug-control: var(--debug-control);
+  --color-debug-control-hover: var(--debug-control-hover);
+  --color-debug-control-border: var(--debug-control-border);
+  --color-debug-swatch-border: var(--debug-swatch-border);
+  --color-debug-code-surface: var(--debug-code-surface);
+  --color-debug-code-foreground: var(--debug-code-foreground);
+
+  /* Leading floor for clipped TextEngine reveals — see
+     obsidian/frontend/text-engine.md → "Alignment & line-height".
+     Also the Figma display leading: headings and the logotype sit at 1.1. */
+  --leading-display: 1.1;
+  /* Figma body/UI leading — buttons, nav, paragraphs all sit at 1.2. */
+  --leading-body: 1.2;
+
+  --ease-entrance: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* The starter centred a single screen with `display:flex; height:100vh`. This
+   is a long scrolling page, so the body is a plain block again — the fixed
+   viewport height would otherwise clamp it to one screen. */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@layer base {
+  /* Figma's text boxes are cap-height trimmed.
+     Almost every text node in the mockup carries
+     `text-box-trim: trim-both; text-box-edge: cap alphabetic`, which measures
+     from cap height to baseline instead of the full line box. Without it every
+     block inherits half-leading it was never designed with: the hero h1
+     measured 132px against Figma's 109, pill buttons 57 against 48, the chip
+     row 108 against 94 — an error that compounds down the page.
+     Matching it here fixes the vertical rhythm globally instead of by
+     hand-tuning padding per component. Browsers without `text-box` support
+     simply fall back to the untrimmed box. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  dd,
+  dt,
+  label,
+  figcaption,
+  button,
+  a {
+    text-box: trim-both cap alphabetic;
+  }
+
+  /* Adaptive scaling grid — scales the root font-size with the viewport so a
+     rem-based layout stays proportional. Each breakpoint divides FONT_BASE
+     (16px) by the design base width its range was laid out at:
+       font-size: 16 * 100 / baseWidth  (vw)
+     Above 1920px the AdaptiveGrid component takes over (scale-up).
+     Keep in sync with src/components/common/grid/grid.config.ts. */
+  html {
+    font-size: 16px;
+    /* Reserve the scrollbar track permanently. Without it the viewport width
+       changes the moment the page becomes scrollable, which resizes the WebGL
+       canvases and visibly re-frames the helix mid-scroll. */
+    scrollbar-gutter: stable;
+  }
+
+  /* Desktop only. Above `lg` the composition is absolutely positioned at the
+     1440 artboard's coordinates, so every offset must track the viewport.
+     Below it the page is a flow layout that reflows by itself, and the root
+     stays a plain 16px — see grid.config.ts for why scaling there was worse
+     than not scaling. */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    html {
+      font-size: 1.111111vw; /* 16 * 100 / 1440 — the Figma desktop base */
+    }
+  }
+}
+
+@layer utilities {
+}
+
+/* Cap-height trim for a label that sits inside a flex container, where the bare
+   text node is an anonymous flex item and the base rule can't reach it. */
+@utility text-trim {
+  text-box: trim-both cap alphabetic;
+}
+
+@layer components {
+}

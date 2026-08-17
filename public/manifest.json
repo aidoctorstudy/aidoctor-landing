@@ -1,0 +1,23 @@
+{
+  "name": "AI Doctor Study",
+  "short_name": "AI Doctor Study",
+  "description": "The AI study companion built for MBBS and medical students.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070D17",
+  "theme_color": "#0EA5E9",
+  "icons": [
+    {
+      "src": "/icon",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-icon",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
