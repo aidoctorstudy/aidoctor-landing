@@ -98,11 +98,22 @@ have nothing left to darken and fade toward invisible.
 > error, just an empty-looking hero.
 >
 > ADR-0025 moved `bgColor` to `#1e293b` — dark enough to stay in theme, light
-> enough that the helix is dim but genuinely visible, at the cost of a small
-> seam against the panel. If a future report says "the helix isn't rendering,"
-> check this file's `bgColor` and the live page in DevTools **before**
-> assuming a build/deploy/CSP problem — that was a dead end twice already. See
-> ADR-0024 and ADR-0025.
+> enough that the helix is dim but genuinely visible, at the cost of a fairly
+> noticeable seam against `--surface-section`. That seam was then reported as
+> a bug ("remove the split/two-tone effect") — asked directly whether to
+> close it by matching colours exactly (which is what caused ADR-0025 in the
+> first place), the project owner chose a middle path instead. ADR-0026:
+> `bgColor` is now `#16202e` (darker again) and `--surface-section` split off
+> `--background` onto its own `--raw-color-navy-800` (`#10182a`, lighter than
+> the mint-50 it used to share) — narrowing the seam from both sides without
+> fully closing it.
+>
+> If a future report says "the helix isn't rendering," check this file's
+> `bgColor` and the live page in DevTools **before** assuming a build/deploy/
+> CSP problem — that was a dead end already. And if a report says "there's a
+> seam/split in the Hero," **don't** just match `bgColor` to
+> `--surface-section` — that reintroduces the invisible-helix bug from
+> ADR-0024/0025. See ADR-0024, ADR-0025, ADR-0026.
 
 ## The settings panel
 

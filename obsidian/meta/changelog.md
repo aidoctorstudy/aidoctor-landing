@@ -8,6 +8,16 @@ updated: 2026-08-10
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-17 (5)
+
+- **Narrowed the Hero/Contact canvas seam** — `--surface-section` split off
+  `--background` onto a new, slightly lighter primitive
+  (`--raw-color-navy-800`, `#10182a`), and the DNA scene's `bgColor` moved
+  darker (`#1e293b` → `#16202e`) to meet it partway. `--background` (Why/
+  Services/page default) is untouched. Trades a small, newly-reopened seam at
+  the Hero→Why section boundary for a much smaller seam inside the Hero/
+  Contact viewport itself. See [[decisions-log]] ADR-0026.
+
 ## 2026-08-17 (4)
 
 - **DNA scene `bgColor` adjusted `#070d17` → `#1e293b`** after the "helix not

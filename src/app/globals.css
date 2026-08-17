@@ -24,6 +24,11 @@
   --raw-color-lime-400: #7dd3fc;
   --raw-color-mint-50: #070d17;
   --raw-color-mint-100: #0c1524;
+  /* ADR-0026 — Hero/Contact panel colour, nudged lighter than mint-50 to
+     narrow the seam against the DNA canvas's own bgColor (which was nudged
+     darker to match, in config.ts) without touching `--background` (which
+     stays mint-50 — the Why/Services/body base tone is unaffected). */
+  --raw-color-navy-800: #10182a;
   --raw-color-white-alpha-40: rgba(255, 255, 255, 0.4);
   --raw-color-white-alpha-50: rgba(255, 255, 255, 0.5);
   --raw-color-white-alpha-80: rgba(255, 255, 255, 0.8);
@@ -117,9 +122,14 @@
   --background: var(--raw-color-mint-50);
   --foreground: var(--raw-color-white);
 
-  /* Full-bleed section panel — mint, with 48px corners on the edge that meets
-     the white page. */
-  --surface-section: var(--raw-color-mint-50);
+  /* Full-bleed section panel — Hero and Contact, both of which also host the
+     DNA canvas. ADR-0026: deliberately NOT `--raw-color-mint-50` (unlike
+     `--background`) — a touch lighter, to sit closer to the canvas's own
+     bgColor and narrow that seam. This reopens a faint seam against
+     Why/Services (`--background`, still mint-50) at the section boundary,
+     traded on purpose for a much smaller seam *inside* the Hero/Contact
+     viewport, where it was far more noticeable. */
+  --surface-section: var(--raw-color-navy-800);
   /* The About/Team panel is a deeper mint than the other sections
      (node 1546:162), which is what separates it from the block it slides over. */
   --surface-section-deep: var(--raw-color-mint-100);

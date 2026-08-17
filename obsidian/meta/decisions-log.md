@@ -10,6 +10,55 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0026 — Narrowed the Hero/Contact canvas seam by moving both sides toward each other
+
+- **Status:** Accepted
+- **Date:** 2026-08-17
+
+**Context.** ADR-0025 set the DNA canvas's `bgColor` to `#1e293b` — clearly
+lighter than the surrounding `--surface-section` panel (`#070d17`, shared with
+`--background` since ADR-0023) — specifically so the MULTIPLY-blended helix
+would stay visible after `#070d17` made it read as invisible in production.
+The project owner then flagged the resulting **visible seam** inside the Hero
+viewport (and Contact, same pattern) as a bug: "the left panel background
+should match the right side... remove any split or two-tone effect." Asked
+directly, given that matching them exactly (`#070d17`) is the specific change
+that caused ADR-0025 in the first place, the project owner chose a middle
+path: nudge both colours toward each other rather than fully matching either
+one.
+
+**Decision.**
+- New Tier 1 primitive `--raw-color-navy-800: #10182a`. `--surface-section`
+  (Hero + Contact panel) now points at it instead of `--raw-color-mint-50`
+  — a deliberate, one-token break from `--background`, which stays
+  `--raw-color-mint-50` (`#070d17`) untouched. Why/Services/the page default
+  are unaffected.
+- `DNA_INK_CONFIG.bgColor` moved `#1e293b` → `#16202e` (darker, meeting the
+  panel from the other side).
+
+**Consequence, accepted on purpose.** `--surface-section` and `--background`
+were unified under ADR-0023 specifically to remove the seam *between* Hero
+and Why (they used to be different colours in the ADR-0022 two-tone version).
+This ADR reopens a **faint** version of that seam — at the Hero→Why and
+Contact section boundaries, and at the Hero's own `rounded-b-section` corner
+cut where it meets the page background — in exchange for closing the much
+more noticeable seam *inside* the Hero/Contact viewport, between the copy
+panel and the canvas. The two seams are not the same size: this one is
+roughly half the magnitude of the one it replaces, and sits at a natural
+section boundary rather than in the middle of a single screen, which reads as
+far less like a rendering glitch.
+
+**If asked again to fully remove the seam:** matching `bgColor` to
+`--surface-section` exactly has been tried twice now (ADR-0024, and implicitly
+what "remove the split" asks for) and both times made the helix unacceptably
+faint on the live deploy. Re-verify on the actual production build before
+matching them again — see ADR-0025's note about this exact trap.
+
+Related: [[dna-ink-scene]], [[design-system]], [[home-sections]], ADR-0023,
+ADR-0024, ADR-0025.
+
+---
+
 ## ADR-0025 — DNA scene `bgColor` moved off `#070d17` after live production testing
 
 - **Status:** Accepted

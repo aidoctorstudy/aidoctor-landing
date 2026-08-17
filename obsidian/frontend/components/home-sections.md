@@ -129,15 +129,17 @@ the mint was a *panel* colour painted by full-bleed rects inside each screen —
 `rounded-t-[48px]`) and so on, with Why Dantora reading white between two mint
 panels because it has no such rect.
 
-As of the full dark re-theme (ADR-0023), `--background` shares the same dark
-navy primitive as `--surface-section` (`#070d17`), so that distinction is gone:
-Hero, Why and Services now read as **one continuous dark canvas** — there is no
-visible seam at the rounded corner between Hero (`--surface-section`) and Why
-(`--background`) because both resolve to the same colour. The only surface that
-still stands apart is `--surface-section-deep` (`#0c1524`, node `1546:162`,
-About/Team), a step lighter than the canvas so that panel still reads as
-raised — which is what separates it from the block it slides over. `--foreground`
-flipped from black to white in the same change; see [[design-system]] → *Full
+As of the full dark re-theme (ADR-0023), `--background` and `--surface-section`
+shared the same dark navy primitive (`#070d17`), so Hero, Why and Services read
+as **one continuous dark canvas** with no seam at the rounded corner between
+Hero and Why. ADR-0026 split them apart again: `--surface-section` (Hero,
+Contact) moved to its own, slightly lighter primitive (`--raw-color-navy-800`,
+`#10182a`) to narrow the *louder* seam against the DNA canvas's own `bgColor`
+inside those two sections — reopening a faint seam at the Hero→Why boundary
+as the traded-off cost. `--surface-section-deep` (`#0c1524`, node `1546:162`,
+About/Team) still stands apart as its own step, reading as raised against the
+block it slides over. `--foreground` flipped from black to white in the
+ADR-0023 change; see [[design-system]] → *Full
 dark theme* for the full list of roles that had to move with it (glass
 surfaces, `--border-subtle`, `--foreground-muted/subtle`) and the one card that
 deliberately opted out (the Services "lime" card, which keeps dark text on its
@@ -391,9 +393,11 @@ pointer events the WebGL scene needs for its cursor deform.
 > frame) instead of shipping the PNG, and it reacts to the cursor. ADR-0024
 > first set its `bgColor` to `#070d17` (exact match with `--surface-section`,
 > zero seam) — live-testing on production showed that made the ink/helix
-> essentially invisible, not just "faint" as predicted, so ADR-0025 moved it to
-> `#1e293b`: a small seam against the panel, in exchange for a helix that's
-> actually visible. See ADR-0024, ADR-0025 and [[dna-ink-scene]].
+> essentially invisible, so ADR-0025 moved it to `#1e293b` (helix visible, a
+> fairly noticeable seam), and ADR-0026 narrowed that seam from both sides:
+> `bgColor` is now `#16202e` and `--surface-section` moved to its own
+> `--raw-color-navy-800` (`#10182a`) instead of matching `--background`
+> exactly. See ADR-0024–0026 and [[dna-ink-scene]].
 
 **Entry cascade.** Every block enters, not just the copy. Each is wrapped in
 [[common|`<RevealOnReady>`]], which carries that block's positioning *and* holds
