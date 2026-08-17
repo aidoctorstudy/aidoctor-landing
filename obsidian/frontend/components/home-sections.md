@@ -388,12 +388,12 @@ pointer events the WebGL scene needs for its cursor deform.
 > [!important] The mockup's hero image is our own scene
 > Figma's `image 659` is a still render of [[dna-ink-scene]]. The section mounts
 > the **live** `<LazyDnaInk>` in the same box (x 361, width 1140 of the 1440
-> frame) instead of shipping the PNG, and it reacts to the cursor. As of
-> ADR-0024 its `bgColor` (`#070d17`) matches `--surface-section` again — no
-> visible seam — but per the scene's own MULTIPLY-blending docs, a dark
-> backdrop is expected to leave the ink/helix visibly faint. That's a
-> deliberate, informed trade-off the project owner chose over the seam; see
-> ADR-0024 and [[dna-ink-scene]].
+> frame) instead of shipping the PNG, and it reacts to the cursor. ADR-0024
+> first set its `bgColor` to `#070d17` (exact match with `--surface-section`,
+> zero seam) — live-testing on production showed that made the ink/helix
+> essentially invisible, not just "faint" as predicted, so ADR-0025 moved it to
+> `#1e293b`: a small seam against the panel, in exchange for a helix that's
+> actually visible. See ADR-0024, ADR-0025 and [[dna-ink-scene]].
 
 **Entry cascade.** Every block enters, not just the copy. Each is wrapped in
 [[common|`<RevealOnReady>`]], which carries that block's positioning *and* holds

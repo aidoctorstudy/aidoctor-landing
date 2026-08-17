@@ -88,14 +88,21 @@ itself comes from the clear colour. That is why the scene wants a **light**
 backdrop, and why there is no additive bloom: on a dark `bgColor` the clouds
 have nothing left to darken and fade toward invisible.
 
-> [!warning] `bgColor` is dark in production (ADR-0024), against this file's own advice
-> As of ADR-0024, `config.bgColor` is `#070d17` — dark — at the project owner's
-> explicit, informed request, made after being shown exactly this paragraph.
-> The consequence described above is real and expected: the ink/helix render
-> visibly faint. This is not a bug to fix by picking a lighter `bgColor` or by
-> changing the blend mode (a shader change, off-limits under hard rule #2) —
-> it's a deliberate trade-off the project owner chose knowingly. See ADR-0024
-> for the two alternatives that were offered and declined.
+> [!warning] `bgColor` is dark in production, against this file's own advice — twice-adjusted, on purpose
+> ADR-0024 first set `config.bgColor` to `#070d17` — an exact match with the
+> surrounding panel, chosen at the project owner's explicit, informed request
+> after being shown exactly this paragraph. Live-tested on the production
+> deploy, that read as the helix **not rendering at all** — reported, and
+> investigated as a possible build/deploy bug before the real cause (this
+> documented blend behaviour) was confirmed via DevTools showing no console
+> error, just an empty-looking hero.
+>
+> ADR-0025 moved `bgColor` to `#1e293b` — dark enough to stay in theme, light
+> enough that the helix is dim but genuinely visible, at the cost of a small
+> seam against the panel. If a future report says "the helix isn't rendering,"
+> check this file's `bgColor` and the live page in DevTools **before**
+> assuming a build/deploy/CSP problem — that was a dead end twice already. See
+> ADR-0024 and ADR-0025.
 
 ## The settings panel
 

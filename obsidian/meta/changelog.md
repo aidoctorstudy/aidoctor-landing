@@ -8,6 +8,16 @@ updated: 2026-08-10
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-17 (4)
+
+- **DNA scene `bgColor` adjusted `#070d17` → `#1e293b`** after the "helix not
+  rendering in production" report turned out to be ADR-0024's own documented
+  faintness trade-off, confirmed live (clean build, byte-identical chunk on
+  Vercel, no console error, just an empty-looking hero). Muted mid-dark slate
+  keeps the helix dim-but-visible instead of essentially gone, at the cost of
+  a small seam against the surrounding dark panels. See [[decisions-log]]
+  ADR-0025.
+
 ## 2026-08-17 (3)
 
 - **Dark-mode polish pass** — new card/chip/input/outline-button design

@@ -144,7 +144,7 @@ the handful of Tier 2 role re-points below changed.
 | `--raw-color-brand-900` | `#0c4a6e` | primary button border — was `#054038` |
 | `--raw-color-lime-200` | `#e0f2fe` | secondary button fill — pale sky, was `#f8ffb4` |
 | `--raw-color-lime-400` | `#7dd3fc` | secondary button border — was `#e5ed9b` |
-| `--raw-color-mint-50` | `#070d17` | now **also** `--background` (ADR-0023) — dark navy, was `#eff4f2`. Also the WebGL scene's `bgColor` again as of ADR-0024 — see the callout below |
+| `--raw-color-mint-50` | `#070d17` | now **also** `--background` (ADR-0023) — dark navy, was `#eff4f2`. Briefly also the WebGL scene's `bgColor` under ADR-0024; ADR-0025 moved the scene off this value again — see the callout below |
 | `--raw-color-mint-100` | `#0c1524` | `--surface-section-deep` (About/Team panel) — was `#e5f1ed` |
 | `--raw-color-white-alpha-80` | `rgba(255,255,255,.8)` | *(retired)* — was the old light `--surface-glass`; glass is now black-alpha, see below |
 | `--raw-radius-xs / sm / pill` | `4 / 8 / 46px` | logo square, glass card, pill buttons |
@@ -190,11 +190,14 @@ its own `@theme` binding.
 > `bgColor` white/light on purpose, accepting a visible light-rectangle seam
 > around the canvas in exchange for a fully visible helix.
 >
-> ADR-0024 reversed that specific call: `bgColor` is now `#070d17`, matching
-> `--raw-color-mint-50` again (no seam), at the project owner's explicit,
-> informed request *after* being shown this exact trade-off. The helix reading
-> faint in production is expected, not a regression to silently "fix" by
-> reverting `bgColor` back to light.
+> ADR-0024 reversed that specific call: `bgColor` matched `--raw-color-mint-50`
+> exactly (`#070d17`, no seam), at the project owner's explicit, informed
+> request *after* being shown this exact trade-off. Live-tested on production,
+> that read as the helix not rendering at all rather than merely "faint" —
+> ADR-0025 moved `bgColor` to `#1e293b`, a muted mid-dark slate: a small seam
+> returns, but the helix is genuinely visible again. Don't "fix" this by
+> reverting to pure light or pure `--raw-color-mint-50` without re-reading
+> ADR-0025 first — both were already tried.
 
 ### What the starter shipped (for reference)
 

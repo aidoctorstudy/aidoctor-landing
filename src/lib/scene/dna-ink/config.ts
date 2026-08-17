@@ -111,13 +111,16 @@ export interface DnaInkConfig {
 }
 
 export const DNA_INK_CONFIG: DnaInkConfig = {
-  // ADR-0024: bgColor moved dark at the project owner's explicit, informed
-  // request, overriding ADR-0022/0023's decision to keep it light. Per this
-  // file's own MultiplyBlending docs, a dark backdrop leaves the ink/helix
-  // faint — brightness/opacity below were raised to partly compensate, but
-  // this cannot fully undo the blend math without a shader change (off-limits
-  // under hard rule #2). See decisions-log ADR-0024.
-  bgColor: "#070d17",
+  // ADR-0024 first moved bgColor to #070d17 (matching the page exactly) at
+  // the project owner's explicit, informed request. Live-tested on the
+  // production deploy: per this file's own MultiplyBlending docs, that made
+  // the ink/helix read as essentially invisible, not just "faint" — brightness/
+  // opacity below were already raised as far as sensible without a shader
+  // change. ADR-0025 moved bgColor to this muted mid-dark slate instead: dark
+  // enough to stay in theme, light enough that the helix is dim but genuinely
+  // visible. A small seam against the surrounding #070d17/#0c1524 panels is
+  // the accepted trade-off. See decisions-log ADR-0024, ADR-0025.
+  bgColor: "#1e293b",
   flameColor: "#0ea5e9",
   flameColor2: "#7dd3fc",
   flameAmt: 0.12,

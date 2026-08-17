@@ -10,6 +10,48 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0025 — DNA scene `bgColor` moved off `#070d17` after live production testing
+
+- **Status:** Accepted
+- **Date:** 2026-08-17
+
+**Context.** The project owner reported "the DNA helix isn't rendering in
+production" on the live Vercel deploy (`aidoctor-landing.vercel.app`). A full
+server/build/network audit found nothing wrong: `next build` compiled clean,
+the scene's chunk was present and byte-identical between the local production
+build and the live deploy (same `Content-Length`, same content hash), no CSP
+header existed anywhere, and the page title/content confirmed the deploy was
+current, not stale. Asked to check DevTools directly, the project owner
+confirmed: **no console error**, just a dark, empty-looking hero.
+
+This matched ADR-0024's own documented prediction exactly — `bgColor:
+#070d17` (identical to the surrounding panel colour) was expected to leave the
+MULTIPLY-blended ink/helix "faint," and in practice on a real device that
+read as fully invisible, not merely dim. There was no bug to fix; the
+literal, informed choice from ADR-0024 just looked worse in production than
+anticipated.
+
+**Decision.** `bgColor` moved from `#070d17` to `#1e293b` (a muted mid-dark
+slate) — offered as the "compromise" option back in ADR-0024 and declined at
+the time in favour of the exact-match value; now chosen after seeing the
+exact-match result live. Dark enough to stay in theme and keep most of the
+seam-free blend into the surrounding `#070d17`/`#0c1524` panels; light enough
+that `MultiplyBlending` leaves the helix dim but genuinely visible instead of
+essentially gone. A small visible seam against the panel is the accepted
+trade-off, same shape as ADR-0022's original light-canvas trade-off, just at a
+smaller magnitude.
+
+**What this ADR is NOT.** Not a case-sensitivity fix, not a CSP fix, not a
+stale-deploy fix — none of those were the problem. Worth recording precisely
+*because* the investigation ruled all of them out first; a future agent
+hitting a similar "works locally, not in production" report on this scene
+should check whether the symptom is actually this known faintness trade-off
+before assuming a build/deploy bug.
+
+Related: [[dna-ink-scene]], [[design-system]], ADR-0024.
+
+---
+
 ## ADR-0024 — Dark-mode polish pass: card/chip/input tokens, DNA scene overrides, testimonials, footer, cookie fixes
 
 - **Status:** Accepted (phase 1 of a larger, explicitly phased request)
