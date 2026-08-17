@@ -71,6 +71,27 @@
     var(--raw-color-brand-500)
   );
 
+  /* ADR-0027 — replaces the stock photos removed from the Features cards and
+     the About banner. Both are the same three brand-navy shades, at different
+     angles/stops so they read as related but not identical. */
+  --raw-gradient-feature-card: linear-gradient(
+    160deg,
+    #0c1524 0%,
+    #0c4a6e 55%,
+    #070d17 100%
+  );
+  --raw-gradient-about-banner: linear-gradient(
+    135deg,
+    #0c1524 0%,
+    #0c4a6e 50%,
+    #070d17 100%
+  );
+  /* Subtle grid overlay for the About banner — two 1px hairline layers, one
+     per axis, tiled 40px apart. */
+  --raw-pattern-grid: linear-gradient(rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+  --raw-background-about-banner: var(--raw-gradient-about-banner), var(--raw-pattern-grid);
+
   --raw-radius-xs: 4px;
   --raw-radius-sm: 8px;
   --raw-radius-lg: 24px;

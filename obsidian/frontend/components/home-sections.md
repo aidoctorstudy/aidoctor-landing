@@ -361,7 +361,6 @@ Header and hero were signed off this way (logo `40,16 149×54`, nav
 | About over Services | Services' runway is 3 viewports with a `sticky` panel; About carries `-mt-[100lvh]` + `z-10`, so it starts one viewport before the runway ends — while the panel is still pinned — and scrolls *across* it. Without the negative margin it merely follows the panel. |
 | Contact over Team | Team is `sticky top-0` inside `main`, so it stays pinned for the rest of the page; Contact follows with `z-20` and its own panel colour. |
 | Team slider | native `overflow-x-auto` rail **plus pointer-capture dragging** — a mouse cannot drag a native scroller, so press/move/release write `scrollLeft` directly and a post-drag click is swallowed so a card never opens from a drag. Only the progress bar is animated, springing from `scrollLeft`. |
-| About banner parallax | `AboutBanner`: image is 150 % of its frame, offset `-25 %`, drift read once per frame from the ticker into a spring |
 | Cursor image trail | `CursorTrail`: `useTransition` over a bounded list — one spawn per 90px of pointer travel, oldest dropped off the end. See below. |
 
 Both overlay reveals are **flow order, not scroll listeners** — nothing to

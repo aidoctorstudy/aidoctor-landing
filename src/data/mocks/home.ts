@@ -48,8 +48,8 @@ export interface ServiceCard {
   title: string;
   /** Sub-services listed on the opening card. */
   items?: readonly string[];
-  /** Full-bleed photo card. */
-  image?: string;
+  /** Decorative, on the "photo" variant's gradient card (ADR-0027). */
+  emoji?: string;
   /** Tail card carries a "Discover" affordance. */
   cta?: string;
   variant: "lime" | "photo" | "brand";
@@ -68,7 +68,6 @@ export interface AboutFragment {
 
 export interface AboutContent {
   eyebrow: string;
-  bannerImage: string;
   stats: readonly StatItem[];
   paragraph: readonly AboutFragment[];
   actions: readonly CtaLink[];
@@ -202,7 +201,7 @@ export const SERVICE_CARDS: readonly ServiceCard[] = [
   {
     index: "02",
     title: "Image Analysis",
-    image: "/assets/Our Services/01.png",
+    emoji: "🩻",
     cta: "Discover",
     variant: "photo",
   },
@@ -215,14 +214,14 @@ export const SERVICE_CARDS: readonly ServiceCard[] = [
   {
     index: "04",
     title: "Drug Mnemonics",
-    image: "/assets/Our Services/02.png",
+    emoji: "💊",
     cta: "Discover",
     variant: "photo",
   },
   {
     index: "05",
     title: "Exam Prep",
-    image: "/assets/Our Services/03.png",
+    emoji: "📝",
     cta: "Discover",
     variant: "photo",
   },
@@ -230,9 +229,6 @@ export const SERVICE_CARDS: readonly ServiceCard[] = [
 
 export const ABOUT_CONTENT: AboutContent = {
   eyebrow: "Why Students Trust Us",
-  // Extracted from Figma node 1546:163 — the wide theatre shot the mockup uses,
-  // which was not among the supplied photo folders.
-  bannerImage: "/assets/About/banner.png",
   stats: [
     { value: "50K+", label: "Students" },
     { value: "98%", label: "Pass Rate" },

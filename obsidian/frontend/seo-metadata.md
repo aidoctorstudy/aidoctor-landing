@@ -104,9 +104,16 @@ PageSpeed, HeadlessChrome, GTmetrix, Pingdom, Bingbot, Yandexbot.
 ## Static assets
 
 The `public/` **root** holds meta/PWA/SEO assets — favicons (multiple sizes),
-Android/Apple icons, `manifest.json`, `browserconfig.xml`, `open-graph.png`.
-Site **content** assets (images, videos) go under `public/assets/<section>/` —
-see [[folder-structure]].
+Android/Apple icons, `manifest.json`, `browserconfig.xml`, `open-graph.png`,
+`llms.txt`. Site **content** assets (images, videos) go under
+`public/assets/<section>/` — see [[folder-structure]].
+
+`llms.txt` is a static, hand-written machine-readable summary for LLM
+agents/crawlers (what the product is, its features, pricing, and canonical
+links) — an emerging convention, not a Next.js file convention, so it's a
+plain file in `public/` rather than a generated route. Unlike `siteConfig` in
+`site.ts`, nothing regenerates it automatically — if the product's features,
+pricing, or links change, update `public/llms.txt` by hand too.
 
 > [!note] `#todo`
 > `open-graph.png` is currently **900×600** (the metadata declares the same, so

@@ -8,7 +8,6 @@
  * cards spaced 10px apart. The opener is 561 wide, the rest 447.
  */
 
-import Image from "next/image";
 import TextEngine from "spring-text-engine";
 
 import { ArrowUpRightIcon } from "@/components/ui/icons";
@@ -36,7 +35,10 @@ const CARD_VARIANT: Record<ServiceCard["variant"], string> = {
   // dark glass card with a cyan border, matching the other feature cards. It
   // can rely on the ambient white `--foreground` again, same as `photo`/`brand`.
   lime: "border border-border-card bg-surface-card backdrop-blur-glass lg:w-[35.0625rem]",
-  photo: "text-white lg:w-[27.9375rem]",
+  // ADR-0027: was a full-bleed stock photo (`<Image fill>`); now a dark
+  // medical-themed gradient card with a decorative emoji instead — see
+  // `card.emoji` below.
+  photo: "bg-[image:var(--raw-gradient-feature-card)] text-white lg:w-[27.9375rem]",
   brand: "bg-accent text-white lg:w-[27.9375rem]",
 };
 
@@ -93,17 +95,18 @@ export const Services = ({ intro, cards }: ServicesProps) => (
           key={card.index}
           className={`${CARD_BASE} ${CARD_VARIANT[card.variant]}`}
         >
-          {card.image && (
-            <Image
-              src={card.image}
-              alt=""
-              fill
-              sizes="35rem"
-              className="object-cover"
-            />
-          )}
-
-          <div className="relative z-10 flex flex-col gap-4 lg:gap-6">
+          <div className="flex flex-col gap-4 lg:gap-6">
+            {/* Decorative stand-in for the old stock photo (ADR-0027) — the
+                title text already names the feature, so screen readers skip
+                this. */}
+            {card.emoji && (
+              <span
+                aria-hidden="true"
+                className="text-4xl leading-none lg:text-5xl"
+              >
+                {card.emoji}
+              </span>
+            )}
             <p className="text-base leading-body lg:text-xl">{card.index}</p>
             {/* Static on purpose — see HEADING_MOTION's note. Five card titles
                 revealing themselves while the rail scrubs past is noise. */}
@@ -118,7 +121,7 @@ export const Services = ({ intro, cards }: ServicesProps) => (
               (cyan-alpha), not `border-subtle`, so it matches this card's own
               outer border tone rather than the page-level divider colour. */}
           {card.items && (
-            <ul className="relative z-10 flex flex-col gap-4 lg:w-[31.0625rem] lg:gap-6">
+            <ul className="flex flex-col gap-4 lg:w-[31.0625rem] lg:gap-6">
               {card.items.map((item, index) => (
                 <li key={item} className="flex flex-col gap-4 lg:gap-6">
                   {index > 0 && (
@@ -141,7 +144,7 @@ export const Services = ({ intro, cards }: ServicesProps) => (
               baseline next to the ring — centring it drops the word below the
               line the lime card's last list row sits on. */}
           {card.cta && (
-            <div className="relative z-10 flex items-end justify-between">
+            <div className="flex items-end justify-between">
               <p className="text-base leading-body lg:text-xl">{card.cta}</p>
               {/* Node 1558:347: a 72px ring — 1px white stroke, no fill — not
                   the filled lime disc the buttons use. */}

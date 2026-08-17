@@ -14,7 +14,8 @@
       "Bash(curl -s http://localhost:3001/ -o /tmp/prod_home.html)",
       "Bash(curl -s http://localhost:3001/)",
       "Read(//tmp/**)",
-      "Bash(curl *)"
+      "Bash(curl *)",
+      "Bash(npx tsc *)"
     ]
   }
 }

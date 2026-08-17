@@ -10,6 +10,52 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0027 — Replaced the last stock photos (Features cards, About banner) with CSS gradients
+
+- **Status:** Accepted
+- **Date:** 2026-08-17
+
+**Context.** The Dantora clinic stock photos on the three "photo" Services/
+Features cards (`/assets/Our Services/*.png`) and the About banner
+(`/assets/About/banner.png`) were the last real photography left on the site
+after the testimonial photos were already replaced with initials avatars
+(ADR-0024). Requested: gradient cards with an emoji/icon instead of the
+Features photos, and a specific CSS gradient + grid pattern for the banner.
+
+**Decision.**
+- `ServiceCard.image` → `ServiceCard.emoji`. The "photo" variant's background
+  moved from `<Image fill>` to a new `--raw-gradient-feature-card` token
+  (dark navy/brand-blue, same three shades as the About banner's gradient at
+  a different angle/stop mix, so the two read as related). Each card keeps
+  its title and gets one decorative, `aria-hidden` emoji: 🩻 Image Analysis,
+  💊 Drug Mnemonics, 📝 Exam Prep. The lime→dark-card (ADR-0024) and brand
+  (solid accent) variants were untouched — they never used a photo.
+- `AboutContent.bannerImage` removed; `AboutBanner` now renders the exact
+  requested gradient (`linear-gradient(135deg, #0c1524 0%, #0c4a6e 50%,
+  #070d17 100%)`, `--raw-gradient-about-banner`) plus a new subtle grid
+  overlay (`--raw-pattern-grid`, two 1px hairline layers tiled 40px apart),
+  composited into `--raw-background-about-banner` the same way Hero's glow +
+  dot pattern were composited under ADR-0024.
+- **`AboutBanner` dropped its parallax spring entirely** and is no longer a
+  Client Component. The drift (`useLoop` → `useSpring` → `translate3d`) existed
+  specifically to crop-and-shift an oversized *photo* against scroll — with no
+  photo, there's nothing for it to reveal, so keeping the spring around would
+  have been motion for its own sake on a flat background. This isn't a hard
+  rule #1 violation (nothing here plays music with no listener) — it's a
+  legitimate simplification once the thing the animation was *for* was
+  removed, per the "don't leave half-finished/dead animation code" instinct.
+  The static gradient still respects `rounded-card` and its container's box
+  the same way the old image did.
+
+**Not removed:** the actual asset files under `public/assets/Our Services/`
+and `public/assets/About/` — deleting files is a separate, more destructive
+action than removing the code paths that referenced them, and wasn't asked
+for.
+
+Related: [[home-sections]], [[design-system]], ADR-0024.
+
+---
+
 ## ADR-0026 — Narrowed the Hero/Contact canvas seam by moving both sides toward each other
 
 - **Status:** Accepted

@@ -32,10 +32,7 @@ export const About = ({ content }: AboutProps) => (
     id="about"
     className="relative z-10 -mt-[100lvh] rounded-t-section bg-surface-section-deep px-5 py-16 md:px-10 lg:h-[71.5rem] lg:p-0"
   >
-    <AboutBanner
-      src={content.bannerImage}
-      className="h-[16rem] rounded-card md:h-[24rem] lg:absolute lg:top-[2.5rem] lg:left-[2.5rem] lg:h-[31.25rem] lg:w-[85rem]"
-    />
+    <AboutBanner className="h-[16rem] rounded-card md:h-[24rem] lg:absolute lg:top-[2.5rem] lg:left-[2.5rem] lg:h-[31.25rem] lg:w-[85rem]" />
 
     <div className="mt-10 flex flex-col gap-10 lg:absolute lg:top-[37.75rem] lg:left-[2.375rem] lg:mt-0 lg:w-[85.125rem] lg:flex-row lg:items-center lg:justify-between lg:gap-0">
       <div className="flex flex-col gap-8 lg:w-[28.0625rem] lg:gap-[5.5625rem]">

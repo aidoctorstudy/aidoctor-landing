@@ -8,6 +8,24 @@ updated: 2026-08-10
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-17 (7)
+
+- **Added `public/llms.txt`** — a static, hand-written machine-readable
+  summary of the product (features, pricing, links) for LLM agents/crawlers.
+  Plain file, not a generated route — nothing keeps it in sync with
+  `siteConfig` automatically. See [[seo-metadata]] → *Static assets*.
+
+## 2026-08-17 (6)
+
+- **Replaced remaining stock photos with CSS gradients** — the three Features
+  "photo" cards moved from `<Image fill>` to a dark gradient
+  (`--raw-gradient-feature-card`) with a decorative emoji per card (🩻 💊 📝);
+  the About banner moved from a photo to the requested exact gradient plus a
+  new subtle grid-pattern overlay. `AboutBanner` dropped its parallax spring
+  and `"use client"` — nothing left to drift once the photo was gone — and is
+  now a plain Server Component. `ServiceCard.image` → `.emoji`;
+  `AboutContent.bannerImage` removed. See [[decisions-log]] ADR-0027.
+
 ## 2026-08-17 (5)
 
 - **Narrowed the Hero/Contact canvas seam** — `--surface-section` split off
