@@ -120,8 +120,13 @@ export interface ContactContent extends SectionIntro {
   submitLabel: string;
 }
 
-/** The live product — every "Start for Free"/"Start Free Trial" CTA leads here. */
-export const EXTERNAL_APP_URL = "https://app.aidoctor.study";
+/**
+ * The study app — every "Start for Free"/"Start Free Trial"/"Get Started"
+ * CTA leads here. Same-origin `/app` route (ADR-0028), not the old
+ * `app.aidoctor.study` subdomain — `next/link` renders it as a real
+ * client-side navigation instead of a full page load to another origin.
+ */
+export const APP_URL = "/app";
 /** Pro checkout (Gumroad) — linked from pricing-adjacent CTAs. */
 export const PRO_CHECKOUT_URL = "https://hyperai3.gumroad.com/l/aidoctorstudypro";
 
@@ -135,7 +140,7 @@ export const SITE_NAV: readonly NavLink[] = [
 
 export const HEADER_CTA: CtaLink = {
   label: "Start for Free",
-  href: EXTERNAL_APP_URL,
+  href: APP_URL,
 };
 
 export const BRAND_NAME = "AI Doctor Study";
@@ -146,7 +151,7 @@ export const HERO_CONTENT: HeroContent = {
   description:
     "The AI study companion built for MBBS and medical students. Ask anything, get expert explanations instantly.",
   actions: [
-    { label: "Start for Free", href: EXTERNAL_APP_URL },
+    { label: "Start for Free", href: APP_URL },
     { label: "See Pro Features", href: "#features" },
   ],
   trustLine: "Trusted by 50,000+ medical students worldwide",
@@ -251,7 +256,7 @@ export const ABOUT_CONTENT: AboutContent = {
     },
   ],
   actions: [
-    { label: "Start Free Trial", href: EXTERNAL_APP_URL },
+    { label: "Start Free Trial", href: APP_URL },
     { label: "See Pricing", href: PRO_CHECKOUT_URL },
   ],
 };
@@ -302,7 +307,7 @@ export const TEAM_CONTENT: TeamContent = {
   more: {
     title: "Join 50,000+ students studying smarter",
     cta: "Get Started",
-    href: "#contact",
+    href: APP_URL,
   },
 };
 
@@ -326,7 +331,7 @@ export const CONTACT_CONTENT: ContactContent = {
   consentLinkLabel: "Privacy Policy",
   consentTail: " and the processing of your personal data.",
   // Deliberately not "Start Free Trial": this button submits the lead-capture
-  // form (POST /api/contact), it doesn't navigate to EXTERNAL_APP_URL like the
+  // form (POST /api/contact), it doesn't navigate to APP_URL like the
   // site's other "Start Free Trial" CTAs — a shared label on two different
   // behaviours would be confusing, not just redundant.
   submitLabel: "Send Message",

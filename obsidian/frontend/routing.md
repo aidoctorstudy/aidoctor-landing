@@ -17,7 +17,7 @@ Next.js 16 App Router. The defining convention: **routes delegate to views**.
 `src/views/` and render it. ADR: [[decisions-log]] ADR-0003.
 
 ```tsx
-// src/app/page.tsx
+// src/app/(marketing)/page.tsx
 import { HomeView } from "@/views/home";
 
 export default function Home() {
@@ -25,17 +25,40 @@ export default function Home() {
 }
 ```
 
-All layout and UI logic lives in `src/views/home.tsx` (`HomeView`). The view is
+All layout and UI logic lives in `src/views/home/` (`HomeView`). The view is
 a **Server Component**; isolate any client-only animation in a leaf component —
-see [[component-conventions]] hard rule #6. `HomeView` currently ships **empty**:
-if the project is empty and no other instructions are provided, start developing
-here on route `/` (see [[ai-agent-guide]] / [[new-page]]).
+see [[component-conventions]] hard rule #6.
 
 ## Current routes
 
 | Route | File | View |
 |-------|------|------|
-| `/` | `src/app/page.tsx` | `views/home.tsx` → `HomeView` |
+| `/` | `src/app/(marketing)/page.tsx` | `views/home/index.tsx` → `HomeView` |
+| `/app` | `src/app/app/page.tsx` | `views/app/study-app-frame.tsx` → `StudyAppFrame` (iframe embed — see [[decisions-log]] ADR-0028) |
+
+## Two root layouts (ADR-0028)
+
+This project has **two separate root layouts**, via Next's "multiple root
+layouts" pattern — each defines its own `<html><body>`, and every top-level
+route belongs to exactly one of them:
+
+| Root layout | Covers | Carries |
+|---|---|---|
+| `src/app/(marketing)/layout.tsx` | `/` and any future marketing route | Google Sans Flex, `PreloadProvider`/`Preloader`, `ScrollLayout`, `AdaptiveGrid`, `ReducedMotion`, cookie banner, JSON-LD |
+| `src/app/app/layout.tsx` | `/app` only | Nothing — no font load, no providers. Just `globals.css` for Tailwind's reset/utilities, `h-full overflow-hidden` on `html`/`body` |
+
+`(marketing)` is a **route group** — the parens don't add a URL segment, so
+`(marketing)/page.tsx` still serves at `/`. Adding a new marketing page means
+adding it under `(marketing)/`, not directly under `app/`, or it won't have a
+root layout to render inside.
+
+`src/app/error.tsx` and `src/app/loading.tsx` still cover `(marketing)` only
+(moved there alongside its `layout.tsx`/`page.tsx`); `/app` has neither —
+it's a single static page with no data fetching, so there's nothing for
+either boundary to catch yet. `src/app/not-found.tsx` (top-level, outside
+both groups) is the global fallback for a path matching neither route group;
+`(marketing)/not-found.tsx` covers the common case of an unmatched path
+*within* the marketing site.
 
 ## Special files
 
@@ -43,28 +66,21 @@ here on route `/` (see [[ai-agent-guide]] / [[new-page]]).
 
 | File | Role |
 |------|------|
-| `layout.tsx` | Root layout — provider tree, font, `metadata` + `viewport`, JSON-LD |
-| `loading.tsx` | Suspense fallback — its presence enables streaming |
-| `error.tsx` | Route-segment error boundary (Client Component) |
-| `not-found.tsx` | 404 page — served with a 404 status |
-| `robots.ts` / `sitemap.ts` | Generate `/robots.txt` and `/sitemap.xml` — see [[seo-metadata]] |
-| `api/<resource>/route.ts` | API endpoints (Route Handlers) — see [[api-architecture]] |
+| `(marketing)/layout.tsx`, `app/layout.tsx` | The two root layouts — see above |
+| `(marketing)/loading.tsx` | Suspense fallback — its presence enables streaming |
+| `(marketing)/error.tsx` | Route-segment error boundary (Client Component) |
+| `(marketing)/not-found.tsx`, top-level `not-found.tsx` | 404 pages — served with a 404 status |
+| `robots.ts` / `sitemap.ts` | Generate `/robots.txt` and `/sitemap.xml` — see [[seo-metadata]]. Stay at the true top level (outside both groups): metadata routes aren't part of the html-document/layout-nesting mechanism, so one copy covers every route regardless of which root layout it belongs to. Same reasoning for `icon.tsx`/`apple-icon.tsx`/`opengraph-image.tsx`. |
+| `api/<resource>/route.ts` | API endpoints (Route Handlers) — also unaffected by root layouts; they never render `<html>` |
 
 ## Adding a route
 
-1. Create `src/app/<route>/page.tsx` — keep it ~3 lines, delegate to a view.
+1. Create `src/app/(marketing)/<route>/page.tsx` — keep it ~3 lines, delegate
+   to a view. (Only use a fresh top-level folder like `app/app/` instead of
+   `(marketing)/` if the route genuinely needs its own root layout with none
+   of the marketing chrome — that's the exception, not the default.)
 2. Create `src/views/<route>.tsx` — the actual page component.
-3. Use route groups `app/(feature)/` to scope feature pages without affecting the URL.
-4. Follow the [[new-page]] playbook.
-
-## Layouts
-
-- `src/app/layout.tsx` — the **root layout**. Holds the provider tree
-  (`ScrollLayout` → `AdaptiveGrid` / `ReducedMotion` / `Cookie` → children),
-  loads the Onest font and `globals.css`, exports `metadata` + `viewport`, and
-  renders the JSON-LD script. See [[data-flow]].
-- Reusable layout *wrappers* (not route layouts) live in `src/layouts/` —
-  e.g. [[smooth-scroll|ScrollLayout]].
+3. Follow the [[new-page]] playbook.
 
 ## Navigation
 

@@ -10,6 +10,81 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0028 — `/app` embeds the study app via iframe, on a second root layout; the app's own files were never supplied
+
+- **Status:** Partially accepted — routing/embedding shell done, the actual
+  app content is blocked
+- **Date:** 2026-08-20
+
+**Context.** Requested: move the real AI Doctor Study product (a chat/
+flashcard/exam SaaS app with its own `index.html`, `auth.js`, twelve numbered
+feature modules, etc.) onto this domain at `/app`, with zero shared chrome
+with the marketing site — literally "NO Next.js header/footer/layout."
+That product's source has never existed in this repository at any point this
+session, and wasn't attached to or pasted into the request. Copying files
+that don't exist isn't possible; a full chat/auth/flashcard/exam application
+was **not** fabricated to fill the gap — see the "What was not done" section.
+
+**Decision — routing/embedding shell (done).**
+- `src/app/(marketing)/` — a route group holding what used to be the bare
+  `src/app/layout.tsx` + `page.tsx` (plus `error.tsx`/`loading.tsx`/
+  `not-found.tsx`, moved alongside them). Route groups don't add a URL
+  segment, so this still serves `/` — see [[routing]].
+- `src/app/app/layout.tsx` + `page.tsx` — a **second, separate root layout**
+  (Next's documented "multiple root layouts" pattern) for `/app` only. Carries
+  none of the marketing chrome: no font load, no `PreloadProvider`/
+  `Preloader` curtain, no `ScrollLayout`, no `AdaptiveGrid`, no cookie banner.
+  Only `globals.css` (for Tailwind's reset/utilities) and explicit
+  `h-full overflow-hidden` on `html`/`body`.
+- `src/views/app/study-app-frame.tsx` (`StudyAppFrame`) — a **Server
+  Component** rendering `<iframe src="/app/index.html" className="block
+  h-dvh w-dvw border-0">`. The request specified `'use client'`, but nothing
+  here needs client-side state/effects to render an iframe, and hard rule #6
+  defaults to Server Components — deviated from the literal instruction on
+  purpose, not an oversight.
+- `data/mocks/home.ts`: `EXTERNAL_APP_URL` (an absolute `https://
+  app.aidoctor.study` URL) renamed `APP_URL` and repointed to `/app` — same
+  origin now, so `next/link` gives real client-side navigation instead of a
+  full page load to another domain. Every "Start for Free"/"Start Free
+  Trial" CTA already ran through that one constant (ADR-0024), so this one
+  change covers all of them; the Team tail card's "Get Started"
+  (`TEAM_CONTENT.more`) previously pointed at `#contact` and was repointed to
+  `APP_URL` too, since it was explicitly named as one of the buttons that
+  should lead to the app. `PRO_CHECKOUT_URL` (the Gumroad link) is untouched
+  — pricing and app-entry are still different destinations.
+- No separate "redirect" was built for `/` vs `/app` — Next's file-based
+  routing already does exactly that by having two distinct routes; adding
+  middleware/redirect logic on top would be solving an already-solved
+  problem.
+
+**What was NOT done, and why.** `public/app/` contains only a placeholder
+`index.html` (clearly labeled as a placeholder, dark-themed to match so it
+doesn't look broken if loaded) and a `README.md` listing exactly which files
+are still needed and where to put them. The real `index.html`, `styles.css`,
+`auth.js`, the twelve numbered feature modules, `logo.svg`, and any other
+assets were requested but never supplied — inventing a working version of
+someone else's SaaS product's source code was not an option. Once those
+files exist, dropping them into `public/app/` (same paths the app's own
+`index.html` expects — same-origin, so its relative script/asset references
+should resolve as-is) and deleting the placeholder `index.html` should be
+the only remaining step; no further code changes are expected to be needed.
+
+**Known rough edge.** `next build` emits one warning —
+`metadataBase property in metadata export is not set` — for Next's
+auto-synthesized `/_not-found` route (the fallback for a path matching
+*neither* root-layout group, distinct from `(marketing)/not-found.tsx`,
+which handles the common in-marketing-site case and does have
+`metadataBase` set). Adding a top-level `src/app/not-found.tsx` outside both
+groups, with its own `metadataBase`, did not resolve it. This only affects
+unresolved OG-image URLs for that one synthetic edge-case route — cosmetic,
+not a functional bug (confirmed: `/`, `/app`, and an arbitrary unmatched path
+all resolve correctly at runtime) — not worth further chasing into Next
+internals right now.
+
+Related: [[routing]], [[design-system]], ADR-0024.
+
+---
+
 ## ADR-0027 — Replaced the last stock photos (Features cards, About banner) with CSS gradients
 
 - **Status:** Accepted

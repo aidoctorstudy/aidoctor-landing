@@ -8,6 +8,38 @@ updated: 2026-08-10
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-20 (2)
+
+- **Added `/app` as a second root layout, embedding the study app via
+  iframe** — `src/app/(marketing)/` now holds the former top-level
+  `layout.tsx`/`page.tsx`/`error.tsx`/`loading.tsx`/`not-found.tsx`, and
+  `src/app/app/` is a brand-new, separate root layout with none of the
+  marketing chrome (no font, no preloader, no scroll layout, no cookie
+  banner) — just a full-viewport `<iframe>` (`StudyAppFrame`, a Server
+  Component). `EXTERNAL_APP_URL` → `APP_URL`, repointed from
+  `https://app.aidoctor.study` to `/app`; every CTA that used it (plus the
+  Team tail card's "Get Started", previously `#contact`) now leads there.
+  **The actual app files were never supplied** — `public/app/` has a
+  placeholder `index.html` and a `README.md` listing what's still needed.
+  See [[decisions-log]] ADR-0028.
+
+## 2026-08-20
+
+- **Mobile UX audit** (requested as "a separate mobile app" — re-scoped after
+  clarifying that describes the unrelated `app.aidoctor.study` product, not
+  this marketing site; see [[decisions-log]] for context if a similar request
+  comes up again). Checked the existing responsive treatment against
+  `env(safe-area-inset-bottom)`, 44px touch targets, 16px form-input font-size
+  (avoids iOS auto-zoom-on-focus), and stray horizontal scroll. Only one real
+  gap: `CookieBanner` — the sole fixed, edge-anchored element on the site —
+  had no safe-area awareness, so it could sit under an iPhone's home
+  indicator. Fixed via `bottom-[calc(1rem+env(safe-area-inset-bottom))]`
+  (and the `sm:` equivalent). Everything else already held: `text-base` is a
+  true 16px on mobile (root stays 16px below the `lg` breakpoint — see
+  `grid.config.ts`), `body` already has `overflow-x: hidden`, and touch
+  targets (header CTA, mobile-menu burger, card CTA discs, social icons) were
+  already ≥44px.
+
 ## 2026-08-17 (7)
 
 - **Added `public/llms.txt`** — a static, hand-written machine-readable

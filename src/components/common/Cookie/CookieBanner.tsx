@@ -38,7 +38,11 @@ export const CookieBanner = () => {
         }}
         // `bg-background/95` already lands on rgba(7,13,23,.95) — the exact
         // value asked for — now that `--background` is the brand's ink navy.
-        className="fixed bottom-4 left-4 right-4 z-[1000] flex flex-col gap-3 rounded-xl border-t border-border-chip bg-background/95 p-5 font-sans text-foreground shadow-2xl backdrop-blur-glass sm:bottom-12 sm:left-auto sm:right-12 sm:w-[420px] sm:p-6"
+        // `bottom-[calc(1rem+env(safe-area-inset-bottom))]` (and the `sm:`
+        // equivalent) is `bottom-4`/`bottom-12` plus the iPhone home-indicator
+        // safe area, so the banner never sits under it — the only fixed,
+        // edge-anchored element on the site, so the only one that needs this.
+        className="fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] left-4 right-4 z-[1000] flex flex-col gap-3 rounded-xl border-t border-border-chip bg-background/95 p-5 font-sans text-foreground shadow-2xl backdrop-blur-glass sm:bottom-[calc(3rem+env(safe-area-inset-bottom))] sm:left-auto sm:right-12 sm:w-[420px] sm:p-6"
       >
         <h2 className="text-base font-medium leading-snug sm:text-lg">
           This website uses cookies

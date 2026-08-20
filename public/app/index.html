@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<script>(function(){try{var t=localStorage.getItem('aid_theme')||'dark';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();</script>
+<meta name="google-site-verification" content="jR4J_8KgLN2DbFeDPhqdBnSP4eQUXnE3Ey66M4jF6fs"/>
+<meta name="description" content="AI Doctor — The ultimate AI-powered medical study platform for MBBS, USMLE, PLAB students. Clinical simulations, MCQs, flashcards and more."/>
+<meta name="keywords" content="AI Doctor, medical study, MBBS, USMLE, PLAB, medical AI, clinical cases, flashcards, MCQ"/>
+<meta property="og:title" content="AI Doctor | aidoctor.study"/>
+<meta property="og:description" content="AI-powered medical education platform for future doctors. Flashcards, clinical cases, lecture summaries and more."/>
+<meta property="og:url" content="https://aidoctor.study"/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="https://aidoctor.study/logo.svg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:site_name" content="AI Doctor Study"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="AI Doctor Study — AI for Medical Students"/>
+<meta name="twitter:description" content="AI-powered flashcards, clinical cases, lecture notes and MCQs. Free for MBBS, USMLE, PLAB students."/>
+<meta name="twitter:image" content="https://aidoctor.study/logo.svg"/>
+<link rel="canonical" href="https://aidoctor.study/app/"/>
+<meta name="theme-color" content="#0F172A"/>
+<link rel="icon" href="logo.svg" type="image/svg+xml"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Doctor | aidoctor.study — AI for Medical Students</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css">
+<!-- File processing libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<a href="#mainContent" class="skip-link" style="position:absolute;top:-40px;left:0;background:#0EA5E9;color:#fff;padding:8px 16px;border-radius:0 0 8px 0;font-weight:700;z-index:9999" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
+<div class="bg-orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="xp-popup" id="xpPopup">+10 XP </div>
+
+<!-- PRO MODAL -->
+<div class="modal-overlay" id="proModal">
+ <div class="modal-box">
+ <h2><i data-lucide="sparkles" class="h2-icon"></i> AI Doctor Pro</h2>
+ <p class="m-sub">Unlock everything. Ace your exams.</p>
+ <ul class="modal-feat-list">
+ <li><div class="mfl-icon">∞</div>Unlimited questions daily</li>
+ <li><div class="mfl-icon"><i data-lucide="book-open"></i></div>All medical subjects</li>
+ <li><div class="mfl-icon"><i data-lucide="stethoscope"></i></div>Clinical Case Solver</li>
+ <li><div class="mfl-icon"><i data-lucide="pill"></i></div>Drug Mnemonics Mode</li>
+ <li><div class="mfl-icon"><i data-lucide="graduation-cap"></i></div>USMLE / PLAB Prep Mode</li>
+ <li><div class="mfl-icon"><i data-lucide="layers"></i></div>Unlimited Flashcards</li>
+ </ul>
+ <div class="price-highlight">
+ <div class="ph-main">$2.99/month</div>
+ <div class="ph-sub">Pick your plan on Gumroad</div>
+ </div>
+ <div class="modal-disc">Student code: <span>MED20</span> for 20% off</div>
+ <button class="modal-go" onclick="window.open('https://studebot.gumroad.com/l/jlpryj','_blank')">Get Med Pro on Gumroad</button>
+ <input type="text" class="secret-input" id="secretInput" onkeydown="if(event.key==='Enter')applySecret()" placeholder="Have a secret code?"/>
+ <button class="secret-apply-btn" onclick="applySecret()">Apply Code</button>
+ <button class="modal-skip" id="skipModal">Maybe later</button>
+ </div>
+</div>
+
+<!-- LANDING -->
+<div class="page on" id="pg-landing">
+ <nav>
+ <div class="nav-logo">
+ <div class="nav-logo-icon"><img src="logo.svg" alt="AI Doctor Study" style="width:100%;height:100%;object-fit:contain"></div>
+ <span class="nav-logo-txt">AI Doctor</span>
+ </div>
+ <div class="nav-links">
+ <a href="#features">Features</a><a href="#subjects">Subjects</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+ </div>
+ <div class="nav-btns">
+ <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Toggle theme"><i data-lucide="sun" class="icon-sun"></i><i data-lucide="moon" class="icon-moon"></i></button>
+ <button class="btn-ghost" id="navLoginBtn">Log In</button>
+ <button class="btn-blue" id="navSignupBtn">Start Free</button>
+ </div>
+ </nav>
+ <section class="hero">
+ <div class="hero-pill"><i data-lucide="graduation-cap"></i> Built for Medical Students</div>
+ <h1>The <span class="grad">AI Study Tool</span><br/>for Medical Students</h1>
+ <p>Anatomy, Pharmacology, Pathology, Clinical Cases — all explained by AI, personalized to your year and exam type.</p>
+ <div class="lp-counter-row">
+ <div class="lp-counter"><div class="lp-counter-num" id="lpStudying">8</div><div class="lp-counter-lbl">Studying now</div></div>
+ <div class="lp-counter"><div class="lp-counter-num" id="lpCards">312</div><div class="lp-counter-lbl">Cards generated today</div></div>
+ <div class="lp-counter"><div class="lp-counter-num" id="lpUsers">89</div><div class="lp-counter-lbl">Students joined</div></div>
+ </div>
+ <div class="hero-btns">
+ <button class="hero-cta" id="heroSignupBtn">Start For Free</button>
+ <button class="hero-cta2" id="heroLoginBtn">Log In</button>
+ </div>
+ <div class="stats-row">
+ <div class="stat-item"><div class="stat-num">100+</div><div class="stat-lbl">Med Students</div><div class="stat-tiny">up to</div></div>
+ <div class="stat-div"></div>
+ <div class="stat-item"><div class="stat-num">8</div><div class="stat-lbl">Subjects</div></div>
+ <div class="stat-div"></div>
+ <div class="stat-item"><div class="stat-num">USMLE</div><div class="stat-lbl">PLAB Ready</div></div>
+ <div class="stat-div"></div>
+ <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-lbl">Always On</div></div>
+ </div>
+ </section>
+
+ <section class="sec" id="features">
+ <div class="sec-tag">Features</div>
+ <h2 class="sec-h">Built for medical school</h2>
+ <p class="sec-sub">Every feature designed specifically for MBBS, nursing, and med school students.</p>
+ <div class="feat-grid">
+ <div class="feat-card reveal"><div class="feat-icon"><i data-lucide="stethoscope"></i></div><h3>Clinical Case Solver</h3><p>Give a patient case — AI walks you through diagnosis, differentials, and management step by step.</p></div>
+ <div class="feat-card reveal"><div class="feat-icon"><i data-lucide="pill"></i></div><h3>Drug Mnemonics Mode</h3><p>AI generates memorable mnemonics for drug names, mechanisms, side effects and contraindications.</p></div>
+ <div class="feat-card reveal"><div class="feat-icon"><i data-lucide="bone"></i></div><h3>Anatomy Explainer</h3><p>Clear explanations of structures, relations, blood supply, and nerve supply with clinical correlations.</p></div>
+ <div class="feat-card reveal"><div class="feat-icon"><i data-lucide="clipboard-list"></i></div><h3>Exam Prep Mode</h3><p>USMLE Step 1/2, PLAB, OSCE style answers. Exactly what examiners want to see written.</p></div>
+ <div class="feat-card reveal"><div class="feat-icon"><i data-lucide="microscope"></i></div><h3>Pathology Mode</h3><p>Disease mechanisms, morphology, clinical features and complications explained clearly.</p></div>
+ <div class="feat-card reveal"><div class="feat-icon"><i data-lucide="layers"></i></div><h3>Flashcard Maker</h3><p>Upload lecture notes and AI creates medical flashcards optimized for spaced repetition.</p></div>
+ <div class="feat-card reveal"><div class="feat-icon"><i data-lucide="gamepad-2"></i></div><h3>Quiz Mode</h3><p>MCQ practice questions in USMLE/PLAB format with detailed explanations for every answer.</p></div>
+ <div class="feat-card reveal"><div class="feat-icon"><i data-lucide="zap"></i></div><h3>Exam Cram</h3><p>Last-minute high yield points, must-know facts, and memory tricks before your exam.</p></div>
+ </div>
+ </section>
+
+ <section class="sec alt" id="subjects">
+ <div class="sec-tag">Subjects</div>
+ <h2 class="sec-h">All core medical subjects</h2>
+ <p class="sec-sub">From pre-clinical to clinical years — every subject covered.</p>
+ <div class="subj-grid">
+ <div class="subj-card reveal"><div class="subj-card-icon"><i data-lucide="bone"></i></div><h3>Anatomy</h3><p>Gross, neuro, embryo</p></div>
+ <div class="subj-card reveal"><div class="subj-card-icon"><i data-lucide="activity"></i></div><h3>Physiology</h3><p>Systems & mechanisms</p></div>
+ <div class="subj-card reveal"><div class="subj-card-icon"><i data-lucide="flask-conical"></i></div><h3>Biochemistry</h3><p>Metabolism & pathways</p></div>
+ <div class="subj-card reveal"><div class="subj-card-icon"><i data-lucide="pill"></i></div><h3>Pharmacology</h3><p>Drugs & mechanisms</p></div>
+ <div class="subj-card reveal"><div class="subj-card-icon"><i data-lucide="microscope"></i></div><h3>Pathology</h3><p>Disease processes</p></div>
+ <div class="subj-card reveal"><div class="subj-card-icon"><i data-lucide="bug"></i></div><h3>Microbiology</h3><p>Bacteria, viruses, fungi</p></div>
+ <div class="subj-card reveal"><div class="subj-card-icon"><i data-lucide="stethoscope"></i></div><h3>Clinical Medicine</h3><p>Diagnosis & management</p></div>
+ <div class="subj-card reveal"><div class="subj-card-icon"><i data-lucide="scissors"></i></div><h3>Surgery</h3><p>Surgical principles</p></div>
+ </div>
+ </section>
+
+ <section class="sec" id="pricing">
+ <div class="sec-tag">Pricing</div>
+ <h2 class="sec-h">Invest in your medical career</h2>
+ <p class="sec-sub">Less than a textbook. Worth more than any notes.</p>
+ <div class="price-row">
+ <div class="pc reveal">
+ <div class="pc-name">Free</div><div class="pc-amt">$0</div><div class="pc-period">Forever free</div>
+ <ul class="pc-list"><li>5 questions per day</li><li>Basic explanations</li><li>Anatomy & Physiology</li><li>Basic Flashcards</li></ul>
+ <button class="pc-btn o" id="priceFreeBtn">Get Started Free</button>
+ </div>
+ <div class="pc pop reveal">
+ <div class="pop-badge"><i data-lucide="star"></i> Best for Med Students</div>
+ <div class="pc-name">Pro</div><div class="pc-amt">$2.99 <sub>/mo</sub></div><div class="pc-period">cancel anytime</div>
+ <ul class="pc-list"><li>Unlimited questions</li><li>All 8 subjects</li><li>Clinical Case Solver</li><li>Drug Mnemonics Mode</li><li>USMLE/PLAB Prep</li><li>Exam Cram Mode</li><li>Unlimited Flashcards</li></ul>
+ <button class="pc-btn f" onclick="window.open('https://studebot.gumroad.com/l/jlpryj','_blank')">Get Pro on Gumroad</button>
+ </div>
+ </div>
+ <div class="disc-note">Student code: <span>MED20</span> for 20% off</div>
+ </section>
+
+ <section class="sec alt" id="faq">
+ <div class="sec-tag">FAQ</div>
+ <h2 class="sec-h">Questions?</h2>
+ <p class="sec-sub">Everything you need to know.</p>
+ <div class="faq-list">
+ <div class="faq-item reveal"><div class="faq-q">What year of med school is this for? <span>+</span></div><div class="faq-a">AI Doctor covers all years — from Year 1 pre-clinical (Anatomy, Physiology, Biochemistry) to clinical years (Medicine, Surgery, Pediatrics). The AI adapts its explanation depth based on the topic.</div></div>
+ <div class="faq-item reveal"><div class="faq-q">Does it support USMLE and PLAB format? <span>+</span></div><div class="faq-a">Yes! Exam Prep Mode gives answers in USMLE Step 1/2 and PLAB format. Quiz Mode generates MCQs in exam-style format with detailed explanations.</div></div>
+ <div class="faq-item reveal"><div class="faq-q">What is Clinical Case Solver? <span>+</span></div><div class="faq-a">You describe a patient case and the AI walks you through the diagnosis, differential diagnoses, investigations, and management plan — perfect for OSCE and clinical exam prep.</div></div>
+ <div class="faq-item reveal"><div class="faq-q">How is this different from regular Studevo? <span>+</span></div><div class="faq-a">AI Doctor is specifically tuned for medical education. All subjects, modes, and explanations are designed for MBBS/nursing students with proper medical terminology and clinical relevance.</div></div>
+ </div>
+ </section>
+
+ <!-- REVIEWS SECTION -->
+ <section class="sec alt">
+ <div class="sec-tag">Student Reviews</div>
+ <h2 class="sec-h">Loved by medical students</h2>
+ <p class="sec-sub">Real reviews from real students — no fake testimonials</p>
+ <div id="landingReviews" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;max-width:1000px;margin:0 auto">
+ <div style="text-align:center;padding:2rem;color:var(--tx3)">Loading reviews...</div>
+ </div>
+ <div style="text-align:center;margin-top:2rem">
+ <button onclick="goTo('pg-onboard')" style="padding:12px 32px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f)">Join thousands of students →</button>
+ </div>
+ </section>
+
+ <footer>
+ <div class="f-logo">AI Doctor</div>
+ <p>Study smarter. Save lives.</p>
+ <div class="f-links"><a href="#features">Features</a><a href="#subjects">Subjects</a><a href="#pricing">Pricing</a><a href="mailto:aidoctorstudy@gmail.com">Contact</a></div>
+ <p style="margin-top:1.5rem">© 2026 AI Doctor | aidoctor.study. All rights reserved.</p>
+ </footer>
+</div>
+
+<!-- ONBOARD -->
+<div class="page" id="pg-onboard">
+ <div class="onboard-wrap">
+ <div class="ob-card">
+ <div class="ob-logo">
+ <div class="ob-logo-icon"><i data-lucide="stethoscope"></i></div>
+ <div class="ob-logo-txt">AI Doctor</div>
+ </div>
+ <h2 class="ob-title" id="medAuthTitle">Welcome, Doctor-in-training! </h2>
+ <p class="ob-sub" id="medAuthSub">Create your account to get started</p>
+
+ <!-- Error -->
+ <div id="medAuthErr" style="display:none;background:var(--redl);border:1px solid rgba(239,68,68,.3);color:var(--red);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:700;margin-bottom:1rem"></div>
+
+ <!-- Google -->
+ <button onclick="signInWithGoogle()" style="width:100%;padding:12px;border:1px solid var(--bd2);background:var(--bg2);color:var(--tx);border-radius:12px;font-size:14px;font-weight:800;font-family:var(--f);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:1.2rem">
+ <svg width="18" height="18" viewBox="0 0 18 18"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+ Continue with Google
+ </button>
+
+ <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.2rem">
+ <div style="flex:1;height:1px;background:var(--bd)"></div>
+ <div style="font-size:12px;color:var(--tx3);font-weight:700">or</div>
+ <div style="flex:1;height:1px;background:var(--bd)"></div>
+ </div>
+
+ <!-- Name -->
+ <div class="form-field" id="medNameWrap">
+ <label>Your Name</label>
+ <input type="text" id="obName" placeholder="e.g. Dr. Ahmed" maxlength="30"/>
+ </div>
+
+ <!-- Email -->
+ <div class="form-field">
+ <label>Email</label>
+ <input type="email" id="medEmail" placeholder="you@email.com"/>
+ </div>
+
+ <!-- Password -->
+ <div class="form-field">
+ <label>Password</label>
+ <input type="password" id="medPass" placeholder="Min 6 characters"/>
+ </div>
+
+ <!-- Forgot -->
+ <div id="medForgotWrap" style="display:none;text-align:right;margin-top:-8px;margin-bottom:1rem">
+ <span onclick="forgotPass()" style="font-size:12px;font-weight:700;color:var(--p-lite);cursor:pointer">Forgot password?</span>
+ </div>
+
+ <!-- Year -->
+ <div class="form-field" id="medYearWrap">
+ <label>Year of Study</label>
+ <select id="obYear">
+ <option value="">Select your year...</option>
+ <option value="1">Year 1 — Pre-clinical</option>
+ <option value="2">Year 2 — Pre-clinical</option>
+ <option value="3">Year 3 — Clinical</option>
+ <option value="4">Year 4 — Clinical</option>
+ <option value="5">Year 5 — Clinical</option>
+ <option value="intern">Intern / Junior Doctor</option>
+ <option value="nursing">Nursing Student</option>
+ <option value="other">Other Healthcare</option>
+ </select>
+ </div>
+
+ <!-- Exam -->
+ <div class="form-field" id="medExamWrap">
+ <label>Exam Focus</label>
+ <select id="obExam">
+ <option value="">Select exam type...</option>
+ <option value="MBBS">MBBS / MBChB</option>
+ <option value="USMLE">USMLE Step 1/2</option>
+ <option value="PLAB">PLAB</option>
+ <option value="OSCE">OSCE</option>
+ <option value="Nursing">Nursing Boards</option>
+ <option value="General">General Study</option>
+ </select>
+ </div>
+
+ <!-- Terms acceptance (shown for Sign Up) -->
+ <label id="medTermsWrap" style="display:flex;align-items:flex-start;gap:8px;margin:-2px 0 1rem;font-size:12px;line-height:1.5;color:var(--tx3);font-weight:600;cursor:pointer">
+ <input type="checkbox" id="medAcceptTerms" style="margin-top:2px;flex:none;width:15px;height:15px;accent-color:#2563eb;cursor:pointer"/>
+ <span>I accept the <a href="/terms.html" target="_blank" rel="noopener" style="color:var(--p-lite);font-weight:800;text-decoration:underline">Terms of Service</a> and <a href="/privacy.html" target="_blank" rel="noopener" style="color:var(--p-lite);font-weight:800;text-decoration:underline">Privacy Policy</a>, and understand AI Doctor is an educational tool that can make mistakes and is not medical advice.</span>
+ </label>
+
+ <button class="ob-btn" id="startBtn" onclick="signUpEmail()">Start Studying </button>
+
+ <div style="text-align:center;margin-top:1rem;font-size:13px;color:var(--tx3);font-weight:600" id="medAuthToggle">
+ Already have an account? <a onclick="toggleMedAuth()" style="color:var(--p-lite);font-weight:800;cursor:pointer">Log In</a>
+ </div>
+ <div class="ob-back"><a id="backToLanding">← Back to home</a></div>
+ </div>
+ </div>
+</div>
+
+<!-- ACHIEVEMENT POPUP -->
+<div class="ach-popup" id="achPopup" style="display:none">
+ <div class="ach-popup-icon" id="achIcon"></div>
+ <div class="ach-popup-title">Achievement Unlocked!</div>
+ <div class="ach-popup-name" id="achName"></div>
+</div>
+
+<!-- APP -->
+<div class="page" id="pg-app">
+ <div class="app-layout">
+ <div class="sidebar" role="navigation" aria-label="Main navigation">
+ <div class="sidebar-logo"><img src="logo.svg" alt="AI Doctor Study" style="width:100%;height:100%;object-fit:contain"></div>
+ <button class="side-btn on" data-panel="dash" title="Dashboard"><i data-lucide="layout-dashboard"></i></button>
+ <button class="side-btn" data-panel="chat" title="Ask AI"><i data-lucide="message-circle"></i></button>
+ <button class="side-btn" data-panel="flash" title="Flashcards"><i data-lucide="layers"></i></button>
+ <button class="side-btn" data-panel="analytics" title="Analytics"><i data-lucide="bar-chart-2"></i></button>
+ <button class="side-btn" data-panel="cases" title="Case Solver"><i data-lucide="stethoscope"></i></button>
+ <button class="side-btn" data-panel="mnemonics" title="Mnemonics"><i data-lucide="lightbulb"></i></button>
+ <button class="side-btn" data-panel="examprep" title="Exam Prep"><i data-lucide="clipboard-list"></i></button>
+ <button class="side-btn" data-panel="simulation" title="Clinical Simulation"><i data-lucide="activity"></i></button>
+ <button class="side-btn" data-panel="mocktest" title="Mock Tests"><i data-lucide="timer"></i></button>
+ <button class="side-btn" data-panel="mistakebook" title="Mistake Book"><i data-lucide="book-open"></i></button>
+ <button class="side-btn" data-panel="studyplan" title="Study Plan"><i data-lucide="calendar"></i></button>
+ <button class="side-btn" data-panel="quiz" title="Quiz Game"><i data-lucide="gamepad-2"></i></button>
+ <button class="side-btn" data-panel="lecture" title="Lecture Notes"><i data-lucide="mic"></i></button>
+ <button class="side-btn" data-panel="lesson" title="Lesson Mode"><i data-lucide="book"></i></button>
+ <button class="side-btn" data-panel="library" title="My Library"><i data-lucide="bookmark"></i></button>
+ <button class="side-btn" data-panel="referral" title="Referral"><i data-lucide="gift"></i></button>
+ <button class="side-btn" data-panel="review" title="Reviews"><i data-lucide="star"></i></button>
+ <button class="side-btn" data-panel="bugreport" title="Bug Report"><i data-lucide="bug"></i></button>
+ <button class="side-btn" data-panel="snap" title=" Snap Mode"><i data-lucide="camera"></i></button>
+ <button class="side-btn" data-panel="drugchecker" title=" Drug Checker"><i data-lucide="pill"></i></button>
+ <button class="side-btn" data-panel="calculator" title=" Calculators"><i data-lucide="calculator"></i></button>
+ <button class="side-btn" data-panel="pdfmode" title=" PDF Mode"><i data-lucide="file-text"></i></button>
+ <button class="side-btn" data-panel="podcast" title=" Podcast"><i data-lucide="headphones"></i></button>
+ <button class="side-btn" data-panel="nibble" title=" Nibble Mode"><i data-lucide="zap"></i></button>
+ <button class="side-btn" data-panel="growth" title=" Growth Mode"><i data-lucide="trending-up"></i></button>
+ <button class="side-btn" data-panel="settings" title="Settings"><i data-lucide="settings"></i></button>
+ <div class="side-spacer"></div>
+ <div class="side-avatar" id="sideAvatar">M</div>
+ </div>
+ <div id="mainContent" class="app-main" role="main">
+ <div class="app-topbar">
+ <div class="topbar-left">
+ <div class="streak-badge"><span id="streakCount">1</span> Day</div>
+ <div class="xp-badge"><span id="xpCount">0</span> XP</div>
+ </div>
+ <div class="topbar-right">
+ <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Toggle theme"><i data-lucide="sun" class="icon-sun"></i><i data-lucide="moon" class="icon-moon"></i></button>
+ <button class="pro-chip" id="proChipBtn" onclick="openProModal()">Go Pro</button>
+ </div>
+ </div>
+
+ <!-- DASHBOARD -->
+ <div class="tab-panel on" id="panel-dash">
+ <div class="dash-welcome">
+ <h2>Welcome back, Dr. <span id="dashName">Student</span>!</h2>
+ <p id="dashSub">Ready to study today?</p>
+ </div>
+ <div class="xp-bar-wrap">
+ <div class="xp-bar-header">
+ <div class="xp-level">Level <span id="levelNum">1</span>— <span id="levelName">Medical Student</span></div>
+ <div class="xp-points"><span id="xpCurrent">0</span> / <span id="xpNext">100</span> XP</div>
+ </div>
+ <div class="xp-bar"><div class="xp-bar-fill" id="xpBarFill" style="width:0%"></div></div>
+ </div>
+ <div class="dash-stats">
+ <div class="stat-card"><div class="stat-card-icon"><i data-lucide="help-circle"></i></div><div class="stat-card-val" id="sc-qs">0</div><div class="stat-card-lbl">Questions</div></div>
+ <div class="stat-card"><div class="stat-card-icon"><i data-lucide="layers"></i></div><div class="stat-card-val" id="sc-cards">0</div><div class="stat-card-lbl">Flashcards</div></div>
+ <div class="stat-card"><div class="stat-card-icon"><i data-lucide="stethoscope"></i></div><div class="stat-card-val" id="sc-cases">0</div><div class="stat-card-lbl">Cases Solved</div></div>
+ <div class="stat-card"><div class="stat-card-icon"><i data-lucide="trophy"></i></div><div class="stat-card-val" id="sc-xp">0</div><div class="stat-card-lbl">Total XP</div></div>
+ </div>
+ <h3 style="font-size:14px;font-weight:800;margin-bottom:1rem;color:var(--tx2)">Quick Actions</h3>
+ <div class="quick-actions">
+ <button class="qa-btn" onclick="goPanel('chat')"><div class="qa-btn-icon"><i data-lucide="message-circle"></i></div><div class="qa-btn-lbl">Ask AI</div></button>
+ <button class="qa-btn" onclick="goPanel('cases')"><div class="qa-btn-icon"><i data-lucide="stethoscope"></i></div><div class="qa-btn-lbl">Case Solver</div></button>
+ <button class="qa-btn" onclick="goPanel('mnemonics')"><div class="qa-btn-icon"><i data-lucide="lightbulb"></i></div><div class="qa-btn-lbl">Mnemonics</div></button>
+ <button class="qa-btn" onclick="goPanel('flash')"><div class="qa-btn-icon"><i data-lucide="layers"></i></div><div class="qa-btn-lbl">Flashcards</div></button>
+ <button class="qa-btn" onclick="goPanel('chat');setMode('cram')"><div class="qa-btn-icon"><i data-lucide="zap"></i></div><div class="qa-btn-lbl">Exam Cram</div></button>
+ <button class="qa-btn" onclick="openProModal()"><div class="qa-btn-icon"><i data-lucide="sparkles"></i></div><div class="qa-btn-lbl">Go Pro</div></button>
+ </div>
+ </div>
+
+ <!-- CHAT / ASK AI -->
+ <div class="tab-panel" id="panel-chat">
+ <div class="chat-layout">
+ <div class="subject-bar">
+ <button class="subj-btn on" data-subj="General Medicine"><i data-lucide="layout-grid"></i> General</button>
+ <button class="subj-btn" data-subj="Anatomy"><i data-lucide="bone"></i> Anatomy</button>
+ <button class="subj-btn" data-subj="Physiology"><i data-lucide="activity"></i> Physiology</button>
+ <button class="subj-btn" data-subj="Biochemistry"><i data-lucide="flask-conical"></i> Biochemistry</button>
+ <button class="subj-btn" data-subj="Pharmacology"><i data-lucide="pill"></i> Pharmacology</button>
+ <button class="subj-btn" data-subj="Pathology"><i data-lucide="microscope"></i> Pathology</button>
+ <button class="subj-btn" data-subj="Microbiology"><i data-lucide="bug"></i> Microbiology</button>
+ <button class="subj-btn" data-subj="Clinical Medicine"><i data-lucide="stethoscope"></i> Clinical</button>
+ <button class="subj-btn" data-subj="Surgery"><i data-lucide="scissors"></i> Surgery</button>
+ </div>
+ <div class="controls-bar">
+ <span style="font-size:11px;font-weight:700;color:var(--tx3)">Mode:</span>
+ <button class="mode-btn on" data-mode="explain" onclick="setMode('explain')"><i data-lucide="book-open"></i> Explain</button>
+ <button class="mode-btn" data-mode="exam" onclick="setMode('exam')"><i data-lucide="clipboard-list"></i> Exam Answer</button>
+ <button class="mode-btn pr" data-mode="case" onclick="setMode('case')"><i data-lucide="stethoscope"></i> Case Mode</button>
+ <button class="mode-btn pr" data-mode="drug" onclick="setMode('drug')"><i data-lucide="pill"></i> Drug Mode</button>
+ <button class="mode-btn pr" data-mode="quiz" onclick="setMode('quiz')"><i data-lucide="gamepad-2"></i> Quiz Me</button>
+ <button class="mode-btn pr" data-mode="cram" onclick="setMode('cram')"><i data-lucide="zap"></i> Exam Cram</button>
+ </div>
+ <div class="mode-desc-bar" id="modeDescBar"><b>Explain Mode</b>— Clear medical explanation with clinical relevance</div>
+ <div class="chat-msgs" id="chatMsgs" aria-live="polite" aria-label="Chat messages" role="log"></div>
+ <div class="quick-chips">
+ <div class="qchip" data-q="Explain the brachial plexus" onclick="sendQuickQ(this.dataset.q)">Brachial Plexus</div>
+ <div class="qchip" data-q="How does metformin work?" onclick="sendQuickQ(this.dataset.q)">Metformin MOA</div>
+ <div class="qchip" data-q="What is heart failure pathophysiology?" onclick="sendQuickQ(this.dataset.q)">Heart Failure</div>
+ <div class="qchip" data-q="Explain the coagulation cascade" onclick="sendQuickQ(this.dataset.q)">Coagulation</div>
+ <div class="qchip" data-q="What are the signs of meningitis?" onclick="sendQuickQ(this.dataset.q)">Meningitis</div>
+ <div class="qchip" data-q="Explain diabetic ketoacidosis" onclick="sendQuickQ(this.dataset.q)">DKA</div>
+ </div>
+ <div class="file-bar" id="fileBar">
+ <span class="file-bar-name" id="fileBarName">file</span>
+ <button class="file-rm" id="rmFileBtn"><i data-lucide="x"></i></button>
+ </div>
+ <div class="inp-area">
+ <button class="inp-icon-btn" id="uploadBtn">
+ <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><path d="M15.5 8.5l-7 7a4.5 4.5 0 01-6.364-6.364l7-7a3 3 0 014.243 4.243l-7 7a1.5 1.5 0 01-2.122-2.122l6.5-6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+ </button>
+ <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.png,.jpg,.jpeg,.csv" style="display:none"/>
+ <textarea id="msgInput" placeholder="Ask anything medical..." rows="1"></textarea>
+ <button class="send-btn" id="sendBtn">
+ <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8L2 2.5L5 8L2 13.5L14 8Z" fill="white"/></svg>
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- FLASHCARDS -->
+ <div class="tab-panel" id="panel-flash">
+ <div class="fc-layout">
+ <div class="fc-upload">
+ <h3><i data-lucide="layers" class="h2-icon" style="width:18px;height:18px"></i> Medical Flashcard Maker</h3>
+ <div class="fc-drop" id="fcDrop">
+ <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--p-lite)" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+ <p>Upload lecture notes (PDF, Word, PowerPoint, or text)</p>
+ </div>
+ <input type="file" id="fcFile" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.png,.jpg,.jpeg,.csv" style="display:none"/>
+ <div style="display:flex;justify-content:flex-end;margin-bottom:.4rem"><label style="display:flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);color:var(--p-lite);border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Upload<input type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.png,.jpg,.jpeg,.csv" style="display:none" onchange="handlePanelUpload(event,'fcNotes')" /></label></div>
+<textarea id="fcNotes" placeholder="Paste medical notes, drug lists, anatomy notes..."></textarea>
+ <div style="font-size:11px;font-weight:800;color:var(--tx2);margin-bottom:.4rem">How many cards?</div>
+ <div class="fc-count-row">
+ <button class="fc-cnt-btn on" data-count="8">8</button>
+ <button class="fc-cnt-btn" data-count="12">12</button>
+ <button class="fc-cnt-btn" data-count="20">20 PRO</button>
+ <button class="fc-cnt-btn" data-count="30">30 PRO</button>
+ </div>
+ <div class="fc-btn-row">
+ <button class="fc-act-btn pri" id="makeCardsBtn">Make Flashcards</button>
+ <button class="fc-act-btn sec" id="quizCardsBtn" disabled>Quiz Me</button>
+ <button class="fc-act-btn sec" id="resetCardsBtn">↺ Reset</button>
+ </div>
+ </div>
+ <div class="fc-body" id="fcBody">
+ <div class="state-block"><div class="state-icon"><i data-lucide="layers"></i></div><h4>No flashcards yet</h4><p>Paste medical notes above and AI will generate flashcards optimized for spaced repetition.</p></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- CLINICAL CASE SOLVER -->
+ <div class="tab-panel" id="panel-cases">
+ <div style="max-width:600px;margin:0 auto;padding:1.2rem">
+ <h2 style="font-size:1.4rem;font-weight:900;margin-bottom:.3rem"><i data-lucide="stethoscope" class="h2-icon"></i> Clinical Case Solver</h2>
+ <p style="font-size:13px;color:var(--tx2);margin-bottom:1.2rem">Describe a patient case — AI walks you through diagnosis, differentials and management.</p>
+ <div style="background:var(--card);border-radius:16px;padding:1.3rem;border:1px solid var(--bd);margin-bottom:1rem">
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Patient Case</div>
+ <textarea id="caseInput" placeholder="e.g. 45-year-old male presents with chest pain radiating to left arm, diaphoresis, and shortness of breath for 2 hours. BP 90/60, HR 110, O2 sat 94%..." style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--surface2);color:var(--tx);font-size:13px;font-family:var(--f);resize:none;outline:none;height:120px;line-height:1.6"></textarea>
+ <div style="display:flex;gap:6px;margin-top:.6rem;flex-wrap:wrap">
+ <button onclick="setCaseType('diagnose')" class="mode-btn on" id="caseTypeDx" data-ctype="diagnose">Diagnose</button>
+ <button onclick="setCaseType('management')" class="mode-btn" id="caseTypeMgmt" data-ctype="management">Management</button>
+ <button onclick="setCaseType('differentials')" class="mode-btn" id="caseTypeDiff" data-ctype="differentials">Differentials</button>
+ <button onclick="setCaseType('investigations')" class="mode-btn" id="caseTypeInv" data-ctype="investigations">Investigations</button>
+ </div>
+ </div>
+ <button id="solveCaseBtn" onclick="solveCase()" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:800;font-family:var(--f);cursor:pointer;margin-bottom:1rem">Solve Case</button>
+ <div id="caseOutput" style="display:none;background:var(--card);border-radius:16px;padding:1.3rem;border:1px solid var(--bd)"></div>
+ </div>
+ </div>
+
+ <!-- MNEMONICS -->
+ <div class="tab-panel" id="panel-mnemonics">
+ <div style="max-width:600px;margin:0 auto;padding:1.2rem">
+ <h2 style="font-size:1.4rem;font-weight:900;margin-bottom:.3rem"><i data-lucide="lightbulb" class="h2-icon"></i> Drug & Medical Mnemonics</h2>
+ <p style="font-size:13px;color:var(--tx2);margin-bottom:1.2rem">Enter any drug, disease, or topic — AI creates a memorable mnemonic instantly.</p>
+ <div style="background:var(--card);border-radius:16px;padding:1.3rem;border:1px solid var(--bd);margin-bottom:1rem">
+ <input type="text" id="mnemonicInput" placeholder="e.g. Beta blockers side effects, Cranial nerves, USMLE high yield topics..." style="width:100%;padding:11px 14px;border-radius:11px;border:1px solid var(--bd);background:var(--surface2);color:var(--tx);font-size:14px;font-family:var(--f);font-weight:600;outline:none;margin-bottom:.8rem"/>
+ <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.8rem">
+ <button onclick="qMnemonic('Beta blockers side effects')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:transparent;color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">Beta blockers</button>
+ <button onclick="qMnemonic('Cranial nerves in order')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:transparent;color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">Cranial nerves</button>
+ <button onclick="qMnemonic('Causes of hyponatremia')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:transparent;color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">Hyponatremia</button>
+ <button onclick="qMnemonic('Signs of right heart failure')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:transparent;color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">Heart failure</button>
+ </div>
+ </div>
+ <button id="genMnemonicBtn" onclick="genMnemonic()" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:800;font-family:var(--f);cursor:pointer;margin-bottom:1rem">Generate Mnemonic</button>
+ <div id="mnemonicOutput" style="display:none;background:var(--card);border-radius:16px;padding:1.3rem;border:1px solid var(--bd)"></div>
+ </div>
+ </div>
+
+
+ <!-- QUIZ GAME PANEL -->
+ <div class="tab-panel" id="panel-quiz">
+ <div class="qg-wrap">
+ <div class="qg-feedback" id="qgFeedback" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;z-index:150;pointer-events:none;opacity:0;transition:opacity .15s"><div id="qgFeedbackEmoji" style="font-size:4rem;animation:qgfb .4s cubic-bezier(.34,1.56,.64,1)"></div></div>
+ <div class="qg-streak-banner" id="qgStreakBanner"> 3 in a row!</div>
+ <div class="qg-perfect-banner" id="qgPerfectBanner">PERFECT!</div>
+ <div class="qg-screen on" id="qg-home">
+ <h2 style="font-size:1.4rem;font-weight:900;margin-bottom:.3rem">Medical Quiz</h2>
+ <p style="font-size:13px;color:var(--tx2);margin-bottom:1.5rem">Test your medical knowledge — earn XP!</p>
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem">Pick Subject</div>
+ <div class="qg-subject-grid">
+ <div class="qg-subj-card on" data-subj="Mixed" onclick="qgPickSubj(this)"><div class="qg-subj-icon"><i data-lucide="shuffle"></i></div><div class="qg-subj-name">Mixed</div></div>
+ <div class="qg-subj-card" data-subj="Anatomy" onclick="qgPickSubj(this)"><div class="qg-subj-icon"><i data-lucide="bone"></i></div><div class="qg-subj-name">Anatomy</div></div>
+ <div class="qg-subj-card" data-subj="Pharmacology" onclick="qgPickSubj(this)"><div class="qg-subj-icon"><i data-lucide="pill"></i></div><div class="qg-subj-name">Pharma</div></div>
+ <div class="qg-subj-card" data-subj="Pathology" onclick="qgPickSubj(this)"><div class="qg-subj-icon"><i data-lucide="microscope"></i></div><div class="qg-subj-name">Pathology</div></div>
+ <div class="qg-subj-card" data-subj="Physiology" onclick="qgPickSubj(this)"><div class="qg-subj-icon"><i data-lucide="activity"></i></div><div class="qg-subj-name">Physiology</div></div>
+ <div class="qg-subj-card" data-subj="Clinical Medicine" onclick="qgPickSubj(this)"><div class="qg-subj-icon"><i data-lucide="stethoscope"></i></div><div class="qg-subj-name">Clinical</div></div>
+ </div>
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem">Difficulty</div>
+ <div class="qg-diff-row">
+ <button class="qg-diff-btn on" onclick="qgPickDiff(this,'Easy')">Easy</button>
+ <button class="qg-diff-btn" onclick="qgPickDiff(this,'Normal')">Normal</button>
+ <button class="qg-diff-btn" onclick="qgPickDiff(this,'Hard')">Hard</button>
+ </div>
+ <div style="margin-bottom:1rem">
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem">
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em">Quiz from your notes? (optional)</div>
+ <button onclick="qgToggleNotes()" id="qgNotesToggleBtn" style="font-size:11px;font-weight:800;color:var(--p-lite);background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);padding:4px 10px;border-radius:20px;cursor:pointer;font-family:var(--f)">+ Add Notes</button>
+ </div>
+ <div id="qgNotesWrap" style="display:none">
+ <div style="display:flex;justify-content:flex-end;margin-bottom:.4rem"><label style="display:flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);color:var(--p-lite);border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Upload<input type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.png,.jpg,.jpeg,.csv" style="display:none" onchange="handlePanelUpload(event,'qgNotesInput')" /></label></div>
+<textarea id="qgNotesInput" placeholder="Paste your medical notes here..." style="width:100%;padding:10px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--surface2);color:var(--tx);font-size:13px;font-family:var(--f);resize:none;outline:none;height:90px;line-height:1.5;margin-bottom:.5rem"></textarea>
+ <button onclick="qgClearNotes()" style="font-size:11px;font-weight:700;color:var(--tx3);background:none;border:none;cursor:pointer;font-family:var(--f)">Clear notes</button>
+ </div>
+ </div>
+ <button class="qg-start-btn" id="qgStartBtn" onclick="qgStart()">Start Quiz </button>
+ <div class="qg-pro-note">Free: <span>3 hearts • 2 hints</span> | Pro: <span>Unlimited everything</span></div>
+ </div>
+ <div class="qg-screen" id="qg-quiz">
+ <div class="qg-topbar"><div class="qg-lives-row" id="qgLivesRow"></div><div style="display:flex;align-items:center;gap:8px"><div style="font-size:12px;font-weight:800;color:var(--p-lite)"><span id="qgLiveXP">0</span></div><div class="qg-q-counter">Q <span id="qgQNum">1</span>/<span id="qgQTotal">10</span></div></div></div>
+ <div class="qg-progress"><div class="qg-progress-fill" id="qgProgressFill" style="width:0%"></div></div>
+ <div class="qg-timer-wrap"><svg width="70" height="70" class="qg-timer-ring"><circle cx="35" cy="35" r="28" fill="none" stroke="rgba(37,99,235,.2)" stroke-width="5"/><circle id="qgTimerCircle" cx="35" cy="35" r="28" fill="none" stroke="#2563EB" stroke-width="5" stroke-dasharray="175.9" stroke-dashoffset="0" stroke-linecap="round"/></svg><div class="qg-timer-text" id="qgTimerText">20</div></div>
+ <div class="qg-q-card"><div><div class="qg-badge" id="qgBadge">Medical</div><div class="qg-q-text" id="qgQText">Loading...</div></div></div>
+ <div class="qg-hint-box" id="qgHintBox"><span id="qgHintText"></span></div>
+ <div class="qg-opts" id="qgOpts"></div>
+ <div class="qg-bottom"><button class="qg-hint-btn" id="qgHintBtn" onclick="qgUseHint()">Hint <span class="qg-hint-chip" id="qgHintCount">2</span></button><button class="qg-next-btn" id="qgNextBtn" onclick="qgNextQ()">Next →</button></div>
+ </div>
+ <div class="qg-screen" id="qg-result">
+ <div class="qg-result-card">
+ <div class="qg-result-emoji" id="qgResultEmoji"></div>
+ <div class="qg-result-title" id="qgResultTitle">Amazing!</div>
+ <div class="qg-result-sub" id="qgResultSub">You crushed it!</div>
+ <div class="qg-stats-row"><div class="qg-stat"><div class="qg-stat-val" id="qgRScore">0/10</div><div class="qg-stat-lbl">Score</div></div><div class="qg-stat"><div class="qg-stat-val" id="qgRXP">0</div><div class="qg-stat-lbl">XP Earned</div></div><div class="qg-stat"><div class="qg-stat-val" id="qgRStreak">0</div><div class="qg-stat-lbl">Best Streak</div></div></div>
+ <button class="qg-again-btn" onclick="qgStart()">Play Again </button>
+ <button class="qg-back-btn" onclick="qgGoHome()">← Change Subject</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- LECTURE PANEL -->
+ <div class="tab-panel" id="panel-lecture">
+ <div class="lec-layout">
+ <div class="lec-hero"><h2><i data-lucide="mic" class="h2-icon"></i> Lecture Summariser</h2><p>Record or paste your medical lecture — AI creates clean notes instantly.</p></div>
+ <div class="lec-tabs">
+ <button class="lec-tab on" id="lecTabRecord" onclick="lecSwitchTab('record')">Record</button>
+ <button class="lec-tab" id="lecTabText" onclick="lecSwitchTab('text')">Paste Text</button>
+ <button class="lec-tab" id="lecTabUpload" onclick="lecSwitchTab('upload')">Upload</button>
+ </div>
+ <div class="lec-input-area" id="lecAudioArea" style="display:none">
+ <h3>Upload Audio File</h3>
+ <p style="font-size:12px;color:var(--tx2);margin-bottom:1rem">Upload MP3, WAV, M4A — AI will transcribe and summarise automatically</p>
+ <div style="border:2px dashed rgba(37,99,235,.3);border-radius:14px;padding:2rem;text-align:center;cursor:pointer" onclick="document.getElementById('lecAudioInput').click()">
+ <div style="display:flex;justify-content:center;margin-bottom:.5rem"><i data-lucide="upload-cloud" style="width:36px;height:36px;color:var(--p-lite)"></i></div>
+ <div style="font-size:13px;font-weight:700;color:var(--p-lite)">Click to upload audio file</div>
+ <div style="font-size:11px;color:var(--tx3);margin-top:.3rem">MP3, WAV, M4A, OGG supported</div>
+ </div>
+ <input type="file" id="lecAudioInput" accept=".mp3,.wav,.m4a,.ogg,.webm" style="display:none" onchange="lecHandleAudio(event)"/>
+ <div id="lecAudioInfo" style="display:none;margin-top:.8rem;padding:.8rem;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:10px">
+ <div style="font-size:13px;font-weight:700" id="lecAudioName">audio.mp3</div>
+ <div style="font-size:11px;color:var(--tx3)" id="lecAudioStatus">Ready to transcribe</div>
+ </div>
+ </div>
+ <div class="lec-input-area" id="lecRecordArea">
+ <h3><i data-lucide="mic" class="h2-icon" style="width:18px;height:18px"></i> Record your lecture</h3>
+ <button class="rec-btn" id="recBtn" onclick="toggleRecording()"><i data-lucide="mic" style="width:28px;height:28px;color:#fff"></i></button>
+ <div class="rec-status" id="recStatus">Tap to start recording</div>
+ <div class="rec-timer" id="recTimer">0:00</div>
+ <div class="rec-waveform" id="recWaveform"><div class="rec-bar" style="height:8px"></div><div class="rec-bar" style="height:16px"></div><div class="rec-bar" style="height:8px"></div><div class="rec-bar" style="height:24px"></div><div class="rec-bar" style="height:12px"></div><div class="rec-bar" style="height:20px"></div><div class="rec-bar" style="height:8px"></div><div class="rec-bar" style="height:16px"></div></div>
+ <button class="upload-audio-btn" onclick="document.getElementById('lecRecordAudioInput').click()">Upload & Transcribe Audio</button>
+ <input type="file" id="lecRecordAudioInput" accept=".mp3,.wav,.m4a,.ogg,.webm" style="display:none" onchange="lecHandleAudio(event)"/>
+ <div id="podFileInfo" style="display:none;align-items:center;gap:10px;padding:.6rem 1rem;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:10px;margin-top:.5rem">
+ <span style="font-size:20px"></span>
+ <div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--tx)" id="podFileName">audio.mp3</div><div style="font-size:11px;color:var(--tx3)" id="podFileSize">0 MB</div></div>
+ </div>
+ <audio id="podAudioPlayer" controls style="display:none;width:100%;margin-top:.5rem;border-radius:10px"></audio>
+ <input type="file" id="audioFileInput" accept=".mp3,.wav,.m4a,.ogg,.webm" style="display:none" onchange="handleAudioUpload(event)"/>
+ </div>
+ <div class="lec-input-area" id="lecTextArea" style="display:none">
+ <h3>Paste lecture text</h3>
+ <textarea class="lec-textarea" id="lecTextInput" placeholder="Paste your medical lecture notes or transcript here..."></textarea>
+ <div style="font-size:11px;color:var(--tx3);margin-top:.5rem;text-align:right"><span id="lecCharCount">0</span> / 5000</div>
+ </div>
+ <div class="lec-input-area" id="lecUploadArea" style="display:none">
+ <h3>Upload notes file</h3>
+ <div onclick="document.getElementById('lecFileInput').click()" style="border:2px dashed var(--bd2);border-radius:14px;padding:2rem;text-align:center;cursor:pointer"><div style="display:flex;justify-content:center;margin-bottom:.6rem"><i data-lucide="upload-cloud" style="width:36px;height:36px;color:var(--tx2)"></i></div><div style="font-size:14px;font-weight:700;color:var(--tx2)">Click to upload file</div>
+ <div style="font-size:11px;color:var(--tx3);margin-top:.3rem">PDF, Word, PPT, Images, MP3, WAV</div></div>
+ <input type="file" id="lecFileInput" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.png,.jpg,.jpeg,.csv,.mp3,.wav,.m4a,.ogg,.webm" style="display:none" onchange="lecHandleUpload(event)"/>
+ <div id="lecFileName" style="font-size:12px;color:var(--p-lite);font-weight:700;margin-top:.6rem;display:none"></div>
+ </div>
+ <button class="lec-summarise-btn" id="lecSumBtn" onclick="summariseLecture()">Summarise Lecture</button>
+ <div class="lec-loading" id="lecLoading"><div class="lec-loading-dots"><div class="lec-dot"></div><div class="lec-dot"></div><div class="lec-dot"></div></div><p id="lecLoadingTxt" style="font-size:13px;color:var(--tx2);font-weight:600">Analysing...</p></div>
+ <div class="lec-output" id="lecOutput">
+ <!-- Language selector above summary -->
+ <div class="lang-selector" style="margin-bottom:.8rem;padding:.6rem;background:rgba(37,99,235,.05);border:1px solid rgba(37,99,235,.1);border-radius:12px" id="lecLangSelectorOutput">
+ <label>Summary Language:</label>
+ <button class="lang-btn on" data-lang="auto" onclick="lecPickLang(this)">Auto</button>
+ <button class="lang-btn" data-lang="en" onclick="lecPickLang(this)">English</button>
+ <button class="lang-btn" data-lang="ar" onclick="lecPickLang(this)">Arabic</button>
+ <button class="lang-btn" data-lang="ur" onclick="lecPickLang(this)">Urdu</button>
+ 
+ <button class="lang-btn" data-lang="fr" onclick="lecPickLang(this)">French</button>
+ <button class="lang-btn" data-lang="es" onclick="lecPickLang(this)">Spanish</button>
+ 
+ <button class="lang-btn" data-lang="de" onclick="lecPickLang(this)">German</button>
+ <span class="lang-detect-badge" id="lecDetectedLang">Detected: English</span>
+ </div>
+ <div style="display:flex;gap:0;margin-bottom:1rem;background:var(--surface2);border:1px solid var(--bd);border-radius:14px;padding:4px;width:fit-content">
+ <button id="lecOutTabSummary" onclick="lecOutTab('summary')" class="pill-tab on">Summary</button>
+ <button id="lecOutTabTranscript" onclick="lecOutTab('transcript')" class="pill-tab">Transcript</button>
+ </div>
+ <div class="lec-output-header"><h3 style="font-size:14px;font-weight:800" id="lecOutTitle">Lecture Summary</h3><button onclick="lecExportPDF()" style="font-size:12px;font-weight:700;padding:6px 12px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:var(--red);border-radius:8px;cursor:pointer;font-family:var(--f);margin-right:4px">Export PDF</button><button onclick="lecExportPDF()" style="font-size:12px;font-weight:700;padding:6px 12px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:var(--red);border-radius:8px;cursor:pointer;font-family:var(--f);margin-right:4px">PDF</button><button id="lecCopyBtn" onclick="lecCopyAll()" style="font-size:12px;font-weight:700;color:var(--p-lite);background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);padding:5px 12px;border-radius:8px;cursor:pointer;font-family:var(--f)">Copy All</button></div>
+ <div id="lecSummaryContent"></div>
+ <!-- Transcript section -->
+ <div id="lecTranscriptSection" style="display:none">
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;flex-wrap:wrap;gap:6px">
+ <div style="font-size:13px;font-weight:800;color:var(--tx2)">Full Transcript</div>
+ <div style="display:flex;gap:6px;flex-wrap:wrap">
+ <button onclick="lecCopyTranscript()" style="font-size:11px;font-weight:700;padding:5px 10px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);color:var(--p-lite);border-radius:8px;cursor:pointer;font-family:var(--f)">Copy</button>
+ <button onclick="lecIdentifySpeakers()" id="lecSpeakerBtn" style="font-size:11px;font-weight:700;padding:5px 10px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);color:var(--ok);border-radius:8px;cursor:pointer;font-family:var(--f)">Speakers</button>
+ <button onclick="lecTranslateTranscript()" id="lecTranslateBtn" style="font-size:11px;font-weight:700;padding:5px 10px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);color:var(--gold);border-radius:8px;cursor:pointer;font-family:var(--f)">Translate</button>
+ </div>
+ </div>
+ <!-- Translate language picker -->
+ <div id="lecTranslatePicker" style="display:none;margin-bottom:.8rem;padding:.6rem;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:10px">
+ <div style="font-size:11px;font-weight:700;color:var(--gold);margin-bottom:.5rem">Translate transcript to:</div>
+ <div style="display:flex;gap:6px;flex-wrap:wrap">
+ <button class="trans-lang-btn on" data-tlang="en" onclick="lecDoTranslate(this)">English</button>
+ <button class="trans-lang-btn" data-tlang="ar" onclick="lecDoTranslate(this)">Arabic</button>
+ <button class="trans-lang-btn" data-tlang="ur" onclick="lecDoTranslate(this)">Urdu</button>
+ <button class="trans-lang-btn" data-tlang="fr" onclick="lecDoTranslate(this)">French</button>
+ <button class="trans-lang-btn" data-tlang="es" onclick="lecDoTranslate(this)">Spanish</button>
+ <button class="trans-lang-btn" data-tlang="de" onclick="lecDoTranslate(this)">German</button>
+ </div>
+ </div>
+ <div id="lecTranscriptContent" style="font-size:13px;color:var(--tx2);line-height:1.8;white-space:pre-wrap;background:rgba(0,0,0,.2);border-radius:12px;padding:1rem;max-height:400px;overflow-y:auto"></div>
+ </div>
+ <div class="lec-action-row">
+ <button class="lec-action-btn" onclick="lecToFlashcards()">Flashcards</button>
+ <button class="lec-action-btn" onclick="lecToQuiz()">Quiz Me</button>
+ <button class="lec-action-btn" onclick="saveLecToLib()" style="border-color:rgba(16,185,129,.4);color:var(--ok)">Save</button>
+ <button class="lec-action-btn" onclick="lecReset()">↺ New</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- LESSON PANEL -->
+ <div class="tab-panel" id="panel-lesson">
+ <div class="les-layout">
+ <div class="les-hero"><h2><i data-lucide="book" class="h2-icon"></i> Lesson Mode</h2><p>Paste medical notes and AI teaches you step-by-step!</p></div>
+ <div class="les-input-card">
+ <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+ <h3>What do you want to learn?</h3>
+ <label style="display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--pl);border:1px solid var(--bd2);color:var(--p);border-radius:var(--radius-sm);font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Upload Notes<input type="file" accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg" style="display:none" onchange="handlePanelUpload(event,'lesNotesInput')"/></label>
+ </div>
+ <textarea class="les-textarea" id="lesNotesInput" placeholder="e.g. Teach me the coagulation cascade, or paste your pharmacology notes..."></textarea>
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin:.8rem 0 .4rem">Teaching Style</div>
+ <div class="les-style-row">
+ <button class="les-style-btn on" data-style="Simple">Simple</button>
+ <button class="les-style-btn" data-style="Detailed">Detailed</button>
+ <button class="les-style-btn" data-style="Exam">Exam Ready</button>
+ <button class="les-style-btn" data-style="Clinical">Clinical</button>
+ </div>
+ </div>
+ <button class="les-start-btn" id="lesStartBtn" onclick="startLesson()">Start Lesson</button>
+ <div class="les-loading" id="lesLoading"><div class="lec-loading-dots"><div class="lec-dot"></div><div class="lec-dot"></div><div class="lec-dot"></div></div><p style="font-size:13px;color:var(--tx2);font-weight:600">Preparing your lesson...</p></div>
+ <div class="les-steps-wrap" id="lesStepsWrap">
+ <div class="les-progress"><div class="les-progress-fill" id="lesProgressFill" style="width:0%"></div></div>
+ <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--tx3);font-weight:700;margin-bottom:.8rem"><span id="lesStepLabel">Step 1 of ?</span><span id="lesStepPct">0%</span></div>
+ <div id="lesStepsList"></div>
+ </div>
+ <div class="les-complete" id="lesComplete">
+ <div style="display:flex;justify-content:center;margin-bottom:.8rem"><i data-lucide="party-popper" style="width:48px;height:48px;color:var(--ok)"></i></div>
+ <div style="font-size:1.2rem;font-weight:900;margin-bottom:.4rem">Lesson Complete!</div>
+ <div style="font-size:13px;color:var(--tx2);margin-bottom:1.2rem">+30 XP earned!</div>
+ <div style="display:flex;gap:8px;justify-content:center">
+ <button onclick="lecToFlashcards()" style="padding:9px 18px;border-radius:10px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);color:var(--ok);font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Flashcards</button>
+ <button onclick="lesReset()" style="padding:9px 18px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:var(--tx2);font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">↺ New Lesson</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- YOUTUBE PANEL -->
+ 
+
+
+ <!-- LIBRARY PANEL -->
+ <div class="tab-panel" id="panel-library">
+ <div class="lib-layout">
+ <div class="lib-hero"><div><h2><i data-lucide="bookmark" class="h2-icon"></i> My Library</h2><p>All your saved flashcards, quizzes, lessons and summaries</p></div><div style="text-align:center"><div style="font-size:1.4rem;font-weight:900;color:var(--p-lite)" id="libTotalCount">0</div><div style="font-size:10px;color:var(--tx3);font-weight:600">Saved</div></div></div>
+ <div class="lib-filter-row">
+ <button class="lib-filter on" data-filter="all" onclick="libFilter(this)">All</button>
+ <button class="lib-filter" data-filter="flashcard" onclick="libFilter(this)">Flashcards</button>
+ <button class="lib-filter" data-filter="quiz" onclick="libFilter(this)">Quizzes</button>
+ <button class="lib-filter" data-filter="lesson" onclick="libFilter(this)">Lessons</button>
+ <button class="lib-filter" data-filter="lecture" onclick="libFilter(this)">Lectures</button>
+ <button class="lib-filter" data-filter="youtube" onclick="libFilter(this)">▶ YouTube</button>
+ </div>
+ <div class="lib-grid" id="libGrid"></div>
+ </div>
+ </div>
+ <div class="lib-view-modal" id="libViewModal">
+ <div class="lib-view-card">
+ <button class="lib-view-close" onclick="closeLibView()"></button>
+ <div class="lib-view-title" id="libViewTitle">Title</div>
+ <div class="lib-view-type" id="libViewType">Type</div>
+ <div class="lib-view-content" id="libViewContent"></div>
+ <div class="lib-view-actions">
+ <button class="lib-view-act" onclick="libViewToFlash()">Flashcards</button>
+ <button class="lib-view-act" onclick="libViewToQuiz()">Quiz</button>
+ <button class="lib-view-act" onclick="libViewCopy()">Copy</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- REFERRAL PANEL -->
+ <div class="tab-panel" id="panel-referral">
+ <div class="ref-layout">
+ <div class="ref-hero"><h2 style="font-size:1.3rem;font-weight:900;margin-bottom:.5rem"><i data-lucide="gift" class="h2-icon"></i> Invite Friends, Get Pro Free!</h2><p style="font-size:13px;color:var(--tx2)">Invite 3 med students → get 1 week Pro free.</p></div>
+ <div class="ref-code-box">
+ <div style="font-size:13px;color:var(--tx2);margin-bottom:.3rem">Your referral code</div>
+ <div class="ref-code" id="refCode">MED-XXXX</div>
+ <button class="ref-copy-btn" id="copyRefBtn">Copy Code</button>
+ </div>
+ <div class="ref-share-row">
+ <button class="ref-share-btn" id="shareWA">Share on WhatsApp</button>
+ <button class="ref-share-btn" id="shareCopy">Copy Link</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- REVIEW PANEL -->
+ <div class="tab-panel" id="panel-review">
+ <div class="review-layout">
+ <div class="review-hero"><h2 style="font-size:1.3rem;font-weight:900;margin-bottom:.3rem"><i data-lucide="star" class="h2-icon"></i> Rate AI Doctor</h2><p style="font-size:13px;color:var(--tx2)">Your feedback helps us improve!</p></div>
+ <div class="review-success" id="reviewSuccess">Thank you! +15 XP earned!</div>
+ <div class="review-form">
+ <label>Your Rating</label>
+ <div class="stars-row"><div class="star-btn" onclick="setStar(1)"><i data-lucide="star"></i></div><div class="star-btn" onclick="setStar(2)"><i data-lucide="star"></i></div><div class="star-btn" onclick="setStar(3)"><i data-lucide="star"></i></div><div class="star-btn" onclick="setStar(4)"><i data-lucide="star"></i></div><div class="star-btn" onclick="setStar(5)"><i data-lucide="star"></i></div></div>
+ <label>Your Name</label><input type="text" class="review-input" id="reviewName" placeholder="e.g. Dr. Ahmed"/>
+ <label>Your Review</label><textarea class="review-textarea" id="reviewText" placeholder="What do you love about AI Doctor?"></textarea>
+ </div>
+ <button class="review-submit-btn" onclick="submitReview()">Submit Review </button>
+ <h3 style="font-size:14px;font-weight:800;margin:1.5rem 0 1rem">Reviews</h3>
+ <div id="reviewsList"></div>
+ </div>
+ </div>
+
+ <!-- BUG REPORT PANEL -->
+ <div class="tab-panel" id="panel-bugreport">
+ <div class="bug-layout">
+ <div class="bug-hero"><h2 style="font-size:1.3rem;font-weight:900;margin-bottom:.3rem"><i data-lucide="bug" class="h2-icon"></i> Report a Bug</h2><p style="font-size:13px;color:var(--tx2)">Found something broken? Tell us!</p></div>
+ <div class="bug-success" id="bugSuccess">Bug report sent! Thank you!</div>
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem">Bug Type</div>
+ <div class="bug-type-grid">
+ <div class="bug-type-card on" data-btype="UI" onclick="pickBugType(this)"><div class="bug-type-icon"><i data-lucide="palette"></i></div><div class="bug-type-name">UI / Design</div></div>
+ <div class="bug-type-card" data-btype="AI" onclick="pickBugType(this)"><div class="bug-type-icon"><i data-lucide="sparkles"></i></div><div class="bug-type-name">AI Answer</div></div>
+ <div class="bug-type-card" data-btype="Feature" onclick="pickBugType(this)"><div class="bug-type-icon"><i data-lucide="wrench"></i></div><div class="bug-type-name">Feature Broken</div></div>
+ <div class="bug-type-card" data-btype="Other" onclick="pickBugType(this)"><div class="bug-type-icon"><i data-lucide="more-horizontal"></i></div><div class="bug-type-name">Other</div></div>
+ </div>
+ <div class="bug-form">
+ <label class="bug-label">Describe the bug</label>
+ <textarea class="bug-textarea" id="bugDesc" placeholder="What happened?"></textarea>
+ <label class="bug-label">Your Name (optional)</label>
+ <input type="text" class="bug-input" id="bugName" placeholder="e.g. Ahmed"/>
+ </div>
+ <button class="bug-submit-btn" onclick="submitBug()">Send Bug Report </button>
+ <div id="bugHistory" style="display:none;background:var(--card);border-radius:16px;padding:1.3rem;border:1px solid var(--bd);margin-top:1rem"><h3 style="font-size:13px;font-weight:800;margin-bottom:.8rem">Your Reports</h3><div id="bugHistoryList"></div></div>
+ </div>
+ </div>
+
+ <!-- EXAM PREP PANEL -->
+ <div class="tab-panel" id="panel-examprep">
+ <div class="ep-layout">
+ <div class="ep-hero">
+ <h2><i data-lucide="clipboard-list" class="h2-icon"></i> Exam Prep</h2>
+ <p>Topic-wise MCQs with AI explanations — FCPS, USMLE, PLAB, MRCP and more</p>
+ </div>
+
+ <!-- Setup -->
+ <div class="ep-q-wrap" id="epSetup" style="display:block">
+ <div class="ep-setup">
+ <h3>Select Exam</h3>
+ <div class="ep-grid">
+ <div class="ep-card on" data-exam="MBBS" onclick="epPickExam(this)"><div class="ep-card-icon"><i data-lucide="graduation-cap"></i></div><div class="ep-card-name">MBBS Prof</div></div>
+ <div class="ep-card" data-exam="USMLE Step 1" onclick="epPickExam(this)"><div class="ep-card-icon"><i data-lucide="file-check"></i></div><div class="ep-card-name">USMLE Step 1</div></div>
+ <div class="ep-card" data-exam="USMLE Step 2" onclick="epPickExam(this)"><div class="ep-card-icon"><i data-lucide="stethoscope"></i></div><div class="ep-card-name">USMLE Step 2</div></div>
+ <div class="ep-card" data-exam="PLAB" onclick="epPickExam(this)"><div class="ep-card-icon"><i data-lucide="flag"></i></div><div class="ep-card-name">PLAB</div></div>
+ <div class="ep-card" data-exam="FCPS" onclick="epPickExam(this)"><div class="ep-card-icon"><i data-lucide="award"></i></div><div class="ep-card-name">FCPS</div></div>
+ <div class="ep-card" data-exam="MRCP" onclick="epPickExam(this)"><div class="ep-card-icon"><i data-lucide="heart-pulse"></i></div><div class="ep-card-name">MRCP</div></div>
+ <div class="ep-card" data-exam="DHA" onclick="epPickExam(this)"><div class="ep-card-icon"><i data-lucide="building-2"></i></div><div class="ep-card-name">DHA/HAAD</div></div>
+ <div class="ep-card" data-exam="AMC" onclick="epPickExam(this)"><div class="ep-card-icon"><i data-lucide="globe"></i></div><div class="ep-card-name">AMC</div></div>
+ </div>
+ <h3>Select Subject</h3>
+ <div class="ep-subj-grid">
+ <button class="ep-subj-btn on" data-subj="Mixed" onclick="epPickSubj(this)">Mixed</button>
+ <button class="ep-subj-btn" data-subj="Anatomy" onclick="epPickSubj(this)">Anatomy</button>
+ <button class="ep-subj-btn" data-subj="Physiology" onclick="epPickSubj(this)">Physiology</button>
+ <button class="ep-subj-btn" data-subj="Biochemistry" onclick="epPickSubj(this)">Biochemistry</button>
+ <button class="ep-subj-btn" data-subj="Pharmacology" onclick="epPickSubj(this)">Pharmacology</button>
+ <button class="ep-subj-btn" data-subj="Pathology" onclick="epPickSubj(this)">Pathology</button>
+ <button class="ep-subj-btn" data-subj="Microbiology" onclick="epPickSubj(this)">Microbiology</button>
+ <button class="ep-subj-btn" data-subj="Medicine" onclick="epPickSubj(this)">Medicine</button>
+ <button class="ep-subj-btn" data-subj="Surgery" onclick="epPickSubj(this)">Surgery</button>
+ <button class="ep-subj-btn" data-subj="Pediatrics" onclick="epPickSubj(this)">Pediatrics</button>
+ <button class="ep-subj-btn" data-subj="Gynae/Obs" onclick="epPickSubj(this)">Gynae/Obs</button>
+ <button class="ep-subj-btn" data-subj="Psychiatry" onclick="epPickSubj(this)">Psychiatry</button>
+ <button class="ep-subj-btn" data-subj="ENT" onclick="epPickSubj(this)">ENT</button>
+ <button class="ep-subj-btn" data-subj="Ophthalmology" onclick="epPickSubj(this)">Ophthalmology</button>
+ </div>
+ <h3>Difficulty</h3>
+ <div class="ep-opts-row">
+ <button class="ep-opt on" data-diff="Easy" onclick="epPickOpt(this,'diff')">Easy</button>
+ <button class="ep-opt" data-diff="Moderate" onclick="epPickOpt(this,'diff')">Moderate</button>
+ <button class="ep-opt" data-diff="Hard" onclick="epPickOpt(this,'diff')">Hard</button>
+ <button class="ep-opt" data-diff="Consultant" onclick="epPickOpt(this,'diff')">Consultant</button>
+ </div>
+ <h3>Mode</h3>
+ <div class="ep-opts-row">
+ <button class="ep-opt on" data-mode="untimed" onclick="epPickOpt(this,'mode')">Untimed</button>
+ <button class="ep-opt" data-mode="timed" onclick="epPickOpt(this,'mode')">⏱ Timed</button>
+ <button class="ep-opt" data-mode="highyield" onclick="epPickOpt(this,'mode')">High Yield</button>
+ </div>
+ <h3>Number of Questions</h3>
+ <div class="ep-opts-row">
+ <button class="ep-opt on" data-qs="10" onclick="epPickOpt(this,'qs')">10 Qs</button>
+ <button class="ep-opt" data-qs="20" onclick="epPickOpt(this,'qs')">20 Qs</button>
+ <button class="ep-opt" data-qs="40" onclick="epPickOpt(this,'qs')">40 Qs</button>
+ </div>
+ </div>
+ <button class="ep-start-btn" id="epStartBtn" onclick="epStart()">Start MCQs</button>
+ </div>
+
+ <!-- Question -->
+ <div class="ep-q-wrap" id="epQuestion">
+ <div class="ep-progress-wrap">
+ <div class="ep-progress-bar"><div class="ep-progress-fill" id="epProgressFill" style="width:0%"></div></div>
+ <div class="ep-stats-mini">
+ <span class="ep-stat-c"><span id="epCorrectCount">0</span></span>
+ <span class="ep-stat-w"><span id="epWrongCount">0</span></span>
+ <span class="ep-stat-s"><span id="epSkipCount">0</span></span>
+ </div>
+ </div>
+ <div class="ep-q-header">
+ <div class="ep-q-meta">
+ <span class="ep-q-num" id="epQNum">Q 1/10</span>
+ <span class="ep-q-subj" id="epQSubj">Anatomy</span>
+ <span class="ep-q-diff" id="epQDiff">Easy</span>
+ </div>
+ <div style="display:flex;align-items:center;gap:8px">
+ <div class="ep-q-timer" id="epTimer" style="display:none">2:00</div>
+ <div class="ep-q-actions">
+ <button class="ep-q-action-btn" id="epBookmarkBtn" onclick="epBookmark()" title="Bookmark"><i data-lucide="bookmark" style="width:15px;height:15px"></i></button>
+ <button class="ep-q-action-btn" id="epFlagBtn" onclick="epFlag()" title="Flag"><i data-lucide="flag" style="width:15px;height:15px"></i></button>
+ </div>
+ </div>
+ </div>
+ <div class="ep-q-card">
+ <div class="ep-q-stem" id="epQStem">Loading question...</div>
+ <div class="ep-q-opts" id="epQOpts"></div>
+ <div class="ep-explanation" id="epExplanation">
+ <div class="ep-exp-correct" id="epExpCorrect">Correct Answer: A</div>
+ <div class="ep-exp-text" id="epExpText"></div>
+ <div class="ep-wrong-opts" id="epWrongOpts"></div>
+ </div>
+ </div>
+ <div class="ep-q-bottom">
+ <button class="ep-q-btn primary" id="epSubmitBtn" onclick="epSubmitAnswer()">Submit Answer</button>
+ <button class="ep-q-btn secondary" id="epNextBtn" onclick="epNextQ()" style="display:none">Next →</button>
+ <button class="ep-q-btn secondary" onclick="epSkip()">Skip</button>
+ <button class="ep-q-btn ai-btn" id="epAiBtn" onclick="epAiExplain()" style="display:none"><i data-lucide="sparkles" style="width:14px;height:14px"></i> AI Explain</button>
+ </div>
+ </div>
+
+ <!-- Results -->
+ <div class="ep-results" id="epResults">
+ <div style="display:flex;align-items:center;justify-content:center;margin-bottom:1rem"><i data-lucide="circle-check-big" style="width:48px;height:48px;color:var(--ok)"></i></div>
+ <div class="ep-result-score" id="epResultScore">75%</div>
+ <div class="ep-result-label">Session Complete!</div>
+ <div class="ep-result-stats">
+ <div class="ep-rs"><div class="ep-rs-val" id="epResCorrect">0</div><div class="ep-rs-lbl">Correct</div></div>
+ <div class="ep-rs"><div class="ep-rs-val" id="epResWrong">0</div><div class="ep-rs-lbl">Wrong</div></div>
+ <div class="ep-rs"><div class="ep-rs-val" id="epResSkip">0</div><div class="ep-rs-lbl">Skipped</div></div>
+ <div class="ep-rs"><div class="ep-rs-val" id="epResXP">0</div><div class="ep-rs-lbl">XP Earned</div></div>
+ </div>
+ <div style="display:flex;gap:8px;justify-content:center">
+ <button onclick="epRestart()" style="padding:12px 28px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f)">Try Again</button>
+ <button onclick="epGoSetup()" style="padding:12px 28px;border:1px solid var(--bd);background:transparent;color:var(--tx2);border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--f)">New Session</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- CLINICAL SIMULATION PANEL -->
+ <div class="tab-panel" id="panel-simulation">
+ <div class="sim-layout">
+ <div class="sim-hero">
+ <h2><i data-lucide="activity" class="h2-icon"></i> Clinical Simulation</h2>
+ <p>Manage real patients. Make diagnoses. Save lives. Earn XP.</p>
+ </div>
+ <!-- Setup -->
+ <div id="simSetup">
+ <div class="sim-setup">
+ <h3 style="font-size:13px;font-weight:800;margin-bottom:.8rem">Case Type</h3>
+ <div class="sim-type-grid">
+ <div class="sim-type-card on" data-simtype="General" onclick="simPickType(this)"><div class="sim-type-icon"><i data-lucide="stethoscope"></i></div><div class="sim-type-name">General Medicine</div></div>
+ <div class="sim-type-card" data-simtype="Emergency" onclick="simPickType(this)"><div class="sim-type-icon"><i data-lucide="siren"></i></div><div class="sim-type-name">Emergency</div></div>
+ <div class="sim-type-card" data-simtype="Surgery" onclick="simPickType(this)"><div class="sim-type-icon"><i data-lucide="scissors"></i></div><div class="sim-type-name">Surgery</div></div>
+ <div class="sim-type-card" data-simtype="Pediatrics" onclick="simPickType(this)"><div class="sim-type-icon"><i data-lucide="baby"></i></div><div class="sim-type-name">Pediatrics</div></div>
+ <div class="sim-type-card" data-simtype="ICU" onclick="simPickType(this)"><div class="sim-type-icon"><i data-lucide="heart-pulse"></i></div><div class="sim-type-name">ICU</div></div>
+ <div class="sim-type-card" data-simtype="Rare Disease" onclick="simPickType(this)"><div class="sim-type-icon"><i data-lucide="dna"></i></div><div class="sim-type-name">Rare Disease</div></div>
+ </div>
+ </div>
+ <button class="sim-start-btn" id="simStartBtn" onclick="simStart()">Start Case </button>
+ </div>
+
+ <!-- Patient -->
+ <div class="sim-patient" id="simPatient">
+ <div class="heartbeat-bar">
+ <div class="hb-dot"></div>
+ <div class="hb-line"><div class="hb-wave"></div></div>
+ <div class="hb-text">Patient Active</div>
+ </div>
+ <div class="sim-patient-header">
+ <div class="sim-patient-info">
+ <div class="sim-patient-avatar" id="simPatAvatar"></div>
+ <div><div class="sim-patient-name" id="simPatName">Patient</div><div class="sim-patient-meta" id="simPatMeta">Age • Gender</div></div>
+ </div>
+ <div style="font-size:12px;font-weight:800;color:var(--red)" id="simCaseType">Emergency</div>
+ </div>
+ <div class="sim-vitals" id="simVitals"></div>
+ <div class="sim-complaint" id="simComplaint">"Chief complaint loading..."</div>
+ <div class="sim-progress-steps" id="simProgressSteps"></div>
+ </div>
+
+ <!-- Stages -->
+ <div id="simStages">
+ <div class="sim-stage" id="sim-stage-history">
+ <div class="sim-stage-title">History Taking</div>
+ <div class="sim-options" id="simHistoryOpts"></div>
+ </div>
+ <div class="sim-stage" id="sim-stage-exam">
+ <div class="sim-stage-title">Physical Examination</div>
+ <div class="sim-options" id="simExamOpts"></div>
+ </div>
+ <div class="sim-stage" id="sim-stage-investigations">
+ <div class="sim-stage-title">Order Investigations</div>
+ <div class="sim-options" id="simInvOpts"></div>
+ </div>
+ <div class="sim-stage" id="sim-stage-diagnosis">
+ <div class="sim-stage-title">Make Diagnosis</div>
+ <div class="sim-options" id="simDxOpts"></div>
+ </div>
+ <div class="sim-stage" id="sim-stage-management">
+ <div class="sim-stage-title">Management Plan</div>
+ <div class="sim-options" id="simMgmtOpts"></div>
+ </div>
+ </div>
+ <div class="sim-feedback" id="simFeedback"></div>
+ <div style="display:flex;gap:8px;margin-top:.8rem" id="simActBtns" style="display:none">
+ <button class="sim-next-btn" id="simNextBtn" onclick="simNextStage()" style="display:none">Continue →</button>
+ <button onclick="simNewCase()" style="padding:10px 20px;border:1px solid var(--bd);background:transparent;color:var(--tx2);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--f);display:none" id="simNewBtn">New Case</button>
+ </div>
+ <div class="sim-results" id="simResults">
+ <div class="sim-result-grade" id="simGrade">A+</div>
+ <div style="font-size:14px;font-weight:800;margin:.5rem 0" id="simResultTitle">Excellent Diagnosis!</div>
+ <div style="font-size:13px;color:var(--tx2);margin-bottom:1.5rem" id="simResultSub">You handled the case perfectly.</div>
+ <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem" id="simResultStats"></div>
+ <div style="display:flex;gap:8px;justify-content:center">
+ <button onclick="simStart()" style="padding:12px 24px;background:linear-gradient(135deg,var(--red),#DC2626);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f)">Next Case</button>
+ <button onclick="simNewCase()" style="padding:12px 24px;border:1px solid var(--bd);background:transparent;color:var(--tx2);border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--f)">Change Type</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- MOCK TEST PANEL -->
+ <div class="tab-panel" id="panel-mocktest">
+ <div class="mock-layout">
+ <div class="mock-hero">
+ <h2><i data-lucide="timer" class="h2-icon"></i> Mock Test Engine</h2>
+ <p>Full-length timed exams with analytics and performance tracking</p>
+ </div>
+ <div id="mockSetup">
+ <div class="mock-setup">
+ <h3 style="font-size:13px;font-weight:800;margin-bottom:.8rem">Select Exam Type</h3>
+ <div class="mock-exam-grid">
+ <div class="mock-exam-card on" data-mexam="MBBS" onclick="mockPickExam(this)"><div class="mock-exam-icon"><i data-lucide="graduation-cap"></i></div><div class="mock-exam-name">MBBS Prof</div><div class="mock-exam-qs">200 questions • 3hrs</div></div>
+ <div class="mock-exam-card" data-mexam="USMLE" onclick="mockPickExam(this)"><div class="mock-exam-icon"><i data-lucide="file-check"></i></div><div class="mock-exam-name">USMLE Step 1</div><div class="mock-exam-qs">280 questions • 8hrs</div></div>
+ <div class="mock-exam-card" data-mexam="PLAB" onclick="mockPickExam(this)"><div class="mock-exam-icon"><i data-lucide="flag"></i></div><div class="mock-exam-name">PLAB 1</div><div class="mock-exam-qs">180 questions • 3hrs</div></div>
+ <div class="mock-exam-card" data-mexam="FCPS" onclick="mockPickExam(this)"><div class="mock-exam-icon"><i data-lucide="award"></i></div><div class="mock-exam-name">FCPS Part 1</div><div class="mock-exam-qs">150 questions • 2.5hrs</div></div>
+ <div class="mock-exam-card" data-mexam="Quick" onclick="mockPickExam(this)"><div class="mock-exam-icon"><i data-lucide="zap"></i></div><div class="mock-exam-name">Quick Test</div><div class="mock-exam-qs">20 questions • 30min</div></div>
+ </div>
+ <div style="display:flex;gap:10px;align-items:center;margin-top:1rem">
+ <label style="font-size:12px;font-weight:700;color:var(--tx2)">Mode:</label>
+ <button class="ep-opt on" data-mmode="timed" onclick="mockPickMode(this)">⏱ Timed</button>
+ <button class="ep-opt" data-mmode="untimed" onclick="mockPickMode(this)">Practice</button>
+ </div>
+ </div>
+ <div style="margin-bottom:1rem">
+ <h3 style="font-size:13px;font-weight:800;margin-bottom:.6rem">Number of Questions</h3>
+ <div style="display:flex;gap:8px;flex-wrap:wrap">
+ <button class="ep-opt on" data-mqcount="10" onclick="mockPickCount(this)">10 Qs</button>
+ <button class="ep-opt" data-mqcount="20" onclick="mockPickCount(this)">20 Qs</button>
+ <button class="ep-opt" data-mqcount="30" onclick="mockPickCount(this)">30 Qs</button>
+ <button class="ep-opt" data-mqcount="50" onclick="mockPickCount(this)">50 Qs</button>
+ </div>
+ </div>
+ <button class="mock-start-btn" onclick="mockStart()">Start Mock Exam ⏱</button>
+ </div>
+
+ <!-- Running -->
+ <div class="mock-running" id="mockRunning">
+ <div class="mock-topbar">
+ <div><div style="font-size:12px;font-weight:700;color:var(--tx3)">Mock Exam</div><div style="font-size:14px;font-weight:800" id="mockExamName">MBBS Prof</div></div>
+ <div class="mock-timer-big" id="mockTimerBig">3:00:00</div>
+ <div style="text-align:right"><div style="font-size:12px;font-weight:700;color:var(--tx3)" id="mockQProgress">Q 1/20</div><div style="font-size:12px;font-weight:700;color:var(--gold)" id="mockScore">Score: 0%</div></div>
+ </div>
+ <div id="mockQArea"></div>
+ <div style="display:flex;gap:8px;margin-top:1rem">
+ <button onclick="mockPause()" id="mockPauseBtn" style="padding:10px 20px;border:1px solid var(--bd);background:transparent;color:var(--tx2);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--f)">⏸ Pause</button>
+ <button onclick="mockSubmit()" style="padding:10px 20px;background:linear-gradient(135deg,var(--red),#DC2626);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;font-family:var(--f)">Submit Exam</button>
+ </div>
+ </div>
+
+ <!-- Analytics -->
+ <div class="mock-analytics" id="mockAnalytics">
+ <div style="text-align:center;margin-bottom:1.5rem">
+ <div style="font-size:3rem;font-weight:900;color:var(--p-lite);font-family:var(--f2)" id="mockFinalScore">0%</div>
+ <div style="font-size:13px;color:var(--tx2);margin-top:.3rem" id="mockFinalLabel">Exam Complete</div>
+ </div>
+ <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:1.5rem" id="mockStatCards"></div>
+ <div class="subj-mastery">
+ <h3 style="font-size:13px;font-weight:800;margin-bottom:.8rem">Subject Breakdown</h3>
+ <div id="mockSubjBreakdown"></div>
+ </div>
+ <div style="display:flex;gap:8px;justify-content:center;margin-top:1rem">
+ <button onclick="mockRetry()" style="padding:12px 24px;background:linear-gradient(135deg,var(--gold),#F97316);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f)">Retry</button>
+ <button onclick="mockGoSetup()" style="padding:12px 24px;border:1px solid var(--bd);background:transparent;color:var(--tx2);border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--f)">New Exam</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- MISTAKE BOOK PANEL -->
+ <div class="tab-panel" id="panel-mistakebook">
+ <div class="mb-layout">
+ <div class="mb-hero">
+ <h2><i data-lucide="book-open" class="h2-icon"></i> Mistake Book</h2>
+ <p>Your wrong answers saved automatically — review and master them</p>
+ </div>
+ <div style="display:flex;gap:8px;margin-bottom:1rem">
+ <button class="lb-tab on" onclick="mbFilter(this,'all')" data-mbf="all">All</button>
+ <button class="lb-tab" onclick="mbFilter(this,'mcq')" data-mbf="mcq">MCQs</button>
+ <button class="lb-tab" onclick="mbFilter(this,'diagnosis')" data-mbf="diagnosis">Diagnoses</button>
+ </div>
+ <div id="mbList"></div>
+ </div>
+ </div>
+
+ <!-- STUDY PLAN PANEL -->
+ <div class="tab-panel" id="panel-studyplan">
+ <div class="sp-layout">
+ <div class="mb-hero" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(5,150,105,.1));border-color:rgba(16,185,129,.3)">
+ <h2><i data-lucide="calendar" class="h2-icon"></i> AI Study Plan Generator</h2>
+ <p>Give your exam details — AI creates your personalized study schedule</p>
+ </div>
+ <div class="sp-form">
+ <label>Exam Type</label>
+ <select id="spExam" class="sp-input">
+ <option value="MBBS">MBBS Professional</option>
+ <option value="USMLE Step 1">USMLE Step 1</option>
+ <option value="USMLE Step 2">USMLE Step 2</option>
+ <option value="PLAB">PLAB</option>
+ <option value="FCPS">FCPS Part 1</option>
+ <option value="MRCP">MRCP</option>
+ <option value="DHA">DHA/HAAD/MOH</option>
+ </select>
+ <label>Exam Date</label>
+ <input type="date" id="spDate" class="sp-input"/>
+ <label>Daily Study Hours</label>
+ <select id="spHours" class="sp-input">
+ <option value="2">2 hours/day</option>
+ <option value="4" selected>4 hours/day</option>
+ <option value="6">6 hours/day</option>
+ <option value="8">8 hours/day</option>
+ </select>
+ <label>Weak Subjects (optional)</label>
+ <input type="text" id="spWeak" class="sp-input" placeholder="e.g. Pharmacology, Pathology"/>
+ <label>Target Score</label>
+ <select id="spTarget" class="sp-input">
+ <option value="Pass">Just Pass (50-60%)</option>
+ <option value="Good" selected>Good Pass (70-80%)</option>
+ <option value="Distinction">Distinction (85%+)</option>
+ </select>
+ </div>
+ <button class="sp-gen-btn" id="spGenBtn" onclick="generateStudyPlan()"><i data-lucide="sparkles" style="width:15px;height:15px"></i> Generate Study Plan</button>
+ <div class="sp-output" id="spOutput">
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+ <h3 style="font-size:14px;font-weight:800">Your Study Plan</h3>
+ <button onclick="spCopy()" style="font-size:12px;font-weight:700;color:var(--p-lite);background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);padding:5px 12px;border-radius:8px;cursor:pointer;font-family:var(--f)" id="spCopyBtn">Copy Plan</button>
+ </div>
+ <div id="spPlanContent"></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- LEADERBOARD PANEL -->
+ 
+
+ <!-- SNAP MODE PANEL -->
+ <div class="tab-panel" id="panel-snap">
+ <div class="snap-layout">
+ <div class="snap-hero">
+ <h2><i data-lucide="camera" class="h2-icon"></i> Snap Mode</h2>
+ <p>Upload any medical question, MCQ, diagram or lab report — AI explains it instantly!</p>
+ </div>
+ <div class="snap-upload-zone" id="snapZone" onclick="document.getElementById('snapFileInput').click()">
+ <div id="snapZoneContent">
+ <div style="display:flex;justify-content:center;margin-bottom:.8rem"><i data-lucide="image-plus" style="width:40px;height:40px;color:var(--p-lite)"></i></div>
+ <div style="font-size:15px;font-weight:800;color:var(--tx2);margin-bottom:.3rem">Tap to upload image</div>
+ <div style="font-size:12px;color:var(--tx3)">MCQ • Diagram • Lab report • Handwritten notes</div>
+ </div>
+ <img id="snapPreview" class="snap-preview" alt="Preview"/>
+ </div>
+ <input type="file" id="snapFileInput" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.png,.jpg,.jpeg,.gif,.webp" style="display:none"/>
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem">Analysis Mode</div>
+ <div class="snap-mode-row">
+ <button class="snap-mode-btn on" data-smode="explain" onclick="snapPickMode(this)">Explain</button>
+ <button class="snap-mode-btn" data-smode="quick" onclick="snapPickMode(this)">Quick Answer</button>
+ <button class="snap-mode-btn" data-smode="detailed" onclick="snapPickMode(this)">Detailed</button>
+ <button class="snap-mode-btn" data-smode="mcq" onclick="snapPickMode(this)">Solve MCQ</button>
+ <button class="snap-mode-btn" data-smode="keywords" onclick="snapPickMode(this)">Key Concepts</button>
+ </div>
+ <div class="lang-selector" id="snapLangSelector">
+ <label>Output Language:</label>
+ <button class="lang-btn on" data-lang="auto" onclick="snapPickLang(this)">Auto Detect</button>
+ <button class="lang-btn" data-lang="en" onclick="snapPickLang(this)">English</button>
+ <button class="lang-btn" data-lang="ar" onclick="snapPickLang(this)">Arabic</button>
+ <button class="lang-btn" data-lang="ur" onclick="snapPickLang(this)">Urdu</button>
+ 
+ <button class="lang-btn" data-lang="fr" onclick="snapPickLang(this)">French</button>
+ <span class="lang-detect-badge" id="snapDetectedLang">Detected: English</span>
+ </div>
+ <button class="snap-analyse-btn" id="snapAnalyseBtn" onclick="analyseSnap()">Analyse Image</button>
+ <div class="snap-loading" id="snapLoading">
+ <div class="lec-loading-dots"><div class="lec-dot" style="background:#A855F7"></div><div class="lec-dot" style="background:#A855F7"></div><div class="lec-dot" style="background:#A855F7"></div></div>
+ <p style="font-size:13px;color:var(--tx2);font-weight:600">Analysing your image...</p>
+ </div>
+ <div class="snap-output" id="snapOutput">
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+ <h3 style="font-size:14px;font-weight:800">Analysis Result</h3>
+ <button onclick="snapCopy()" style="font-size:12px;font-weight:700;color:#C084FC;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);padding:5px 12px;border-radius:8px;cursor:pointer;font-family:var(--f)" id="snapCopyBtn">Copy</button>
+ </div>
+ <div id="snapResult" style="font-size:13px;color:var(--tx2);line-height:1.8"></div>
+ <div style="display:flex;gap:8px;margin-top:1rem">
+ <button onclick="snapToFlashcards()" style="flex:1;padding:9px;border-radius:10px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--p-lite);font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Flashcards</button>
+ <button onclick="snapToChat()" style="flex:1;padding:9px;border-radius:10px;background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.3);color:#C084FC;font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Ask More</button>
+ <button onclick="snapReset()" style="flex:1;padding:9px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:var(--tx2);font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">↺ New</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- DRUG CHECKER PANEL -->
+ <div class="tab-panel" id="panel-drugchecker">
+ <div class="drug-layout">
+ <div class="drug-hero">
+ <h2><i data-lucide="pill" class="h2-icon"></i> Drug Checker</h2>
+ <p>Check drug interactions, dosages, side effects and contraindications instantly</p>
+ </div>
+ <div class="drug-tabs">
+ <button class="drug-tab on" data-dtab="interaction" onclick="drugSwitchTab(this)">Interactions</button>
+ <button class="drug-tab" data-dtab="info" onclick="drugSwitchTab(this)">Drug Info</button>
+ <button class="drug-tab" data-dtab="dose" onclick="drugSwitchTab(this)">Dosage</button>
+ </div>
+
+ <!-- Interaction tab -->
+ <div id="drugInteractionTab">
+ <div class="drug-input-card">
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem">Add drugs to check</div>
+ <div style="display:flex;gap:8px;margin-bottom:.6rem">
+ <input type="text" class="drug-input" id="drugInputField" placeholder="Type drug name e.g. Warfarin" onkeydown="if(event.key==='Enter')drugAddChip()" style="margin-bottom:0;flex:1"/>
+ <button class="drug-add-btn" onclick="drugAddChip()">+ Add</button>
+ </div>
+ <div class="drug-chips" id="drugChips"></div>
+ <div style="font-size:11px;color:var(--tx3);margin-bottom:.8rem">Add at least 2 drugs to check interactions</div>
+ </div>
+ <button class="drug-check-btn" id="drugCheckBtn" onclick="checkDrugInteraction()">Check Interactions</button>
+ </div>
+
+ <!-- Info tab -->
+ <div id="drugInfoTab" style="display:none">
+ <div class="drug-input-card">
+ <input type="text" class="drug-input" id="drugInfoInput" placeholder="Enter drug name e.g. Metformin, Aspirin..." onkeydown="if(event.key==='Enter')getDrugInfo()"/>
+ <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.6rem">
+ <button onclick="setDrugQuick('Metformin')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:transparent;color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">Metformin</button>
+ <button onclick="setDrugQuick('Aspirin')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:transparent;color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">Aspirin</button>
+ <button onclick="setDrugQuick('Amoxicillin')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:transparent;color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">Amoxicillin</button>
+ <button onclick="setDrugQuick('Atorvastatin')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:transparent;color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">Atorvastatin</button>
+ <button onclick="setDrugQuick('Lisinopril')" style="padding:5px 12px;border-radius:20px;border:1px solid var(--bd);background:transparent;color:var(--tx3);font-size:11px;font-weight:700;cursor:pointer;font-family:var(--f)">Lisinopril</button>
+ </div>
+ </div>
+ <button class="drug-check-btn" onclick="getDrugInfo()" style="background:linear-gradient(135deg,var(--ok),#059669)">Get Drug Info</button>
+ </div>
+
+ <!-- Dose tab -->
+ <div id="drugDoseTab" style="display:none">
+ <div class="drug-input-card">
+ <input type="text" class="drug-input" id="drugDoseInput" placeholder="Drug name e.g. Paracetamol..." onkeydown="if(event.key==='Enter')getDrugDose()"/>
+ <select id="drugDosePatient" class="drug-input" style="margin-bottom:0">
+ <option value="adult">Adult</option>
+ <option value="child">Child (paediatric)</option>
+ <option value="elderly">Elderly</option>
+ <option value="renal">Renal impairment</option>
+ <option value="hepatic">Hepatic impairment</option>
+ <option value="pregnant">Pregnancy</option>
+ </select>
+ </div>
+ <button class="drug-check-btn" onclick="getDrugDose()" style="background:linear-gradient(135deg,#7C3AED,#A855F7)">Get Dosage</button>
+ </div>
+
+ <div style="text-align:center;padding:1.5rem;display:none" id="drugLoading">
+ <div class="lec-loading-dots"><div class="lec-dot" style="background:var(--ok)"></div><div class="lec-dot" style="background:var(--ok)"></div><div class="lec-dot" style="background:var(--ok)"></div></div>
+ <p style="font-size:13px;color:var(--tx2);font-weight:600">Checking...</p>
+ </div>
+ <div class="drug-output" id="drugOutput">
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem">
+ <h3 style="font-size:14px;font-weight:800" id="drugOutputTitle">Drug Information</h3>
+ <button onclick="drugCopy()" style="font-size:12px;font-weight:700;color:var(--ok);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);padding:5px 12px;border-radius:8px;cursor:pointer;font-family:var(--f)">Copy</button>
+ </div>
+ <div id="drugResult" style="font-size:13px;color:var(--tx2);line-height:1.8"></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- MEDICAL CALCULATORS PANEL -->
+ <div class="tab-panel" id="panel-calculator">
+ <div class="calc-layout">
+ <div class="calc-hero">
+ <h2><i data-lucide="calculator" class="h2-icon"></i> Medical Calculators</h2>
+ <p>Evidence-based clinical calculators for quick bedside decisions</p>
+ </div>
+ <div class="calc-grid">
+ <div class="calc-card on" data-calc="bmi" onclick="calcPick(this)"><div class="calc-icon"><i data-lucide="scale"></i></div><div class="calc-name">BMI</div><div class="calc-desc">Body Mass Index</div></div>
+ <div class="calc-card" data-calc="gfr" onclick="calcPick(this)"><div class="calc-icon"><i data-lucide="droplet"></i></div><div class="calc-name">eGFR</div><div class="calc-desc">Kidney function</div></div>
+ <div class="calc-card" data-calc="chads" onclick="calcPick(this)"><div class="calc-icon"><i data-lucide="heart-pulse"></i></div><div class="calc-name">CHA₂DS₂-VASc</div><div class="calc-desc">AF stroke risk</div></div>
+ <div class="calc-card" data-calc="curb65" onclick="calcPick(this)"><div class="calc-icon"><i data-lucide="wind"></i></div><div class="calc-name">CURB-65</div><div class="calc-desc">Pneumonia severity</div></div>
+ <div class="calc-card" data-calc="apgar" onclick="calcPick(this)"><div class="calc-icon"><i data-lucide="baby"></i></div><div class="calc-name">APGAR</div><div class="calc-desc">Newborn assessment</div></div>
+ <div class="calc-card" data-calc="bsa" onclick="calcPick(this)"><div class="calc-icon"><i data-lucide="ruler"></i></div><div class="calc-name">BSA</div><div class="calc-desc">Body surface area</div></div>
+ <div class="calc-card" data-calc="map" onclick="calcPick(this)"><div class="calc-icon"><i data-lucide="gauge"></i></div><div class="calc-name">MAP</div><div class="calc-desc">Mean arterial pressure</div></div>
+ <div class="calc-card" data-calc="ibw" onclick="calcPick(this)"><div class="calc-icon"><i data-lucide="dumbbell"></i></div><div class="calc-name">IBW</div><div class="calc-desc">Ideal body weight</div></div>
+ </div>
+
+ <!-- BMI Calculator -->
+ <div class="calc-form on" id="calc-bmi">
+ <h3>Body Mass Index (BMI)</h3>
+ <div class="calc-field"><label>Weight (kg)</label><input type="number" id="bmi-weight" placeholder="e.g. 70"/></div>
+ <div class="calc-field"><label>Height (cm)</label><input type="number" id="bmi-height" placeholder="e.g. 175"/></div>
+ <button class="calc-btn" onclick="calcBMI()">Calculate BMI</button>
+ <div class="calc-result" id="bmi-result"><div class="calc-result-val" id="bmi-val">--</div><div class="calc-result-label">BMI (kg/m²)</div><div class="calc-result-interp" id="bmi-interp"></div></div>
+ </div>
+
+ <!-- eGFR -->
+ <div class="calc-form" id="calc-gfr">
+ <h3>Estimated GFR (CKD-EPI)</h3>
+ <div class="calc-field"><label>Age (years)</label><input type="number" id="gfr-age" placeholder="e.g. 45"/></div>
+ <div class="calc-field"><label>Serum Creatinine (mg/dL)</label><input type="number" id="gfr-creat" placeholder="e.g. 1.2" step="0.1"/></div>
+ <div class="calc-field"><label>Sex</label><select id="gfr-sex"><option value="male">Male</option><option value="female">Female</option></select></div>
+ <button class="calc-btn" onclick="calcGFR()">Calculate eGFR</button>
+ <div class="calc-result" id="gfr-result"><div class="calc-result-val" id="gfr-val">--</div><div class="calc-result-label">eGFR (mL/min/1.73m²)</div><div class="calc-result-interp" id="gfr-interp"></div></div>
+ </div>
+
+ <!-- CHADS-VASc -->
+ <div class="calc-form" id="calc-chads">
+ <h3>CHA₂DS₂-VASc Score</h3>
+ <p style="font-size:12px;color:var(--tx2);margin-bottom:1rem">Stroke risk in non-valvular AF</p>
+ <div class="calc-field"><label>Age</label><select id="chads-age"><option value="0">Under 65</option><option value="1">65-74 (+1)</option><option value="2">75 or older (+2)</option></select></div>
+ <div class="calc-field"><label>Sex</label><select id="chads-sex"><option value="0">Male</option><option value="1">Female (+1)</option></select></div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:.8rem">
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="chads-chf"/> Heart failure</label>
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="chads-htn"/> Hypertension</label>
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="chads-dm"/> Diabetes</label>
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="chads-stroke"/> Prior stroke/TIA</label>
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="chads-vasc"/> Vascular disease</label>
+ </div>
+ <button class="calc-btn" onclick="calcCHADS()">Calculate Score</button>
+ <div class="calc-result" id="chads-result"><div class="calc-result-val" id="chads-val">--</div><div class="calc-result-label">CHA₂DS₂-VASc Score</div><div class="calc-result-interp" id="chads-interp"></div></div>
+ </div>
+
+ <!-- CURB-65 -->
+ <div class="calc-form" id="calc-curb65">
+ <h3>CURB-65 Score</h3>
+ <p style="font-size:12px;color:var(--tx2);margin-bottom:1rem">Pneumonia severity assessment</p>
+ <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:.8rem">
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="curb-confusion"/> Confusion (new)</label>
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="curb-urea"/> Urea > 7 mmol/L</label>
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="curb-rr"/> RR ≥ 30/min</label>
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="curb-bp"/> BP systolic &lt; 90 or diastolic ≤ 60</label>
+ <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2);cursor:pointer"><input type="checkbox" id="curb-age"/> Age ≥ 65</label>
+ </div>
+ <button class="calc-btn" onclick="calcCURB65()">Calculate Score</button>
+ <div class="calc-result" id="curb65-result"><div class="calc-result-val" id="curb65-val">--</div><div class="calc-result-label">CURB-65 Score</div><div class="calc-result-interp" id="curb65-interp"></div></div>
+ </div>
+
+ <!-- APGAR -->
+ <div class="calc-form" id="calc-apgar">
+ <h3>APGAR Score</h3>
+ <p style="font-size:12px;color:var(--tx2);margin-bottom:1rem">Newborn assessment at 1 and 5 minutes</p>
+ <div class="calc-field"><label>Appearance (skin color)</label><select id="apgar-appearance"><option value="0">Blue/pale all over (0)</option><option value="1">Blue extremities (1)</option><option value="2">Pink all over (2)</option></select></div>
+ <div class="calc-field"><label>Pulse (heart rate)</label><select id="apgar-pulse"><option value="0">Absent (0)</option><option value="1">&lt;100 bpm (1)</option><option value="2">≥100 bpm (2)</option></select></div>
+ <div class="calc-field"><label>Grimace (reflex irritability)</label><select id="apgar-grimace"><option value="0">No response (0)</option><option value="1">Grimace (1)</option><option value="2">Cry/cough/sneeze (2)</option></select></div>
+ <div class="calc-field"><label>Activity (muscle tone)</label><select id="apgar-activity"><option value="0">Limp (0)</option><option value="1">Some flexion (1)</option><option value="2">Active motion (2)</option></select></div>
+ <div class="calc-field"><label>Respiration</label><select id="apgar-resp"><option value="0">Absent (0)</option><option value="1">Weak/irregular (1)</option><option value="2">Strong cry (2)</option></select></div>
+ <button class="calc-btn" onclick="calcAPGAR()">Calculate APGAR</button>
+ <div class="calc-result" id="apgar-result"><div class="calc-result-val" id="apgar-val">--</div><div class="calc-result-label">APGAR Score (/10)</div><div class="calc-result-interp" id="apgar-interp"></div></div>
+ </div>
+
+ <!-- BSA -->
+ <div class="calc-form" id="calc-bsa">
+ <h3>Body Surface Area</h3>
+ <div class="calc-field"><label>Weight (kg)</label><input type="number" id="bsa-weight" placeholder="e.g. 70"/></div>
+ <div class="calc-field"><label>Height (cm)</label><input type="number" id="bsa-height" placeholder="e.g. 175"/></div>
+ <button class="calc-btn" onclick="calcBSA()">Calculate BSA</button>
+ <div class="calc-result" id="bsa-result"><div class="calc-result-val" id="bsa-val">--</div><div class="calc-result-label">BSA (m²)</div><div class="calc-result-interp" id="bsa-interp"></div></div>
+ </div>
+
+ <!-- MAP -->
+ <div class="calc-form" id="calc-map">
+ <h3>Mean Arterial Pressure</h3>
+ <div class="calc-field"><label>Systolic BP (mmHg)</label><input type="number" id="map-sys" placeholder="e.g. 120"/></div>
+ <div class="calc-field"><label>Diastolic BP (mmHg)</label><input type="number" id="map-dia" placeholder="e.g. 80"/></div>
+ <button class="calc-btn" onclick="calcMAP()">Calculate MAP</button>
+ <div class="calc-result" id="map-result"><div class="calc-result-val" id="map-val">--</div><div class="calc-result-label">MAP (mmHg)</div><div class="calc-result-interp" id="map-interp"></div></div>
+ </div>
+
+ <!-- IBW -->
+ <div class="calc-form" id="calc-ibw">
+ <h3>Ideal Body Weight</h3>
+ <div class="calc-field"><label>Height (cm)</label><input type="number" id="ibw-height" placeholder="e.g. 175"/></div>
+ <div class="calc-field"><label>Sex</label><select id="ibw-sex"><option value="male">Male</option><option value="female">Female</option></select></div>
+ <button class="calc-btn" onclick="calcIBW()">Calculate IBW</button>
+ <div class="calc-result" id="ibw-result"><div class="calc-result-val" id="ibw-val">--</div><div class="calc-result-label">IBW (kg)</div><div class="calc-result-interp" id="ibw-interp"></div></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- PDF MODE PANEL -->
+ <div class="tab-panel" id="panel-pdfmode">
+ <div class="pdf-layout">
+ <div class="pdf-hero">
+ <h2><i data-lucide="file-text" class="h2-icon"></i> PDF & Notes Mode</h2>
+ <p>Upload any PDF, notes or document — AI summarises, creates flashcards and answers your questions!</p>
+ </div>
+ <div class="pdf-upload-zone" id="pdfZone" onclick="document.getElementById('pdfFileInput').click()">
+ <div id="pdfZoneContent">
+ <div style="display:flex;justify-content:center;margin-bottom:.8rem"><i data-lucide="file-up" style="width:40px;height:40px;color:var(--p-lite)"></i></div>
+ <div style="font-size:15px;font-weight:800;color:var(--tx2);margin-bottom:.3rem">Tap to upload file</div>
+ <div style="font-size:12px;color:var(--tx3)">.pdf • .txt • .docx (paste text below if needed)</div>
+ </div>
+ </div>
+ <input type="file" id="pdfFileInput" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.png,.jpg,.jpeg,.csv" style="display:none"/>
+ <div class="pdf-file-info" id="pdfFileInfo">
+ <div style="display:flex;align-items:center"><i data-lucide="file-text" style="width:26px;height:26px;color:var(--p-lite)"></i></div>
+ <div style="flex:1"><div style="font-size:14px;font-weight:800;color:var(--tx)" id="pdfFileName">file.pdf</div><div style="font-size:12px;color:var(--tx3)" id="pdfFileSize">0 KB</div></div>
+ <button onclick="pdfReset()" style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:var(--red);padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--f)">Remove</button>
+ </div>
+ <textarea id="pdfTextInput" placeholder="Or paste your text/notes here directly..." style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--surface2);color:var(--tx);font-size:13px;font-family:var(--f);resize:none;outline:none;height:100px;line-height:1.6;margin-bottom:1rem"></textarea>
+ <div class="pdf-actions">
+ <button class="pdf-action-btn" onclick="pdfAction('summarise')">Summarise</button>
+ <button class="pdf-action-btn" onclick="pdfAction('flashcards')">Flashcards</button>
+ <button class="pdf-action-btn" onclick="pdfAction('mcq')">Make MCQs</button>
+ <button class="pdf-action-btn" onclick="pdfAction('notes')">Short Notes</button>
+ <button class="pdf-action-btn" onclick="pdfAction('chat')">Ask Questions</button>
+ </div>
+ <div style="text-align:center;padding:1.5rem;display:none" id="pdfLoading">
+ <div class="lec-loading-dots"><div class="lec-dot" style="background:var(--red)"></div><div class="lec-dot" style="background:var(--red)"></div><div class="lec-dot" style="background:var(--red)"></div></div>
+ <p style="font-size:13px;color:var(--tx2);font-weight:600" id="pdfLoadingTxt">Processing document...</p>
+ </div>
+ <div class="pdf-chat-wrap" id="pdfChatWrap">
+ <div class="pdf-chat-msgs" id="pdfChatMsgs"></div>
+ <div class="pdf-chat-inp">
+ <input type="text" class="pdf-chat-input" id="pdfChatInput" placeholder="Ask anything about this document..." onkeydown="if(event.key==='Enter')pdfChatSend()"/>
+ <button class="pdf-send" onclick="pdfChatSend()">Send</button>
+ </div>
+ </div>
+ <div class="pdf-output" id="pdfOutput">
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+ <h3 style="font-size:14px;font-weight:800" id="pdfOutputTitle">Document Summary</h3>
+ <button onclick="pdfCopy()" style="font-size:12px;font-weight:700;color:var(--red);background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);padding:5px 12px;border-radius:8px;cursor:pointer;font-family:var(--f)">Copy</button>
+ </div>
+ <div id="pdfResult" style="font-size:13px;color:var(--tx2);line-height:1.8;white-space:pre-wrap"></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- PODCAST MODE PANEL -->
+ <div class="tab-panel" id="panel-podcast">
+ <div class="pod-layout">
+ <div class="pod-hero">
+ <h2><i data-lucide="headphones" class="h2-icon"></i> Podcast Mode</h2>
+ <p>Convert your notes into an AI audio summary — study while on the go!</p>
+ </div>
+ <div class="pod-input-card">
+ <h3 style="font-size:13px;font-weight:800;margin-bottom:.8rem">Paste your notes</h3>
+ <div style="display:flex;justify-content:flex-end;margin-bottom:.4rem"><label style="display:flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);color:var(--p-lite);border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Upload<input type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.png,.jpg,.jpeg,.csv" style="display:none" onchange="handlePanelUpload(event,'podNotesInput')" /></label></div>
+<textarea class="pod-textarea" id="podNotesInput" placeholder="Paste your medical notes, lecture content, or any text...&#10;&#10;AI will convert it into a structured audio podcast script!"></textarea>
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin:.8rem 0 .4rem">Podcast Style</div>
+ <div class="pod-style-row">
+ <button class="pod-style-btn on" data-pstyle="lecture" onclick="podPickStyle(this)">Lecture</button>
+ <button class="pod-style-btn" data-pstyle="revision" onclick="podPickStyle(this)">Quick Revision</button>
+ <button class="pod-style-btn" data-pstyle="story" onclick="podPickStyle(this)">Story Mode</button>
+ <button class="pod-style-btn" data-pstyle="exam" onclick="podPickStyle(this)">Exam Focused</button>
+ </div>
+ </div>
+ <button class="pod-gen-btn" id="podGenBtn" onclick="generatePodcast()">Generate Podcast</button>
+ <div style="text-align:center;padding:1.5rem;display:none" id="podLoading">
+ <div class="lec-loading-dots"><div class="lec-dot"></div><div class="lec-dot"></div><div class="lec-dot"></div></div>
+ <p style="font-size:13px;color:var(--tx2);font-weight:600">Creating your podcast...</p>
+ </div>
+ <div class="pod-player" id="podPlayer">
+ <div class="pod-player-header">
+ <div class="pod-album"></div>
+ <div><div class="pod-title" id="podTitle">Medical Podcast</div><div class="pod-subtitle" id="podSubtitle">AI Doctor Study • Generated</div></div>
+ </div>
+ <div class="pod-waveform" id="podWaveform"></div>
+ <div class="pod-progress" onclick="podSeek(event)"><div class="pod-progress-fill" id="podProgressFill" style="width:0%"></div></div>
+ <div class="pod-time"><span id="podCurrentTime">0:00</span><span id="podTotalTime">0:00</span></div>
+ <div class="pod-controls">
+ <button class="pod-ctrl-btn" onclick="podRewind()">⏮</button>
+ <button class="pod-play-btn" id="podPlayBtn" onclick="podTogglePlay()">▶</button>
+ <button class="pod-ctrl-btn" onclick="podForward()">⏭</button>
+ </div>
+ <div class="pod-speed-row">
+ <button class="pod-speed-btn" onclick="podSpeed(.75,this)">0.75x</button>
+ <button class="pod-speed-btn on" onclick="podSpeed(1,this)">1x</button>
+ <button class="pod-speed-btn" onclick="podSpeed(1.25,this)">1.25x</button>
+ <button class="pod-speed-btn" onclick="podSpeed(1.5,this)">1.5x</button>
+ <button class="pod-speed-btn" onclick="podSpeed(2,this)">2x</button>
+ </div>
+ <div class="pod-transcript" id="podTranscript"></div>
+ <div style="display:flex;gap:8px;margin-top:1rem">
+ <button onclick="podToFlashcards()" style="flex:1;padding:9px;border-radius:10px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--p-lite);font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Flashcards</button>
+ <button onclick="podReset()" style="flex:1;padding:9px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid var(--bd);color:var(--tx2);font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">↺ New</button>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- SRS REVIEW QUEUE PANEL -->
+ 
+
+ <!-- DECK MANAGER PANEL -->
+ 
+
+ <!-- DECK CREATE/EDIT MODAL -->
+ 
+
+ <!-- AI IMPORT CENTER PANEL -->
+ 
+
+ <!-- ANALYTICS PANEL -->
+ <div class="tab-panel" id="panel-analytics">
+ <div class="ana-layout">
+ <div class="ana-hero">
+ <h2><i data-lucide="bar-chart-2" class="h2-icon"></i> Performance Analytics</h2>
+ <p>Track your progress, find weak spots, study smarter</p>
+ </div>
+ <div class="ana-grid">
+ <div class="ana-card"><div class="ana-card-val" id="ana-xp" style="color:var(--p-lite)">0</div><div class="ana-card-lbl">Total XP</div></div>
+ <div class="ana-card"><div class="ana-card-val" id="ana-streak" style="color:var(--gold)">0</div><div class="ana-card-lbl">Day Streak</div></div>
+ <div class="ana-card"><div class="ana-card-val" id="ana-cards" style="color:var(--ok)">0</div><div class="ana-card-lbl">Cards Made</div></div>
+ <div class="ana-card"><div class="ana-card-val" id="ana-qs" style="color:#8B5CF6">0</div><div class="ana-card-lbl">Questions Asked</div></div>
+ <div class="ana-card"><div class="ana-card-val" id="ana-cases" style="color:var(--red)">0</div><div class="ana-card-lbl">Cases Solved</div></div>
+ <div class="ana-card"><div class="ana-card-val" id="ana-accuracy" style="color:var(--ok)">0%</div><div class="ana-card-lbl">Quiz Accuracy</div></div>
+ </div>
+ <div class="ana-section">
+ <h3>Subject Performance</h3>
+ <div id="anaSubjList"></div>
+ </div>
+ <div class="ana-section">
+ <h3>Study Activity (12 Weeks)</h3>
+ <div class="ana-heatmap" id="anaHeatmap"></div>
+ </div>
+ <div class="ana-section">
+ <h3>AI Recommendation</h3>
+ <div class="ana-rec" id="anaRec">Loading your recommendation...</div>
+ </div>
+ <div class="ana-section">
+ <h3>Recent Activity</h3>
+ <div id="anaActivity" style="font-size:13px;color:var(--tx2)"></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- PUBLIC DECKS PANEL -->
+ 
+
+ <!-- NIBBLE MODE PANEL -->
+ <div class="tab-panel" id="panel-nibble">
+ <div class="nibble-layout">
+ <!-- Top Bar -->
+ <div class="nibble-top">
+ <div class="nibble-top-title">Nibble Mode <span style="font-size:11px;font-weight:700;color:#8B5CF6;background:rgba(99,102,241,.15);padding:2px 8px;border-radius:10px">BETA</span></div>
+ <div class="nibble-top-right">
+ <div class="nibble-xp-pill"><span id="nibbleXPToday">0</span> XP today</div>
+ <button class="nibble-voice-btn" id="nibbleVoiceBtn" onclick="nibbleToggleVoice()">Voice</button>
+ </div>
+ </div>
+ <!-- Topic Bar -->
+ <div class="nibble-topic-bar">
+ <div class="nibble-topic-scroll" id="nibbleTopicScroll">
+ <button class="nibble-topic-btn on" data-topic="Pharmacology" onclick="nibblePickTopic(this)">Pharmacology</button>
+ <button class="nibble-topic-btn" data-topic="Anatomy" onclick="nibblePickTopic(this)">Anatomy</button>
+ <button class="nibble-topic-btn" data-topic="Physiology" onclick="nibblePickTopic(this)">Physiology</button>
+ <button class="nibble-topic-btn" data-topic="Pathology" onclick="nibblePickTopic(this)">Pathology</button>
+ <button class="nibble-topic-btn" data-topic="Microbiology" onclick="nibblePickTopic(this)">Microbiology</button>
+ <button class="nibble-topic-btn" data-topic="Medicine" onclick="nibblePickTopic(this)">Medicine</button>
+ <button class="nibble-topic-btn" data-topic="Surgery" onclick="nibblePickTopic(this)">Surgery</button>
+ <button class="nibble-topic-btn" data-topic="Cardiology" onclick="nibblePickTopic(this)">Cardiology</button>
+ <button class="nibble-topic-btn" data-topic="Neurology" onclick="nibblePickTopic(this)">Neurology</button>
+ <button class="nibble-topic-btn" data-topic="Custom..." onclick="nibbleCustomTopic()">Custom</button>
+ </div>
+ </div>
+ <!-- Feed -->
+ <div class="nibble-feed" id="nibbleFeed">
+ <!-- Setup screen -->
+ <div class="nibble-card" id="nibbleSetupCard">
+ <div class="nibble-setup">
+ <div class="nibble-setup-icon"><i data-lucide="flame"></i></div>
+ <h2 style="font-size:1.4rem;font-weight:900;margin-bottom:.5rem"><i data-lucide="zap" class="h2-icon"></i> Nibble Mode</h2>
+ <p style="font-size:14px;color:var(--tx2);max-width:300px;line-height:1.6">TikTok-style medical study bites. Swipe through high-yield concepts, mnemonics, and mini quizzes.</p>
+ <div class="nibble-mode-row" style="margin-top:1.2rem">
+ <button class="nibble-mode-btn on" data-nmode="revision" onclick="nibblePickMode(this)">Quick Revision</button>
+ <button class="nibble-mode-btn" data-nmode="exam" onclick="nibblePickMode(this)">Exam Mode</button>
+ <button class="nibble-mode-btn" data-nmode="clinical" onclick="nibblePickMode(this)">Clinical</button>
+ <button class="nibble-mode-btn" data-nmode="simple" onclick="nibblePickMode(this)">ELI12</button>
+ </div>
+ <input type="number" id="nibbleCardCount" class="nibble-custom-input" style="max-width:200px;margin-top:.8rem" value="8" min="3" max="20" placeholder="Number of cards"/>
+ <button class="nibble-gen-btn" id="nibbleGenBtn" onclick="nibbleGenerate()">Start Nibbling!</button>
+ </div>
+ </div>
+ </div>
+ <!-- Nav -->
+ <div class="nibble-nav" id="nibbleNav" style="display:none">
+ <button class="nibble-nav-btn" onclick="nibblePrev()">↑</button>
+ <div style="flex:1;text-align:center">
+ <div class="nibble-progress"><div class="nibble-progress-fill" id="nibbleProgressFill" style="width:0%"></div></div>
+ <div class="nibble-card-num" id="nibbleCardNum" style="margin-top:4px">0 / 0</div>
+ </div>
+ <button class="nibble-nav-btn" onclick="nibbleNext()">↓</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- GROWTH MODE PANEL -->
+ <div class="tab-panel" id="panel-growth">
+ <div class="growth-layout">
+ <div class="growth-hero">
+ <h2><i data-lucide="trending-up" class="h2-icon"></i> Growth Mode</h2>
+ <p>AI-powered student life & performance system — become the best version of yourself</p>
+ </div>
+ <div class="growth-tabs">
+ <button class="growth-tab on" onclick="growthTab(this,'dashboard')">Dashboard</button>
+ <button class="growth-tab" onclick="growthTab(this,'coach')">AI Coach</button>
+ <button class="growth-tab" onclick="growthTab(this,'lockin')">Lock-In</button>
+ <button class="growth-tab" onclick="growthTab(this,'habits')">Habits</button>
+ <button class="growth-tab" onclick="growthTab(this,'motivation')">Motivation</button>
+ <button class="growth-tab" onclick="growthTab(this,'analytics')">Analytics</button>
+ </div>
+
+ <!-- DASHBOARD TAB -->
+ <div class="growth-content" id="growth-dashboard">
+ <div class="growth-greeting" id="growthGreeting">Good morning! </div>
+ <p style="font-size:12px;color:var(--tx2);margin-bottom:1rem" id="growthDate">Loading...</p>
+
+ <!-- Level Card -->
+ <div class="growth-level-card">
+ <div class="growth-level-badge" id="growthLevelBadge"></div>
+ <div style="flex:1">
+ <div class="growth-level-name" id="growthLevelName">Seedling Student</div>
+ <div class="growth-level-sub" id="growthLevelSub">Keep growing!</div>
+ <div class="growth-xp-bar"><div class="growth-xp-fill" id="growthXPFill" style="width:0%"></div></div>
+ <div style="font-size:11px;color:var(--tx3);margin-top:.3rem"><span id="growthXPNum">0</span> / <span id="growthXPNext">500</span> XP</div>
+ </div>
+ </div>
+
+ <!-- Stats -->
+ <div class="growth-stats">
+ <div class="growth-stat"><div class="growth-stat-val" id="g-streak" style="color:var(--gold)">0</div><div class="growth-stat-lbl">Streak</div></div>
+ <div class="growth-stat"><div class="growth-stat-val" id="g-focus" style="color:var(--p-lite)">0h</div><div class="growth-stat-lbl">⏱ Focus</div></div>
+ <div class="growth-stat"><div class="growth-stat-val" id="g-habits" style="color:var(--ok)">0%</div><div class="growth-stat-lbl">Habits</div></div>
+ </div>
+
+ <!-- Mood Check -->
+ <div style="background:var(--card);border-radius:16px;padding:1.2rem;border:1px solid var(--bd);margin-bottom:1rem">
+ <div style="font-size:13px;font-weight:800;margin-bottom:.8rem">How are you feeling? </div>
+ <div class="mood-row">
+ <button class="mood-btn" onclick="growthSetMood('','Exhausted')" title="Exhausted"></button>
+ <button class="mood-btn" onclick="growthSetMood('','Stressed')" title="Stressed"></button>
+ <button class="mood-btn" onclick="growthSetMood('','Okay')" title="Okay"></button>
+ <button class="mood-btn" onclick="growthSetMood('','Good')" title="Good"></button>
+ <button class="mood-btn" onclick="growthSetMood('','Locked In')" title="Locked In"></button>
+ </div>
+ <div id="moodResponse" style="font-size:12px;color:var(--ok);margin-top:.5rem;font-weight:600;display:none"></div>
+ </div>
+
+ <!-- Exam Countdown -->
+ <div id="growthCountdown" style="background:var(--card);border-radius:16px;padding:1.2rem;border:1px solid var(--bd);margin-bottom:1rem">
+ <div style="font-size:13px;font-weight:800;margin-bottom:.8rem">Exam Countdown</div>
+ <div style="display:flex;gap:8px;align-items:center;margin-bottom:.8rem">
+ <input type="text" id="examNameInput" placeholder="Exam name (e.g. MBBS Finals)" style="flex:1;padding:8px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--surface2);color:var(--tx);font-size:13px;font-family:var(--f);outline:none"/>
+ <input type="date" id="examDateInput" style="padding:8px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--surface2);color:var(--tx);font-size:13px;font-family:var(--f);outline:none"/>
+ <button onclick="growthAddExam()" style="padding:8px 14px;background:var(--red);color:#fff;border:none;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Add</button>
+ </div>
+ <div id="examCountdowns"></div>
+ </div>
+
+ <!-- Today's Goals -->
+ <div style="background:var(--card);border-radius:16px;padding:1.2rem;border:1px solid var(--bd);margin-bottom:1rem">
+ <div style="font-size:13px;font-weight:800;margin-bottom:.8rem">Today's Goals</div>
+ <div id="growthTodayGoals"></div>
+ <button onclick="growthAIGoals()" style="width:100%;padding:10px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);color:var(--ok);border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f);margin-top:.6rem">Generate AI Goals</button>
+ </div>
+ </div>
+
+ <!-- AI COACH TAB -->
+ <div class="growth-content" id="growth-coach" style="display:none">
+ <div class="coach-chat">
+ <div class="coach-header">
+ <div class="coach-avatar"></div>
+ <div><div class="coach-name">Dr. Growth — AI Coach</div><div class="coach-status">● Online — here to help you win</div></div>
+ </div>
+ <div class="coach-msgs" id="coachMsgs">
+ <div class="coach-msg ai">Hey! I'm Dr. Growth, your personal AI study coach I'm here to help you study smarter, stay consistent, and ace your exams. What do you need help with today?</div>
+ </div>
+ <div class="coach-quick-btns">
+ <button class="coach-quick" onclick="coachQuick('I need motivation to study')">Motivate me</button>
+ <button class="coach-quick" onclick="coachQuick('I am feeling burnout, what should I do?')">Burnout help</button>
+ <button class="coach-quick" onclick="coachQuick('Give me a quick productivity tip')">Productivity tip</button>
+ <button class="coach-quick" onclick="coachQuick('How should I prepare for my exam next week?')">Exam prep</button>
+ <button class="coach-quick" onclick="coachQuick('I keep procrastinating, help me')">Stop procrastinating</button>
+ </div>
+ <div class="coach-input-row">
+ <input type="text" class="coach-input" id="coachInput" placeholder="Ask Dr. Growth anything..." onkeydown="if(event.key==='Enter')coachSend()"/>
+ <button class="coach-send" onclick="coachSend()">Send</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- LOCK-IN TAB -->
+ <div class="growth-content" id="growth-lockin" style="display:none">
+ <div style="background:var(--card);border-radius:16px;padding:1.5rem;border:1px solid var(--bd);text-align:center;margin-bottom:1rem">
+ <div style="display:flex;justify-content:center;margin-bottom:.8rem"><i data-lucide="target" style="width:40px;height:40px;color:var(--p)"></i></div>
+ <h3 style="font-size:16px;font-weight:900;margin-bottom:.4rem">Lock-In Mode</h3>
+ <p style="font-size:13px;color:var(--tx2);margin-bottom:1.2rem">Full-screen Pomodoro timer. No distractions. Pure focus.</p>
+ <div style="display:flex;gap:8px;justify-content:center;margin-bottom:1rem;flex-wrap:wrap">
+ <button class="nibble-mode-btn on" data-lockin="25" onclick="lockInPickTime(this)"> 25 min</button>
+ <button class="nibble-mode-btn" data-lockin="45" onclick="lockInPickTime(this)"> 45 min</button>
+ <button class="nibble-mode-btn" data-lockin="60" onclick="lockInPickTime(this)"> 60 min</button>
+ <button class="nibble-mode-btn" data-lockin="90" onclick="lockInPickTime(this)"> 90 min</button>
+ </div>
+ <div style="margin-bottom:1rem">
+ <label style="font-size:12px;font-weight:700;color:var(--tx2)">What are you studying?</label>
+ <input type="text" id="lockInTopic" placeholder="e.g. Cardiology pharmacology" style="width:100%;padding:9px 14px;border-radius:10px;border:1px solid var(--bd);background:var(--surface2);color:var(--tx);font-size:13px;font-family:var(--f);outline:none;margin-top:.4rem"/>
+ </div>
+ <button onclick="lockInStart()" style="width:100%;padding:14px;background:linear-gradient(135deg,var(--p),#8B5CF6);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:900;cursor:pointer;font-family:var(--f);box-shadow:var(--glow)">Enter Lock-In Mode</button>
+ </div>
+ <div style="background:var(--card);border-radius:16px;padding:1.2rem;border:1px solid var(--bd)">
+ <div style="font-size:13px;font-weight:800;margin-bottom:.8rem">Focus History</div>
+ <div id="lockInHistory"></div>
+ </div>
+ </div>
+
+ <!-- HABITS TAB -->
+ <div class="growth-content" id="growth-habits" style="display:none">
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+ <h3 style="font-size:14px;font-weight:800">Daily Habits</h3>
+ <button onclick="growthResetHabits()" style="font-size:11px;font-weight:700;color:var(--tx3);background:transparent;border:1px solid var(--bd);padding:5px 10px;border-radius:8px;cursor:pointer;font-family:var(--f)">Reset Today</button>
+ </div>
+ <div id="habitsList"></div>
+ <button onclick="growthAIHabitTip()" style="width:100%;padding:12px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);color:var(--ok);border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;font-family:var(--f);margin-top:.5rem">Get AI Habit Tip</button>
+ </div>
+
+ <!-- MOTIVATION TAB -->
+ <div class="growth-content" id="growth-motivation" style="display:none">
+ <div id="motivationFeed"></div>
+ <button onclick="growthLoadMotivation()" style="width:100%;padding:12px;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f);margin-top:.5rem">Load More</button>
+ </div>
+
+ <!-- ANALYTICS TAB -->
+ <div class="growth-content" id="growth-analytics" style="display:none">
+ <div id="growthAnalyticsContent"></div>
+ </div>
+ </div>
+ </div>
+
+ <!-- LOCK-IN OVERLAY -->
+ <div class="lockin-overlay" id="lockInOverlay">
+ <svg width="0" height="0"><defs><linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#2563EB"/><stop offset="100%" style="stop-color:#8B5CF6"/></linearGradient></defs></svg>
+ <div class="lockin-phase" id="lockInPhase">FOCUS</div>
+ <div class="lockin-ring">
+ <svg viewBox="0 0 160 160" width="160" height="160">
+ <circle class="lockin-ring-bg" cx="80" cy="80" r="70"/>
+ <circle class="lockin-ring-fill" id="lockInRingFill" cx="80" cy="80" r="70" stroke-dasharray="439.8" stroke-dashoffset="0"/>
+ </svg>
+ <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column">
+ <div class="lockin-timer" id="lockInTimer">25:00</div>
+ </div>
+ </div>
+ <div class="lockin-label" id="lockInTopicLabel">Deep Work Session</div>
+ <div class="lockin-sessions" id="lockInSessionCount">Session 1 of 4</div>
+ <div class="lockin-progress"><div class="lockin-progress-fill" id="lockInProgressFill" style="width:0%"></div></div>
+ <div class="lockin-quote" id="lockInQuote">"The secret of getting ahead is getting started."</div>
+ <div class="lockin-controls">
+ <button class="lockin-btn primary" id="lockInToggleBtn" onclick="lockInToggle()">⏸ Pause</button>
+ <button class="lockin-btn secondary" onclick="lockInStop()">End Session</button>
+ </div>
+ </div>
+
+ <!-- SETTINGS PANEL -->
+ <div class="tab-panel" id="panel-settings">
+ <div class="settings-layout">
+ <h2 style="font-size:1.4rem;font-weight:900;margin-bottom:.3rem"><i data-lucide="settings" class="h2-icon"></i> Settings</h2>
+ <p style="font-size:13px;color:var(--tx2);margin-bottom:2rem">Customize your experience</p>
+ <div style="background:var(--card);border-radius:16px;padding:1.3rem;border:1px solid var(--bd);margin-bottom:1rem">
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem">Profile</div>
+ <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem">
+ <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--p),var(--p2));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff" id="settingsAvatar">M</div>
+ <div><div style="font-size:15px;font-weight:800" id="settingsName">Student</div><div style="font-size:12px;color:var(--tx2)" id="settingsYear">Year</div></div>
+ </div>
+ <button onclick="isPro=true;updateBadge();document.querySelectorAll('.mode-btn.pr').forEach(function(b){b.classList.remove('pr');});document.getElementById('proChipBtn').style.display='none';" style="display:none" id="settingsProToggle"></button>
+ <div style="display:flex;gap:8px">
+ <button onclick="openProModal()" style="flex:1;padding:9px;border-radius:10px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--p-lite);font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Upgrade to Pro</button>
+ <button onclick="if(typeof medSignOut==='function')medSignOut();else{hist=[];sName='';goTo('pg-landing');}" style="flex:1;padding:9px;border-radius:10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:var(--red);font-size:12px;font-weight:800;cursor:pointer;font-family:var(--f)">Sign Out</button>
+ </div>
+ </div>
+ <div style="background:var(--card);border-radius:16px;padding:1.3rem;border:1px solid var(--bd);margin-bottom:1rem">
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.8rem">Subscription</div>
+ <p style="font-size:12px;color:var(--tx2);margin-bottom:.8rem;line-height:1.6" id="subStatusText">Free plan. Upgrade to Pro for unlimited access.</p>
+ <button id="cancelSubBtn" onclick="cancelSubscription()" style="display:none;width:100%;padding:11px;border-radius:10px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.35);color:var(--red);font-size:13px;font-weight:800;cursor:pointer;font-family:var(--f)">Cancel Subscription</button>
+ <script>
+ function cancelSubscription(){
+  if(confirm('Cancel your Pro subscription? You will keep Pro access until the end of your current paid period, then switch back to the free plan.')){
+   window.open('https://gumroad.com/subscriptions','_blank');
+   showToast('Complete the cancellation on the Gumroad page that just opened','info',6000);
+  }
+ }
+ // Show cancel button and status for Pro users (runs after login pro-check)
+ setInterval(function(){
+  var btn=document.getElementById('cancelSubBtn');
+  var txt=document.getElementById('subStatusText');
+  if(btn&&txt){
+   if(typeof isPro!=='undefined'&&isPro){
+    btn.style.display='block';
+    txt.textContent='You are on the Pro plan. Cancel anytime — you keep Pro until your paid period ends.';
+   } else {
+    btn.style.display='none';
+    txt.textContent='Free plan. Upgrade to Pro for unlimited access.';
+   }
+  }
+ }, 2000);
+ </script>
+ </div>
+ <div style="background:var(--card);border-radius:16px;padding:1.3rem;border:1px solid var(--bd);margin-bottom:1rem">
+ <div style="font-size:12px;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem">About</div>
+ <div style="display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--bd)"><span style="font-size:13px;color:var(--tx2)">Version</span><span style="font-size:13px;font-weight:700">AI Doctor v1.0</span></div>
+ <div style="display:flex;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--bd)"><span style="font-size:13px;color:var(--tx2)">Built by</span><span style="font-size:13px;font-weight:700">Mustafa Shahid Khan</span></div>
+ <div style="display:flex;justify-content:space-between;padding:.6rem 0"><span style="font-size:13px;color:var(--tx2)">Powered by</span><span style="font-size:13px;font-weight:700">Groq + Llama 3.3</span></div>
+ </div>
+ <div style="background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(6,182,212,.1));border:1px solid rgba(37,99,235,.3);border-radius:16px;padding:1.3rem;text-align:center">
+ <div style="font-size:16px;font-weight:900;margin-bottom:.4rem">AI Doctor Pro </div>
+ <div style="font-size:13px;color:var(--tx2);margin-bottom:1rem">Unlimited questions, all modes, all subjects</div>
+ <button onclick="openProModal()" style="padding:10px 28px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f)">Upgrade to Pro</button>
+ </div>
+ </div>
+ </div>
+
+ </div>
+ </div>
+</div>
+
+<script src="01-core-utils.js"></script>
+ <script src="02-file-media.js"></script>
+ <script src="03-lecture.js"></script>
+ <script src="04-library-tools.js"></script>
+ <script src="05-exam-prep.js"></script>
+ <script src="06-quiz-clinical.js"></script>
+ <script src="07-mock-dashboard.js"></script>
+ <script src="08-medical-tools.js"></script>
+ <script src="09-srs-decks.js"></script>
+ <script src="10-ui-system.js"></script>
+ <script src="11-nibble-growth.js"></script>
+ <script src="12-animations.js"></script>
+ <script src="auth.js"></script>
+
+<div id="toastStack" aria-live="assertive" aria-atomic="true" class="toast-stack"></div>
+<div class="meme-ach-popup" id="memeAchPopup">
+ <div class="meme-ach-icon" id="memeAchIcon"></div>
+ <div class="meme-ach-title">Achievement Unlocked</div>
+ <div class="meme-ach-name" id="memeAchName">Locked In</div>
+</div>
+<div class="share-card-overlay" id="shareCardOverlay" onclick="closeShareCard()">
+ <div class="share-card" onclick="event.stopPropagation()">
+ <div class="share-card-logo">AI Doctor Study</div>
+ <div class="share-card-name" id="scName">Dr. Student</div>
+ <div class="share-card-rank" id="scRank">Medical Student</div>
+ <div class="share-card-badge" id="scBadge">Locked In</div>
+ <div class="share-card-stats">
+ <div class="share-card-stat"><div class="share-card-stat-val" id="sc-xp">0</div><div class="share-card-stat-lbl">XP Earned</div></div>
+ <div class="share-card-stat"><div class="share-card-stat-val" id="sc-streak">0</div><div class="share-card-stat-lbl">Day Streak</div></div>
+ <div class="share-card-stat"><div class="share-card-stat-val" id="sc-cards">0</div><div class="share-card-stat-lbl">Cards Done</div></div>
+ </div>
+ <div class="share-card-footer">aidoctor.study • Study smarter, not longer.</div>
+ <div class="share-card-actions">
+ <button onclick="shareCardCopy()" style="flex:1;padding:10px;background:linear-gradient(135deg,var(--p),#8B5CF6);color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;font-family:var(--f)">Copy Stats</button>
+ <button onclick="closeShareCard()" style="flex:1;padding:10px;border:1px solid var(--bd);background:transparent;color:var(--tx2);border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--f)">Close</button>
+ </div>
+ </div>
+</div>
+<!-- Command Palette -->
+<div class="cmd-overlay" id="cmdOverlay" onclick="closeCmdPalette()">
+ <div class="cmd-box" onclick="event.stopPropagation()">
+ <div class="cmd-input-wrap">
+ <span class="cmd-icon"><i data-lucide="search"></i></span>
+ <input type="text" class="cmd-input" id="cmdInput" placeholder="Search features, panels..." oninput="cmdSearch(this.value)" onkeydown="cmdKeyNav(event)"/>
+ <span class="cmd-hint">ESC</span>
+ </div>
+ <div class="cmd-results" id="cmdResults"></div>
+ </div>
+</div>
+<!-- Bottom Nav (mobile) -->
+<div class="bottom-nav" id="bottomNav">
+ <button class="bnav-btn on" onclick="goPanel('dash')" id="bnav-dash"><div class="bnav-btn-icon"><i data-lucide="layout-dashboard"></i></div><div class="bnav-btn-lbl">Home</div></button>
+ <button class="bnav-btn" onclick="goPanel('flash')" id="bnav-flash"><div class="bnav-btn-icon"><i data-lucide="layers"></i></div><div class="bnav-btn-lbl">Cards</div></button>
+ <button class="bnav-btn" onclick="goPanel('chat')" id="bnav-chat"><div class="bnav-btn-icon"><i data-lucide="message-circle"></i></div><div class="bnav-btn-lbl">AI Chat</div></button>
+ <button class="bnav-btn" onclick="goPanel('srs')" id="bnav-srs"><div class="bnav-btn-icon"><i data-lucide="repeat"></i></div><div class="bnav-btn-lbl">Review</div></button>
+ <button class="bnav-btn" onclick="goPanel('growth')" id="bnav-growth"><div class="bnav-btn-icon"><i data-lucide="trending-up"></i></div><div class="bnav-btn-lbl">Growth</div></button>
+ <button class="bnav-btn" onclick="goPanel('nibble')" id="bnav-nibble"><div class="bnav-btn-icon"><i data-lucide="zap"></i></div><div class="bnav-btn-lbl">Nibble</div></button>
+ <button class="bnav-btn" onclick="openCmdPalette()" id="bnav-more"><div class="bnav-btn-icon"><i data-lucide="more-horizontal"></i></div><div class="bnav-btn-lbl">More</div></button>
+</div>
+<!-- FAB -->
+<button class="fab" onclick="openCmdPalette()" title="Quick Access"><i data-lucide="command"></i></button>
+</body>
+</html>
