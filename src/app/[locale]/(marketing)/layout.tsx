@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Google_Sans_Flex } from "next/font/google";
 
+import { LOCALES, RTL_LOCALES, isLocale, type Locale } from "@/lib/i18n/locales";
 import {
   generateMetadata,
   generateViewport,
@@ -14,6 +15,10 @@ import { ReducedMotion } from "@/components/common/reduced-motion";
 import { ScrollLayout } from "@/layouts/scroll-layout";
 
 import "@/app/globals.css";
+
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ locale }));
+}
 
 /**
  * Google Sans Flex — the Figma design's only typeface.
@@ -31,16 +36,25 @@ const googleSansFlex = Google_Sans_Flex({
   axes: ["GRAD", "ROND", "wdth"],
 });
 
+// Locale-agnostic fallback only — every actual page under this layout
+// (home, the four legal pages) exports its own locale-aware `generateMetadata`,
+// which Next uses instead. This covers the layout itself having no page.
 export const metadata: Metadata = generateMetadata();
 export const viewport: Viewport = generateViewport();
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+  const dir = RTL_LOCALES.has(locale) ? "rtl" : "ltr";
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={dir}>
       <body className={`${googleSansFlex.variable} font-sans`}>
         <script
           type="application/ld+json"

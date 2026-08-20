@@ -1,22 +1,14 @@
+import { FloatingCta } from "@/components/common/floating-cta";
 import { SiteFooter } from "@/components/common/footer/site-footer";
 import { SiteHeader } from "@/components/common/header/site-header";
-import {
-  ABOUT_CONTENT,
-  BRAND_NAME,
-  CONTACT_CONTENT,
-  FOOTER_LINKS,
-  HEADER_CTA,
-  HERO_CONTENT,
-  SERVICE_CARDS,
-  SERVICES_INTRO,
-  SITE_NAV,
-  TEAM_CONTENT,
-  WHY_CONTENT,
-} from "@/data/mocks/home";
+import { getHomeContent, getSiteChrome } from "@/lib/i18n/content";
+import type { Locale } from "@/lib/i18n/locales";
 
 import { About } from "./sections/about";
 import { Contact } from "./sections/contact";
 import { Hero } from "./sections/hero";
+import { LiveDemo } from "./sections/live-demo";
+import { Pricing } from "./sections/pricing";
 import { Services } from "./sections/services";
 import { Team } from "./sections/team";
 import { WhyDantora } from "./sections/why-dantora";
@@ -24,27 +16,49 @@ import { WhyDantora } from "./sections/why-dantora";
 /**
  * Home view — a Server Component assembling the AI Doctor Study landing page.
  *
- * Sections run in Figma order and take their copy through props from
- * `src/data/mocks/home.ts`, so nothing is hardcoded in a component.
+ * Sections run in Figma order and take their copy through props, so nothing
+ * is hardcoded in a component (component-conventions.md). Live Demo and
+ * Pricing are net-new (no Figma node): Live Demo sits between Features and
+ * About, Pricing between Team and Contact.
  *
  * The two overlay reveals are pure flow order, no scroll listeners: Services
  * and Team are `sticky`, and the blocks after them carry the page background
  * plus a higher `z-index`, so scrolling lifts each one over the block it
  * follows.
+ *
+ * `locale` (ADR-0029) resolves the actual copy via `getHomeContent`/
+ * `getSiteChrome` — English is the TS source in `data/mocks/home.ts`, other
+ * locales read a committed JSON override (or fall back to English if none
+ * exists yet). See `lib/i18n/content.ts`'s docstring for the full contract.
  */
-export const HomeView = () => {
+export interface HomeViewProps {
+  locale: Locale;
+}
+
+export const HomeView = ({ locale }: HomeViewProps) => {
+  const content = getHomeContent(locale);
+  const chrome = getSiteChrome(locale);
+
   return (
     <>
-      <SiteHeader brandName={BRAND_NAME} navLinks={SITE_NAV} cta={HEADER_CTA} />
+      <SiteHeader
+        brandName={chrome.brandName}
+        navLinks={chrome.siteNav}
+        cta={chrome.headerCta}
+        locale={locale}
+      />
       <main>
-        <Hero content={HERO_CONTENT} />
-        <WhyDantora content={WHY_CONTENT} />
-        <Services intro={SERVICES_INTRO} cards={SERVICE_CARDS} />
-        <About content={ABOUT_CONTENT} />
-        <Team content={TEAM_CONTENT} />
-        <Contact content={CONTACT_CONTENT} privacyHref="/privacy" />
+        <Hero content={content.hero} />
+        <WhyDantora content={content.why} />
+        <Services intro={content.servicesIntro} cards={content.serviceCards} />
+        <LiveDemo content={content.liveDemo} />
+        <About content={content.about} />
+        <Team content={content.team} />
+        <Pricing content={content.pricing} />
+        <Contact content={content.contact} />
       </main>
-      <SiteFooter brandName={BRAND_NAME} links={FOOTER_LINKS} />
+      <SiteFooter brandName={chrome.brandName} links={chrome.footerLinks} />
+      <FloatingCta cta={chrome.floatingCta} />
     </>
   );
 };

@@ -9,6 +9,12 @@
  *
  * The image trail takes the whole band as its hit area; the mockup's three
  * static cards on the right are the trail's spawned frames, live.
+ *
+ * The app-preview card (net new, no Figma node) sits top-right, below the
+ * fixed header, `pointer-events-none` and `aria-hidden` — it must never
+ * compete with the trail's own hit area or its spawned image cards for the
+ * cursor. Not bottom-right: `FloatingCta` is fixed to that corner site-wide
+ * and this section is `h-lvh`, so bottom-10 collided with it directly.
  */
 
 import TextEngine from "spring-text-engine";
@@ -21,6 +27,7 @@ import {
   HEADING_MOTION,
 } from "@/lib/motion/text-presets";
 
+import { AppMockup } from "./app-mockup";
 import { CursorTrail } from "./cursor-trail";
 
 export interface WhyDantoraProps {
@@ -79,6 +86,15 @@ export const WhyDantora = ({ content }: WhyDantoraProps) => (
             </Button>
           ))}
         </div>
+      </div>
+
+      {/* Desktop only, the same restraint as the trail images themselves
+          (mouse-only, so there is no touch equivalent to preserve). Anchored
+          top-right, not bottom-right: `FloatingCta` is fixed to that same
+          corner site-wide, and this section is `h-lvh` — bottom-10 here sits
+          right where the CTA pill lands the moment it appears. */}
+      <div className="pointer-events-none absolute top-24 right-10 hidden w-[22rem] lg:block">
+        <AppMockup content={content.mockup} />
       </div>
     </CursorTrail>
   </section>

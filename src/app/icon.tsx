@@ -1,15 +1,17 @@
 import { ImageResponse } from "next/og";
 
-import { brandMarkDataUri } from "@/lib/brand-mark";
+import { BRAND_LOGO_DATA_URI } from "@/lib/brand-logo";
 import { siteConfig } from "@/lib/site";
 
 /**
- * Favicon, generated from the logo.
+ * Favicon, generated from the real logo (ADR-0029; `public/favicon.ico` is
+ * also committed as a static fallback — some browsers/crawlers request that
+ * exact path regardless of the `<link rel="icon">` tag this route emits).
  *
- * Next's `icon` file convention: this replaces a checked-in `favicon.ico` and
- * emits the `<link rel="icon">` automatically, so the metadata helper no longer
- * hand-declares icon paths. Drawing it from `brandMarkDataUri` means the
- * favicon can never drift from the mark used in the header.
+ * Next's `icon` file convention: this route emits the `<link rel="icon">`
+ * automatically, so the metadata helper no longer hand-declares icon paths.
+ * Drawing it from `BRAND_LOGO_DATA_URI` means this can never drift from
+ * `public/logo.png`, the single committed source of the artwork.
  *
  * 📖 Docs: obsidian/frontend/seo-metadata.md
  */
@@ -27,18 +29,13 @@ export default function Icon() {
           justifyContent: "center",
           width: "100%",
           height: "100%",
-          background: siteConfig.brand.green,
-          // ~19% — the mark sits on a squircle, matching the header's logo tile.
+          background: siteConfig.brand.mint,
+          // ~19% — matches the header's logo tile corner rounding.
           borderRadius: 96,
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={brandMarkDataUri(siteConfig.brand.lime)}
-          alt=""
-          width={320}
-          height={320}
-        />
+        <img src={BRAND_LOGO_DATA_URI} alt="" width={380} height={438} />
       </div>
     ),
     size,

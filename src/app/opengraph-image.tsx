@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-import { brandMarkDataUri } from "@/lib/brand-mark";
+import { BRAND_LOGO_DATA_URI } from "@/lib/brand-logo";
 import { siteConfig } from "@/lib/site";
 
 /**
@@ -41,16 +41,11 @@ export default function OpengraphImage() {
               width: 88,
               height: 88,
               borderRadius: 16,
-              background: siteConfig.brand.green,
+              background: siteConfig.brand.mint,
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={brandMarkDataUri(siteConfig.brand.lime)}
-              alt=""
-              width={52}
-              height={52}
-            />
+            <img src={BRAND_LOGO_DATA_URI} alt="" width={60} height={69} />
           </div>
           <span style={{ fontSize: 44, letterSpacing: -0.5 }}>
             {siteConfig.name}

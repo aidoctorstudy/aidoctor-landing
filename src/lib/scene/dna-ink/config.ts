@@ -142,8 +142,10 @@ export const DNA_INK_CONFIG: DnaInkConfig = {
   camDist: 12,
   helixSize: 1,
   inkSize: 6,
-  brightness: 0.55,
-  helixOpacity: 1.8,
+  // Bumped from 0.55 / 1.8 at the project owner's request for a more vibrant
+  // hero — helixColorA/B were already the target pure cyan (#0ea5e9/#7dd3fc).
+  brightness: 0.7,
+  helixOpacity: 2.2,
   inkOpacity: 0.95,
   inkGrow: 1.8,
 
@@ -154,8 +156,9 @@ export const DNA_INK_CONFIG: DnaInkConfig = {
   wave: 0.5,
 
   // Slow rotation, per ADR-0024 — was 0 (one fixed pose). 0.34 reproduces the
-  // original sketch's speed exactly; 0.12 is a deliberately slower crawl.
-  spin: 0.12,
+  // original sketch's speed exactly; 0.15 is a deliberately slower crawl
+  // (bumped from 0.12 alongside the brightness/opacity pass above).
+  spin: 0.15,
   tilt: -0.34,
 
   emitRate: 0.19,

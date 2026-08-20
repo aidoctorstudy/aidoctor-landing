@@ -249,6 +249,40 @@ it, it is never withheld.
 All motion is `@react-spring/web` (hard rule #1); the ring, the mask and the clip
 are all `.to()` interpolations off springs, no keyframes.
 
+## FloatingCta — `floating-cta.tsx`
+
+Fixed bottom-right "Try Free" pill, mounted once in `home/index.tsx` outside
+`<main>` (ADR-0029). Same `@react-spring/web` fade-and-lift technique as
+`HeaderCta` (opacity + `translate3d`, `pointer-events` dropped once opacity
+crosses 0.5) but triggered by a raw `window.scrollY > 300` behind a `scroll`
+listener rather than an `IntersectionObserver` — the requirement is a scroll
+offset ("appears after 300px"), not an element's position. `Spring`'s own
+`mode="forward"` already uses this same
+`window.addEventListener("scroll", …, { passive: true })` pattern.
+
+Lives in `common/`, not next to a feature section, because it's site-wide
+chrome rather than belonging to one page section — see
+[[component-conventions]] → *Placement*.
+
+## LanguageSwitcher — `header/language-switcher.tsx`
+
+The header's locale picker (ADR-0030). A native `<details>`/`<summary>`
+disclosure — the same pattern the DNA Ink controls panel already uses (see
+[[dna-ink-scene]]): keyboard-operable and labelled for free, no hand-rolled
+`useState` + ARIA dropdown, no spring — showing/hiding a native disclosure
+is browser behaviour, not motion the animation system needs to own.
+
+Rendered twice: once in `SiteHeader`'s desktop bar (its own glass pill, next
+to `HeaderCta`), once inside `MobileMenu`'s panel (`self-start`, alongside
+the CTA button) — both instances exist in the DOM regardless of viewport,
+CSS decides which is visible.
+
+`usePathname()` + a small `stripLocalePrefix` helper preserve the current
+page across a switch: picking Arabic from `/pricing` navigates to
+`/ar/pricing`, not `/ar`. Labels come from `LOCALE_LABELS`
+(`lib/i18n/locales.ts`) — each locale's own native name, not its English
+name or ISO code.
+
 ## Skeleton loaders
 
 Three skeleton components for `loading` states of async-data components — every

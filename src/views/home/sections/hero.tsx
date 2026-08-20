@@ -30,7 +30,7 @@ import TextEngine from "spring-text-engine";
 
 import { Spring } from "@/components/animation/springs/spring";
 import { RevealOnReady } from "@/components/common/preloader";
-import { LazyDnaInk } from "@/components/scene/dna-ink";
+import { DnaInkWithFallback } from "@/components/scene/dna-ink";
 import { Button } from "@/components/ui/button";
 import type { HeroContent } from "@/data/mocks/home";
 import {
@@ -116,7 +116,7 @@ export const Hero = ({ content }: HeroProps) => (
     {/* Mobile gives the scene a fixed slice of the viewport; desktop restores
         the artboard's box (x 361, width 1140 — overhanging and clipped). */}
     <div className="pointer-events-none -mx-5 h-[40lvh] md:-mx-10 lg:absolute lg:inset-y-0 lg:left-[22.5625rem] lg:mx-0 lg:h-auto lg:w-[71.25rem]">
-      <LazyDnaInk className="block size-full" gatesPreload />
+      <DnaInkWithFallback className="block size-full" gatesPreload />
     </div>
 
     <RevealOnReady className="lg:absolute lg:top-[78.625%] lg:right-10 lg:left-[2.5625rem]">

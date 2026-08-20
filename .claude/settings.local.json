@@ -15,7 +15,15 @@
       "Bash(curl -s http://localhost:3001/)",
       "Read(//tmp/**)",
       "Bash(curl *)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(nohup yarn dev)",
+      "Bash(disown)",
+      "Read(//c/Users/shahi/AppData/Local/Temp/claude/C--Ai-Doctor-Study-dantora-dantora/9f49db79-bbf4-4192-8b5d-2debc401bfaa/scratchpad/**)",
+      "PowerShell(Get-Command *)",
+      "Bash(nohup /c/Users/shahi/AppData/Local/Programs/Python/Python311/python -m http.server 8834)",
+      "Bash(pkill -f \"http.server 8834\")",
+      "PowerShell(Stop-Job *)"
     ]
   }
 }

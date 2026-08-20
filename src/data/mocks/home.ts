@@ -37,10 +37,18 @@ export interface HeroContent extends SectionIntro {
   serviceChips: readonly string[];
 }
 
+/** Static copy for the decorative browser-chrome app preview. */
+export interface AppMockupContent {
+  url: string;
+  question: string;
+  answer: string;
+}
+
 export interface WhyContent extends SectionIntro {
   actions: readonly CtaLink[];
   /** Images that stream after the cursor, oldest fading out. */
   trailImages: readonly string[];
+  mockup: AppMockupContent;
 }
 
 export interface ServiceCard {
@@ -104,20 +112,42 @@ export interface TeamContent {
   more: TeamMoreCard;
 }
 
-export interface FormField {
-  name: string;
-  label: string;
-  placeholder: string;
-  type: "text" | "tel" | "textarea";
+/** One bubble in the Live Demo's scripted conversation. */
+export interface DemoMessage {
+  role: "user" | "ai";
+  text: string;
 }
 
+export interface LiveDemoContent extends SectionIntro {
+  messages: readonly DemoMessage[];
+  /** Below the transcript, linking to `APP_URL`. */
+  ctaLabel: string;
+  ctaHref: string;
+}
+
+export interface PricingPlan {
+  name: string;
+  price: string;
+  /** e.g. `"/month"` — appended straight after `price`. */
+  period: string;
+  description: string;
+  features: readonly string[];
+  cta: CtaLink;
+  /** Renders a small pill above the card, e.g. `"Most Popular"`. */
+  badge?: string;
+  /** Pro's cyan-glow treatment. */
+  highlighted?: boolean;
+}
+
+export interface PricingContent extends SectionIntro {
+  plans: readonly PricingPlan[];
+  /** Student-discount callout under the cards. */
+  discountNote: string;
+}
+
+/** The final-CTA section (formerly a lead-capture form — see decisions-log). */
 export interface ContactContent extends SectionIntro {
-  formTitle: string;
-  fields: readonly FormField[];
-  consentLead: string;
-  consentLinkLabel: string;
-  consentTail: string;
-  submitLabel: string;
+  actions: readonly CtaLink[];
 }
 
 /**
@@ -134,12 +164,18 @@ export const SITE_NAV: readonly NavLink[] = [
   { label: "Home", href: "#hero" },
   { label: "Features", href: "#features" },
   { label: "How it Works", href: "#why" },
-  { label: "Pricing", href: "#about" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const HEADER_CTA: CtaLink = {
   label: "Start for Free",
+  href: APP_URL,
+};
+
+/** Fixed bottom-right pill, shown once the visitor has scrolled past the hero. */
+export const FLOATING_CTA: CtaLink = {
+  label: "Try Free →",
   href: APP_URL,
 };
 
@@ -183,6 +219,12 @@ export const WHY_CONTENT: WhyContent = {
     "/assets/Why Dantora/07.png",
     "/assets/Why Dantora/08.png",
   ],
+  mockup: {
+    url: "aidoctor.study/app",
+    question: "What's first-line for a STEMI?",
+    answer:
+      "Aspirin 300mg chewed immediately, then urgent PCI within 90 minutes if available — thrombolysis if not.",
+  },
 };
 
 export const SERVICES_INTRO: SectionIntro = {
@@ -231,6 +273,27 @@ export const SERVICE_CARDS: readonly ServiceCard[] = [
     variant: "photo",
   },
 ];
+
+export const LIVE_DEMO_CONTENT: LiveDemoContent = {
+  eyebrow: "Live Demo",
+  title: "Ask like you'd ask a doctor",
+  description:
+    "A real exchange, not a mockup — this is exactly how AI Doctor Study answers.",
+  messages: [
+    { role: "user", text: "Explain the mechanism of metformin" },
+    {
+      role: "ai",
+      text: "Metformin works primarily by activating AMPK in the liver, which inhibits gluconeogenesis — reducing hepatic glucose output by up to 30%. It also improves peripheral insulin sensitivity and modestly reduces intestinal glucose absorption.",
+    },
+    { role: "user", text: "What are the contraindications?" },
+    {
+      role: "ai",
+      text: "Key contraindications: eGFR <30 mL/min (lactic acidosis risk), acute heart failure, severe hepatic disease, and any acute condition predisposing to hypoxia or tissue hypoperfusion.",
+    },
+  ],
+  ctaLabel: "Try it yourself at aidoctor.study/app",
+  ctaHref: APP_URL,
+};
 
 export const ABOUT_CONTENT: AboutContent = {
   eyebrow: "Why Students Trust Us",
@@ -311,30 +374,52 @@ export const TEAM_CONTENT: TeamContent = {
   },
 };
 
-export const CONTACT_CONTENT: ContactContent = {
-  eyebrow: "Get Started",
-  title: "Start your free trial today",
-  description:
-    "Create your account and start asking questions in minutes — no credit card required.",
-  formTitle: "Create your free account",
-  fields: [
-    { name: "name", label: "Your name", placeholder: "Name", type: "text" },
-    { name: "email", label: "Your email", placeholder: "Email", type: "text" },
+export const PRICING_CONTENT: PricingContent = {
+  eyebrow: "Pricing",
+  title: "Start free. Upgrade when exam season hits.",
+  description: "No credit card for Free. Cancel Pro anytime.",
+  plans: [
     {
-      name: "message",
-      label: "What are you studying for?",
-      placeholder: "e.g. USMLE Step 1, MBBS finals…",
-      type: "textarea",
+      name: "Free",
+      price: "$0",
+      period: "/month",
+      description: "Enough to get through a normal study week.",
+      features: ["20 questions a day", "Basic subjects", "Standard AI"],
+      cta: { label: "Start for Free", href: APP_URL },
+    },
+    {
+      name: "Pro",
+      price: "$2.99",
+      period: "/month",
+      description: "Everything unlocked for exam season.",
+      features: [
+        "Unlimited questions",
+        "All subjects",
+        "Claude AI",
+        "Image analysis",
+        "Clinical cases",
+        "Drug mnemonics",
+        "USMLE/PLAB prep",
+        "Flashcards",
+      ],
+      cta: { label: "Get Pro", href: PRO_CHECKOUT_URL },
+      badge: "Most Popular",
+      highlighted: true,
     },
   ],
-  consentLead: "By submitting, you agree to our ",
-  consentLinkLabel: "Privacy Policy",
-  consentTail: " and the processing of your personal data.",
-  // Deliberately not "Start Free Trial": this button submits the lead-capture
-  // form (POST /api/contact), it doesn't navigate to APP_URL like the
-  // site's other "Start Free Trial" CTAs — a shared label on two different
-  // behaviours would be confusing, not just redundant.
-  submitLabel: "Send Message",
+  discountNote: "Student? Use code MED20 at checkout for 20% off Pro.",
+};
+
+// Formerly a lead-capture form (POST /api/contact) — replaced with a plain
+// closing CTA at the project owner's request. See decisions-log.
+export const CONTACT_CONTENT: ContactContent = {
+  eyebrow: "Get Started",
+  title: "Ready to study smarter?",
+  description: "Join 50,000+ medical students already using AI Doctor Study.",
+  actions: [
+    { label: "Start for Free", href: APP_URL },
+    { label: "Get Pro", href: PRO_CHECKOUT_URL },
+  ],
 };
 
 // These four routes don't have pages yet — see SiteFooter's docstring.

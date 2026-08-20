@@ -53,6 +53,15 @@ export interface DnaInkProps {
    * screen; see [[preloader]].
    */
   onReady?: () => void;
+  /**
+   * Called once if the scene fails to mount — most commonly `new
+   * THREE.WebGLRenderer()` throwing because the device/browser refused a
+   * WebGL context. `DnaInkWithFallback` uses this to swap in a CSS backdrop
+   * on mobile rather than leaving an empty hero. Never fires after a
+   * successful mount — a context lost mid-session is not the same failure
+   * mode and isn't handled here.
+   */
+  onError?: () => void;
 }
 
 export const DnaInk = ({
@@ -60,6 +69,7 @@ export const DnaInk = ({
   controls = false,
   className,
   onReady,
+  onError,
 }: DnaInkProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sceneRef = useRef<DnaInkScene | null>(null);
@@ -71,7 +81,14 @@ export const DnaInk = ({
   useEffect(() => {
     onReadyRef.current = onReady;
   });
+  // Same reasoning: the mount effect below is keyed on `generation` only, so
+  // it must not depend on `onError` re-identifying every render either.
+  const onErrorRef = useRef(onError);
+  useEffect(() => {
+    onErrorRef.current = onError;
+  });
   const announcedRef = useRef(false);
+  const failedRef = useRef(false);
 
   const [liveConfig, setLiveConfig] = useState(config);
   const [generation, setGeneration] = useState(0);
@@ -94,7 +111,18 @@ export const DnaInk = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const scene = new DnaInkScene(canvas, liveConfigRef.current);
+    let scene: DnaInkScene;
+    try {
+      scene = new DnaInkScene(canvas, liveConfigRef.current);
+    } catch (error) {
+      // Most commonly a refused WebGL context (`new THREE.WebGLRenderer()`
+      // throws synchronously). Report once and mount nothing — there is no
+      // canvas to size, no pointer to feed, no loop to drive.
+      console.error("[dna-ink] scene failed to mount:", error);
+      failedRef.current = true;
+      onErrorRef.current?.();
+      return;
+    }
     sceneRef.current = scene;
 
     // Dev-only diagnostic handle. The scene's failure modes (a helix that

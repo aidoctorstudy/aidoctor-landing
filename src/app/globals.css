@@ -47,6 +47,16 @@
   --raw-color-brand-alpha-40: rgba(14, 165, 233, 0.4);
   --raw-color-slate-alpha-80: rgba(148, 163, 184, 0.8);
 
+  /* Legal-page callout states (Terms' "read this carefully" box, Refunds'
+     chargeback warning, unresolved-placeholder markers) — the only place
+     this project needs anything outside the cyan brand palette. */
+  --raw-color-amber-500: #f59e0b;
+  --raw-color-amber-alpha-12: rgba(245, 158, 11, 0.12);
+  --raw-color-amber-alpha-45: rgba(245, 158, 11, 0.45);
+  --raw-color-red-400: #fca5a5;
+  --raw-color-red-alpha-08: rgba(239, 68, 68, 0.08);
+  --raw-color-red-alpha-35: rgba(239, 68, 68, 0.35);
+
   /* Decorative background images. Not a Tailwind namespace (no `--bg-image-*`
      in v4 — see the namespace table below), so these are consumed via an
      arbitrary value (`bg-[image:var(--raw-gradient-hero-glow)]`) rather than a
@@ -71,26 +81,28 @@
     var(--raw-color-brand-500)
   );
 
-  /* ADR-0027 — replaces the stock photos removed from the Features cards and
-     the About banner. Both are the same three brand-navy shades, at different
-     angles/stops so they read as related but not identical. */
+  /* ADR-0027 — replaces the stock photo removed from the Features cards. */
   --raw-gradient-feature-card: linear-gradient(
     160deg,
     #0c1524 0%,
     #0c4a6e 55%,
     #070d17 100%
   );
-  --raw-gradient-about-banner: linear-gradient(
-    135deg,
-    #0c1524 0%,
-    #0c4a6e 50%,
-    #070d17 100%
+  /* CSS backdrop for the Hero's DNA scene on mobile when WebGL context
+     creation fails — same brand-alpha primitive already used for chip
+     borders, just radial instead of flat. Consumed directly via an arbitrary
+     value, same escape hatch as `--raw-background-hero` above. */
+  --raw-gradient-dna-fallback: radial-gradient(
+    ellipse at 60% 50%,
+    var(--raw-color-brand-alpha-20) 0%,
+    transparent 60%
   );
-  /* Subtle grid overlay for the About banner — two 1px hairline layers, one
-     per axis, tiled 40px apart. */
-  --raw-pattern-grid: linear-gradient(rgba(14, 165, 233, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
-  --raw-background-about-banner: var(--raw-gradient-about-banner), var(--raw-pattern-grid);
+
+  /* Pro pricing card's glow — reuses the existing brand-alpha primitives
+     rather than a new literal, per the token rule (Tier 1 may reference
+     Tier 1). */
+  --raw-shadow-glow-accent: 0 0 0 1px var(--raw-color-brand-alpha-40),
+    0 24px 64px -12px var(--raw-color-brand-alpha-40);
 
   --raw-radius-xs: 4px;
   --raw-radius-sm: 8px;
@@ -187,6 +199,11 @@
   /* Chip / pill labels floating over the scene (hero service chips). */
   --surface-chip: var(--raw-color-brand-alpha-10);
   --border-chip: var(--raw-color-brand-alpha-20);
+  /* Highlighted-card glow — the Pricing section's "Most Popular" card.
+     Semantic role rather than a bare Tailwind `shadow-*` utility (Tier 3
+     is reserved for values shared across components that can't import each
+     other, ADR-0015) since this is one card's own accent right now. */
+  --glow-accent: var(--raw-shadow-glow-accent);
   /* Form fields. */
   --surface-input: var(--raw-color-card-alpha-60);
   --border-input: var(--raw-color-brand-alpha-20);
@@ -209,6 +226,14 @@
      down" instead of merely "faded". */
   --foreground-muted: var(--raw-color-slate-alpha-80);
   --foreground-subtle: var(--raw-color-white-alpha-50);
+
+  /* Legal-page callout states (ADR-0029). */
+  --state-warning: var(--raw-color-amber-500);
+  --state-warning-border: var(--raw-color-amber-alpha-45);
+  --state-warning-soft: var(--raw-color-amber-alpha-12);
+  --state-danger: var(--raw-color-red-400);
+  --state-danger-border: var(--raw-color-red-alpha-35);
+  --state-danger-soft: var(--raw-color-red-alpha-08);
 
   /* Corner roles. Named `--corner-*`, not `--radius-*`: Tailwind owns the
      `--radius-*` namespace, so a Tier 2 token of that name would collide with
@@ -300,6 +325,12 @@
   --color-border-subtle: var(--border-subtle);
   --color-foreground-muted: var(--foreground-muted);
   --color-foreground-subtle: var(--foreground-subtle);
+  --color-state-warning: var(--state-warning);
+  --color-state-warning-border: var(--state-warning-border);
+  --color-state-warning-soft: var(--state-warning-soft);
+  --color-state-danger: var(--state-danger);
+  --color-state-danger-border: var(--state-danger-border);
+  --color-state-danger-soft: var(--state-danger-soft);
 
   --radius-mark: var(--corner-mark);
   --radius-panel: var(--corner-panel);

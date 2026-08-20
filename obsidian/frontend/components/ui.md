@@ -40,10 +40,25 @@ redefined out from under them. The hover state is a token-backed CSS
 `transition-colors`, which is the narrow exception hard rule #1 allows
 (ADR-0014).
 
-## `icons/` — `<DnaIcon>`, `<ArrowUpRightIcon>`
+## `icons/` — `<ArrowUpRightIcon>`, `<CheckIcon>`
 
-Icons extracted from the Figma frame and hand-converted to components rather
-than dropped in `public/` as `.svg` files.
+Small `currentColor` glyphs, hand-converted to components rather than
+dropped in `public/` as `.svg` files, sharing `IconProps` from
+`icon-types.ts` (`{ className?: string }`). `CheckIcon` (ADR-0029) has no
+Figma node — Pricing is net new, so it was drawn from scratch to match
+`ArrowUpRightIcon`'s stroke weight rather than extracted.
+
+> [!note] `DnaIcon` is gone (ADR-0030)
+> The header's logo mark used to be this `currentColor` SVG glyph
+> (`dna-icon.tsx`, extracted from Figma node `1572:510`) rendered onto a
+> coloured tile — a stand-in used before the real brand logo existed in the
+> project. It's deleted along with `lib/brand-mark.ts` (the matching Satori
+> data-URI builder for the generated icon/OG routes) now that
+> `public/logo.png` — the actual AI Doctor Study logo — is used everywhere
+> instead: `next/image`/`<img src="/logo.png">` in the navbar and preloader,
+> `lib/brand-logo.ts`'s `BRAND_LOGO_DATA_URI` in the Satori-rendered
+> favicon/apple-icon/OG routes. See [[seo-metadata]] → *Icons and OG image*
+> for the full asset list.
 
 > [!note] Why components, not assets
 > The exported SVGs bake in `#F8FFB4`. An `<img>` can't be re-coloured, and a

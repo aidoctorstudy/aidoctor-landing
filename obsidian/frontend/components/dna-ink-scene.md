@@ -22,6 +22,8 @@ the starter's conventions. ADR: [[decisions-log]] ADR-0018.
 | `lib/scene/dna-ink/scene.ts` | `DnaInkScene` — renderer, camera, composer, both point clouds, pointer |
 | `components/scene/dna-ink/dna-ink.tsx` | Mounts the canvas, sizes it, feeds the pointer, drives the ticker, owns the live settings |
 | `components/scene/dna-ink/lazy-dna-ink.tsx` | `dynamic({ ssr: false })` wrapper — keeps `three` out of first-load JS |
+| `components/scene/dna-ink/dna-ink-with-fallback.tsx` | Hero-only: `LazyDnaInk`, or `MobileDnaFallback` below `MOBILE_QUERY` if it errors (ADR-0029) |
+| `components/scene/dna-ink/mobile-dna-fallback.tsx` | The CSS/spring fallback backdrop itself |
 | `components/scene/dna-ink/dna-ink-controls.tsx` | The dev settings panel |
 | `components/scene/dna-ink/dna-ink-controls.config.ts` | Slider ranges, snapshot serialiser, `localStorage` helpers |
 
@@ -37,6 +39,7 @@ interface DnaInkProps {
   controls?: boolean;     // settings panel; defaults to OFF everywhere
   className?: string;     // classes for the <canvas> itself
   onReady?: () => void;   // fired once, after the FIRST DRAWN FRAME
+  onError?: () => void;   // fired once if the scene fails to mount (ADR-0029)
 }
 
 interface LazyDnaInkProps extends DnaInkProps {
@@ -67,6 +70,35 @@ import { LazyDnaInk } from "@/components/scene/dna-ink";
 
 Import **`LazyDnaInk`**, never `DnaInk` directly — the direct import pulls
 `three` (~600 KB raw) into the importing chunk and would run during SSR.
+
+## Mobile fallback on WebGL failure (ADR-0029)
+
+The Hero mounts its scene at every viewport width (unlike Contact's, which
+is desktop-only). A phone that refuses a WebGL context — `new
+THREE.WebGLRenderer()` throwing, most commonly — used to leave that hero
+empty. `DnaInk`'s mount effect now wraps `new DnaInkScene(...)` in a
+`try/catch`; on failure it reports via the new `onError` prop and mounts
+nothing (no canvas to size, no pointer to feed, no loop to drive).
+`LazyDnaInk` releases its preload gate on error too, or a refused context
+would strand the curtain until `GATE_TIMEOUT_MS` (see [[common|preloader]]).
+
+`DnaInkWithFallback` (Hero's instance only — `hero.tsx` imports this instead
+of `LazyDnaInk` directly) wraps that: below `MOBILE_QUERY` (768px,
+`use-media-query.ts`) an error swaps in `MobileDnaFallback`, a CSS
+radial-gradient backdrop (`--raw-gradient-dna-fallback`, composed from the
+existing `--raw-color-brand-alpha-20` primitive — same value the spec asked
+for, just token-composed instead of a literal) with a slow opacity pulse.
+Desktop failures are left alone — different enough in likely cause, and rare
+enough, to be out of scope here.
+
+> [!important] The pulse is a spring, not `@keyframes`
+> Hard rule #1 bans `@keyframes` outright, even for a continuous decorative
+> effect like this one (design-system.md's ADR-0014 exception covers only
+> discrete state changes). `MobileDnaFallback` uses `@react-spring/web`
+> `useSpring` with an async `to` chain — `while (true) { await
+> next({opacity:1}); await next({opacity:0.5}); }` — which oscillates
+> forever with no rAF loop of its own and no keyframes. Same technique
+> `TypingCursor` uses for its blink (see [[home-sections]] → Live Demo).
 
 ## How it works
 
@@ -220,8 +252,10 @@ replays the last known size when it changes.
 > before you see it and the determinism is lost.
 >
 > `config.spin` was `0` (one fixed pose) for the original Dantora design; as of
-> ADR-0024 it's `0.12` — a deliberately slow crawl, requested directly by the
-> project owner. `0.34` reproduces the reference sketch's original speed. The
+> ADR-0024 it's `0.12`, and ADR-0029 nudged it to `0.15` — still a
+> deliberately slow crawl, requested directly by the project owner alongside
+> a `brightness`/`helixOpacity` bump (0.55→0.7, 1.8→2.2) for a more vibrant
+> hero. `0.34` reproduces the reference sketch's original speed. The
 > rewind-on-exit mechanism above works at any `spin` value, fixed pose or not —
 > it always keeps every arrival starting from the same angle.
 

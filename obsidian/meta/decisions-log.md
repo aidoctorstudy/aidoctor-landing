@@ -10,6 +10,323 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0030 — SEO hardening, four legal pages, full i18n routing (9 locales), and the real logo replacing the placeholder mark
+
+- **Status:** Accepted — logo/SEO/legal-pages/i18n-infra shipped and
+  verified in-browser; the 8 non-English translation JSON files are **not**
+  committed yet (requires a real `ANTHROPIC_API_KEY`, which this session
+  didn't have — every locale currently renders the English bundle)
+- **Date:** 2026-08-20
+
+**Context.** Requested, in one batch: a long SEO/technical checklist (404,
+per-page meta, og:image, JSON-LD, canonical, sitemap, robots, favicon, alt
+text, source maps, console errors, code-splitting), full multilingual
+support for `en, ar, ur, es, fr, hi, pt, de, zh` via `next.config.js` `i18n`
++ a Claude-API translation pipeline + a language switcher + RTL + locale
+sitemap/hreflang, and — in a separate follow-up message — replacing the
+placeholder logo/favicon with the real `aidoctor.study` logo everywhere.
+
+An audit against the live code found most of the SEO checklist already
+done by this starter (favicon, custom 404s, `lang="en"`, single `<h1>`,
+canonical, JSON-LD, `robots.txt` already `allow: "/"` for every bot
+including AI crawlers, `llms.txt`, a dynamic 1200×630 OG image, no console
+errors, source maps already off in production). Two real problems needed
+solving first:
+1. **`next.config.js` `i18n` is a Pages Router API** — this project has no
+   Pages Router, so that config key does nothing in App Router (confirmed:
+   no `middleware.ts` existed, routing.md documented no locale segment).
+   Real App Router i18n needs a `[locale]` route segment + middleware.
+2. **`/terms`, `/refunds`, `/cookies`, `/privacy` were footer links with no
+   route behind them** (confirmed via `site-footer.tsx`'s own docstring) —
+   the sitemap/metadata items need real pages to point at. Terms/Refunds/
+   Cookies had full legacy content as standalone HTML in
+   `public/app/{terms,refunds,cookies}.html`; Privacy had no prior content
+   anywhere.
+
+Both were raised with the project owner before starting (`AskUserQuestion`):
+confirmed **build-time** translation (a script translates once via the
+Anthropic API, output committed, pages render statically — no runtime API
+cost/latency, works with static rendering/SEO) over a per-request pipeline,
+and confirmed building the four legal pages now (porting three, authoring
+Privacy fresh) rather than skipping them.
+
+The logo request surfaced a second ambiguity: the repo held **two different
+old marks** (a raster brain/neural-network PNG wrapped in `public/app/logo.svg`,
+used as the legacy app's own favicon; and an inline stethoscope/circle SVG in
+the legacy legal pages' headers), neither committed as a canonical
+`logo.png`/`favicon.ico`, and *also* the DNA-helix `currentColor` glyph
+(`DnaIcon`) this project's own header/icons had been using as a stand-in.
+Asked which was "the actual logo" (`AskUserQuestion`, with rendered
+previews) — the project owner picked the brain/neural-network mark.
+
+**Decision — logo (ADR-0030a).**
+- Extracted the PNG payload from `public/app/logo.svg`'s base64 data URI →
+  `public/logo.png` (237×274, the single committed source every other logo
+  surface derives from) and a multi-resolution `public/favicon.ico`
+  (16/32/48/64px).
+- New `src/lib/brand-logo.ts` (`BRAND_LOGO_DATA_URI`) replaces
+  `lib/brand-mark.ts`: reads `public/logo.png` once at module load,
+  base64-encodes it, for the three Satori-rendered routes only
+  (`icon.tsx`, `apple-icon.tsx`, `opengraph-image.tsx` — Satori can't
+  resolve a plain `/logo.png` URL, the same reason the old builder existed).
+  Everywhere else (`site-header.tsx`'s navbar, `preloader.tsx`) references
+  `/logo.png` directly via `next/image`/`<img>` — no reason to inline ~49KB
+  of base64 into the client bundle when the browser can fetch and cache the
+  file once.
+- Deleted `components/ui/icons/dna-icon.tsx` (`<DnaIcon>`) and
+  `lib/brand-mark.ts` entirely once nothing referenced them; the shared
+  `IconProps` type moved to a new `icon-types.ts` so `ArrowUpRightIcon`/
+  `CheckIcon` didn't need to import it from a deleted file.
+- Deleted the stale, undersized (900×600 vs. the declared 1200×630) checked-in
+  `public/open-graph.png` — dead weight now that `opengraph-image.tsx` is
+  the only OG image source and renders at the correct size.
+- The preloader's "unfilled ghost" layer (previously the mark re-rendered
+  in a different `currentColor` fill) switched to the same `/logo.png`
+  dimmed with CSS `opacity` — a raster PNG with its own baked-in gradient
+  can't be recoloured the old way.
+
+**Decision — i18n routing (ADR-0030b), hand-rolled, not a library.**
+`src/lib/i18n/locales.ts` is the single source of truth (`LOCALES`,
+`DEFAULT_LOCALE = "en"`, `RTL_LOCALES = {ar, ur}`, `LOCALE_LABELS`,
+`OG_LOCALES`, `localizedPath()`). `src/middleware.ts` rewrites every request
+to carry a concrete `[locale]` segment while keeping English unprefixed in
+the visible URL (`/`, not `/en/`) — an already-prefixed request
+(`/ar/pricing`) passes through unchanged. `src/app/(marketing)/**` and
+`src/app/app/**` moved to `src/app/[locale]/(marketing)/**` /
+`src/app/[locale]/app/**`; `robots.ts`/`sitemap.ts`/`icon.tsx`/
+`apple-icon.tsx`/`opengraph-image.tsx`/`api/**` stayed at the true top
+level (they're not part of the layout-nesting mechanism — one copy already
+covered every route). `generateStaticParams` on both root layouts lists all
+9 locales for static generation per locale.
+
+A library (`next-intl` etc.) would only be used here for its routing
+utilities — content resolution deliberately does **not** go through a
+`t()`/hooks system (see below) — so the actual need (a segment + a
+rewrite) was small enough to own directly, matching this project's existing
+style of small hand-rolled infra (the ticker, the scroll store,
+`use-media-query`).
+
+**Decision — content resolution stays props-driven; English is the TS
+source, other locales are JSON overrides (ADR-0030c).**
+`component-conventions.md` already mandates "no hardcoded content in
+components, data comes from props." That held: **every section component
+is unchanged** — `hero.tsx`, `pricing.tsx`, all of them still just take
+typed `content` props. `src/lib/i18n/content.ts` is the only new piece:
+`getHomeContent(locale)` / `getSiteChrome(locale)` / `getLegalContent(locale,
+page)` return the `data/mocks/home.ts` / `legal.ts` constants directly for
+`"en"`, or — for any other locale — read `src/data/i18n/<locale>/*.json`
+and return that instead, falling back to the whole English bundle if the
+file is missing or fails to parse. This is a **deliberate, disclosed
+deviation** from a more literal reading of "extract English into JSON too":
+duplicating the English constants into a redundant `en.json` that gets read
+right back would have meant hand-transcribing ~1000 lines of existing TS
+content for no behavioural gain. The fallback is also **file-level, not
+per-key** — a missing/broken locale file falls back to the *entire* English
+bundle rather than a per-key deep-merge, deliberately: `translate-content.mjs`
+always writes a complete bundle in one pass or writes nothing, so partial
+files aren't an expected state, and a per-key merge risks silently mixing
+two languages inside one sentence if a nested object were ever only
+half-translated.
+
+**Decision — translation pipeline (ADR-0030d).**
+`scripts/translate-content.mjs` — plain Node, `fetch` only, no new npm
+dependency (matches tech-stack.md's minimal-deps philosophy). It can't
+`import` the TS content modules directly (no `@/` path-alias resolution
+outside Next's own pipeline, and no `tsx`/`ts-node` dependency to add for
+one script), so it instead fetches the English bundle as JSON from a new
+internal dev-tool endpoint, `GET /api/i18n-content`
+(`src/app/api/i18n-content/route.ts`, using the project's existing
+`handle()` envelope convention) — meaning **the Next dev server must be
+running** (`npm run dev`) before this script is run. For each of the 8
+non-English locales it sends each JSON bundle to the Anthropic Messages API
+with a system prompt instructing verbatim structure/key preservation and
+explicitly protecting URLs/hrefs/emails/the `MED20` code/prices from
+translation, and writes `src/data/i18n/<locale>/{home,chrome,legal-terms,
+legal-refunds,legal-cookies,legal-privacy}.json`. `npm run translate` runs
+it; `ANTHROPIC_API_KEY` goes in `.env.local` (documented in `.env.example`
+and environment-variables.md) and is read by the script itself, not through
+`src/env.ts` — the script runs outside Next's request lifecycle.
+**Not run this session** — no API key was available; every locale
+currently renders English until it is.
+
+**Decision — legal pages, RTL, hreflang, LanguageSwitcher.**
+`data/mocks/legal.ts` — a small block-based content model (`paragraph` /
+`list` / `callout` / `table`) shared by one view, `views/legal/legal-page.tsx`
+(`LegalPageView`), rather than four near-duplicate page components. Terms/
+Refunds/Cookies ported verbatim from `public/app/*.html`'s `<main>` content;
+Privacy authored fresh (no prior version existed) in the same structure/
+tone. Terms' governing-law section and Privacy's international-transfers
+section both render as an explicit amber "PLACEHOLDER — FINALIZE WITH LEGAL
+COUNSEL BEFORE LAUNCH" callout (new `--state-warning`/`--state-danger` Tier
+2 tokens, `globals.css`) rather than inventing a jurisdiction — those
+facts depend on where the operating entity is actually registered, which
+isn't something to fabricate. `[locale]/(marketing)/layout.tsx` sets
+`<html lang={locale} dir={rtl ? "rtl" : "ltr"}>` from `RTL_LOCALES`; RTL
+layout beyond that (logical-property utilities, mirroring the DNA scene's
+absolute pixel offsets) was **not** attempted — out of scope for this pass,
+a known limitation. `generate-page-metadata.ts`'s `generateMetadata` gained
+a `locale` param → `alternates.languages` (hreflang + `x-default`),
+`openGraph.locale`, and a locale-prefixed `canonical`; `sitemap.ts` expands
+`ROUTES` into one entry per route per locale, each carrying Next's native
+`alternates.languages` sitemap field. `components/common/header/
+language-switcher.tsx` is a native `<details>`/`<summary>` disclosure
+(same pattern as the DNA Ink controls panel) rendered in both `SiteHeader`
+and `MobileMenu`, preserving the current path across a locale switch.
+
+**A real bug, caught live in-browser before it shipped.** The middleware's
+matcher excluded `/api`, `/_next`, and any path containing a dot — but
+`icon.tsx`/`apple-icon.tsx`/`opengraph-image.tsx`'s *public* URLs (`/icon`,
+`/apple-icon`, `/opengraph-image`) carry no extension even though they
+render images. They were silently rewritten to `/en/icon` etc. — no such
+route exists there, since those files live at the true top level outside
+`[locale]` — 404ing the favicon and the `og:image` meta tag on **every
+single request**, not an edge case. Found by curling those three paths
+directly after the middleware landed; fixed by excluding them **by exact
+name** in the matcher (`icon$|apple-icon$|opengraph-image$`) alongside the
+dot rule. See routing.md's danger callout — flagged there so a future
+locale/route addition doesn't reintroduce the same class of bug.
+
+**Consequences.**
+- `sitemap.ts` now lists `/`, `/app`, and the four legal routes — ×9
+  locales each.
+- `team.tsx`'s social icons gained real `alt` text (`social.label`) — they
+  were `alt=""` (decorative), which was wrong; they're meaningful links.
+- `public/llms.txt` refreshed for the Live Demo/Pricing sections added in
+  ADR-0029, plus all four legal routes and the `MED20` discount code.
+- `next.config.ts` gained an explicit `productionBrowserSourceMaps: false`
+  — Next's own default, made explicit so a future edit can't silently flip
+  it on.
+- **Follow-up required, not done here:** run `npm run translate` with a
+  real `ANTHROPIC_API_KEY` to populate the 8 locale JSON files; consider
+  RTL logical-property adoption in the handful of components where
+  left/right is meaningful (button icon order, chip lists) if Arabic/Urdu
+  visual QA surfaces layout issues beyond `dir="rtl"` alone.
+
+## Related
+
+[[routing]] · [[seo-metadata]] · [[home-sections]] · [[components/ui]] ·
+[[components/common]] · [[environment-variables]] · [[design-system]]
+
+---
+
+## ADR-0029 — Landing page v2: Live Demo, Pricing, app mockup, floating CTA; contact form → plain CTA; About banner removed
+
+- **Status:** Accepted
+- **Date:** 2026-08-20
+
+**Context.** Requested: a Live Demo chat section (Features→About), a Pricing
+section (Team→Contact), a more vibrant/rotating DNA helix, a floating "Try
+Free" CTA appearing after 300px of scroll, a CSS fallback for the Hero's DNA
+scene on mobile if WebGL fails, and a static browser-chrome app mockup inside
+Why Dantora. Two follow-up asks landed in the same turn: replace the Contact
+lead-capture form with a plain closing CTA, and delete the About section's
+large decorative banner ("large empty blue/teal box").
+
+Two requested details conflicted with hard rules and were substituted rather
+than implemented literally:
+- **CSS `@keyframes` for a "slowly pulsing" mobile DNA fallback and a
+  blinking chat cursor** — hard rule #1 bans `@keyframes` outright, even for
+  continuous decorative motion (`design-system.md` — ADR-0014's exception is
+  discrete state only). Both are instead `@react-spring/web` `useSpring`
+  calls with an async `to` chain (`while (true) { await next(...) }`), which
+  oscillates forever without a rAF loop of its own or any keyframes. Same
+  technique as `StatCounter`/`HeaderCta`'s existing bespoke-spring pattern.
+- **A pixel-literal `radial-gradient(...rgba(14,165,233,0.2)...)`** —
+  composed instead from the already-existing `--raw-color-brand-alpha-20`
+  Tier 1 primitive (identical value), per the token rule.
+
+**Decision.**
+- `src/lib/scene/dna-ink/config.ts` — `helixOpacity` 1.8→2.2, `brightness`
+  0.55→0.7, `spin` 0.12→0.15. `helixColorA`/`B` were already the requested
+  `#0ea5e9`/`#7dd3fc` (ADR-0022) — no change needed there.
+- `DnaInk` (`components/scene/dna-ink/dna-ink.tsx`) gained an `onError`
+  prop, fired from a `try/catch` around `new DnaInkScene(...)` (most common
+  real cause: `WebGLRenderer` throwing on a refused context). `LazyDnaInk`
+  releases its preload gate on error too, or a refused context would strand
+  the curtain until the 6s timeout. New `DnaInkWithFallback` (mobile-only,
+  gated on the new `MOBILE_QUERY` in `use-media-query.ts`) swaps to
+  `MobileDnaFallback` — the CSS/spring gradient — on failure; only the Hero
+  instance uses it (Contact's scene is already desktop-only).
+- New sections, all net-new (no Figma node) and built from the page's
+  existing vocabulary (`TextEngine` + the three text presets, `<Inview>` +
+  `ELEMENT_MOTION`, `<Button>`, the card/glass tokens):
+  - `LiveDemo` (`live-demo.tsx`) between Services and About. Letter-level
+    `TextEngine` (not the page's usual word-level presets — a chat bubble
+    needs the finer grain) with per-message `delayIn` computed from a pure
+    `reduce` over the previous messages' own length × stagger, so bubbles
+    "type" in sequence. `min-h-lvh`, matching every other full-bleed
+    section — see the *consequence* below on why that stopped being
+    optional partway through.
+  - `Pricing` (`pricing.tsx`) between Team and Contact. Two cards from one
+    `PlanCard` sub-component; Pro carries the new `--glow-accent` token and
+    a badge.
+  - `AppMockup` (`app-mockup.tsx`), a static (not typing) browser-chrome
+    card inside Why Dantora, content from `WhyContent.mockup`.
+  - `FloatingCta` (`components/common/floating-cta.tsx`) — same
+    `useSpring` fade/lift technique as `HeaderCta`, but driven by
+    `window.scrollY > 300` behind a raw scroll listener (the same pattern
+    `Spring`'s own `mode="forward"` already uses), not an
+    `IntersectionObserver` — the trigger genuinely is a scroll offset, not
+    an element's position.
+- `Contact` (`contact.tsx`) rewritten: the `POST /api/contact` lead-capture
+  form is gone, replaced with a centred heading/subtext/two-button CTA. The
+  DNA scene backdrop and the "rides over Team" `z-20` choreography are
+  unchanged. `ContactContent` (`data/mocks/home.ts`) dropped `FormField`/
+  consent/`submitLabel` for `actions: readonly CtaLink[]`.
+- `AboutBanner` deleted (component + its three CSS tokens
+  `--raw-gradient-about-banner`/`--raw-pattern-grid`/
+  `--raw-background-about-banner`, ADR-0027). Removing it without adjusting
+  layout would have left the same footprint as a plain-background gap
+  rather than actually closing it, so About's content row and fixed height
+  both moved up by the banner's own span (37.75rem) — see about.tsx's
+  docstring for the exact numbers.
+
+**Consequences.**
+- **About no longer rides over the section above it via `-mt-[100lvh]`.**
+  That trick (About riding over Services' pinned runway) needs a **matched
+  pair**: a multi-viewport scroll-scrubbed runway directly before it, tall
+  enough that pulling About up by exactly one viewport only covers the
+  runway's last frame (home-sections.md's own warning about this pair).
+  Live Demo now sits directly before About and is a single `min-h-lvh`
+  block, not a runway — the negative margin canceled its entire height and
+  hid it completely rather than revealing it (caught live in-browser: Live
+  Demo's content was invisible, About's stats sat directly under the
+  header). Fixed by dropping `-mt-[100lvh]`/`z-10` from About entirely and
+  letting it flow normally after Live Demo. The Services→About "rides over"
+  transition is gone; Services' pinned rail now simply releases and Live
+  Demo follows in plain flow. Nothing asked for that transition to survive
+  Live Demo's insertion, and re-engineering Live Demo into a second
+  scroll-scrubbed runway to preserve it was out of scope.
+- **Team's "stays pinned, next section rides over it via `z-20`" mechanism
+  (`team.tsx`) needed `Pricing` to opt in too**, not just `Contact`: Team is
+  `sticky top-0 z-10` and "stays pinned for the rest of the page" on its
+  own — whatever comes right after it needs a higher stacking context *and*
+  an opaque fill, or Team shows through underneath during the scroll
+  handoff. Caught the same way (in-browser): without `z-20` on `Pricing`,
+  Team's testimonial rail bled through behind the pricing cards. Fixed by
+  giving `Pricing` `relative z-20 rounded-t-section bg-background`,
+  mirroring `Contact`'s own treatment exactly.
+- **`AppMockup` moved from bottom-right to top-right inside Why Dantora.**
+  First placed bottom-right per a literal reading of "browser mockup in the
+  Why section"; `FloatingCta` is fixed to that same corner site-wide, and
+  Why Dantora is `h-lvh`, so the two collided the moment the CTA appeared
+  (caught in-browser: "Try Free" rendered on top of the mockup's last
+  message). Any future net-new decorative element in a full-viewport
+  section should default away from the bottom-right corner for the same
+  reason.
+- `SITE_NAV`'s "Pricing" link now points at `#pricing` (was `#about`, a
+  placeholder from before a real Pricing section existed).
+- New tokens: `--raw-gradient-dna-fallback` (Tier 1, mobile DNA fallback),
+  `--raw-shadow-glow-accent` (Tier 1) + `--glow-accent` (Tier 2, Pro card
+  glow) — both composed from existing brand-alpha primitives, no new
+  literals. New icon: `CheckIcon` (pricing feature lists).
+
+## Related
+
+[[home-sections]] · [[dna-ink-scene]] · [[design-system]] · [[animation-system]]
+
+---
+
 ## ADR-0028 — `/app` embeds the study app via iframe, on a second root layout; the app's own files were never supplied
 
 - **Status:** Partially accepted — routing/embedding shell done, the actual

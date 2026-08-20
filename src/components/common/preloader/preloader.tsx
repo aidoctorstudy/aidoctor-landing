@@ -6,7 +6,7 @@
  * Brand curtain shown while the page loads.
  *
  * Three parts, all driven by one `progress` spring:
- * a ring that draws clockwise from twelve o'clock, the DNA mark filling
+ * a ring that draws clockwise from twelve o'clock, the logo filling
  * diagonally from its lower-left, and a percentage counter.
  *
  * When loading finishes the curtain **clips away bottom-to-top** — the panel's
@@ -17,12 +17,18 @@
  * saw it.
  *
  * Motion is `@react-spring/web` throughout (hard rule #1).
+ *
+ * The mark is `/logo.png` (ADR-0029) — a plain browser `<img>`, not the data
+ * URI the generated icon/OG routes use (see `lib/brand-logo.ts`'s docstring
+ * for why those need one and this doesn't). Since it's a real raster image
+ * with its own baked-in gradient rather than a `currentColor` vector path,
+ * the "unfilled" ghost layer below is dimmed with CSS `opacity` instead of
+ * the old trick of re-rendering the mark in a different fill colour.
  */
 
 import { animated, useSpring } from "@react-spring/web";
 import { useEffect, useRef, useState } from "react";
 
-import { brandMarkDataUri } from "@/lib/brand-mark";
 import { siteConfig } from "@/lib/site";
 
 import { usePreload } from "./preload-context";
@@ -148,14 +154,14 @@ export const Preloader = () => {
           />
         </svg>
 
-        {/* Unfilled mark: the same glyph, barely lighter than the backdrop, so
-            the lime fill reads as filling something rather than appearing. */}
+        {/* Unfilled mark: the same logo, barely visible against the backdrop,
+            so the fill reads as filling something rather than appearing. */}
         <div className="relative size-[38%]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={brandMarkDataUri("rgba(224,242,254,0.14)")}
+            src="/logo.png"
             alt=""
-            className="absolute inset-0 size-full"
+            className="absolute inset-0 size-full opacity-[0.14]"
           />
           <animated.div
             className="absolute inset-0"
@@ -174,11 +180,7 @@ export const Preloader = () => {
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={brandMarkDataUri(siteConfig.brand.lime)}
-              alt=""
-              className="size-full"
-            />
+            <img src="/logo.png" alt="" className="size-full" />
           </animated.div>
         </div>
       </div>

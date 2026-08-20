@@ -1,17 +1,27 @@
 // 📖 Docs: obsidian/frontend/components/home-sections.md
 
 /**
- * About — Figma nodes `1575:273` (frame) / `1575:272` (content).
+ * About — Figma node `1575:272` (content row).
  *
- * Desktop offsets are the mockup's own: banner at 40,40 (1360×500), content row
- * at 38,604 (1362×380), left column 449 wide with the stat grid at y 106, right
- * column from x 573 and 789 wide, buttons at y 332.
+ * Desktop offset is the mockup's own content-row position, just pulled up to
+ * the frame's own top gutter: originally `38,604` sitting below a 40,40
+ * 1360×500 decorative banner (`AboutBanner`, ADR-0027 → removed per the
+ * project owner's request — "large empty blue/teal box", see decisions-log).
+ * Deleting that box without also closing the ~604px gap it left would have
+ * traded a gradient-filled empty rectangle for a plain-background one, so the
+ * content row and the section's fixed height both moved up by the banner's
+ * own footprint (33.75rem span + 4rem gutter = 37.75rem) instead of staying at
+ * the original Figma coordinate.
  *
- * `-mt-[100lvh]` makes this block ride *over* the pinned Services panel at
- * **every** breakpoint: it starts one viewport before that runway ends, so
- * scrolling lifts it across. This only works because the Services runway also
- * exists at every breakpoint — the two are a matched pair, and disabling one on
- * small screens without the other pulls this section up over the one above.
+ * No `-mt-[100lvh]` overlap here (unlike the original Dantora layout, where
+ * this block rode directly over the pinned Services panel — see
+ * home-sections.md's *Scroll choreography*). That trick needs a **matched
+ * pair**: a multi-viewport scroll-scrubbed runway directly before it, tall
+ * enough that pulling this block up by exactly one viewport only covers the
+ * runway's *last* frame. Live Demo now sits between Services and About and is
+ * a single `min-h-lvh` block, not a runway — the negative margin would cancel
+ * its entire height and hide it completely rather than reveal it. Plain
+ * sequential flow after Live Demo instead.
  */
 
 import TextEngine from "spring-text-engine";
@@ -20,7 +30,6 @@ import { Button } from "@/components/ui/button";
 import type { AboutContent } from "@/data/mocks/home";
 import { BODY_MOTION, EYEBROW_MOTION } from "@/lib/motion/text-presets";
 
-import { AboutBanner } from "./about-banner";
 import { StatCounter } from "./stat-counter";
 
 export interface AboutProps {
@@ -30,11 +39,9 @@ export interface AboutProps {
 export const About = ({ content }: AboutProps) => (
   <section
     id="about"
-    className="relative z-10 -mt-[100lvh] rounded-t-section bg-surface-section-deep px-5 py-16 md:px-10 lg:h-[71.5rem] lg:p-0"
+    className="relative rounded-t-section bg-surface-section-deep px-5 py-16 md:px-10 lg:h-[36.25rem] lg:p-0"
   >
-    <AboutBanner className="h-[16rem] rounded-card md:h-[24rem] lg:absolute lg:top-[2.5rem] lg:left-[2.5rem] lg:h-[31.25rem] lg:w-[85rem]" />
-
-    <div className="mt-10 flex flex-col gap-10 lg:absolute lg:top-[37.75rem] lg:left-[2.375rem] lg:mt-0 lg:w-[85.125rem] lg:flex-row lg:items-center lg:justify-between lg:gap-0">
+    <div className="mt-10 flex flex-col gap-10 lg:absolute lg:top-[2.5rem] lg:left-[2.375rem] lg:mt-0 lg:w-[85.125rem] lg:flex-row lg:items-center lg:justify-between lg:gap-0">
       <div className="flex flex-col gap-8 lg:w-[28.0625rem] lg:gap-[5.5625rem]">
         <TextEngine
           tag="p"

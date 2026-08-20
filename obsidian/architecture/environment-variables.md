@@ -21,6 +21,7 @@ Rules for handling configuration and secrets.
 |------|-------|---------|
 | `NEXT_PUBLIC_SITE_URL` | public | Site origin (no trailing slash). Drives canonical URLs, OG/Twitter tags, `robots.txt`, `sitemap.xml`, JSON-LD. Falls back to `http://localhost:3000` when unset — **set it in production**. See [[seo-metadata]]. |
 | `CONTACT_ENDPOINT` | server-only | Optional upstream the `/api/contact` route forwards leads to (CRM / webhook). When unset, submissions are logged server-side. See [[api-architecture]]. |
+| `ANTHROPIC_API_KEY` | server-only (dev tool, not runtime) | Used only by `scripts/translate-content.mjs` (ADR-0030) to translate the site's English copy into the other 8 locales. Not validated through `src/env.ts` / `getServerEnv()` — the script runs as standalone Node outside Next's request lifecycle and reads `.env.local` itself. Never required for `next dev`/`next build`/`next start`. |
 
 Documented in `.env.example` (committed). Validated by `src/env.ts` (zod):
 `publicEnv` for `NEXT_PUBLIC_*` (safe anywhere), `getServerEnv()` for

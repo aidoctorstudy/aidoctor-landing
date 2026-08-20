@@ -24,12 +24,16 @@ import { useEffect, useId, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import type { CtaLink, NavLink } from "@/data/mocks/home";
+import type { Locale } from "@/lib/i18n/locales";
+
+import { LanguageSwitcher } from "./language-switcher";
 
 const PANEL_SPRING = { tension: 260, friction: 30 };
 
 export interface MobileMenuProps {
   navLinks: readonly NavLink[];
   cta: CtaLink;
+  locale: Locale;
   /** Same frosted-panel treatment as the rest of the header. */
   panelClassName: string;
 }
@@ -37,6 +41,7 @@ export interface MobileMenuProps {
 export const MobileMenu = ({
   navLinks,
   cta,
+  locale,
   panelClassName,
 }: MobileMenuProps) => {
   const [open, setOpen] = useState(false);
@@ -126,6 +131,7 @@ export const MobileMenu = ({
               >
                 {cta.label}
               </Button>
+              <LanguageSwitcher locale={locale} className="self-start" />
             </animated.nav>
           ),
       )}

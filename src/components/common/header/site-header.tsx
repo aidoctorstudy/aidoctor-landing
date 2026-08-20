@@ -13,10 +13,12 @@
  * switches them back on.
  */
 
+import Image from "next/image";
 import Link from "next/link";
 
-import { DnaIcon } from "@/components/ui/icons";
+import { LanguageSwitcher } from "@/components/common/header/language-switcher";
 import type { CtaLink, NavLink } from "@/data/mocks/home";
+import type { Locale } from "@/lib/i18n/locales";
 
 import { HeaderCta } from "./header-cta";
 import { MobileMenu } from "./mobile-menu";
@@ -25,12 +27,18 @@ export interface SiteHeaderProps {
   brandName: string;
   navLinks: readonly NavLink[];
   cta: CtaLink;
+  locale: Locale;
 }
 
 const GLASS_PANEL =
   "pointer-events-auto rounded-panel bg-surface-glass backdrop-blur-glass";
 
-export const SiteHeader = ({ brandName, navLinks, cta }: SiteHeaderProps) => (
+export const SiteHeader = ({
+  brandName,
+  navLinks,
+  cta,
+  locale,
+}: SiteHeaderProps) => (
   <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-5 md:px-10">
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-[0.5rem]">
@@ -38,8 +46,17 @@ export const SiteHeader = ({ brandName, navLinks, cta }: SiteHeaderProps) => (
           href="#hero"
           className={`${GLASS_PANEL} flex h-[3.375rem] w-[9.3125rem] items-center gap-3 pr-4 pl-1.5`}
         >
-          <span className="grid size-[2.625rem] place-items-center rounded-mark bg-accent text-action-secondary">
-            <DnaIcon className="size-6" />
+          {/* Real logo (ADR-0029) — `next/image` from `public/logo.png`,
+              not the old currentColor `DnaIcon` mark it replaced. */}
+          <span className="grid size-[2.625rem] shrink-0 place-items-center">
+            <Image
+              src="/logo.png"
+              alt=""
+              width={237}
+              height={274}
+              className="size-full object-contain"
+              priority
+            />
           </span>
           <span className="text-xl leading-display font-light">
             {brandName}
@@ -74,12 +91,19 @@ export const SiteHeader = ({ brandName, navLinks, cta }: SiteHeaderProps) => (
 
       {/* The pill CTA is desktop-only. Collapsing it to a bare arrow disc on a
           phone read as a broken control — the burger carries the same action
-          inside the panel instead. */}
-      <div className="hidden lg:block">
+          inside the panel instead. The language switcher rides along in its
+          own glass pill (mobile carries it inside the burger panel). */}
+      <div className="hidden items-center gap-3 lg:flex">
+        <LanguageSwitcher locale={locale} className={`${GLASS_PANEL} px-4 py-2`} />
         <HeaderCta cta={cta} hideWhenVisibleId="contact" />
       </div>
 
-      <MobileMenu navLinks={navLinks} cta={cta} panelClassName={GLASS_PANEL} />
+      <MobileMenu
+        navLinks={navLinks}
+        cta={cta}
+        locale={locale}
+        panelClassName={GLASS_PANEL}
+      />
     </div>
   </header>
 );

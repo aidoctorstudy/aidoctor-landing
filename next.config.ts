@@ -4,6 +4,12 @@ const nextConfig: NextConfig = {
   // Drop the `X-Powered-By: Next.js` response header.
   poweredByHeader: false,
 
+  // Explicit, not just relying on the default: client source maps stay OFF
+  // in production (Next's own default is `false`) so a build never leaks
+  // original source to the browser. Don't flip this to `true` without a
+  // real debugging need — and revert it after.
+  productionBrowserSourceMaps: false,
+
   compiler: {
     // Strip `console.*` from production bundles, keeping error/warn for
     // monitoring. Left on in dev so logs stay available.

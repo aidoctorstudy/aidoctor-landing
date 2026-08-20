@@ -13,11 +13,14 @@ AI Doctor Study helps medical students study smarter using AI. Ask any medical q
 - Flashcards: Unlimited AI-generated flashcards
 
 ## Pricing
-- Free plan: 20 questions/day
-- Pro plan: $2.99/month, unlimited questions, all features
+- Free plan: 20 questions/day, basic subjects, standard AI
+- Pro plan: $2.99/month, unlimited questions, all subjects, Claude AI, image analysis, clinical cases, drug mnemonics, USMLE/PLAB prep, flashcards
+- Student discount: code MED20 for 20% off Pro
 
 ## Links
-- App: https://app.aidoctor.study
-- Pricing: https://hyperai3.gumroad.com/l/aidoctorstudypro
+- App: https://aidoctor.study/app
+- Pro checkout: https://hyperai3.gumroad.com/l/aidoctorstudypro
 - Terms: https://aidoctor.study/terms
+- Refunds: https://aidoctor.study/refunds
+- Cookies: https://aidoctor.study/cookies
 - Privacy: https://aidoctor.study/privacy

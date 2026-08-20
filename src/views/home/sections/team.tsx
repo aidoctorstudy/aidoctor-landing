@@ -64,7 +64,7 @@ export const Team = ({ content }: TeamProps) => (
                 >
                   <Image
                     src={`/assets/icons/${social.icon}.svg`}
-                    alt=""
+                    alt={social.label}
                     width={64}
                     height={64}
                     className="size-full"

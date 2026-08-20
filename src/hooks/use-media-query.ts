@@ -43,3 +43,6 @@ export const useMediaQuery = (query: string): boolean => {
 
 /** Matches the `lg` breakpoint — where the Figma desktop composition starts. */
 export const DESKTOP_QUERY = "(min-width: 1024px)";
+
+/** Matches `springsConfig.mobileWidth` (768) — the animation engine's own mobile cutoff. */
+export const MOBILE_QUERY = "(max-width: 767px)";

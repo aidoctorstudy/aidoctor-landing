@@ -8,6 +8,69 @@ updated: 2026-08-10
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-20 (5)
+
+- **Real logo replaces the placeholder `DnaIcon` mark everywhere** —
+  `public/logo.png` (extracted from the legacy app's own favicon SVG) is
+  now the single source for the navbar, the preloader, the generated
+  favicon/apple-icon/OG-image routes, and `public/favicon.ico`. Deleted
+  `DnaIcon`/`lib/brand-mark.ts`. Deleted the stale undersized checked-in
+  `public/open-graph.png`.
+- **Full i18n routing for 9 locales** (`en, ar, ur, es, fr, hi, pt, de,
+  zh`) — new `src/middleware.ts` + `[locale]` route segment
+  (`next.config.js` `i18n`, requested literally, is a Pages Router API and
+  does nothing in this project's App Router setup, confirmed before
+  building). RTL for Arabic/Urdu via `<html dir>`. Per-locale sitemap
+  entries + hreflang/`og:locale` metadata. New `LanguageSwitcher` in the
+  header. Content resolution stays props-driven (English is the existing
+  `data/mocks/*.ts` TS source; other locales are JSON overrides read by
+  `lib/i18n/content.ts`) rather than a parallel `t()` system.
+- **Build-time translation pipeline** — `scripts/translate-content.mjs`
+  (plain Node, Anthropic API, no new dependency) + `npm run translate`.
+  Not run this session (no API key available) — every locale currently
+  renders English until it is.
+- **Four real legal pages** — `/terms`, `/refunds`, `/cookies`, `/privacy`
+  (previously footer links with no route behind them). Terms/Refunds/
+  Cookies ported from the legacy `public/app/*.html`; Privacy authored
+  fresh. Unresolved legal placeholders (governing law, data-processing
+  jurisdiction) render as an explicit warning callout rather than
+  fabricated facts.
+- **Fixed a real middleware bug found in-browser before shipping**: the
+  locale rewrite was 404ing the favicon and `og:image` on every request
+  because the generated icon/OG routes' public URLs carry no file
+  extension. See decisions-log ADR-0030.
+- Sitemap now covers `/app` and the four legal routes; `team.tsx`'s social
+  icons gained real `alt` text; `public/llms.txt` refreshed.
+
+## 2026-08-20 (4)
+
+- **Landing page v2** — added Live Demo (Features→About), Pricing
+  (Team→Contact), a static app-mockup card in Why Dantora, and a
+  scroll-triggered floating "Try Free" CTA; replaced the Contact
+  lead-capture form with a plain closing CTA; deleted the About section's
+  decorative banner (`AboutBanner` + its 3 CSS tokens); bumped the DNA
+  scene's `helixOpacity`/`brightness`/`spin`; added a CSS+spring fallback
+  for the Hero's DNA scene on mobile when WebGL fails. Two requested
+  literal `@keyframes`/hardcoded-hex asks were substituted for spring-loop
+  and token-composed equivalents per the hard rules. Fixed two layout bugs
+  found live in-browser: About's `-mt-[100lvh]` overlap (removed — it
+  needs a scroll-scrubbed runway directly above it, which Live Demo isn't)
+  and Team bleeding through Pricing (needed the same `z-20` treatment as
+  Contact). See [[decisions-log]] ADR-0029.
+
+## 2026-08-20 (3)
+
+- **Fixed dead space below the chat input bar in `public/app/`** (the
+  standalone legacy study app embedded via iframe at `/app`, see entry
+  below). `.tab-panel`'s base `1.5rem` padding was leaking onto
+  `#panel-chat`, and `.chat-layout` sized itself with a fixed
+  `calc(100vh - 57px)` instead of filling its parent — together these left
+  a gap under the input bar and could clip it out of view on first load.
+  Added `#panel-chat{padding:0}` (with the matching mobile
+  `!important` override) and changed `.chat-layout` to `height:100%` so it
+  exactly fills the panel; also zeroed `body`/`.app-main` `padding-bottom`
+  explicitly. `styles.css` only — no architecture change.
+
 ## 2026-08-20 (2)
 
 - **Added `/app` as a second root layout, embedding the study app via

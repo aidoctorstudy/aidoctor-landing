@@ -1,9 +1,14 @@
 import type { Metadata, Viewport } from "next";
 
+import { LOCALES, isLocale, type Locale } from "@/lib/i18n/locales";
 import { siteConfig } from "@/lib/site";
 import { generateViewport } from "@/utils/seo/generate-page-metadata";
 
 import "@/app/globals.css";
+
+export function generateStaticParams() {
+  return LOCALES.map((locale) => ({ locale }));
+}
 
 /**
  * Separate root layout for `/app` — the study app shell.
@@ -33,13 +38,18 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = generateViewport();
 
-export default function AppRootLayout({
+export default async function AppRootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+
   return (
-    <html lang="en" className="h-full overflow-hidden">
+    <html lang={locale} className="h-full overflow-hidden">
       <body className="m-0 h-full overflow-hidden p-0">{children}</body>
     </html>
   );

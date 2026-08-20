@@ -5,7 +5,7 @@
  * inside `1572:537`). The mockup ships it baked onto a lime disc; the disc is a
  * token-coloured element in markup, so only the arrow lives here.
  */
-import type { IconProps } from "./dna-icon";
+import type { IconProps } from "./icon-types";
 
 export const ArrowUpRightIcon = ({ className }: IconProps) => (
   <svg

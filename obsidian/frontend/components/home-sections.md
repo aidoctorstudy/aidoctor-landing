@@ -20,11 +20,14 @@ No component holds its own text.
 |---------|-----------|-------|
 | Site header | `1575:267` | ✅ built |
 | Hero | `1558:307` · `1558:305` · `1574:602` · `1574:605` | ✅ built |
-| Why Dantora (+ cursor image trail) | `1558:320` | ✅ built |
+| Why Dantora (+ cursor image trail, app mockup) | `1558:320` | ✅ built |
 | Services (horizontal scroll) | `1575:268` · `1574:680` | ✅ built |
-| About (overlays Services) | `1575:273` · `1575:272` | ✅ built |
+| Live Demo | — (net new, ADR-0029) | ✅ built |
+| About | `1575:273` · `1575:272` | ✅ built |
 | Team | `1558:410` | ✅ built |
-| Contact form (overlays Team) | `1575:274` · `1574:747` | ✅ built |
+| Pricing | — (net new, ADR-0029) | ✅ built |
+| Contact (plain closing CTA, overlays Team) | `1575:274` | ✅ built |
+| Floating CTA | — (net new, ADR-0029) | ✅ built |
 
 ## The fix that mattered: cap-height text trim
 
@@ -180,6 +183,92 @@ heading. Touch pointers are ignored — there is no path to leave.
 
 The Why section is `overflow-hidden`: a card spawned near an edge is otherwise
 drawn over the hero above and Services below.
+
+### `AppMockup` — the browser-chrome preview (ADR-0029)
+
+`why-dantora.tsx` → `app-mockup.tsx`. Net new, no Figma node: a static (not
+typing — that's Live Demo's job) browser-chrome card showing one Q&A, built
+from the same card/glass tokens as the rest of the page rather than a
+screenshot. `aria-hidden`, `pointer-events-none`, copy from
+`WhyContent.mockup` (`AppMockupContent` in `data/mocks/home.ts`).
+
+Positioned **top-right**, `hidden lg:block`, `top-24` (clearing the fixed
+header) — not bottom-right, which is where it first shipped. `FloatingCta`
+is fixed to that same corner site-wide, and this section is `h-lvh`, so a
+bottom-10 mockup and the CTA collided the moment the CTA appeared (caught
+live in-browser: the pill rendered on top of the mockup's last message). Any
+future decorative element added to a full-viewport section should default
+away from bottom-right for the same reason.
+
+## `LiveDemo` — the scripted chat transcript (ADR-0029)
+
+`live-demo.tsx` + `typing-cursor.tsx`, between Services and About. Net new,
+no Figma node. A fixed, scripted metformin Q&A (`LIVE_DEMO_CONTENT` in
+`data/mocks/home.ts`) that "types" itself in and replays every scroll pass
+(`mode="always"`, this page's usual vocabulary).
+
+**Letter-level, not word-level.** Every other heading/body reveal on this
+page splits by word (`HEADING_MOTION`/`BODY_MOTION`, see *Text motion*
+below) — a chat bubble needs the finer grain to actually read as typing.
+Each message is its own `TextEngine` with `letterIn`/`letterOut`/
+`letterStagger`, a bespoke config local to this file (not added to
+`text-presets.ts` — it's a one-off, purpose-built for a typing cadence, not
+a second general-purpose text preset).
+
+**Sequencing without client state.** Each message's `delayIn` is a running
+total of the *previous* messages' own `text.length × LETTER_STAGGER +
+MESSAGE_GAP`, computed once per render from the static copy via a pure
+`Array.reduce` — no `useState`, no timers. An earlier `let elapsed = 0`
+accumulator reassigned during the map failed this project's
+`react-hooks/immutability` lint rule (mutating an outer render-scoped
+variable); the fix was a purely functional reduce building `{ list,
+elapsed }` immutably.
+
+**`TypingCursor`** — a small always-on blinking cyan bar after the
+transcript, `@react-spring/web` `useSpring` with an async `to` chain
+(`while (true) { await next({opacity:0}); await next({opacity:1}); }`) and a
+hard-step easing (`(t) => t < 1 ? 0 : 1`) so it reads as a binary blink, not
+a fade. Not `@keyframes` — hard rule #1 bans them outright even for
+continuous decorative motion (design-system.md's ADR-0014 exception is
+discrete state only); this is the same technique `MobileDnaFallback` uses
+(see [[dna-ink-scene]]) and the same *kind* of bespoke-`useSpring` leaf as
+`StatCounter`/`HeaderCta`.
+
+> [!warning] `min-h-lvh` here is load-bearing, not just visual
+> This section directly precedes About, and About *used to* ride over
+> whatever came before it via `-mt-[100lvh]` — a trick that needs a tall
+> scroll-scrubbed runway, not a content-sized block (see the *Scroll
+> choreography* warning below). The actual fix was removing that trick from
+> About entirely; `min-h-lvh` here just keeps this section's own rhythm
+> consistent with Hero/Why/Team/Contact and is safe to change independently
+> now that About no longer depends on it.
+
+## `Pricing` — Free / Pro (ADR-0029)
+
+`pricing.tsx`, between Team and Pricing. Net new, no Figma node. Two cards
+from one internal `PlanCard`, content from `PRICING_CONTENT`
+(`data/mocks/home.ts`, `PricingPlan[]`). Pro carries `plan.highlighted`:
+the `--glow-accent` token (`globals.css` — Tier 1 `--raw-shadow-glow-accent`
+composed from the existing `--raw-color-brand-alpha-40` primitive, Tier 2
+role `--glow-accent`) and a `plan.badge` pill ("Most Popular").
+
+`z-20` + `bg-background` on the section — see the *Scroll choreography*
+table above: Pricing sits directly after the sticky Team rail and needed the
+same treatment Contact already had, or Team bled through underneath it.
+
+## `FloatingCta` — the scroll-triggered pill (ADR-0029)
+
+`components/common/floating-cta.tsx` — `common/`, not a section file, since
+it's site-wide chrome mounted once in `home/index.tsx`, outside `<main>`.
+Fixed bottom-right, content from `FLOATING_CTA` (`data/mocks/home.ts`).
+
+Same `@react-spring/web` fade-and-lift technique as `HeaderCta` (opacity +
+a `translate3d`, `pointer-events` dropped once opacity crosses 0.5) but
+triggered by `window.scrollY > 300` behind a plain `scroll` listener rather
+than an `IntersectionObserver` — the requirement genuinely is a scroll
+offset ("appears after 300px"), not an element's viewport position.
+`Spring`'s own `mode="forward"` already uses this same
+`window.addEventListener("scroll", …, { passive: true })` pattern.
 
 ## Team block — measured against Figma
 
@@ -358,13 +447,27 @@ Header and hero were signed off this way (logo `40,16 149×54`, nav
 |--------|-----|
 | Fixed header | `position: fixed` — no JS |
 | Services horizontal scrub | `ServicesTrack`: tall wrapper, `sticky` panel, progress read once per frame from the shared ticker into a `useSpring` `x` |
-| About over Services | Services' runway is 3 viewports with a `sticky` panel; About carries `-mt-[100lvh]` + `z-10`, so it starts one viewport before the runway ends — while the panel is still pinned — and scrolls *across* it. Without the negative margin it merely follows the panel. |
-| Contact over Team | Team is `sticky top-0` inside `main`, so it stays pinned for the rest of the page; Contact follows with `z-20` and its own panel colour. |
+| Contact over Team | Team is `sticky top-0` inside `main`, so it stays pinned for the rest of the page; Contact follows with `z-20` and its own panel colour. **`Pricing` needs the same treatment** — it sits directly before Contact, between Team and Contact, so it also carries `z-20` + an opaque `bg-background`, or Team bleeds through underneath it during the handoff (found live in-browser, ADR-0029). |
 | Team slider | native `overflow-x-auto` rail **plus pointer-capture dragging** — a mouse cannot drag a native scroller, so press/move/release write `scrollLeft` directly and a post-drag click is swallowed so a card never opens from a drag. Only the progress bar is animated, springing from `scrollLeft`. |
 | Cursor image trail | `CursorTrail`: `useTransition` over a bounded list — one spawn per 90px of pointer travel, oldest dropped off the end. See below. |
 
-Both overlay reveals are **flow order, not scroll listeners** — nothing to
-throttle, nothing to recalculate on resize.
+The Contact-over-Team overlay is **flow order, not a scroll listener** —
+nothing to throttle, nothing to recalculate on resize.
+
+> [!warning] About no longer rides over Services (ADR-0029)
+> It used to: `-mt-[100lvh]` + `z-10`, starting one viewport before the
+> Services runway ended while its panel was still pinned. That trick needs a
+> **matched pair** — a multi-viewport scroll-scrubbed runway directly above
+> it, tall enough that pulling the block up by exactly one viewport only
+> covers the runway's *last* frame (this was true of Services, is not true
+> of a plain section). Live Demo now sits directly before About, between
+> Services and About, and is a single `min-h-lvh` block, not a runway — the
+> negative margin canceled Live Demo's entire height and hid it completely
+> instead of revealing it. About dropped `-mt-[100lvh]`/`z-10` entirely and
+> now just flows normally after Live Demo; Services' rail simply releases
+> and Live Demo follows in plain flow, with no overlap flourish. Don't
+> reintroduce the negative margin without also turning whatever precedes
+> About into a real scroll-scrubbed runway — see about.tsx's docstring.
 
 ## Outstanding
 
@@ -377,12 +480,18 @@ throttle, nothing to recalculate on resize.
 
 Site chrome, so it lives in `common/` rather than beside the page. A **Server
 Component**: `position: fixed` needs no client boundary, and nothing here holds
-state.
+state — it renders two client leaves (`HeaderCta`, `LanguageSwitcher`) rather
+than becoming one itself.
 
-Three frosted panels (`bg-surface-glass` + `backdrop-blur-glass`) on a bar that
+Frosted panels (`bg-surface-glass` + `backdrop-blur-glass`) on a bar that
 is itself `pointer-events-none`, with each panel switching them back on. Without
 that, the 40 px gutters between panels would sit over the canvas and swallow
 pointer events the WebGL scene needs for its cursor deform.
+
+Takes a `locale` prop (ADR-0030), passed straight through to
+`LanguageSwitcher` — the header itself does no locale-dependent rendering
+beyond that. The logo pill renders `next/image` from `/logo.png` (ADR-0030 —
+was the `<DnaIcon>` `currentColor` glyph, see [[components/ui]]).
 
 ## `Hero` — `views/home/sections/hero.tsx`
 

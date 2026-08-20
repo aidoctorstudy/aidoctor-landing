@@ -12,18 +12,28 @@
 
 import { Metadata, Viewport } from "next";
 
+import { LOCALES, OG_LOCALES, localizedPath, type Locale } from "@/lib/i18n/locales";
 import { siteConfig } from "@/lib/site";
 
 interface MetadataProps {
   title?: string;
   description?: string;
-  /** Canonical path (e.g. `/about`) or absolute URL for this page. */
+  /**
+   * Canonical path, **unlocalized** (e.g. `/terms`, `/`) — locale prefixing
+   * happens here from the `locale` param below, so callers never repeat it.
+   */
   url?: string;
   /** Open Graph / Twitter image — path under `public/` or absolute URL. */
   ogImage?: string;
   twitterHandle?: string;
   author?: string;
   siteName?: string;
+  /**
+   * The page's own locale. Omit for locale-agnostic fallback metadata (e.g.
+   * a root layout's default export) — every actual page passes this so
+   * `canonical`/`alternates.languages`/`openGraph.locale` are correct.
+   */
+  locale?: Locale;
 }
 
 export function generateMetadata({
@@ -34,7 +44,18 @@ export function generateMetadata({
   twitterHandle = siteConfig.twitterHandle,
   author = siteConfig.author,
   siteName = siteConfig.name,
+  locale,
 }: MetadataProps = {}): Metadata {
+  const canonicalUrl = locale ? localizedPath(locale, url) : url;
+  // One entry per locale, plus `x-default` pointing at the unprefixed
+  // (English) URL — the standard hreflang fallback target.
+  const languages = locale
+    ? Object.fromEntries([
+        ...LOCALES.map((entry) => [entry, localizedPath(entry, url)]),
+        ["x-default", url],
+      ])
+    : undefined;
+
   return {
     // Resolves every relative URL below to an absolute one.
     metadataBase: new URL(siteConfig.url),
@@ -44,16 +65,17 @@ export function generateMetadata({
     creator: author,
     publisher: author,
     alternates: {
-      canonical: url,
+      canonical: canonicalUrl,
+      ...(languages ? { languages } : {}),
     },
     openGraph: {
       title,
       description,
-      url,
+      url: canonicalUrl,
       siteName,
       // Must match what `app/opengraph-image.tsx` actually renders.
       images: [{ url: ogImage, width: 1200, height: 630 }],
-      locale: "en_US",
+      locale: locale ? OG_LOCALES[locale] : "en_US",
       type: "website",
     },
     twitter: {

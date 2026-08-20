@@ -7,9 +7,9 @@
  * Sits after `<Contact>` in flow, not inside `<main>` — it isn't part of the
  * page's main content, it's a landmark of its own ([[html-semantics]]).
  *
- * The four routes below (`/terms`, `/refunds`, `/cookies`, `/privacy`) don't
- * have pages yet in this project — linking to them is what was asked for;
- * building their legal content is a separate, unstarted task.
+ * The four routes below (`/terms`, `/refunds`, `/cookies`, `/privacy`) are
+ * real pages as of ADR-0029 — `views/legal/legal-page.tsx`, content in
+ * `data/mocks/legal.ts`.
  */
 
 import Link from "next/link";

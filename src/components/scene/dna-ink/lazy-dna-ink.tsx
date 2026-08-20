@@ -39,7 +39,11 @@ export interface LazyDnaInkProps extends DnaInkProps {
   gatesPreload?: boolean;
 }
 
-export const LazyDnaInk = ({ gatesPreload, ...props }: LazyDnaInkProps) => {
+export const LazyDnaInk = ({
+  gatesPreload,
+  onError,
+  ...props
+}: LazyDnaInkProps) => {
   const { registerGate } = usePreload();
   const releaseRef = useRef<(() => void) | null>(null);
 
@@ -53,6 +57,19 @@ export const LazyDnaInk = ({ gatesPreload, ...props }: LazyDnaInkProps) => {
   }, [gatesPreload, registerGate]);
 
   const handleReady = useCallback(() => releaseRef.current?.(), []);
+  // A scene that fails to mount will never draw a frame either — release any
+  // held gate on failure too, or a refused WebGL context would strand the
+  // preloader curtain until the 6s timeout.
+  const handleError = useCallback(() => {
+    onError?.();
+    if (gatesPreload) releaseRef.current?.();
+  }, [gatesPreload, onError]);
 
-  return <DnaInk {...props} onReady={gatesPreload ? handleReady : undefined} />;
+  return (
+    <DnaInk
+      {...props}
+      onReady={gatesPreload ? handleReady : undefined}
+      onError={handleError}
+    />
+  );
 };

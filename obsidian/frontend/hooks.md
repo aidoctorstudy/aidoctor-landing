@@ -33,7 +33,7 @@ components — don't call them directly unless extending the engine.
 | Hook | File | Role |
 |------|------|------|
 | `useWindowWidth` / `useWindowHeight` / `useWindowSize` | `use-window-size.ts` | SSR-safe window dimensions — all three share **one** debounced (300 ms) `resize` listener via a `useSyncExternalStore` store |
-| `useMediaQuery` | `use-media-query.ts` | SSR-safe `matchMedia` subscription. Exports `DESKTOP_QUERY` (`min-width: 1024px`), the project's single layout breakpoint. |
+| `useMediaQuery` | `use-media-query.ts` | SSR-safe `matchMedia` subscription. Exports `DESKTOP_QUERY` (`min-width: 1024px`), the project's single layout breakpoint, and `MOBILE_QUERY` (`max-width: 767px`, matching `springsConfig.mobileWidth` — added for `DnaInkWithFallback`, ADR-0029). |
 
 > [!note] `useMediaQuery` is for *behaviour*, not styling
 > Reach for it only when something must genuinely change below a breakpoint — a
