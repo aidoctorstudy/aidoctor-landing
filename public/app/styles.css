@@ -770,16 +770,6 @@ footer p{font-size:13px;color:var(--tx3);margin-bottom:1rem}
 /* ── SETTINGS ── */
 .settings-layout{padding:1.2rem;max-width:500px;margin:0 auto}
 
-/* ── REFERRAL ── */
-.ref-layout{padding:1.5rem;max-width:600px;margin:0 auto}
-.ref-hero{background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(6,182,212,.1));border:1px solid rgba(37,99,235,.3);border-radius:24px;padding:2rem;text-align:center;margin-bottom:2rem}
-.ref-code-box{background:var(--card);border-radius:16px;padding:1.3rem;border:1px solid var(--bd);margin-bottom:1.2rem;text-align:center}
-.ref-code{font-size:1.8rem;font-weight:900;color:var(--p-lite);letter-spacing:.15em;font-family:var(--f2);margin:.5rem 0}
-.ref-copy-btn{padding:10px 24px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;font-family:var(--f)}
-.ref-share-row{display:flex;gap:8px;justify-content:center;margin-top:1rem}
-.ref-share-btn{padding:8px 18px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--f);border:1px solid var(--bd);background:transparent;color:var(--tx2);transition:all .2s}
-.ref-share-btn:hover{border-color:var(--p);color:var(--p-lite)}
-
 /* ── ACHIEVEMENTS POPUP ── */
 .ach-popup{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--card2);border:1px solid rgba(245,158,11,.4);border-radius:20px;padding:1.2rem 2rem;text-align:center;z-index:600;transition:transform .4s cubic-bezier(.34,1.56,.64,1);min-width:260px;display:none}
 .ach-popup.show{transform:translateX(-50%) translateY(0)}

@@ -128,6 +128,37 @@ for (const file of JS_FILES) {
   }
 }
 
+/**
+ * Strings the regex patterns above genuinely can't reach: ternary-embedded
+ * literals (`hour < 12 ? 'Good morning' : ...`, no function call or object
+ * key to anchor on) and HTML fragments built by string concatenation
+ * (`'<div>'+'Sessions Done'+'</div>'` — the `>text<` shape only exists
+ * once the pieces are joined at runtime, not in the source text a regex
+ * scans). Reported live as still-English on `/ar/app`; verified each
+ * against its exact source line (public/app/10-ui-system.js,
+ * 11-nibble-growth.js, 04-library-tools.js) rather than guessing, since the
+ * dictionary lookup is exact-text-match and punctuation/whitespace has to
+ * match the real DOM text precisely.
+ */
+const MANUAL_STRINGS = [
+  "Good morning!",
+  "Good afternoon!",
+  "Good evening!",
+  "Good morning",
+  "Good afternoon",
+  "Good evening",
+  "Sessions Done",
+  "Total Focus",
+  "Today Focus",
+  "Recent Sessions",
+  "No sessions yet",
+  "No sessions yet — use Lock-In Mode!",
+  "Share My Stats",
+  "No mistakes yet — keep going!",
+  "Making your 8 nibble cards...",
+];
+for (const s of MANUAL_STRINGS) strings.add(s);
+
 const sorted = [...strings].sort((a, b) => a.localeCompare(b));
 writeFileSync(
   join(ROOT, "scripts/tmp-app-strings.json"),

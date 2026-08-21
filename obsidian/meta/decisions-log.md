@@ -198,6 +198,18 @@ English because that source wasn't covered by the call-based patterns.
 Deliberately **not** every string literal in the JS files — they also build
 long AI-prompt strings sent to the backend, which must stay in English for
 the model and would be actively wrong to translate.
+
+**Follow-up (2026-08-21, see [[changelog]]):** a fourth source neither
+regex pattern reaches — ternary-embedded literals
+(`hour < 12 ? 'Good morning' : ...`, nothing to anchor a call- or
+property-based regex on) and HTML fragments assembled by string
+concatenation (the `>text<` shape only exists once the pieces join at
+runtime, not in the source a regex scans). Rather than writing an
+increasingly elaborate regex to chase every JS authoring pattern, added a
+small curated `MANUAL_STRINGS` list to `extract-app-strings.mjs` for cases
+like this, verified against the exact source line each time (the
+dictionary is exact-text-match, so guessed punctuation/whitespace silently
+fails to match).
 `translate-app-content.mjs` shares its protected-phrase/whitespace/
 sentence-splitting/retry logic with the hardened `translate-content.mjs`
 above, but batches many strings into one LibreTranslate request instead of

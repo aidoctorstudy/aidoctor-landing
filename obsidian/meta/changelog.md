@@ -10,6 +10,24 @@ This is a human-curated log — not a mirror of `git log`.
 
 ## 2026-08-21
 
+- **Removed the "Invite Friends, Get Pro Free" referral panel from
+  `public/app/`** — sidebar nav button, the whole panel (hero copy, the
+  `MED-XXXX` referral code display, Copy Code / Share on WhatsApp / Copy
+  Link buttons), and its dedicated CSS. It was pure static markup with no
+  backing JS (no referral-code generation, nothing else referenced it), so
+  nothing else needed touching. Settings and every other panel untouched.
+- **Nine more `public/app/` strings that stayed English on `/ar/app` fixed.**
+  Traced each to why the existing extraction missed it — ternary-embedded
+  literals (`hour < 12 ? 'Good morning' : ...`, no function call or object
+  key to anchor a regex on) and HTML fragments built by string
+  concatenation (`>text<` only exists once the pieces join at runtime) —
+  and added a small curated list to `extract-app-strings.mjs` for that
+  class of string, plus hand-patched a few whose LibreTranslate output was
+  poor quality (lost words, one literal English echo, "Nibble" mistranslated
+  as "noble") or that hit the already-known persistent-echo failure
+  (`Tap to upload file`, `Generate Mnemonic`, `Diagnose`, `Solve Case` — see
+  ADR-0033). Re-ran extraction (full) and translation (`--locales=ar` only,
+  per request) — the other 7 locales' dictionaries are unchanged this pass.
 - **Marketing-site `/app` CTAs are now locale-prefixed, and `public/app/`
   has in-app language switchers.** See [[decisions-log]] ADR-0034.
   `getHomeContent`/`getSiteChrome` (`src/lib/i18n/content.ts`) now rewrite
