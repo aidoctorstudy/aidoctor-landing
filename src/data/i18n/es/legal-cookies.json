@@ -2,25 +2,25 @@
   "eyebrow": "Legal",
   "title": "Política de cookies",
   "lastUpdated": "17 August 2026",
-  "scope": "Aplicaciones aaidoctor.studyy elAI Doctor Studyapp",
+  "scope": "Aplicaciones a aidoctor.study y el AI Doctor Study app",
   "summary": [
     [
       {
-        "text": "Utilizamos un pequeño conjunto de cookies y almacenamiento local"
+        "text": "Utilizamos un pequeño conjunto de cookies y almacenamiento local "
       },
       {
         "text": "mantente firme",
         "bold": true
       },
       {
-        "text": "y"
+        "text": " y "
       },
       {
         "text": "recuerde su perfil de estudio",
         "bold": true
       },
       {
-        "text": "- son esenciales y siempre."
+        "text": " - son esenciales y siempre."
       }
     ],
     [
@@ -29,7 +29,7 @@
         "bold": true
       },
       {
-        "text": "en la pancarta de galletas. Di que no y la aplicación funciona exactamente igual."
+        "text": " en la pancarta de galletas. Di que no y la aplicación funciona exactamente igual."
       }
     ],
     [
@@ -39,14 +39,14 @@
     ],
     [
       {
-        "text": "Puedes cambiar de opinión en cualquier momento a través de"
+        "text": "Puedes cambiar de opinión en cualquier momento a través de "
       },
       {
         "text": "Configuración de cookies",
         "bold": true
       },
       {
-        "text": "o su navegador."
+        "text": " o su navegador."
       }
     ]
   ],
@@ -64,14 +64,14 @@
               "bold": true
             },
             {
-              "text": "son pequeños archivos de texto un sitio web almacena en su dispositivo para que pueda reconocerlo entre páginas y visitas."
+              "text": " son pequeños archivos de texto un sitio web almacena en su dispositivo para que pueda reconocerlo entre páginas y visitas. "
             },
             {
               "text": "Almacenamiento local",
               "bold": true
             },
             {
-              "text": "es una característica similar del navegador que utilizamos para guardar datos (como su perfil de estudio) directamente en su dispositivo en lugar de en nuestros servidores. Esta política cubre tanto, como tecnologías similares como identificadores SDK en nuestra aplicación."
+              "text": " es una característica similar del navegador que utilizamos para guardar datos (como su perfil de estudio) directamente en su dispositivo en lugar de en nuestros servidores. Esta política cubre tanto, como tecnologías similares como identificadores SDK en nuestra aplicación."
             }
           ]
         }
@@ -91,7 +91,7 @@
                 "bold": true
               },
               {
-                "text": "— firmar con Google (Firebase Authentication), mantener su sesión segura y recordar su elección de cookies. El Servicio no puede funcionar sin estos, así que no requieren consentimiento."
+                "text": " — firmar con Google (Firebase Authentication), mantener su sesión segura y recordar su elección de cookies. El Servicio no puede funcionar sin estos, así que no requieren consentimiento."
               }
             ],
             [
@@ -100,7 +100,7 @@
                 "bold": true
               },
               {
-                "text": "— recordando su nombre, año de estudio y examen para que aterrice directamente en su espacio de estudio en lugar de volver a hacer a bordo."
+                "text": " — recordando su nombre, año de estudio y examen para que aterrice directamente en su espacio de estudio en lugar de volver a hacer a bordo."
               }
             ],
             [
@@ -109,7 +109,7 @@
                 "bold": true
               },
               {
-                "text": "— estadísticas de uso de estilo anónimo a través de Google Analytics / Firebase Analytics, por lo que podemos ver qué características ayudan a los estudiantes y qué necesidad de fijar. Esta carrera"
+                "text": " — estadísticas de uso de estilo anónimo a través de Google Analytics / Firebase Analytics, por lo que podemos ver qué características ayudan a los estudiantes y qué necesidad de fijar. Esta carrera "
               },
               {
                 "text": "sólo con su consentimiento",
@@ -160,7 +160,7 @@
             [
               "aid_name_*, aid_year_*, aid_exam_*",
               "AI Doctor Study",
-              "Almacena su nombre, año de estudio y examen (por ejemplo MBBS) en su dispositivo para que la aplicación se abra directamente en su espacio de estudio.",
+              "Almacena su nombre, año de estudio y examen (por ejemplo. MBBS) en tu dispositivo para que la aplicación se abra directamente en tu espacio de estudio.",
               "Hasta que se haya despejado"
             ],
             [
@@ -187,7 +187,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Puede leer cómo Google utiliza estos datos en"
+              "text": "Puede leer cómo Google utiliza estos datos en "
             },
             {
               "text": "policies.google.com/technologies/partner-sites",
@@ -214,7 +214,7 @@
                 "bold": true
               },
               {
-                "text": "— cuando abre el checkout Pro o gestiona su suscripción, Gumroad establece sus propias cookies para procesar su pago de forma segura. See"
+                "text": " — cuando abre el checkout Pro o gestiona su suscripción, Gumroad establece sus propias cookies para procesar su pago de forma segura. See "
               },
               {
                 "text": "Política de privacidad de Gumroad",
@@ -230,7 +230,7 @@
                 "bold": true
               },
               {
-                "text": "— algunos videos de estudio están incrustados en YouTube. Cuando juegas uno, YouTube (Google) puede establecer cookies y recopilar datos bajo el"
+                "text": " — algunos videos de estudio están incrustados en YouTube. Cuando juegas uno, YouTube (Google) puede establecer cookies y recopilar datos bajo el "
               },
               {
                 "text": "Política de privacidad de Google",
@@ -265,7 +265,7 @@
               "bold": true
             },
             {
-              "text": "En su primera visita puede elegir Aceptar todo o Solo Esencial. El análisis se mantiene a menos que lo aceptes. Su elección se guarda en su dispositivo, y puede cambiarlo en cualquier momento desde el control de configuración de las cookies en el pie de página del sitio."
+              "text": " En su primera visita puede elegir Aceptar todo o Solo Esencial. El análisis se mantiene a menos que lo aceptes. Su elección se guarda en su dispositivo, y puede cambiarlo en cualquier momento desde el control de configuración de las cookies en el pie de página del sitio."
             }
           ]
         },
@@ -277,7 +277,7 @@
               "bold": true
             },
             {
-              "text": "También puede bloquear o eliminar las cookies y los datos del sitio en la configuración de su navegador — note que eliminar el almacenamiento esencial le firmará y restablecerá su perfil de estudio en el dispositivo."
+              "text": " También puede bloquear o eliminar las cookies y los datos del sitio en la configuración de su navegador — note que eliminar el almacenamiento esencial le firmará y restablecerá su perfil de estudio en el dispositivo."
             }
           ]
         },
@@ -289,7 +289,7 @@
               "bold": true
             },
             {
-              "text": "Para Google Analytics específicamente, Google ofrece un"
+              "text": " Para Google Analytics específicamente, Google ofrece un "
             },
             {
               "text": "navegador opt-out add-on",
@@ -326,14 +326,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "¿Preguntas sobre cookies o sus datos? Email"
+              "text": "¿Preguntas sobre cookies o sus datos? Email "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": ". Para cómo manejamos los datos personales más ampliamente, vea nuestra"
+              "text": ". Para cómo manejamos los datos personales de manera más amplia, vea nuestra "
             },
             {
               "text": "Política de privacidad",

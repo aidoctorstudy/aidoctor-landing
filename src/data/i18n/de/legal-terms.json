@@ -2,42 +2,42 @@
   "eyebrow": "Recht",
   "title": "Geschäftsbedingungen",
   "lastUpdated": "17 August 2026",
-  "scope": "Gilt füraidoctor.studyundAI Doctor Studyanwendungsbereich",
+  "scope": "Gilt für aidoctor.study und AI Doctor Study anwendungsbereich",
   "summary": [
     [
       {
-        "text": "AI Doctor Studyein"
+        "text": "AI Doctor Study ein "
       },
       {
         "text": "lernwerkzeug für medizinische studierende",
         "bold": true
       },
       {
-        "text": "— es ist keine medizinische beratung und darf nie für eine echte patientenversorgung verwendet werden."
+        "text": " — es ist keine medizinische beratung und darf nie für eine echte patientenversorgung verwendet werden."
       }
     ],
     [
       {
-        "text": "KI-Antworten können falsch sein."
+        "text": "KI-Antworten können falsch sein. "
       },
       {
         "text": "Immer überprüfen",
         "bold": true
       },
       {
-        "text": "gegen ihre lehrbücher, dozenten und offiziellen richtlinien."
+        "text": " gegen ihre lehrbücher, dozenten und offiziellen richtlinien."
       }
     ],
     [
       {
-        "text": "Der kostenlose Plan ist kostenlos."
+        "text": "Der kostenlose Plan ist kostenlos. "
       },
       {
         "text": "Pro erneuert monatlich",
         "bold": true
       },
       {
-        "text": "durch Gumroad und Sie können jederzeit stornieren - Sie halten Pro, bis Ihre bezahlte Zeit endet."
+        "text": " durch Gumroad und Sie können jederzeit stornieren - Sie halten Pro, bis Ihre bezahlte Zeit endet."
       }
     ],
     [
@@ -47,7 +47,7 @@
     ],
     [
       {
-        "text": "Seien Sie fair für uns und wir werden fair für Sie sein. Fragen?"
+        "text": "Seien Sie fair für uns und wir werden fair für Sie sein. Fragen? "
       },
       {
         "text": "support@aidoctor.study",
@@ -68,7 +68,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Diese Nutzungsbedingungen („Terms“) sind eine Vereinbarung zwischen Ihnen und dem Betreiber vonAI Doctor Study„AI Doctor Study\"wir\", \"uns\"). Sie decken Ihre Nutzung der Website auf"
+              "text": "Diese Nutzungsbedingungen („Terms“) sind eine Vereinbarung zwischen Ihnen und dem Betreiber von AI Doctor Study „AI Doctor Study\"wir\", \"uns\"). Sie decken Ihre Nutzung der Website auf "
             },
             {
               "text": "aidoctor.study",
@@ -83,28 +83,28 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Durch die Erstellung eines Kontos, den Kauf eines Abonnements oder einfach die Nutzung des Dienstes erklären Sie sich mit diesen Bedingungen und unseren"
+              "text": "Durch die Erstellung eines Kontos, den Kauf eines Abonnements oder einfach die Nutzung des Dienstes erklären Sie sich mit diesen Bedingungen und unseren "
             },
             {
               "text": "Datenschutz",
               "href": "/privacy"
             },
             {
-              "text": ","
+              "text": ", "
             },
             {
               "text": "Cookie-Richtlinie",
               "href": "/cookies"
             },
             {
-              "text": ", und"
+              "text": ", und "
             },
             {
               "text": "Rückerstattungspolitik",
               "href": "/refunds"
             },
             {
-              "text": "Wenn Sie nicht einverstanden sind, benutzen Sie bitte den Service nicht."
+              "text": ". Wenn Sie nicht einverstanden sind, benutzen Sie bitte den Service nicht."
             }
           ]
         },
@@ -112,14 +112,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Sie müssen mindestens"
+              "text": "Sie müssen mindestens "
             },
             {
               "text": "16 jahre alt",
               "bold": true
             },
             {
-              "text": "zur Nutzung des Dienstes und alt genug, um einen verbindlichen Vertrag in Ihrem Land zum Kauf eines Abonnements zu bilden."
+              "text": " zur Nutzung des Dienstes und alt genug, um einen verbindlichen Vertrag in Ihrem Land zum Kauf eines Abonnements zu bilden."
             }
           ]
         }
@@ -134,7 +134,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "AI Doctor Studyist ein KI-gestützter Studienbegleiter für medizinische Studierende. Abhängig von Ihrem Plan kann der Service AI-generierte Erklärungen und Antworten, Fragepraxis, Studienmaterial, organisiert von Jahr und Prüfung (wie MBBS), eingebettete Bildungsvideos und Fortschrittsmerkmale einschließen."
+              "text": "AI Doctor Study ist ein KI-gestützter Studienbegleiter für medizinische Studierende. Abhängig von Ihrem Plan kann der Service AI-generierte Erklärungen und Antworten, Fragepraxis, Studienmaterial, organisiert von Jahr und Prüfung (wie MBBS), eingebettete Bildungsvideos und Fortschrittsmerkmale einschließen."
             }
           ]
         },
@@ -142,14 +142,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Der Service richtet sich an Studierende, die sich auf medizinische Kurse und Prüfungen vorbereiten. Es ist ein"
+              "text": "Der Service richtet sich an Studierende, die sich auf medizinische Kurse und Prüfungen vorbereiten. Es ist ein "
             },
             {
               "text": "lernhilfe",
               "bold": true
             },
             {
-              "text": "— nichts mehr."
+              "text": " — nichts mehr."
             }
           ]
         }
@@ -167,21 +167,21 @@
           "paragraphs": [
             [
               {
-                "text": "AI Doctor Studyfür"
+                "text": "AI Doctor Study für "
               },
               {
                 "text": "ausbildung und prüfung vorbereitung nur",
                 "bold": true
               },
               {
-                "text": "Es ist"
+                "text": ". Es ist "
               },
               {
                 "text": "nicht medizinische beratung",
                 "bold": true
               },
               {
-                "text": ", kein diagnostisches Werkzeug und kein klinisches Entscheidungsunterstützungssystem. Es darf nie verwendet werden, um echte Patienten zu diagnostizieren, zu behandeln oder zu verwalten oder eine Entscheidung über die Gesundheit einer echten Person zu treffen."
+                "text": ", kein diagnostisches werkzeug und kein klinisches entscheidungsunterstützungssystem. Es darf nie verwendet werden, um echte Patienten zu diagnostizieren, zu behandeln oder zu verwalten oder eine Entscheidung über die Gesundheit einer echten Person zu treffen."
               }
             ],
             [
@@ -229,7 +229,7 @@
             ],
             [
               {
-                "text": "Wenn Sie eine falsche Antwort finden, würden wir es wirklich gerne wissen —"
+                "text": "Wenn Sie eine falsche Antwort finden, würden wir es wirklich gerne wissen — "
               },
               {
                 "text": "support@aidoctor.study",
@@ -252,7 +252,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Sie unterschreibenAI Doctor Studymit Ihrem Google-Konto. Sie stimmen zu:"
+              "text": "Sie unterschreiben AI Doctor Study mit Ihrem Google-Konto. Sie stimmen zu:"
             }
           ]
         },
@@ -276,14 +276,14 @@
             ],
             [
               {
-                "text": "sagen sie uns sofort an"
+                "text": "sagen sie uns sofort an "
               },
               {
                 "text": "support@aidoctor.study",
                 "href": "mailto:support@aidoctor.study"
               },
               {
-                "text": "wenn sie glauben, dass ihr konto beeinträchtigt wurde."
+                "text": " wenn sie glauben, dass ihr konto beeinträchtigt wurde."
               }
             ]
           ]
@@ -299,14 +299,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Der kostenlose Plan bietet Ihnen einen eingeschränkten Zugang zum Service ohne Kosten."
+              "text": "Der kostenlose Plan bietet Ihnen einen eingeschränkten Zugang zum Service ohne Kosten. "
             },
             {
               "text": "Pro",
               "bold": true
             },
             {
-              "text": "ist ein bezahltes monatliches abonnement, das zusätzliche funktionen und höhere nutzungslimits freischaltet, wie in der app zum zeitpunkt des kaufs beschrieben."
+              "text": " ist ein bezahltes monatliches abonnement, das zusätzliche funktionen und höhere nutzungslimits freischaltet, wie in der app zum zeitpunkt des kaufs beschrieben."
             }
           ]
         },
@@ -319,14 +319,14 @@
                 "bold": true
               },
               {
-                "text": "Pro-Zahlungen werden von"
+                "text": " Pro-Zahlungen werden von "
               },
               {
                 "text": "Gumroad",
                 "href": "https://gumroad.com"
               },
               {
-                "text": ", unser Zahlungsanbieter und Händler von Rekord. Ihr Empfang, Ihre Rechnung und alle anwendbaren Steuern (z.B. Mehrwertsteuer/GST) stammen aus Gumroad."
+                "text": ", unser zahlungsanbieter und händler von rekord. Ihr Empfang, Ihre Rechnung und alle anwendbaren Steuern (z.B. Mehrwertsteuer/GST) stammen aus Gumroad."
               }
             ],
             [
@@ -335,7 +335,7 @@
                 "bold": true
               },
               {
-                "text": "Pro erneuert sich automatisch jeden Monat, bis Sie abbrechen. Der Erneuerungspreis ist der Preis, den Sie abonniert haben, es sei denn, wir benachrichtigen Sie vorab."
+                "text": " Pro erneuert sich automatisch jeden Monat, bis Sie abbrechen. Der Erneuerungspreis ist der Preis, den Sie abonniert haben, es sei denn, wir benachrichtigen Sie vorab."
               }
             ],
             [
@@ -344,7 +344,7 @@
                 "bold": true
               },
               {
-                "text": "Sie können jederzeit von Settings → Abonnieren in der App, die Sie nach Gumroad bringt, um die Stornierung abzuschließen. Sie halten Pro bis zum Ende der Zeit, für die Sie bereits bezahlt haben, und dann wieder in den kostenlosen Plan automatisch."
+                "text": " Sie können jederzeit von Settings → Abonnieren in der App, die Sie nach Gumroad bringt, um die Stornierung abzuschließen. Du hältst Pro bis zum Ende der Zeit, für die Sie bereits bezahlt haben, dann zurück zum kostenlosen Plan automatisch."
               }
             ],
             [
@@ -353,7 +353,7 @@
                 "bold": true
               },
               {
-                "text": "Wenn wir den Pro-Preis ändern, geben wir Ihnen eine angemessene Vorankündigung. Der neue Preis gilt nur für Ihre nächste Erneuerung, und Sie können stornieren, bevor es funktioniert."
+                "text": " Wenn wir den Pro-Preis ändern, geben wir Ihnen eine angemessene Vorankündigung. Der neue Preis gilt nur für Ihre nächste Erneuerung, und Sie können stornieren, bevor es funktioniert."
               }
             ],
             [
@@ -362,7 +362,7 @@
                 "bold": true
               },
               {
-                "text": "„Unbegrenzte“ Funktionen unterliegen einer fairen, persönlichen, nicht automatisierten Nutzung. Wir können angemessene Grenzen setzen, um den Service vor Missbrauch zu schützen."
+                "text": " „Unbegrenzte“ Funktionen unterliegen einer fairen, persönlichen, nicht automatisierten Nutzung. Wir können angemessene Grenzen setzen, um den Service vor Missbrauch zu schützen."
               }
             ]
           ]
@@ -378,7 +378,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Rückerstattungen werden von unseren"
+              "text": "Rückerstattungen werden von unseren "
             },
             {
               "text": "Rückerstattungspolitik",
@@ -462,7 +462,7 @@
               "bold": true
             },
             {
-              "text": "Sie behalten das Eigentum an allem, was Sie in den Service eingeben (wie Fragen und Notizen). Sie geben uns eine begrenzte Lizenz, um sie rein zu speichern und zu verarbeiten, um den Service für Sie zu verbessern."
+              "text": " Sie behalten das Eigentum an allem, was Sie in den Service eingeben (wie Fragen und Notizen). Sie geben uns eine begrenzte Lizenz, um sie rein zu speichern und zu verarbeiten, um den Service für Sie zu verbessern."
             }
           ]
         },
@@ -474,7 +474,7 @@
               "bold": true
             },
             {
-              "text": "Der Service – einschließlich seines Designs, Brandings, Logos, Software und der von uns erstellten oder arrangierten Studieninhalte – gehört uns oder unseren Lizenzgebern und ist durch geistige Eigentumsrechte geschützt. Wir geben Ihnen eine persönliche, nicht übertragbare, nicht ausschließliche Lizenz, um sie für Ihr eigenes Studium zu verwenden, während diese Bedingungen gelten. Diese Lizenz erlaubt es nicht, unsere Inhalte zu kopieren, zu veröffentlichen oder neu zu verteilen."
+              "text": " Der Service – einschließlich seines Designs, Brandings, Logos, Software und der von uns erstellten oder arrangierten Studieninhalte – gehört uns oder unseren Lizenzgebern und ist durch geistige Eigentumsrechte geschützt. Wir geben Ihnen eine persönliche, nicht übertragbare, nicht ausschließliche Lizenz, um sie für Ihr eigenes Studium zu verwenden, während diese Bedingungen gelten. Diese Lizenz erlaubt es nicht, unsere Inhalte zu kopieren, zu veröffentlichen oder neu zu verteilen."
             }
           ]
         },
@@ -486,7 +486,7 @@
               "bold": true
             },
             {
-              "text": "Vorbehaltlich dieser Geschäftsbedingungen und etwaiger Rechte Dritter können Sie in Ihrem persönlichen Studium die für Sie generierte KI-Ausgabe verwenden. Sie sind dafür verantwortlich, wie Sie es verwenden, einschließlich der Einhaltung der Regeln Ihrer Institution für AI-gestützte Arbeit."
+              "text": " Vorbehaltlich dieser Geschäftsbedingungen und etwaiger Rechte Dritter können Sie in Ihrem persönlichen Studium die für Sie generierte KI-Ausgabe verwenden. Sie sind dafür verantwortlich, wie Sie es verwenden, einschließlich der Einhaltung der Regeln Ihrer Institution für AI-gestützte Arbeit."
             }
           ]
         }
@@ -514,7 +514,7 @@
                 "bold": true
               },
               {
-                "text": "— Anmeldung, Datenspeicherung und Analytik. Siehe"
+                "text": " — anmeldung, datenspeicherung und analytik. Siehe "
               },
               {
                 "text": "Google Datenschutzerklärung",
@@ -530,7 +530,7 @@
                 "bold": true
               },
               {
-                "text": "— Zahlungsabwicklung für Pro. Siehe"
+                "text": " — Zahlungsabwicklung für Pro. Vgl "
               },
               {
                 "text": "AGB von Gumroad",
@@ -546,14 +546,14 @@
                 "bold": true
               },
               {
-                "text": "— einige Videos im Service werden über YouTube API Services bereitgestellt. Durch die Nutzung dieser Funktionen stimmen Sie auch der"
+                "text": " — einige Videos im Service werden über YouTube API Services bereitgestellt. Durch die Nutzung dieser Funktionen stimmen Sie auch der "
               },
               {
                 "text": "YouTube Nutzungsbedingungen",
                 "href": "https://www.youtube.com/t/terms"
               },
               {
-                "text": ", und Googles Umgang mit Daten wird in der"
+                "text": ", und Googles Umgang mit Daten wird in der "
               },
               {
                 "text": "Google Datenschutzerklärung",
@@ -584,7 +584,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Wir arbeiten hart daran zu haltenAI Doctor Studyschnell und verfügbar, aber wir können nicht versprechen, dass es unterbrechungsfrei oder fehlerfrei ist. Wir können Funktionen hinzufügen, ändern oder entfernen, und wir können Nutzungslimits jederzeit aufzwingen oder anpassen. Wenn wir eine Änderung vornehmen, die wesentlich reduziert, was Pro beinhaltet, können Sie immer vor Ihrer nächsten Erneuerung abbrechen."
+              "text": "Wir arbeiten hart daran zu halten AI Doctor Study schnell und verfügbar, aber wir können nicht versprechen, dass es unterbrechungsfrei oder fehlerfrei ist. Wir können Funktionen hinzufügen, ändern oder entfernen, und wir können Nutzungslimits jederzeit aufzwingen oder anpassen. Wenn wir eine Änderung vornehmen, die wesentlich reduziert, was Pro beinhaltet, können Sie immer vor Ihrer nächsten Erneuerung abbrechen."
             }
           ]
         }
@@ -599,14 +599,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Soweit gesetzlich zulässig, wird der Service bereitgestellt"
+              "text": "Soweit gesetzlich zulässig, wird der Service bereitgestellt "
             },
             {
               "text": "„wie ist“ und „wie verfügbar“",
               "bold": true
             },
             {
-              "text": ", ohne Garantien jeglicher Art, sei es ausdrücklich oder stillschweigend — einschließlich etwaiger stillschweigender Gewährleistungen für Händler, Eignung für einen bestimmten Zweck, Genauigkeit oder Nichtverletzung. Wir garantieren nicht, dass der Service Ihre Anforderungen erfüllt, dass Inhalte genau oder prüfungsrelevant sind oder dass die Nutzung des Dienstes ein bestimmtes akademisches Ergebnis hervorbringt."
+              "text": ", ohne garantien jeglicher art, sei es ausdrücklich oder stillschweigend — einschließlich etwaiger stillschweigender gewährleistungen für händler, eignung für einen bestimmten zweck, genauigkeit oder nichtverletzung. Wir garantieren nicht, dass der Service Ihre Anforderungen erfüllt, dass Inhalte genau oder prüfungsrelevant sind oder dass die Nutzung des Dienstes ein bestimmtes akademisches Ergebnis hervorbringt."
             }
           ]
         }
@@ -629,7 +629,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Unsere Gesamthaftung für alle Ansprüche im Zusammenhang mit dem Dienst ist auf den Betrag, den Sie uns in den 12 Monaten vor dem Anspruch für den Dienst bezahlt haben, oder (b) USD 20 begrenzt."
+              "text": "Unsere Gesamthaftung für alle Ansprüche im Zusammenhang mit dem Service ist auf den Betrag, den Sie uns für den Service in der 12 monate vor Erscheinen des Anspruchs oder (b) USD 20."
             }
           ]
         },
@@ -652,7 +652,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Sie können die Nutzung des Dienstes stoppen und Ihr Konto jederzeit löschen. Wir können Ihren Zugriff aussetzen oder beenden, wenn Sie diese Bedingungen (z.B. Kontofreigabe, Abschaben oder Zahlungsmissbrauch) erheblich verletzen, wenn dies gesetzlich vorgeschrieben ist, oder wenn wir den Dienst einstellen. Wenn wir ohne Grund kündigen, während Sie einen aktiven bezahlten Zeitraum haben, erstatten wir den ungenutzten Teil dieser Frist. Abschnitte, die durch ihre Natur überleben sollten (wie 09, 12, 13, und 16) die Beendigung überleben."
+              "text": "Sie können die Nutzung des Dienstes stoppen und Ihr Konto jederzeit löschen. Wir können Ihren Zugriff aussetzen oder beenden, wenn Sie diese Bedingungen (z.B. Kontofreigabe, Abschaben oder Zahlungsmissbrauch) erheblich verletzen, wenn dies gesetzlich vorgeschrieben ist, oder wenn wir den Dienst einstellen. Wenn wir ohne Grund kündigen, während Sie einen aktiven bezahlten Zeitraum haben, erstatten wir den ungenutzten Teil dieser Frist. Abschnitte, die von ihrer Natur überleben sollten (wie 09, 12, 13, und 16) die beendigung überleben."
             }
           ]
         }
@@ -701,14 +701,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Fragen zu diesen Bedingungen? E-Mail an uns"
+              "text": "Fragen zu diesen Bedingungen? E-Mail an uns "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": "— wir sind auch studenten von diesem zeug, und wir haben unseren posteingang gelesen."
+              "text": " — wir sind auch studenten von diesem zeug, und wir haben unseren posteingang gelesen."
             }
           ]
         }

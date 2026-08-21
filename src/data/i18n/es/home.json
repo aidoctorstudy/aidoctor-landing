@@ -13,7 +13,7 @@
         "href": "/app"
       }
     ],
-    "trustLine": "Confía en más de 50.000 estudiantes médicos en todo el mundo",
+    "trustLine": "Confía en 50,000+ estudiantes médicos en todo el mundo",
     "serviceChips": [
       "MBBS",
       "Casos clínicos",
@@ -23,7 +23,7 @@
     ]
   },
   "why": {
-    "eyebrow": "¿Por quéAI Doctor Study",
+    "eyebrow": "¿Por qué AI Doctor Study",
     "title": "Una AI, cada sujeto, siempre disponible",
     "description": "No más búsquedas a través de libros de texto. Pregúntale a un médico.",
     "actions": [
@@ -49,7 +49,7 @@
     "mockup": {
       "url": "aidoctor.study/app",
       "question": "¿Cuál es la primera línea para un STEMI?",
-      "answer": "Aspirina 300 mg masticado inmediatamente, luego PCI urgente en 90 minutos si está disponible — trombolisis si no."
+      "answer": "Aspirina 300mg masticado inmediatamente, luego PCI urgente dentro 90 minutos si está disponible — trombolisis si no."
     }
   },
   "servicesIntro": {
@@ -99,7 +99,7 @@
   "liveDemo": {
     "eyebrow": "Live Demo",
     "title": "Pregúntale a un médico",
-    "description": "Un verdadero intercambio, no una burla — así es exactamente cómoAI Doctor Studyrespuestas.",
+    "description": "Un verdadero intercambio, no una burla — así es exactamente cómo AI Doctor Study respuestas.",
     "messages": [
       {
         "role": "user",
@@ -107,7 +107,7 @@
       },
       {
         "role": "ai",
-        "text": "La metformina funciona principalmente activando AMPK en el hígado, lo que inhibe la gluconeogenesis — reduciendo la producción de glucosa hepática hasta en un 30%. También mejora la sensibilidad de la insulina periférica y reduce modestamente la absorción de glucosa intestinal."
+        "text": "La metformina funciona principalmente activando AMPK en el hígado, lo que inhibe la gluconeogenesis — reduciendo la producción de glucosa hepática hasta 30%. También mejora la sensibilidad de la insulina periférica y reduce modestamente la absorción de glucosa intestinal."
       },
       {
         "role": "user",
@@ -115,10 +115,10 @@
       },
       {
         "role": "ai",
-        "text": "Contraindicaciones clave: eGFR 030 mL/min (riesgo de acidosis láctica), insuficiencia cardíaca aguda, enfermedad hepática severa y cualquier condición aguda predispuesta a hipoxia o hipoperfusión de tejido."
+        "text": "Contraindicaciones clave: eGFR30 mL/min (riesgo de acidosis láctica), insuficiencia cardíaca aguda, enfermedad hepática grave y cualquier afección aguda predispuesta a hipoxia o hipoperfusión de tejido."
       }
     ],
-    "ctaLabel": "Pruébalo tú mismoaidoctor.study/app",
+    "ctaLabel": "Pruébalo tú mismo aidoctor.study/app",
     "ctaHref": "/app"
   },
   "about": {
@@ -143,15 +143,15 @@
     ],
     "paragraph": [
       {
-        "text": "AI Doctor Studyes el compañero de estudio AI construido para estudiantes médicos:",
+        "text": "AI Doctor Study es el compañero de estudio AI construido para estudiantes médicos:",
         "muted": true
       },
       {
-        "text": "hacer una pregunta, obtener una explicación de nivel médico.",
+        "text": " hacer una pregunta, obtener una explicación de nivel médico. ",
         "muted": false
       },
       {
-        "text": "De la anatomía de primer año a exámenes finales de licencia,",
+        "text": "De la anatomía de primer año a exámenes finales de licencia, ",
         "muted": true
       },
       {
@@ -202,14 +202,14 @@
     "members": [
       {
         "name": "Ahmed Al-Rashidi",
-        "role": "MBBS Year 4, UAE",
+        "role": "Año MBBS 4, UAE",
         "quote": "Explicada farmacología mejor que mi profesor. Pasó con distinción.",
         "initials": "AA"
       },
       {
         "name": "Priya Sharma",
-        "role": "Paso 1 despejado, India",
-        "quote": "Preguntas más de 200 preguntas durante el prep paso 1. Cada respuesta estaba puesta.",
+        "role": "Paso USMLE 1 Despejado, India",
+        "quote": "Pregunta 200+ preguntas durante Paso 1 prep. Cada respuesta estaba puesta.",
         "initials": "PS"
       },
       {
@@ -220,7 +220,7 @@
       },
       {
         "name": "Sarah Chen",
-        "role": "Med Student Year 3, UK",
+        "role": "Med Student Year 3, REINO UNIDO",
         "quote": "El modo de mnemonía de drogas salvó mi examen de farmacología. Con cuidado.",
         "initials": "SC"
       },
@@ -232,7 +232,7 @@
       }
     ],
     "more": {
-      "title": "Únete a 50.000 estudiantes más inteligentes",
+      "title": "Únase 50,000+ estudiantes que estudian más inteligente",
       "cta": "Empieza",
       "href": "/app"
     }
@@ -281,12 +281,12 @@
         "note": "Inscríbete o inicia sesión primero; seguirás registrando desde allí."
       }
     ],
-    "discountNote": "Estudiante? Código de usoMED20a la salida del 20% de Pro."
+    "discountNote": "Estudiante? Código de uso MED20 en el checkout 20% fuera de Pro."
   },
   "contact": {
     "eyebrow": "Empieza",
     "title": "¿Listo para estudiar más inteligente?",
-    "description": "Únete a más de 50.000 estudiantes médicos que ya utilizanAI Doctor Study.",
+    "description": "Únase 50,000+ estudiantes médicos ya utilizan AI Doctor Study.",
     "actions": [
       {
         "label": "Inicio gratis",

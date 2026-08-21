@@ -2,7 +2,7 @@
   "eyebrow": "Recht",
   "title": "Datenschutz",
   "lastUpdated": "20 August 2026",
-  "scope": "Gilt füraidoctor.studyundAI Doctor Studyanwendungsbereich",
+  "scope": "Gilt für aidoctor.study und AI Doctor Study anwendungsbereich",
   "summary": [
     [
       {
@@ -10,7 +10,7 @@
         "bold": true
       },
       {
-        "text": "— ihr name, e-mail, studienjahr und prüfungsschwerpunkt."
+        "text": " — ihr name, e-mail, studienjahr und prüfungsschwerpunkt."
       }
     ],
     [
@@ -24,7 +24,7 @@
         "bold": true
       },
       {
-        "text": "— siehe die eigene politik jedes anbieters, wie sie daten verarbeiten."
+        "text": " — siehe die eigene politik jedes anbieters, wie sie daten verarbeiten."
       }
     ],
     [
@@ -34,14 +34,14 @@
     ],
     [
       {
-        "text": "Siehe"
+        "text": "Siehe "
       },
       {
         "text": "Cookie-Richtlinie",
         "href": "/cookies"
       },
       {
-        "text": "für die spezifischen cookies und die lokale speicherung, die wir verwenden."
+        "text": " für die spezifischen cookies und die lokale speicherung, die wir verwenden."
       }
     ]
   ],
@@ -55,21 +55,21 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Diese Datenschutzerklärung erklärt, welche personenbezogenen DatenAI Doctor Study(“wir”, “uns”) sammelt, wenn sie"
+              "text": "Diese Datenschutzerklärung erklärt, welche personenbezogenen Daten AI Doctor Study (“wir”, “uns”) sammelt, wenn sie "
             },
             {
               "text": "aidoctor.study",
               "href": "https://aidoctor.study"
             },
             {
-              "text": "undAI Doctor Studyapp (zusammen der “Service”), warum wir es sammeln, und die Wahlen, die Sie haben. Es sollte neben unserem"
+              "text": " und AI Doctor Study app (zusammen der “Service”), warum wir es sammeln, und die Wahlen, die Sie haben. Es sollte neben unserem "
             },
             {
               "text": "Geschäftsbedingungen",
               "href": "/terms"
             },
             {
-              "text": "und"
+              "text": " und "
             },
             {
               "text": "Cookie-Richtlinie",
@@ -96,7 +96,7 @@
                 "bold": true
               },
               {
-                "text": "— Ihr Name, Ihre E-Mail-Adresse und Ihr Profilfoto von Google sign-in; Ihr Studienjahr und Prüfungsfokus (z.B. MBBS, USMLE) von Bord."
+                "text": " — Ihr Name, Ihre E-Mail-Adresse und Ihr Profilfoto von Google sign-in; Ihr Studienjahr und Prüfungsfokus (z. MBBS, USMLE) von Bord."
               }
             ],
             [
@@ -105,7 +105,7 @@
                 "bold": true
               },
               {
-                "text": "— die Fragen, die Sie stellen, die Themen und Moden, die Sie verwenden, und Funktionen wie Flashcards oder gespeicherte Fälle, so kann der Service auf Sie reagieren und Ihren Fortschritt halten."
+                "text": " — die Fragen, die Sie stellen, die Themen und Moden, die Sie verwenden, und Funktionen wie Flashcards oder gespeicherte Fälle, so kann der Service auf Sie reagieren und Ihren Fortschritt halten."
               }
             ],
             [
@@ -114,7 +114,7 @@
                 "bold": true
               },
               {
-                "text": "— Wenn Sie Pro abonnieren, behandelt Gumroad Ihre Zahlungsdaten direkt; wir erhalten die Bestätigung Ihres Abonnementstatus, nicht Ihre Kartendaten."
+                "text": " — Wenn Sie Pro abonnieren, behandelt Gumroad Ihre Zahlungsdaten direkt; wir erhalten die Bestätigung Ihres Abonnementstatus, nicht Ihre Kartendaten."
               }
             ],
             [
@@ -123,7 +123,7 @@
                 "bold": true
               },
               {
-                "text": "— gerätetyp, browser und, nur, wenn sie einer analyse zustimmen, aggregierte nutzungsstatistiken (siehe"
+                "text": " — gerätetyp, browser und, nur, wenn sie einer analyse zustimmen, aggregierte nutzungsstatistiken (siehe "
               },
               {
                 "text": "Cookie-Richtlinie",
@@ -209,7 +209,7 @@
                 "bold": true
               },
               {
-                "text": "— Authentifizierung, Datenspeicherung und (mit Zustimmung) Analytik. Siehe"
+                "text": " — authentifizierung, datenspeicherung und (mit zustimmung) analytik. Siehe "
               },
               {
                 "text": "Google Datenschutzerklärung",
@@ -225,7 +225,7 @@
                 "bold": true
               },
               {
-                "text": "— Zahlungsabwicklung für Pro Abonnements. Vgl"
+                "text": " — Zahlungsabwicklung für Pro Abonnements. Vgl "
               },
               {
                 "text": "Gumroad's Datenschutzrichtlinie",
@@ -241,7 +241,7 @@
                 "bold": true
               },
               {
-                "text": "— wenn Sie ein eingebettetes Lernvideo spielen. Siehe"
+                "text": " — wenn sie ein eingebettetes lernvideo spielen. Siehe "
               },
               {
                 "text": "Google Datenschutzerklärung",
@@ -257,7 +257,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Wir können auch Daten offenlegen, wenn gesetzlich vorgeschrieben, oder um die Rechte, Sicherheit oder Sicherheit zu schützenAI Doctor Study, unsere nutzer oder die öffentlichkeit."
+              "text": "Wir können auch Daten offenlegen, wenn gesetzlich vorgeschrieben, oder um die Rechte, Sicherheit oder Sicherheit zu schützen AI Doctor Study, unsere nutzer oder die öffentlichkeit."
             }
           ]
         }
@@ -272,14 +272,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Wir halten Ihre Konto- und Studiendaten solange Ihr Konto aktiv ist, so dass Ihr Fortschritt und Ihre Geschichte Ihnen zur Verfügung stehen. Wenn Sie Ihr Konto löschen (siehe"
+              "text": "Wir halten Ihre Konto- und Studiendaten solange Ihr Konto aktiv ist, so dass Ihr Fortschritt und Ihre Geschichte Ihnen zur Verfügung stehen. Wenn Sie Ihr Konto löschen (siehe "
             },
             {
               "text": "Ihre Rechte",
               "href": "#rights"
             },
             {
-              "text": "unten), löschen oder anonymisieren wir ihre personenbezogenen daten innerhalb einer angemessenen frist, außer wenn wir daten aus rechtlichen, steuerlichen oder betrügerischen gründen aufbewahren müssen."
+              "text": " unten), löschen oder anonymisieren wir ihre personenbezogenen daten innerhalb einer angemessenen frist, außer wenn wir daten aus rechtlichen, steuerlichen oder betrügerischen gründen aufbewahren müssen."
             }
           ]
         }
@@ -294,7 +294,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Wir verlassen uns auf die Infrastruktur und die Sicherheitspraktiken von Google/Firebase für die Authentifizierung und Speicherung, und wir behandeln Ihre Zahlungskartendaten nicht direkt – Gumroad tut es. Keine Methode der Übertragung oder Speicherung ist 100% sicher, aber wir ergreifen angemessene Schritte, um Ihre Daten zu schützen und zu begrenzen, wer auf sie zugreifen kann."
+              "text": "Wir verlassen uns auf die Infrastruktur und die Sicherheitspraktiken von Google/Firebase für die Authentifizierung und Speicherung, und wir behandeln Ihre Zahlungskartendaten nicht direkt – Gumroad tut es. Keine Übertragungs- oder Speichermethode 100% sicher, aber wir ergreifen angemessene schritte, um ihre daten zu schützen und zu begrenzen, wer auf sie zugreifen kann."
             }
           ]
         }
@@ -347,14 +347,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Um diese zu trainieren, E-Mail"
+              "text": "Um diese zu trainieren, E-Mail "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": "- wir werden innerhalb einer angemessenen zeit antworten."
+              "text": " - wir werden innerhalb einer angemessenen zeit antworten."
             }
           ]
         }
@@ -369,14 +369,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Der Dienst ist für Benutzer im Alter von 16 Jahren bestimmt (siehe"
+              "text": "Der Service ist für Nutzer im Alter von 16 und über (siehe "
             },
             {
               "text": "Geschäftsbedingungen",
               "href": "/terms"
             },
             {
-              "text": ") Wir sammeln keine personenbezogenen Daten von jüngeren Menschen. Wenn Sie glauben, dass eine jüngere Person ein Konto erstellt hat, kontaktieren Sie uns und wir werden angemessene Maßnahmen ergreifen."
+              "text": "). Wir sammeln keine personenbezogenen Daten von jüngeren Menschen. Wenn Sie glauben, dass eine jüngere Person ein Konto erstellt hat, kontaktieren Sie uns und wir werden angemessene Maßnahmen ergreifen."
             }
           ]
         }
@@ -425,7 +425,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Fragen zu dieser Richtlinie oder Ihren Daten? E-Mail senden"
+              "text": "Fragen zu dieser Richtlinie oder Ihren Daten? E-Mail senden "
             },
             {
               "text": "support@aidoctor.study",

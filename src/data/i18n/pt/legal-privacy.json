@@ -2,7 +2,7 @@
   "eyebrow": "Jurídico",
   "title": "Política de Privacidade",
   "lastUpdated": "20 August 2026",
-  "scope": "Aplica-seaidoctor.studye aAI Doctor Studyapp",
+  "scope": "Aplica-se aidoctor.study e a AI Doctor Study app",
   "summary": [
     [
       {
@@ -10,7 +10,7 @@
         "bold": true
       },
       {
-        "text": "— seu nome, e-mail, ano de estudo e foco de exame."
+        "text": " — seu nome, e-mail, ano de estudo e foco de exame."
       }
     ],
     [
@@ -24,7 +24,7 @@
         "bold": true
       },
       {
-        "text": "— ver a política de cada prestador para a forma como lida com os dados."
+        "text": " — ver a política de cada prestador para a forma como lida com os dados."
       }
     ],
     [
@@ -34,14 +34,14 @@
     ],
     [
       {
-        "text": "Ver o"
+        "text": "Ver o "
       },
       {
         "text": "Política de Cookies",
         "href": "/cookies"
       },
       {
-        "text": "para os cookies específicos e armazenamento local que usamos."
+        "text": " para os cookies específicos e armazenamento local que usamos."
       }
     ]
   ],
@@ -55,21 +55,21 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Esta Política de Privacidade explica quais dados pessoaisAI Doctor Study(“nós”, “nós”) coleta quando você usa"
+              "text": "Esta Política de Privacidade explica quais dados pessoais AI Doctor Study (“nós”, “nós”) coleta quando você usa "
             },
             {
               "text": "aidoctor.study",
               "href": "https://aidoctor.study"
             },
             {
-              "text": "e aAI Doctor Studyapp (juntos, o “Serviço”), por que nós coletamos, e as escolhas que você tem. Deve ser lido ao lado do nosso"
+              "text": " e a AI Doctor Study app (juntos, o “Serviço”), por que nós coletamos, e as escolhas que você tem. Deve ser lido ao lado do nosso "
             },
             {
               "text": "Termos de serviço",
               "href": "/terms"
             },
             {
-              "text": "e"
+              "text": " e "
             },
             {
               "text": "Política de Cookies",
@@ -96,7 +96,7 @@
                 "bold": true
               },
               {
-                "text": "— seu nome, endereço de e-mail e foto de perfil do Google sign-in; seu ano de estudo e foco de exame (por exemplo, MBBS, USMLE) de onboarding."
+                "text": " — o seu nome, endereço de e-mail e foto do perfil do Google; o seu ano de estudo e foco de exame (por exemplo. MBBS, USMLE) de bordo."
               }
             ],
             [
@@ -105,7 +105,7 @@
                 "bold": true
               },
               {
-                "text": "— as perguntas que faz, os assuntos e modos que utiliza, e características como cartões de memória ou casos salvos, para que o Serviço possa responder a si e manter o seu progresso."
+                "text": " — as perguntas que faz, os assuntos e modos que utiliza, e características como cartões de memória ou casos salvos, para que o Serviço possa responder a si e manter o seu progresso."
               }
             ],
             [
@@ -114,7 +114,7 @@
                 "bold": true
               },
               {
-                "text": "— se subscrever o Pro, o Gumroad trata directamente dos seus dados de pagamento; recebemos a confirmação do seu estatuto de subscrição, não os dados do seu cartão."
+                "text": " — se subscrever o Pro, o Gumroad trata directamente dos seus dados de pagamento; recebemos a confirmação do seu estatuto de subscrição, não os dados do seu cartão."
               }
             ],
             [
@@ -123,7 +123,7 @@
                 "bold": true
               },
               {
-                "text": "— tipo de dispositivo, navegador, e, apenas se consentir com a análise, estatísticas de utilização agregadas (ver"
+                "text": " — tipo de dispositivo, navegador, e, apenas se consentir com a análise, estatísticas de utilização agregadas (ver "
               },
               {
                 "text": "Política de Cookies",
@@ -209,7 +209,7 @@
                 "bold": true
               },
               {
-                "text": "— autenticação, armazenamento de dados e análise (com consentimento). Ver o"
+                "text": " — autenticação, armazenamento de dados e análise (com consentimento). Ver o "
               },
               {
                 "text": "Política de Privacidade do Google",
@@ -225,7 +225,7 @@
                 "bold": true
               },
               {
-                "text": "— processamento de pagamentos para as assinaturas Pro. Veja"
+                "text": " — processamento de pagamentos para as assinaturas Pro. Veja "
               },
               {
                 "text": "Política de Privacidade da Gumroad",
@@ -241,7 +241,7 @@
                 "bold": true
               },
               {
-                "text": "— quando se reproduz um vídeo de estudo incorporado. Ver o"
+                "text": " — quando se reproduz um vídeo de estudo incorporado. Ver o "
               },
               {
                 "text": "Política de Privacidade do Google",
@@ -257,7 +257,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Nós também podemos divulgar dados se exigido por lei, ou para proteger os direitos, segurança ou segurança deAI Doctor Study, nossos usuários, ou o público."
+              "text": "Nós também podemos divulgar dados se exigido por lei, ou para proteger os direitos, segurança ou segurança de AI Doctor Study, nossos usuários, ou o público."
             }
           ]
         }
@@ -272,14 +272,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Nós mantemos sua conta e dados de estudo enquanto sua conta estiver ativa, então seu progresso e histórico permanecem disponíveis para você. Se você excluir sua conta (ver"
+              "text": "Nós mantemos sua conta e dados de estudo enquanto sua conta estiver ativa, então seu progresso e histórico permanecem disponíveis para você. Se você excluir sua conta (ver "
             },
             {
               "text": "Os seus direitos",
               "href": "#rights"
             },
             {
-              "text": "abaixo), nós apagamos ou anonimizamos seus dados pessoais dentro de um período razoável, exceto quando somos obrigados a manter registros por razões legais, fiscais ou de prevenção de fraude."
+              "text": " abaixo), nós apagamos ou anonimizamos seus dados pessoais dentro de um período razoável, exceto quando somos obrigados a manter registros por razões legais, fiscais ou de prevenção de fraude."
             }
           ]
         }
@@ -347,14 +347,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Para exercer qualquer um destes, e-mail"
+              "text": "Para exercer qualquer um destes, e-mail "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": "- responderemos dentro de um tempo razoável."
+              "text": " - responderemos dentro de um tempo razoável."
             }
           ]
         }
@@ -369,7 +369,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "O Serviço destina-se aos utilizadores com 16 anos ou mais (ver"
+              "text": "O Serviço destina-se a utilizadores idosos 16 (ver "
             },
             {
               "text": "Termos de serviço",
@@ -425,7 +425,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Perguntas sobre esta política ou seus dados? E- mail"
+              "text": "Perguntas sobre esta política ou seus dados? E- mail "
             },
             {
               "text": "support@aidoctor.study",

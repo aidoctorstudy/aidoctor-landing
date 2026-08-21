@@ -13,7 +13,7 @@
         "href": "/app"
       }
     ],
-    "trustLine": "Confié par plus de 50 000 étudiants en médecine dans le monde",
+    "trustLine": "Confié par 50,000+ étudiants en médecine dans le monde entier",
     "serviceChips": [
       "AUTRES",
       "Cas cliniques",
@@ -23,7 +23,7 @@
     ]
   },
   "why": {
-    "eyebrow": "PourquoiAI Doctor Study",
+    "eyebrow": "Pourquoi AI Doctor Study",
     "title": "Une AI, chaque sujet, toujours disponible",
     "description": "Plus besoin de chercher dans les manuels. Demandez comme vous demanderiez à un médecin.",
     "actions": [
@@ -49,7 +49,7 @@
     "mockup": {
       "url": "aidoctor.study/app",
       "question": "Quelle est la première ligne pour un STEMI ?",
-      "answer": "Aspirine 300mg mâchée immédiatement, puis ICP urgente dans les 90 minutes si disponible — thrombolyse si non."
+      "answer": "Aspirine 300mg mâché immédiatement, puis ICP urgent 90 minutes si disponibles — thrombolyse si non."
     }
   },
   "servicesIntro": {
@@ -99,7 +99,7 @@
   "liveDemo": {
     "eyebrow": "Démo en direct",
     "title": "Demandez à un médecin",
-    "description": "Un véritable échange, pas une maquette — c'est exactement ainsiAI Doctor Studyréponses.",
+    "description": "Un véritable échange, pas une maquette — c'est exactement ainsi AI Doctor Study réponses.",
     "messages": [
       {
         "role": "user",
@@ -107,7 +107,7 @@
       },
       {
         "role": "ai",
-        "text": "La metformine agit principalement en activant l'AMPK dans le foie, ce qui inhibe la gluconéogenèse, réduisant ainsi la production hépatique de glucose de 30 %. Il améliore également la sensibilité à l'insuline périphérique et réduit modestement l'absorption intestinale du glucose."
+        "text": "La metformine agit principalement en activant l'AMPK dans le foie, ce qui inhibe la gluconéogenèse — réduisant la production hépatique de glucose jusqu'à 30%. Il améliore également la sensibilité à l'insuline périphérique et réduit modestement l'absorption intestinale du glucose."
       },
       {
         "role": "user",
@@ -115,10 +115,10 @@
       },
       {
         "role": "ai",
-        "text": "Contre-indications clés : eGFR < 30 mL/min (risque d'acidose lactique), insuffisance cardiaque aiguë, maladie hépatique sévère et toute affection aiguë prédisposant à une hypoxie ou à une hypoperfusion tissulaire."
+        "text": "Contre-indications clés: eGFR <30 mL/min (risque d'acidose lactique), insuffisance cardiaque aiguë, maladie hépatique sévère et toute affection aiguë prédisposant à une hypoxie ou à une hypoperfusion tissulaire."
       }
     ],
-    "ctaLabel": "Essayez-le vous-mêmeaidoctor.study/app",
+    "ctaLabel": "Essayez-le vous-même aidoctor.study/app",
     "ctaHref": "/app"
   },
   "about": {
@@ -143,15 +143,15 @@
     ],
     "paragraph": [
       {
-        "text": "AI Doctor Studyest le compagnon d'étude AI construit pour les étudiants en médecine:",
+        "text": "AI Doctor Study est le compagnon d'étude AI construit pour les étudiants en médecine:",
         "muted": true
       },
       {
-        "text": "poser une question, obtenir une explication au niveau du médecin.",
+        "text": " poser une question, obtenir une explication au niveau du médecin. ",
         "muted": false
       },
       {
-        "text": "De l'anatomie de première année aux examens de licence finaux,",
+        "text": "De l'anatomie de première année aux examens de licence finaux, ",
         "muted": true
       },
       {
@@ -202,14 +202,14 @@
     "members": [
       {
         "name": "Ahmed Al-Rashidi",
-        "role": "MBBS Année 4, EAU",
+        "role": "MBBS Année 4EAU",
         "quote": "J'ai mieux expliqué la pharmacologie que mon professeur. Passé avec distinction.",
         "initials": "AA"
       },
       {
         "name": "Priya Sharma",
-        "role": "USMLE Étape 1 Effacement, Inde",
-        "quote": "Posé plus de 200 questions pendant la préparation de l'étape 1. Chaque réponse était sur place.",
+        "role": "Étape 1 Effacé, Inde",
+        "quote": "Demande 200+ questions pendant l'étape 1 préparer. Chaque réponse était sur place.",
         "initials": "PS"
       },
       {
@@ -220,7 +220,7 @@
       },
       {
         "name": "Sarah Chen",
-        "role": "Med Student Année 3, Royaume-Uni",
+        "role": "Année étudiante Med 3ROYAUME-UNI",
         "quote": "Le mode médicament mnémonique a sauvé mon examen de pharmacologie. Vraiment.",
         "initials": "SC"
       },
@@ -232,7 +232,7 @@
       }
     ],
     "more": {
-      "title": "Joignez-vous à plus de 50 000 étudiants étudiant plus intelligent",
+      "title": "Rejoignez 50,000+ étudiants étudiant plus intelligent",
       "cta": "Commencez",
       "href": "/app"
     }
@@ -281,12 +281,12 @@
         "note": "Inscrivez-vous ou connectez-vous d'abord — vous continuerez à commander à partir de là."
       }
     ],
-    "discountNote": "Étudiant ? Utiliser le codeMED20à la caisse pour 20% de réduction Pro."
+    "discountNote": "Étudiant ? Utiliser le code MED20 à la caisse pour 20% sur Pro."
   },
   "contact": {
     "eyebrow": "Commencez",
     "title": "Prêt à étudier plus intelligent ?",
-    "description": "Joignez-vous à plus de 50 000 étudiants en médecineAI Doctor Study.",
+    "description": "Rejoignez 50,000+ étudiants en médecine AI Doctor Study.",
     "actions": [
       {
         "label": "Démarrer gratuitement",

@@ -10,6 +10,184 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0033 — RTL scroll-direction fix, translation-pipeline hardening, and a dictionary-based i18n system for `public/app/`
+
+- **Status:** Accepted
+- **Date:** 2026-08-21
+
+**Context.** Three bugs reported against the live `/ar` page, plus a new
+requirement: add i18n (9 locales, RTL for `ar`/`ur`) to `public/app/` — the
+~7,000-line vanilla-JS study app embedded via `<iframe>`
+([[decisions-log]] ADR-0028), which had none.
+
+**Bug 1 — Services rail unreadable in RTL, root-caused as a scroll-direction
+bug, not a contrast bug.** `services-track.tsx`'s scroll-hijacked card rail
+always slides the track `x = -progress * travel` (leftward) as the user
+scrolls. Under `dir="rtl"` (set on `<html>` for `ar`/`ur`), flexbox
+automatically reverses child order — card 1 renders at the *right* edge
+instead of the left — so the same leftward slide rushes every card off the
+left edge before it's readable and ends the runway on an empty void instead
+of the last card, rather than revealing cards one at a time. What read as
+"hard to read, bad contrast" was actually cards flying past mid-animation.
+Fixed with one line: `x = (rtl ? 1 : -1) * progress * travel`, `rtl` read
+from `document.documentElement.dir` once per frame (cheap string compare).
+Confirmed live: cards now settle and hold, ending on the last card at the
+left edge.
+
+**Bug 2 — team member names.** Already correct — `translateMember()` in
+`translate-content.mjs` has always kept `name` unchanged (ADR-0032). No
+code change; verified in the live DOM and in `ar/home.json`.
+
+**Bug 3 — Live Demo chat "reversed/corrupted" text, and a cluster of
+translation-pipeline bugs found chasing it.** Manually reading the actual
+`ar/home.json` output (not just checking for zero `FAILED` lines) surfaced
+four distinct, real bugs in the split-and-splice translator built for
+ADR-0032:
+1. **No space at splice boundaries** — `translateWithSpacing` sends a
+   segment's *trimmed* core to LibreTranslate, but the API response has no
+   guaranteed relationship to the input's surrounding whitespace, so a
+   protected phrase spliced back in landed glued to its neighbour with zero
+   space (`"...بنفسكaidoctor.study/app"`). Fixed by capturing
+   leading/trailing whitespace before translating and reattaching it after,
+   unconditionally, rather than trusting the engine to preserve it.
+2. **Multi-sentence strings translated only partway** — a 2-sentence Live
+   Demo message came back with sentence 1 in Arabic and sentence 2 verbatim
+   English, 200 status, no error. Fixed by splitting every segment into
+   individual sentences (`splitSentences`) and sending one sentence per
+   request — confirmed live that the previously-failing sentence translates
+   correctly in isolation.
+3. **Silent full-string echo-back** — some short strings (a CTA label, a
+   stat label) came back byte-identical to the English input despite
+   needing translation (confirmed by the same string translating correctly
+   in other locales, e.g. `es`'s `about.actions` already had "Login" →
+   "Iniciar sesión"). Fixed with `looksUntranslated()` — retries up to twice
+   when trimmed-lowercased output equals input — plus a duplicate-Arabic-
+   punctuation cleanup (`"؟?"` → `"؟"`, another live-caught artifact).
+4. **Reversed multi-digit numbers** — the most serious: `"300"` came back as
+   `"٠٠٣"` and `"90"` as `"٠٩"` — a live, in-the-stored-JSON digit-order
+   corruption, not a rendering artifact, found while auditing the `why`
+   section's clinical mockup (dosage/timing numbers, not the Live Demo
+   panel itself, but the same translation pipeline). Fixed by protecting
+   any digit run (`50,000`, `24/7`, `30%`) from ever reaching the MT engine
+   at all, the same principle as the brand-name/URL protection — numbers
+   don't need linguistic translation, and Arabic technical writing commonly
+   keeps Western digits anyway.
+
+All four were caught by actually reading translated output, not by trusting
+a clean exit code — the same lesson ADR-0032 already drew from the
+placeholder-token bug, now generalized: **a free MT service's `200 OK` is
+not evidence of a correct translation.** All 8 marketing-site locales were
+regenerated with the hardened script after these fixes landed.
+
+**New: `public/app/` i18n (9 locales, RTL).** The study app is ~7,000 lines
+of vanilla JS across `index.html` + 13 numbered feature modules, with no
+build step, no framework, and no existing i18n. Two designs were
+considered:
+- **Rewrite every user-facing string to call `t('some.key')`** — the
+  conventional approach, and what `translate-content.mjs` effectively does
+  for the Next.js site's React components. Rejected here: it means editing
+  hundreds of call sites across a large, revenue-generating app (Firebase
+  auth, Gumroad checkout) with no test suite — real risk of breaking
+  working logic for a translation feature.
+- **A dictionary keyed by the exact English source string, applied at
+  runtime by walking the DOM** — the approach taken. `public/app/i18n/
+  i18n.js` detects the locale (from the iframe's `?locale=` query param,
+  set by `study-app-frame.tsx` from the Next.js `[locale]` route — the
+  static app has no URL segment of its own to read), sets `lang`/`dir`
+  before first paint, then translates existing text nodes and
+  `placeholder`/`title`/`aria-label` attributes by looking up their
+  *current* text in `translations.js`. A `MutationObserver` re-applies the
+  same lookup to anything the feature modules inject afterwards (quiz
+  questions, flashcards, toasts, panel switches) — so dynamically-generated
+  markup is covered automatically, with zero edits to any of the 13 files.
+  The trade-off, accepted deliberately: a *concatenated* string
+  (`'Q ' + num + '/' + total`) can't be matched by an exact-text
+  dictionary, since the DOM only ever sees the final joined string — those
+  stay in English. `scripts/extract-app-strings.mjs` excludes fragments
+  that look like they're missing their concatenated other half rather than
+  translating them uselessly.
+
+**Extraction and translation pipeline.** `extract-app-strings.mjs` pulls
+~930 unique candidate strings programmatically: text between tags and
+`placeholder`/`title`/`aria-label` attributes from `index.html`; literal
+arguments to `showToast`/`confirm`/`alert`/`.textContent =` from the JS
+files; and `lbl`/`label`/`name`/`title`/`sub`/`text` object-literal
+properties, added after a live check found several dashboard quick-action
+buttons (command-palette entries, quick-action tiles — data-driven UI built
+from arrays of `{panel:'examprep', lbl:'Exam Prep'}`-shaped objects) stayed
+English because that source wasn't covered by the call-based patterns.
+Deliberately **not** every string literal in the JS files — they also build
+long AI-prompt strings sent to the backend, which must stay in English for
+the model and would be actively wrong to translate.
+`translate-app-content.mjs` shares its protected-phrase/whitespace/
+sentence-splitting/retry logic with the hardened `translate-content.mjs`
+above, but batches many strings into one LibreTranslate request instead of
+one request per string — confirmed live that `q` accepts an array (150
+strings in one call, one response array back) — since ~840 independent
+short strings × 8 locales at one-request-each would have taken hours. Two
+more bugs specific to this content surfaced and were fixed pre-emptively
+(medical scoring/vitals text, not present in the marketing site's copy):
+parenthesized scores (`"(0)"`) losing their opening paren, and `<`/`≤`/`≥`
+comparison readings (`"< 90"`, `"≤ 60"`) causing severe corruption
+(`"BP systolic < 90"` → `"...systolic 90 / / / / / / / 60"`) — both are now
+protected spans, same principle as the digit-reversal fix above.
+
+**RTL layout for `public/app/`.** `public/app/i18n/rtl.css`, scoped by
+`[dir="rtl"]`, loaded unconditionally after `styles.css`. Not an exhaustive
+mirror of ~2,500 lines of hand-written CSS (this app hardcodes physical
+`left`/`right` throughout, the same class of issue as the marketing site's
+Services rail) — covers the one whole-app-affecting piece (the fixed icon
+sidebar + its `margin-left` content offset) and the fixed-position chrome
+most likely to visibly collide with RTL text (toast stack, FAB, XP popup).
+
+**Consequences.**
+- `services-track.tsx`, `translate-content.mjs` changed; all 8
+  `src/data/i18n/<locale>/*.json` bundles regenerated and re-verified
+  (valid JSON, zero leftover artifacts, protected phrases intact, numbers
+  no longer reversed).
+- New: `scripts/extract-app-strings.mjs`, `scripts/translate-app-content.mjs`,
+  `public/app/i18n/{i18n.js,rtl.css,translations.js}`. ~930 unique English
+  UI strings extracted; `ar` translated 747, other locales 684–925 (the gap
+  is `translated === source`, correctly excluded rather than stored as a
+  no-op entry — some is deliberate, e.g. `AI Doctor`/`aidoctor.study`/
+  `MED20` staying literal, some is the free MT engine declining to
+  translate certain short strings at all, see next point).
+- `study-app-frame.tsx` now takes a required `locale` prop and builds
+  `/app/index.html?locale=<locale>`; `[locale]/app/page.tsx` reads
+  `params.locale` and passes it through (previously the iframe `src` was a
+  hardcoded literal with no locale awareness at all).
+- **A fifth pipeline failure mode, distinct from the four above: some short
+  strings ("Login", "Email", "Rating", "Exam Prep", "Go Pro") come back
+  byte-identical to their English input** even after the `looksUntranslated`
+  retry — not transient (reproduced across four separate full runs) and not
+  fixable by retrying a deterministic model. Confirmed the *dictionary* was
+  actually to blame, not the translator, by checking `es`'s output for the
+  same strings (`"Login"` → `"Iniciar sesión"` there) — so it's specific to
+  which strings this instance's Arabic model treats as already "fine as
+  English", not a systemic Arabic failure. Given the volume (~930 strings ×
+  8 locales), this is disclosed as a known gap rather than chased
+  exhaustively; the highest-visibility instances on the `ar` locale
+  specifically (the one named in the bug reports this ADR responds to) were
+  hand-patched directly in `ar/home.json`, `ar/chrome.json`, and
+  `public/app/i18n/translations.js` — team-member credential lines, the
+  Live Demo panel in full (both AI messages had additionally hit failure
+  mode 2, the multi-sentence partial-translate bug, even in isolation —
+  hand-written medically-accurate Arabic replaces them), and the dashboard's
+  quick-action button labels.
+- Not done: the same manual pass for the other 7 locales (`ur, es, fr, hi,
+  pt, de, zh`) — only `ar` was named in the reports this ADR addresses, so
+  only `ar` got hand-verified and hand-patched beyond the automated
+  pipeline; a full RTL audit of `public/app/`'s ~2,500-line stylesheet
+  beyond the sidebar/fixed-chrome fixes above; native-speaker review of any
+  of the machine-translated content (marketing site or app) — both already
+  disclosed as known limits in ADR-0032, unchanged by this entry.
+
+## Related
+
+[[decisions-log]] · [[environment-variables]] · [[routing]]
+
+---
+
 ## ADR-0032 — Translation pipeline switched from the Anthropic API to LibreTranslate
 
 - **Status:** Accepted — script rewritten and verified with a real,

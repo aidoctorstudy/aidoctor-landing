@@ -2,7 +2,7 @@
   "eyebrow": "Legal",
   "title": "Política de privacidad",
   "lastUpdated": "20 August 2026",
-  "scope": "Aplicaciones aaidoctor.studyy elAI Doctor Studyapp",
+  "scope": "Aplicaciones a aidoctor.study y el AI Doctor Study app",
   "summary": [
     [
       {
@@ -10,7 +10,7 @@
         "bold": true
       },
       {
-        "text": "— su nombre, correo electrónico, año de estudio y enfoque de examen."
+        "text": " — su nombre, correo electrónico, año de estudio y enfoque de examen."
       }
     ],
     [
@@ -24,7 +24,7 @@
         "bold": true
       },
       {
-        "text": "— ver la propia política de cada proveedor para cómo manejan los datos."
+        "text": " — ver la propia política de cada proveedor para cómo manejan los datos."
       }
     ],
     [
@@ -34,14 +34,14 @@
     ],
     [
       {
-        "text": "Ver el"
+        "text": "Ver el "
       },
       {
         "text": "Política de cookies",
         "href": "/cookies"
       },
       {
-        "text": "para las cookies específicas y almacenamiento local que utilizamos."
+        "text": " para las cookies específicas y almacenamiento local que utilizamos."
       }
     ]
   ],
@@ -55,21 +55,21 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Esta Política de Privacidad explica qué datos personalesAI Doctor Study(“nosotros”, “nosotros”) recoge cuando se utiliza"
+              "text": "Esta Política de Privacidad explica qué datos personales AI Doctor Study (“nosotros”, “nosotros”) recoge cuando se utiliza "
             },
             {
               "text": "aidoctor.study",
               "href": "https://aidoctor.study"
             },
             {
-              "text": "y elAI Doctor Studyapp (junto, el “Servicio”), por qué lo recopilamos, y las opciones que tienes. Debe ser leído junto a nuestro"
+              "text": " y el AI Doctor Study app (junto, el “Servicio”), por qué lo recopilamos, y las opciones que tienes. Debe ser leído junto a nuestro "
             },
             {
               "text": "Términos de servicio",
               "href": "/terms"
             },
             {
-              "text": "y"
+              "text": " y "
             },
             {
               "text": "Política de cookies",
@@ -96,7 +96,7 @@
                 "bold": true
               },
               {
-                "text": "— su nombre, dirección de correo electrónico y foto de perfil de Google iniciada; su año de estudio y enfoque de examen (por ejemplo, MBBS, USMLE) de a bordo."
+                "text": " — su nombre, dirección de correo electrónico y foto de perfil de Google registrarse; su año de estudio y enfoque de examen (por ejemplo. MBBS, USMLE) de a bordo."
               }
             ],
             [
@@ -105,7 +105,7 @@
                 "bold": true
               },
               {
-                "text": "— las preguntas que usted hace, los temas y modos que utiliza, y características como tarjetas flash o casos guardados, por lo que el Servicio puede responder a usted y mantener su progreso."
+                "text": " — las preguntas que usted hace, los temas y modos que utiliza, y características como tarjetas flash o casos guardados, por lo que el Servicio puede responder a usted y mantener su progreso."
               }
             ],
             [
@@ -114,7 +114,7 @@
                 "bold": true
               },
               {
-                "text": "— si se suscribe a Pro, Gumroad maneja directamente sus datos de pago; recibimos confirmación de su estado de suscripción, no los detalles de su tarjeta."
+                "text": " — si se suscribe a Pro, Gumroad maneja directamente sus datos de pago; recibimos confirmación de su estado de suscripción, no los detalles de su tarjeta."
               }
             ],
             [
@@ -123,7 +123,7 @@
                 "bold": true
               },
               {
-                "text": "— tipo de dispositivo, navegador, y, sólo si usted acepta analítica, estadísticas de uso agregado (ver el"
+                "text": " — tipo de dispositivo, navegador, y, sólo si usted acepta analítica, estadísticas de uso agregado (ver el "
               },
               {
                 "text": "Política de cookies",
@@ -209,7 +209,7 @@
                 "bold": true
               },
               {
-                "text": "— autenticación, almacenamiento de datos y (con consentimiento) análisis. Ver el"
+                "text": " — autenticación, almacenamiento de datos y (con consentimiento) análisis. Ver el "
               },
               {
                 "text": "Política de privacidad de Google",
@@ -225,7 +225,7 @@
                 "bold": true
               },
               {
-                "text": "— procesamiento de pagos para suscripciones Pro. See"
+                "text": " — procesamiento de pagos para suscripciones Pro. See "
               },
               {
                 "text": "Política de privacidad de Gumroad",
@@ -241,7 +241,7 @@
                 "bold": true
               },
               {
-                "text": "- cuando juegas un vídeo de estudio integrado. Ver el"
+                "text": " - cuando juegas un vídeo de estudio integrado. Ver el "
               },
               {
                 "text": "Política de privacidad de Google",
@@ -257,7 +257,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "También podemos revelar datos si es necesario por ley, o para proteger los derechos, la seguridad o la seguridadAI Doctor Study, nuestros usuarios o el público."
+              "text": "También podemos revelar datos si es necesario por ley, o para proteger los derechos, la seguridad o la seguridad AI Doctor Study, nuestros usuarios o el público."
             }
           ]
         }
@@ -272,14 +272,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Mantenemos sus datos de cuenta y estudio mientras su cuenta esté activa, por lo que su progreso y su historia estén disponibles para usted. Si elimina su cuenta (ver"
+              "text": "Mantenemos sus datos de cuenta y estudio mientras su cuenta esté activa, por lo que su progreso y su historia estén disponibles para usted. Si elimina su cuenta (ver "
             },
             {
               "text": "Sus derechos",
               "href": "#rights"
             },
             {
-              "text": "a continuación), eliminamos o anonimato sus datos personales dentro de un período razonable, excepto cuando se nos exige mantener registros por razones legales, fiscales o de prevención del fraude."
+              "text": " a continuación), eliminamos o anonimato sus datos personales dentro de un período razonable, excepto cuando se nos exige mantener registros por razones legales, fiscales o de prevención del fraude."
             }
           ]
         }
@@ -347,14 +347,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Para ejercer cualquiera de estos, email"
+              "text": "Para ejercer cualquiera de estos, email "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": "- responderemos dentro de un tiempo razonable."
+              "text": " - responderemos dentro de un tiempo razonable."
             }
           ]
         }
@@ -369,7 +369,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "El Servicio está destinado a los usuarios mayores de 16 años (ver"
+              "text": "El Servicio está destinado a usuarios mayores de edad 16 y más (ver "
             },
             {
               "text": "Términos de servicio",
@@ -425,7 +425,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "¿Preguntas sobre esta política o sus datos? Email"
+              "text": "¿Preguntas sobre esta política o sus datos? Email "
             },
             {
               "text": "support@aidoctor.study",

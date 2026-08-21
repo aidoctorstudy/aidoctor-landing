@@ -71,8 +71,16 @@ export const ServicesTrack = ({ header, children }: ServicesTrackProps) => {
         1,
       );
 
+      // `dir="rtl"` (set on <html> for ar/ur, see [locale]/(marketing)/layout.tsx)
+      // reverses flex order, so card 1 sits at the *right* edge instead of the
+      // left. Sliding the track the same negative (leftward) direction as LTR
+      // then rushes every card past-and-off the left edge before the reader
+      // can see it, ending on an empty void instead of the last card — the
+      // rail has to travel toward the *right* in RTL for the reveal order to
+      // match reading direction.
+      const rtl = document.documentElement.dir === "rtl";
       const travel = Math.max(track.scrollWidth - track.clientWidth, 0);
-      api.start({ x: -progress * travel });
+      api.start({ x: (rtl ? 1 : -1) * progress * travel });
     },
     { framerate: EVERY_FRAME },
   );

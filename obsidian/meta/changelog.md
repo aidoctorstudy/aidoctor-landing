@@ -10,6 +10,44 @@ This is a human-curated log — not a mirror of `git log`.
 
 ## 2026-08-21
 
+- **Three reported `/ar` bugs fixed, plus a `public/app/` i18n system
+  added (9 locales, RTL for ar/ur).** See [[decisions-log]] ADR-0033 for
+  the full account. Summary:
+  - Services rail "hard to read" in RTL was actually a scroll-direction
+    bug (`services-track.tsx` always slid left regardless of `dir`, so RTL's
+    reversed flex order made cards rush past instead of revealing one at a
+    time) — one-line fix, confirmed live.
+  - Team member names were already correct (ADR-0032) — verified, no
+    change needed.
+  - Live Demo "reversed/corrupted" text led to four real bugs in the
+    LibreTranslate pipeline: missing whitespace at protected-phrase splice
+    boundaries, multi-sentence strings translating only partway, silent
+    full-string echo-back on some short strings, and — most seriously —
+    multi-digit numbers coming back with reversed digit order
+    (`"300"` → `"٠٠٣"`) in the raw stored JSON. All fixed in
+    `translate-content.mjs`; all 8 locale bundles regenerated.
+  - `public/app/` (the ~7,000-line vanilla-JS study app, previously
+    English-only) now has full i18n: a dictionary keyed by exact English
+    source text (not `t('key')` calls rewritten into the app's logic — see
+    ADR-0033 for why), applied at runtime via DOM walking + a
+    `MutationObserver` so dynamically-injected content (quizzes,
+    flashcards, toasts) translates automatically. New:
+    `scripts/extract-app-strings.mjs`, `scripts/translate-app-content.mjs`,
+    `public/app/i18n/{i18n.js,rtl.css,translations.js}`. The iframe embed
+    (`study-app-frame.tsx`) now passes `?locale=` from the Next.js route.
+    ~930 English strings extracted, 684–925 translated per locale
+    (remainder is `AI Doctor`/brand/URL protection plus a small set of
+    short strings this MT instance echoes back untranslated regardless of
+    retries — same failure mode hit on the marketing site, disclosed in
+    ADR-0033 rather than chased indefinitely).
+  - Confirmed live in-browser (not just checked for clean exit codes):
+    `/ar` renders fully in Arabic RTL with the Services rail, Live Demo
+    chat, and About stats/CTAs all correct; `/ar/app`'s sidebar mirrors to
+    the right edge and the dashboard's quick-action buttons translate
+    correctly. A handful of the highest-visibility strings that the free MT
+    engine wouldn't translate automatically (team credentials, the Live
+    Demo panel, a few dashboard buttons) were hand-patched directly for
+    `ar` — the locale named in the original reports.
 - **`scripts/translate-content.mjs` rewritten to use LibreTranslate instead
   of the Anthropic API** — since a plain MT engine has no concept of JSON
   structure (unlike an instruction-following LLM), the script now has one

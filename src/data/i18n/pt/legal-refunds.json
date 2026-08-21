@@ -2,7 +2,7 @@
   "eyebrow": "Jurídico",
   "title": "Política de restituições",
   "lastUpdated": "17 August 2026",
-  "scope": "Aplica-seAI Doctor StudyPro compras feitas através de Gumroad",
+  "scope": "Aplica-se AI Doctor Study Pro compras feitas através de Gumroad",
   "summary": [
     [
       {
@@ -10,7 +10,7 @@
         "bold": true
       },
       {
-        "text": "Envie-nos um e-mail dentro de 7 dias da sua primeira compra Pro e nós vamos reembolsá-lo, sem drama."
+        "text": " Enviar-nos por e- mail dentro 7 dias da sua primeira compra Pro e vamos reembolsá-lo, sem drama."
       }
     ],
     [
@@ -19,7 +19,7 @@
         "bold": true
       },
       {
-        "text": "Cancele a qualquer hora — você mantém o Pro até que seu mês pago termine, e você simplesmente não será cobrado novamente."
+        "text": " Cancele a qualquer hora — você mantém o Pro até que seu mês pago termine, e você simplesmente não será cobrado novamente."
       }
     ],
     [
@@ -28,17 +28,17 @@
         "bold": true
       },
       {
-        "text": "geralmente não são reembolsáveis uma vez que um novo mês começa, exceto para erros de faturamento ou onde a lei diz o contrário."
+        "text": " geralmente não são reembolsáveis uma vez que um novo mês começa, exceto para erros de faturamento ou onde a lei diz o contrário."
       }
     ],
     [
       {
-        "text": "Reembolsos voltar ao seu método de pagamento original via Gumroad, geralmente dentro de 5-10 dias úteis."
+        "text": "Reembolsos voltar ao seu método de pagamento original via Gumroad, geralmente dentro 5- Não10 dias úteis."
       }
     ],
     [
       {
-        "text": "Uma vez que um pagamento é reembolsado ou cobrado de volta,"
+        "text": "Uma vez que um pagamento é reembolsado ou cobrado de volta, "
       },
       {
         "text": "O acesso pro termina imediatamente",
@@ -59,7 +59,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "AI Doctor StudyPro é uma assinatura mensal faturada através"
+              "text": "AI Doctor Study Pro é uma assinatura mensal faturada através "
             },
             {
               "text": "Gumroad",
@@ -91,26 +91,26 @@
           "items": [
             [
               {
-                "text": "Abra o aplicativo →"
+                "text": "Abra o aplicativo → "
               },
               {
                 "text": "Configurações → Assinatura → Cancelar assinatura",
                 "bold": true
               },
               {
-                "text": "(isso leva você para Gumroad, onde o cancelamento é concluído), ou"
+                "text": " (isso leva você para Gumroad, onde o cancelamento é concluído), ou"
               }
             ],
             [
               {
-                "text": "Cancelar diretamente de seu"
+                "text": "Cancelar diretamente de seu "
               },
               {
                 "text": "Página de assinaturas Gumroad",
                 "href": "https://gumroad.com/subscriptions"
               },
               {
-                "text": "ou o link em seu email de recibo Gumroad."
+                "text": " ou o link em seu email de recibo Gumroad."
               }
             ]
           ]
@@ -119,7 +119,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Cancelar para todas as futuras acusações."
+              "text": "Cancelar para todas as futuras acusações. "
             },
             {
               "text": "Você mantém acesso Pro completo até o final do período que você já pagou",
@@ -135,20 +135,20 @@
     {
       "id": "guarantee",
       "number": "03",
-      "title": "garantia de 7 dias em sua primeira compra",
+      "title": "7- garantia do dia em sua primeira compra",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "Queremos que o Pro te ajude a estudar. Se não for para você, envie-nos um e-mail dentro"
+              "text": "Queremos que o Pro te ajude a estudar. Se não for para você, envie-nos um e-mail dentro "
             },
             {
               "text": "7 dias do seu primeiro pagamento Pro",
               "bold": true
             },
             {
-              "text": "e vamos reembolsá-lo na totalidade. Isso se aplica uma vez por pessoa, ao seu primeiro pagamento apenas — é uma chance de tentar o Pro corretamente, não um mês livre recorrente."
+              "text": " e vamos reembolsá-lo na totalidade. Isso se aplica uma vez por pessoa, ao seu primeiro pagamento apenas — é uma chance de tentar o Pro corretamente, não um mês livre recorrente."
             }
           ]
         }
@@ -163,14 +163,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Porque você pode cancelar a qualquer momento antes de uma renovação, os pagamentos de renovação são geralmente"
+              "text": "Porque você pode cancelar a qualquer momento antes de uma renovação, os pagamentos de renovação são geralmente "
             },
             {
               "text": "não reembolsáveis",
               "bold": true
             },
             {
-              "text": "uma vez iniciado o novo período de faturamento. Fazemos exceções quando algo do nosso lado deu errado, por exemplo:"
+              "text": " uma vez iniciado o novo período de faturamento. Fazemos exceções quando algo do nosso lado deu errado, por exemplo:"
             }
           ]
         },
@@ -213,14 +213,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "E- mail"
+              "text": "E- mail "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": "de qualquer endereço e incluir:"
+              "text": " de qualquer endereço e incluir:"
             }
           ]
         },
@@ -229,7 +229,7 @@
           "items": [
             [
               {
-                "text": "a"
+                "text": "a "
               },
               {
                 "text": "endereço de email no seu recibo Gumroad",
@@ -241,26 +241,26 @@
             ],
             [
               {
-                "text": "o aproximado"
+                "text": "o aproximado "
               },
               {
                 "text": "data da cobrança",
                 "bold": true
               },
               {
-                "text": "(ou o número de ordem/receito Gumroad, se o tiver);"
+                "text": " (ou o número de ordem/receito Gumroad, se o tiver);"
               }
             ],
             [
               {
-                "text": "uma frase sobre"
+                "text": "uma frase sobre "
               },
               {
                 "text": "o que correu mal",
                 "bold": true
               },
               {
-                "text": "— ajuda-nos verdadeiramente a melhorar a aplicação."
+                "text": " — ajuda-nos verdadeiramente a melhorar a aplicação."
               }
             ]
           ]
@@ -269,17 +269,17 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Pretendemos responder dentro"
+              "text": "Pretendemos responder dentro "
             },
             {
               "text": "2 dias úteis",
               "bold": true
             },
             {
-              "text": ". Os reembolsos aprovados são emitidos através de Gumroad e normalmente aparecem em sua declaração dentro"
+              "text": ". Reembolsos aprovados são emitidos através de Gumroad e normalmente aparecem em sua declaração dentro "
             },
             {
-              "text": "5–10 dias úteis",
+              "text": "5- Não10 dias úteis",
               "bold": true
             },
             {
@@ -298,14 +298,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Quando um pagamento é reembolsado, o acesso Pro pago para fins"
+              "text": "Quando um pagamento é reembolsado, o acesso Pro pago para fins "
             },
             {
               "text": "imediatamente",
               "bold": true
             },
             {
-              "text": "— a sua conta regressa ao plano gratuito e os dados do seu estudo permanecem intactos. Se uma carga reembolsada for novamente processada por engano, entre em contato conosco e a reverteremos."
+              "text": " — a sua conta regressa ao plano gratuito e os dados do seu estudo permanecem intactos. Se uma carga reembolsada for novamente processada por engano, entre em contato conosco e a reverteremos."
             }
           ]
         }
@@ -332,14 +332,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Quando um carregamento é arquivado, Gumroad notifica-nos e"
+              "text": "Quando um carregamento é arquivado, Gumroad notifica-nos e "
             },
             {
               "text": "O acesso pro é revogado automaticamente e imediatamente",
               "bold": true
             },
             {
-              "text": ". Podemos recusar futuras compras de contas com atividade de cobrança abusiva. Claro que nada aqui limita o seu direito legal de contestar acusações genuinamente não autorizadas."
+              "text": ". Podemos recusar futuras compras de contas com atividade de recarga abusiva. Claro que nada aqui limita o seu direito legal de contestar acusações genuinamente não autorizadas."
             }
           ]
         }
@@ -384,14 +384,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Alguma coisa não clara, ou uma situação que esta página não cobre? E- mail"
+              "text": "Alguma coisa não clara, ou uma situação que esta página não cobre? E- mail "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": "- um humano lê-o, e preferimos resolver isto do que discutir sobre isso."
+              "text": " - um humano lê-o, e preferimos resolver isto do que discutir sobre isso."
             }
           ]
         }

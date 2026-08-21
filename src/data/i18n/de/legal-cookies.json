@@ -2,25 +2,25 @@
   "eyebrow": "Recht",
   "title": "Cookie-Richtlinie",
   "lastUpdated": "17 August 2026",
-  "scope": "Gilt füraidoctor.studyundAI Doctor Studyanwendungsbereich",
+  "scope": "Gilt für aidoctor.study und AI Doctor Study anwendungsbereich",
   "summary": [
     [
       {
-        "text": "Wir verwenden eine kleine Menge von Cookies und lokale Speicherung, um"
+        "text": "Wir verwenden eine kleine Menge von Cookies und lokale Speicherung, um "
       },
       {
         "text": "sie haben unterschrieben",
         "bold": true
       },
       {
-        "text": "und"
+        "text": " und "
       },
       {
         "text": "erinnern sie sich an ihr studienprofil",
         "bold": true
       },
       {
-        "text": "— sie sind essentiell und immer weiter."
+        "text": " — sie sind essentiell und immer weiter."
       }
     ],
     [
@@ -29,7 +29,7 @@
         "bold": true
       },
       {
-        "text": "im Cookie-Banner. Sagen Sie Nein und die App funktioniert genau das gleiche."
+        "text": " im cookie-banner. Sagen Sie Nein und die App funktioniert genau das gleiche."
       }
     ],
     [
@@ -39,14 +39,14 @@
     ],
     [
       {
-        "text": "Sie können Ihre Meinung jederzeit ändern"
+        "text": "Sie können Ihre Meinung jederzeit ändern "
       },
       {
         "text": "Cookie-Einstellungen",
         "bold": true
       },
       {
-        "text": "oder ihren browser."
+        "text": " oder ihren browser."
       }
     ]
   ],
@@ -64,14 +64,14 @@
               "bold": true
             },
             {
-              "text": "sind kleine textdateien eine website speichert auf ihrem gerät, so dass es sie zwischen seiten und besuchen erkennen kann."
+              "text": " sind kleine textdateien eine website speichert auf ihrem gerät, so dass es sie zwischen seiten und besuchen erkennen kann. "
             },
             {
               "text": "Lokale Speicherung",
               "bold": true
             },
             {
-              "text": "ist eine ähnliche Browser-Funktion, die wir verwenden, um Daten (wie Ihr Studienprofil) direkt auf Ihrem Gerät anstatt auf unseren Servern zu speichern. Diese Richtlinie umfasst sowohl ähnliche Technologien wie SDK-Identifier in unserer App."
+              "text": " ist eine ähnliche browser-funktion, die wir verwenden, um daten (wie ihr studienprofil) direkt auf ihrem gerät anstatt auf unseren servern zu speichern. Diese Richtlinie umfasst sowohl ähnliche Technologien wie SDK-Identifier in unserer App."
             }
           ]
         }
@@ -91,7 +91,7 @@
                 "bold": true
               },
               {
-                "text": "— Unterzeichnen Sie mit Google (Firebase Authentication), halten Sie Ihre Sitzung sicher und erinnern Sie sich an Ihre Cookie-Entscheidung. Der Service kann ohne diese nicht funktionieren, so dass sie keine Einwilligung benötigen."
+                "text": " — Unterzeichnen Sie mit Google (Firebase Authentication), halten Sie Ihre Sitzung sicher und erinnern Sie sich an Ihre Cookie-Entscheidung. Der Service kann ohne diese nicht funktionieren, so dass sie keine Einwilligung benötigen."
               }
             ],
             [
@@ -100,7 +100,7 @@
                 "bold": true
               },
               {
-                "text": "— erinnern sie sich an ihren namen, studienjahr und prüfung, so dass sie direkt in ihrem studienraum landen, anstatt an bord zu gehen."
+                "text": " — erinnern sie sich an ihren namen, studienjahr und prüfung, so dass sie direkt in ihrem studienraum landen, anstatt an bord zu gehen."
               }
             ],
             [
@@ -109,7 +109,7 @@
                 "bold": true
               },
               {
-                "text": "— anonymisierte Nutzungsstatistiken über Google Analytics / Firebase Analytics, so dass wir sehen können, welche Funktionen den Studierenden helfen und welche Fixierung erforderlich sind. Dieser Lauf"
+                "text": " — anonymisierte Nutzungsstatistiken über Google Analytics / Firebase Analytics, so dass wir sehen können, welche Funktionen den Studierenden helfen und welche Fixierung erforderlich sind. Dieser Lauf "
               },
               {
                 "text": "nur mit ihrer einwilligung",
@@ -160,7 +160,7 @@
             [
               "aid_name_*, aid_year_*, aid_exam_*",
               "AI Doctor Study",
-              "Speichert Ihren Namen, Studienjahr und Prüfung (z.B. MBBS) auf Ihrem Gerät, so dass die App direkt in Ihren Studienraum öffnet.",
+              "Speichert Ihren Namen, Studienjahr und Prüfung (z. MBBS) auf Ihrem Gerät, so dass die App direkt in Ihren Studienraum öffnet.",
               "Bis zur Freigabe"
             ],
             [
@@ -173,7 +173,7 @@
               "_ga, _ga_*",
               "Google Analytics",
               "Distinguishes Besucher und Maßnahmen, wie die App verwendet wird (Seiten betrachtet, Funktionen gezapft) so können wir sie verbessern. Nur mit Zustimmung gesetzt.",
-              "Bis zu 2 Jahre"
+              "Bis 2 jahre"
             ],
             [
               "Firebase Analytics-Kennzeichen",
@@ -187,7 +187,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Sie können lesen, wie Google diese Daten verwendet"
+              "text": "Sie können lesen, wie Google diese Daten verwendet "
             },
             {
               "text": "policy.google.com/technologies/partner-sites",
@@ -214,7 +214,7 @@
                 "bold": true
               },
               {
-                "text": "— wenn Sie den Pro Checkout öffnen oder Ihr Abonnement verwalten, setzt Gumroad eigene Cookies ein, um Ihre Zahlung sicher zu bearbeiten. Vgl"
+                "text": " — wenn Sie den Pro Checkout öffnen oder Ihr Abonnement verwalten, setzt Gumroad eigene Cookies ein, um Ihre Zahlung sicher zu bearbeiten. Vgl "
               },
               {
                 "text": "Gumroad's Datenschutzrichtlinie",
@@ -230,7 +230,7 @@
                 "bold": true
               },
               {
-                "text": "— einige Studienvideos sind von YouTube eingebettet. Wenn Sie eins spielen, kann YouTube (Google) Cookies setzen und Daten unter dem"
+                "text": " — einige Studienvideos sind von YouTube eingebettet. Wenn Sie eins spielen, kann YouTube (Google) Cookies setzen und Daten unter dem "
               },
               {
                 "text": "Google Datenschutzerklärung",
@@ -265,7 +265,7 @@
               "bold": true
             },
             {
-              "text": "Bei Ihrem ersten Besuch können Sie wählen Akzeptieren alle oder Essential nur. Analytics bleibt außer Ihnen. Ihre Wahl wird auf Ihrem Gerät gespeichert und Sie können es jederzeit von der Cookie-Einstellungen-Steuerung im Site Footer ändern."
+              "text": " Bei Ihrem ersten Besuch können Sie wählen Akzeptieren alle oder Essential nur. Analytics bleibt außer Ihnen. Ihre Wahl wird auf Ihrem Gerät gespeichert und Sie können es jederzeit von der Cookie-Einstellungen-Steuerung im Site Footer ändern."
             }
           ]
         },
@@ -277,7 +277,7 @@
               "bold": true
             },
             {
-              "text": "Sie können auch Cookies und Website-Daten in Ihren Browser-Einstellungen blockieren oder löschen – beachten Sie, dass das Löschen wesentlicher Speicher Sie unterschreiben und Ihr on-device-Studienprofil zurücksetzen."
+              "text": " Sie können auch Cookies und Website-Daten in Ihren Browser-Einstellungen blockieren oder löschen – beachten Sie, dass das Löschen wesentlicher Speicher Sie unterschreiben und Ihr on-device-Studienprofil zurücksetzen."
             }
           ]
         },
@@ -289,7 +289,7 @@
               "bold": true
             },
             {
-              "text": "Für Google Analytics bietet Google eine"
+              "text": " Für Google Analytics bietet Google eine "
             },
             {
               "text": "browser opt-out add-on",
@@ -326,14 +326,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Fragen zu Cookies oder Ihren Daten? E-Mail senden"
+              "text": "Fragen zu Cookies oder Ihren Daten? E-Mail senden "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": ". Wie wir personenbezogene Daten weiter verarbeiten, siehe unsere"
+              "text": ". Wie wir personenbezogene Daten weiter verarbeiten, siehe unsere "
             },
             {
               "text": "Datenschutz",

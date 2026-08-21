@@ -2,25 +2,25 @@
   "eyebrow": "Jurídico",
   "title": "Política de Cookies",
   "lastUpdated": "17 August 2026",
-  "scope": "Aplica-seaidoctor.studye aAI Doctor Studyapp",
+  "scope": "Aplica-se aidoctor.study e a AI Doctor Study app",
   "summary": [
     [
       {
-        "text": "Usamos um pequeno conjunto de cookies e armazenamento local para"
+        "text": "Usamos um pequeno conjunto de cookies e armazenamento local para "
       },
       {
         "text": "manter você assinado",
         "bold": true
       },
       {
-        "text": "e"
+        "text": " e "
       },
       {
         "text": "lembrar o seu perfil de estudo",
         "bold": true
       },
       {
-        "text": "— são essenciais e sempre em curso."
+        "text": " — são essenciais e sempre em curso."
       }
     ],
     [
@@ -29,7 +29,7 @@
         "bold": true
       },
       {
-        "text": "no banner de biscoitos. Diga não e o aplicativo funciona exatamente o mesmo."
+        "text": " no banner de biscoitos. Diga não e o aplicativo funciona exatamente o mesmo."
       }
     ],
     [
@@ -39,14 +39,14 @@
     ],
     [
       {
-        "text": "Você pode mudar de idéia a qualquer momento através"
+        "text": "Você pode mudar de idéia a qualquer momento através "
       },
       {
         "text": "Configuração dos cookies",
         "bold": true
       },
       {
-        "text": "ou o seu navegador."
+        "text": " ou o seu navegador."
       }
     ]
   ],
@@ -64,14 +64,14 @@
               "bold": true
             },
             {
-              "text": "são pequenos arquivos de texto um site armazena em seu dispositivo para que ele possa reconhecê-lo entre páginas e visitas."
+              "text": " são pequenos arquivos de texto um site armazena em seu dispositivo para que ele possa reconhecê-lo entre páginas e visitas. "
             },
             {
               "text": "Armazenagem local",
               "bold": true
             },
             {
-              "text": "é um recurso de navegador semelhante que usamos para salvar dados (como seu perfil de estudo) diretamente em seu dispositivo em vez de em nossos servidores. Esta política abrange ambos, além de tecnologias semelhantes como identificadores SDK em nosso aplicativo."
+              "text": " é um recurso de navegador semelhante que usamos para salvar dados (como seu perfil de estudo) diretamente em seu dispositivo em vez de em nossos servidores. Esta política abrange ambos, além de tecnologias semelhantes como identificadores SDK em nosso aplicativo."
             }
           ]
         }
@@ -91,7 +91,7 @@
                 "bold": true
               },
               {
-                "text": "— assinando com o Google (Autenticação Firebase), mantendo sua sessão segura e lembrando sua escolha de cookies. O Serviço não pode trabalhar sem estes, por isso não requerem consentimento."
+                "text": " — assinando com o Google (Autenticação Firebase), mantendo sua sessão segura e lembrando sua escolha de cookies. O Serviço não pode trabalhar sem estes, por isso não requerem consentimento."
               }
             ],
             [
@@ -100,7 +100,7 @@
                 "bold": true
               },
               {
-                "text": "— recordando o seu nome, ano de estudo e exame, para aterrar directamente no seu espaço de estudo em vez de voltar a fazer a bordo."
+                "text": " — recordando o seu nome, ano de estudo e exame, para aterrar directamente no seu espaço de estudo em vez de voltar a fazer a bordo."
               }
             ],
             [
@@ -109,7 +109,7 @@
                 "bold": true
               },
               {
-                "text": "— estatísticas de uso de estilo anônimo via Google Analytics / Firebase Analytics, para que possamos ver quais recursos ajudam os alunos e quais precisam ser corrigidos. Estes corrida"
+                "text": " — estatísticas de uso de estilo anônimo via Google Analytics / Firebase Analytics, para que possamos ver quais recursos ajudam os alunos e quais precisam ser corrigidos. Estes corrida "
               },
               {
                 "text": "apenas com o seu consentimento",
@@ -160,7 +160,7 @@
             [
               "aid_name_*, aid_year_*, aid_exam_*",
               "AI Doctor Study",
-              "Guarda o seu nome, ano de estudo e exame (por exemplo MBBS) no seu dispositivo para que o aplicativo abra diretamente para o seu espaço de estudo.",
+              "Armazena seu nome, ano de estudo e exame (por exemplo. MBBS) no seu dispositivo para que o aplicativo abra diretamente para o seu espaço de estudo.",
               "Até estar limpo"
             ],
             [
@@ -187,7 +187,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Você pode ler como o Google usa esses dados em"
+              "text": "Você pode ler como o Google usa esses dados em "
             },
             {
               "text": "políticas.google.com/tecnologias/parceiros-sites",
@@ -214,7 +214,7 @@
                 "bold": true
               },
               {
-                "text": "— quando você abrir o checkout Pro ou gerenciar sua assinatura, Gumroad define seus próprios cookies para processar seu pagamento de forma segura. Veja"
+                "text": " — quando você abrir o checkout Pro ou gerenciar sua assinatura, Gumroad define seus próprios cookies para processar seu pagamento de forma segura. Veja "
               },
               {
                 "text": "Política de Privacidade da Gumroad",
@@ -230,7 +230,7 @@
                 "bold": true
               },
               {
-                "text": "— alguns vídeos de estudo são incorporados no YouTube. Quando você joga um, o YouTube (Google) pode definir cookies e coletar dados sob o"
+                "text": " — alguns vídeos de estudo são incorporados no YouTube. Quando você joga um, o YouTube (Google) pode definir cookies e coletar dados sob o "
               },
               {
                 "text": "Política de Privacidade do Google",
@@ -265,7 +265,7 @@
               "bold": true
             },
             {
-              "text": "Na sua primeira visita você pode escolher Aceitar tudo ou Essencial apenas. O Analytics fica desligado a menos que aceite. Sua escolha é salva em seu dispositivo, e você pode alterá-lo a qualquer momento a partir do controle de configurações de cookies no rodapé do site."
+              "text": " Na sua primeira visita você pode escolher Aceitar tudo ou Essencial apenas. O Analytics fica desligado a menos que aceite. Sua escolha é salva em seu dispositivo, e você pode alterá-lo a qualquer momento a partir do controle de configurações de cookies no rodapé do site."
             }
           ]
         },
@@ -277,7 +277,7 @@
               "bold": true
             },
             {
-              "text": "Você também pode bloquear ou excluir cookies e dados do site nas configurações do seu navegador — note que excluir o armazenamento essencial irá assinar com você e redefinir seu perfil de estudo no dispositivo."
+              "text": " Você também pode bloquear ou excluir cookies e dados do site nas configurações do seu navegador — note que excluir o armazenamento essencial irá assinar com você e redefinir seu perfil de estudo no dispositivo."
             }
           ]
         },
@@ -289,7 +289,7 @@
               "bold": true
             },
             {
-              "text": "Para o Google Analytics especificamente, o Google oferece"
+              "text": " Para o Google Analytics especificamente, o Google oferece "
             },
             {
               "text": "complemento de opt-out do navegador",
@@ -326,14 +326,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Perguntas sobre cookies ou seus dados? E- mail"
+              "text": "Perguntas sobre cookies ou seus dados? E- mail "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": "Para a forma como lidamos com os dados pessoais de forma mais ampla, ver o nosso"
+              "text": ". Para a forma como lidamos com dados pessoais de forma mais ampla, consulte "
             },
             {
               "text": "Política de Privacidade",

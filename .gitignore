@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# regeneratable intermediate build artifact — see extract-app-strings.mjs
+scripts/tmp-app-strings.json

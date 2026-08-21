@@ -1,0 +1,58 @@
+/**
+ * RTL overrides for ar/ur — loaded unconditionally after styles.css;
+ * scoped entirely by the `[dir="rtl"]` attribute i18n.js sets on <html>.
+ *
+ * styles.css hardcodes physical left/right (`.sidebar{left:0}`,
+ * `.app-main{margin-left:72px}`, fixed-position toasts/FAB anchored
+ * `right:20px`, …) rather than logical properties, so none of it mirrors on
+ * its own under `dir="rtl"` — same class of issue as the marketing site's
+ * Services rail (see decisions-log ADR-0030/ADR-0033). This isn't an
+ * exhaustive mirror of all ~2,500 lines of styles.css: it covers the
+ * whole-app-affecting layout (the icon sidebar + its main-content offset)
+ * and the fixed-position chrome most likely to visibly collide with RTL
+ * text (toasts, FAB, popups) rather than chasing every individual panel.
+ */
+
+[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--bd);
+}
+
+[dir="rtl"] .app-main {
+  margin-left: 0;
+  margin-right: 72px;
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .app-main {
+    margin-right: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  [dir="rtl"] .app-main {
+    margin-right: 0;
+  }
+}
+
+[dir="rtl"] .toast-stack {
+  right: auto;
+  left: 20px;
+}
+
+[dir="rtl"] .fab {
+  right: auto;
+  left: 20px;
+}
+
+[dir="rtl"] .xp-popup {
+  right: auto;
+  left: 20px;
+  transform: translateX(-200px);
+}
+
+[dir="rtl"] .xp-popup.show {
+  transform: translateX(0);
+}

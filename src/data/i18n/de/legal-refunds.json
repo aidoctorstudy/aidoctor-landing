@@ -2,7 +2,7 @@
   "eyebrow": "Recht",
   "title": "Rückerstattungspolitik",
   "lastUpdated": "17 August 2026",
-  "scope": "Gilt fürAI Doctor StudyPro-Einkäufe durch Gumroad gemacht",
+  "scope": "Gilt für AI Doctor Study Pro-Einkäufe durch Gumroad gemacht",
   "summary": [
     [
       {
@@ -10,7 +10,7 @@
         "bold": true
       },
       {
-        "text": "Senden Sie uns innerhalb von 7 Tagen nach Ihrem ersten Pro-Kauf und wir erstatten es, kein Drama."
+        "text": " E-Mail senden 7 tage Ihrer ersten Pro-Kauf und wir werden es zurückerstatten, kein Drama."
       }
     ],
     [
@@ -19,7 +19,7 @@
         "bold": true
       },
       {
-        "text": "Abbrechen Sie jederzeit — Sie halten Pro, bis Ihr bezahlter Monat endet, und Sie werden einfach nicht wieder berechnet."
+        "text": " Abbrechen Sie jederzeit — Sie halten Pro, bis Ihr bezahlter Monat endet, und Sie werden einfach nicht wieder berechnet."
       }
     ],
     [
@@ -28,17 +28,17 @@
         "bold": true
       },
       {
-        "text": "in der regel sind nicht rückerstattungsfähig, wenn ein neuer monat beginnt, außer bei abrechnungsfehlern oder wenn das gesetz anders sagt."
+        "text": " in der regel sind nicht rückerstattungsfähig, wenn ein neuer monat beginnt, außer bei abrechnungsfehlern oder wenn das gesetz anders sagt."
       }
     ],
     [
       {
-        "text": "Rückerstattungen gehen zurück zu Ihrer ursprünglichen Zahlungsmethode über Gumroad, in der Regel innerhalb von 5-10 Werktagen."
+        "text": "Rückerstattungen gehen zurück zu Ihrer ursprünglichen Zahlungsmethode über Gumroad, in der Regel innerhalb 5–10 geschäftstage."
       }
     ],
     [
       {
-        "text": "Sobald eine Zahlung zurückerstattet oder zurückgezahlt wird,"
+        "text": "Sobald eine Zahlung zurückerstattet oder zurückgezahlt wird, "
       },
       {
         "text": "Pro Access endet sofort",
@@ -59,14 +59,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "AI Doctor StudyPro ist ein monatliches Abonnement durch"
+              "text": "AI Doctor Study Pro ist ein monatliches Abonnement durch "
             },
             {
               "text": "Gumroad",
               "href": "https://gumroad.com"
             },
             {
-              "text": ", unser Zahlungsanbieter und Händler von Rekord. Gumroad berechnet Ihre Zahlungsmethode, stellt Ihren Empfang aus und behandelt alle anwendbaren Steuern. Rückerstattungen, die wir genehmigen, werden über Gumroad zurück an die von Ihnen verwendete Zahlungsmethode ausgegeben."
+              "text": ", unser zahlungsanbieter und händler von rekord. Gumroad berechnet Ihre Zahlungsmethode, stellt Ihren Empfang aus und behandelt alle anwendbaren Steuern. Rückerstattungen, die wir genehmigen, werden über Gumroad zurück an die von Ihnen verwendete Zahlungsmethode ausgegeben."
             }
           ]
         }
@@ -91,26 +91,26 @@
           "items": [
             [
               {
-                "text": "App öffnen →"
+                "text": "App öffnen → "
               },
               {
                 "text": "Einstellungen → Abonnement → Abbrechen Abonnement",
                 "bold": true
               },
               {
-                "text": "(dies führt Sie nach Gumroad, wo die Stornierung abgeschlossen ist), oder"
+                "text": " (dies führt Sie nach Gumroad, wo die Stornierung abgeschlossen ist), oder"
               }
             ],
             [
               {
-                "text": "Direkt abbrechen"
+                "text": "Direkt abbrechen "
               },
               {
                 "text": "Gumroad Abonnements Seite",
                 "href": "https://gumroad.com/subscriptions"
               },
               {
-                "text": "oder den Link in Ihrer Gumroad-E-Mail."
+                "text": " oder den Link in Ihrer Gumroad-E-Mail."
               }
             ]
           ]
@@ -119,14 +119,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Die Stornierung hält alle zukünftigen Gebühren."
+              "text": "Die Stornierung hält alle zukünftigen Gebühren. "
             },
             {
               "text": "Sie halten vollen Pro-Zugriff bis zum Ende der Zeit, die Sie bereits bezahlt haben für",
               "bold": true
             },
             {
-              "text": ", dann wird Ihr Konto automatisch wieder zum kostenlosen Plan. Stornierung ist keine Rückerstattung der aktuellen Periode, und wir geben keine teilweise Rückerstattung für ungenutzte Tage."
+              "text": ", dann wird ihr konto automatisch wieder zum kostenlosen plan. Stornierung ist keine Rückerstattung der aktuellen Periode, und wir geben keine teilweise Rückerstattung für ungenutzte Tage."
             }
           ]
         }
@@ -135,20 +135,20 @@
     {
       "id": "guarantee",
       "number": "03",
-      "title": "7-tägige garantie für ihren ersten kauf",
+      "title": "7-tagesgarantie für ihren ersten kauf",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "Wir wollen, dass Pro Ihnen hilft zu studieren. Wenn es nicht für Sie ist, mailen Sie uns innerhalb"
+              "text": "Wir wollen, dass Pro Ihnen hilft zu studieren. Wenn es nicht für Sie ist, mailen Sie uns innerhalb "
             },
             {
-              "text": "7 Tage Ihrer ersten Pro-Zahlung",
+              "text": "7 tage Ihrer ersten Pro-Zahlung",
               "bold": true
             },
             {
-              "text": "und wir erstatten es vollständig. Dies gilt einmal pro Person, nur für Ihre erste Zahlung — es ist eine Chance, Pro richtig zu versuchen, nicht einen wiederkehrenden freien Monat."
+              "text": " und wir erstatten es vollständig. Dies gilt einmal pro Person, nur für Ihre erste Zahlung — es ist eine Chance, Pro richtig zu versuchen, nicht einen wiederkehrenden freien Monat."
             }
           ]
         }
@@ -163,14 +163,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Weil Sie jederzeit vor einer Verlängerung stornieren können, sind die Verlängerungszahlungen in der Regel"
+              "text": "Weil Sie jederzeit vor einer Verlängerung stornieren können, sind die Verlängerungszahlungen in der Regel "
             },
             {
               "text": "nicht rückerstattungsfähig",
               "bold": true
             },
             {
-              "text": "sobald die neue Abrechnungsperiode begonnen hat. Wir machen Ausnahmen, wenn etwas auf unserer Seite schief ging, zum Beispiel:"
+              "text": " sobald die neue abrechnungsperiode begonnen hat. Wir machen Ausnahmen, wenn etwas auf unserer Seite schief ging, zum Beispiel:"
             }
           ]
         },
@@ -213,14 +213,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "E-Mail senden"
+              "text": "E-Mail senden "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": "von jeder adresse und beinhalten:"
+              "text": " von jeder adresse und beinhalten:"
             }
           ]
         },
@@ -229,7 +229,7 @@
           "items": [
             [
               {
-                "text": "die"
+                "text": "die "
               },
               {
                 "text": "e-Mail-Adresse auf Ihrem Gumroad-Empfang",
@@ -241,26 +241,26 @@
             ],
             [
               {
-                "text": "die nähe"
+                "text": "die nähe "
               },
               {
                 "text": "datum der gebühr",
                 "bold": true
               },
               {
-                "text": "(oder die Gumroad Order/Receipt Nummer, wenn Sie es haben);"
+                "text": " (oder die Gumroad Order/Receipt Nummer, wenn Sie es haben);"
               }
             ],
             [
               {
-                "text": "einen satz auf"
+                "text": "einen satz auf "
               },
               {
                 "text": "was schief ging",
                 "bold": true
               },
               {
-                "text": "— es hilft uns wirklich, die app zu verbessern."
+                "text": " — es hilft uns wirklich, die app zu verbessern."
               }
             ]
           ]
@@ -269,17 +269,17 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Wir wollen innerhalb von"
+              "text": "Wir wollen innerhalb von "
             },
             {
-              "text": "2 werktage",
+              "text": "2 geschäftstage",
               "bold": true
             },
             {
-              "text": ". Genehmigte Erstattungen werden durch Gumroad ausgegeben und erscheinen in der Regel auf Ihrer Erklärung innerhalb"
+              "text": ". Genehmigte Erstattungen werden durch Gumroad ausgegeben und erscheinen in der Regel auf Ihrer Erklärung innerhalb "
             },
             {
-              "text": "5–10 werktage",
+              "text": "5–10 geschäftstage",
               "bold": true
             },
             {
@@ -298,14 +298,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Wenn eine Zahlung zurückerstattet wird, der Pro-Zugang, den es für die Enden bezahlt"
+              "text": "Wenn eine Zahlung zurückerstattet wird, der Pro-Zugang, den es für die Enden bezahlt "
             },
             {
               "text": "sofort",
               "bold": true
             },
             {
-              "text": "— Ihr Konto kehrt zum kostenlosen Plan zurück und Ihre Studiendaten bleiben intakt. Wenn eine zurückerstattete Gebühr irgendwie wieder fälschlich verarbeitet wird, kontaktieren Sie uns und wir werden sie umkehren."
+              "text": " — ihr konto kehrt zum kostenlosen plan zurück und ihre studiendaten bleiben intakt. Wenn eine zurückerstattete Gebühr irgendwie wieder fälschlich verarbeitet wird, kontaktieren Sie uns und wir werden sie umkehren."
             }
           ]
         }
@@ -332,14 +332,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Wenn eine Rückmeldung eingereicht wird, benachrichtigt Gumroad uns und"
+              "text": "Wenn eine Rückmeldung eingereicht wird, benachrichtigt Gumroad uns und "
             },
             {
               "text": "Pro Zugriff wird automatisch und sofort widerrufen",
               "bold": true
             },
             {
-              "text": ". Wir können zukünftige Einkäufe von Konten mit belastenden Rückbuchungsaktivitäten ablehnen. Natürlich beschränkt hier nichts Ihr rechtliches Recht auf Auseinandersetzung mit wirklich unbefugten Gebühren."
+              "text": ". Wir können zukünftige Einkäufe von Konten mit schädlichen Rückbuchungsaktivitäten ablehnen. Natürlich beschränkt hier nichts Ihr rechtliches Recht auf Auseinandersetzung mit wirklich unbefugten Gebühren."
             }
           ]
         }
@@ -384,14 +384,14 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Etwas Unklares oder eine Situation, die diese Seite nicht abdeckt? E-Mail senden"
+              "text": "Etwas Unklares oder eine Situation, die diese Seite nicht abdeckt? E-Mail senden "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": "— ein mensch liest es, und wir würden es lieber klären, als darüber zu argumentieren."
+              "text": " — ein mensch liest es, und wir würden es lieber klären, als darüber zu argumentieren."
             }
           ]
         }

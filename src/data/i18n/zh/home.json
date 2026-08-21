@@ -1,7 +1,7 @@
 {
   "hero": {
     "eyebrow": "AI 授权医学学习",
-    "title": "学习聪明。 通过考试.",
+    "title": "学习聪明. 通过考试.",
     "description": "AI研究伴生为MBBS和医学生所建. 问什么,立刻得到专家的解释.",
     "actions": [
       {
@@ -13,7 +13,7 @@
         "href": "/app"
       }
     ],
-    "trustLine": "由全世界50 000多名医科学生信任",
+    "trustLine": "委托人 50,000+ 全世界医科学生",
     "serviceChips": [
       "甲基溴",
       "临床病例",
@@ -23,9 +23,9 @@
     ]
   },
   "why": {
-    "eyebrow": "为什么AI Doctor Study",
+    "eyebrow": "为什么 AI Doctor Study",
     "title": "一个AI,每个主题,总是可用",
-    "description": "不再搜索教科书。 问如来问医.",
+    "description": "不再搜索教科书. 问如来问医.",
     "actions": [
       {
         "label": "探索特性",
@@ -49,7 +49,7 @@
     "mockup": {
       "url": "aidoctor.study/app",
       "question": "STEMI的一线是什么?",
-      "answer": "Aspirin 300mg被立即咀嚼,然后在90分钟内(如果有的话)紧急PCI被咀嚼——如果没有血解."
+      "answer": "阿斯匹灵 300mg被立即咀嚼,然后紧急PCI在内 90 如果有时间,则几分钟内进行血栓分解."
     }
   },
   "servicesIntro": {
@@ -99,7 +99,7 @@
   "liveDemo": {
     "eyebrow": "现场直播",
     "title": "问得好像你问医生一样",
-    "description": "真正的交换,而不是假冒 这正是如何AI Doctor Study答对.",
+    "description": "真正的交换,而不是假冒 这正是如何 AI Doctor Study 答对.",
     "messages": [
       {
         "role": "user",
@@ -107,7 +107,7 @@
       },
       {
         "role": "ai",
-        "text": "Metformin主要通过激活肝脏中的AMPK来工作,这抑制了葡萄糖的生成——将肝糖原的出产减少30%. 它还能提高外围胰岛素敏感性并适度地减少肠道葡萄糖吸收."
+        "text": "Metformin主要通过激活肝脏中的AMPK来工作,它抑制了葡萄糖的生成——将肝糖原输出量减少至 30. 它还能提高外围胰岛素敏感性并适度地减少肠道葡萄糖吸收."
       },
       {
         "role": "user",
@@ -115,10 +115,10 @@
       },
       {
         "role": "ai",
-        "text": "关键禁忌:eGFR < 30 mL/min(乳酸化风险),急性心力衰竭,严重的肝病,以及任何急性病预发性下氧或组织下咽."
+        "text": "关键反证:eGFR <30 mL/min (乳酸化风险),急性心力衰竭,重度肝病,以及任何急性病症会先发作为缺氧或组织下咽."
       }
     ],
-    "ctaLabel": "你自己试试看aidoctor.study/app",
+    "ctaLabel": "你自己试试看 aidoctor.study/app",
     "ctaHref": "/app"
   },
   "about": {
@@ -143,15 +143,15 @@
     ],
     "paragraph": [
       {
-        "text": "AI Doctor Study为医科学生建造的AI学习伴:",
+        "text": "AI Doctor Study 为医科学生建造的AI学习伴:",
         "muted": true
       },
       {
-        "text": "问一个问题,得到医生一级的解释.",
+        "text": " 问一个问题,得到医生一级的解释. ",
         "muted": false
       },
       {
-        "text": "从第一年的解剖学到最后的许可考试,",
+        "text": "从第一年的解剖学到最后的许可考试, ",
         "muted": true
       },
       {
@@ -202,14 +202,14 @@
     "members": [
       {
         "name": "Ahmed Al-Rashidi",
-        "role": "MBBS 第4年,阿联酋",
-        "quote": "比我的教授更能解释药理学 以分相过.",
+        "role": "MBBS 年份 4,阿联酋",
+        "quote": "比我的教授更能解释药理学. 以分相过.",
         "initials": "AA"
       },
       {
         "name": "Priya Sharma",
-        "role": "USMLE 第1步,印度清理",
-        "quote": "在步骤一准备期间询问了200+问题. 每一个答案都亮相.",
+        "role": "USMLE 步骤 1 印度清理完毕",
+        "quote": "被问 200步骤中加问题 1 准备. 每一个答案都亮相.",
         "initials": "PS"
       },
       {
@@ -220,27 +220,27 @@
       },
       {
         "name": "Sarah Chen",
-        "role": "医学学生3年级,联合王国",
-        "quote": "药效模式救了我的药检 诚相取相.",
+        "role": "医学学生年 3联合王国",
+        "quote": "药效模式救了我的药检. 诚相取相.",
         "initials": "SC"
       },
       {
         "name": "Khalid Mansoor",
         "role": "巴基斯坦,MBBS最后一年",
-        "quote": "我每天都用这个 一分钱都值.",
+        "quote": "我每天都用这个. 一分钱都值.",
         "initials": "KM"
       }
     ],
     "more": {
-      "title": "加入5万名以上学习聪明的学生",
+      "title": "联合 50,000+ 学习更聪明的学生",
       "cta": "开始",
       "href": "/app"
     }
   },
   "pricing": {
     "eyebrow": "定价",
-    "title": "开始免费。 当考试季开始升级.",
-    "description": "没有免费信用卡,随时取消Pro.",
+    "title": "开始免费. 当考试季开始升级.",
+    "description": "没有免费信用卡. 随时取消Pro.",
     "plans": [
       {
         "name": "免费",
@@ -248,7 +248,7 @@
         "period": "/month",
         "description": "足以度过正常的学习周.",
         "features": [
-          "一天20个问题",
+          "20 一天的问题",
           "基本主题",
           "标准AI"
         ],
@@ -281,12 +281,12 @@
         "note": "先报名或登录——从那里继续退房."
       }
     ],
-    "discountNote": "学生? 使用代码MED20在退约20%的Pro."
+    "discountNote": "学生? 使用代码 MED20 退出时 20{\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}从Pro那拿来."
   },
   "contact": {
     "eyebrow": "开始",
     "title": "准备好学聪明了吗?",
-    "description": "加入已经使用过的5万多医学学生AI Doctor Study。 。 。 .",
+    "description": "联合 50,000+ 已经使用的医疗学生 AI Doctor Study。 。 。 .",
     "actions": [
       {
         "label": "免费启动",

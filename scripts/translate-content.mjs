@@ -247,7 +247,28 @@ function findProtectedSpans(text) {
   }
   // Defense in depth, in case a URL/email ever appears somewhere not
   // already covered by PROTECTED_PHRASES or by a structural `href` field.
-  for (const re of [/https?:\/\/\S+/g, /[\w.+-]+@[\w-]+\.[\w.-]+/g]) {
+  // The numeric pattern is a real-bug fix, not defense in depth: a live run
+  // came back with "300" as "٠٠٣" and "90" as "٠٩" — translate.disroot.org's
+  // Arabic output silently reverses multi-digit numbers when it renders
+  // them (a live-observed corruption, not a rendering artifact — the
+  // reversed digits are in the stored JSON text itself). Numbers don't need
+  // linguistic translation and Arabic medical/technical writing commonly
+  // keeps Western digits anyway, so protecting any digit run (with internal
+  // `,`/`.`/`:`/`/`/`%`, e.g. "50,000", "24/7", "30%") sidesteps the bug
+  // entirely instead of trying to detect and un-reverse it after the fact.
+  // Comparison-operator readings ("<30", "≤ 60") and parenthesized figures
+  // ("(0)") — ported from translate-app-content.mjs (ADR-0033) after the
+  // same class of bug showed up here too: "eGFR <30 mL/min" came back as
+  // "eGFR MIS30 mL/min" because "<" was sent to the MT engine unprotected.
+  for (const re of [
+    /https?:\/\/\S+/g,
+    /[\w.+-]+@[\w-]+\.[\w.-]+/g,
+    /\([+-]?\d+\)/g,
+    /[<>≤≥]\s*\d+(?:\.\d+)?/g,
+    /\$\d[\d,.]*/g,
+    /\d+%/g,
+    /\d[\d.,:/%\s]*\d|\d+/g,
+  ]) {
     let match;
     while ((match = re.exec(text))) {
       spans.push({ start: match.index, end: match.index + match[0].length });
@@ -301,15 +322,85 @@ async function callLibreTranslate(text, target, attempt = 1) {
 }
 
 /**
+ * `translate.disroot.org` has been caught, live, silently echoing English
+ * text back unchanged with a 200 and no error — not just for whole strings,
+ * but for one sentence out of a multi-sentence input it otherwise
+ * translated correctly (a Live Demo AI message came back half-Arabic,
+ * half-verbatim-English). A short retry loop catches the transient version
+ * of this; anything still unchanged after retrying ships as-is (better than
+ * an infinite loop against a free shared instance).
+ */
+function looksUntranslated(source, translated) {
+  return (
+    source.trim().toLowerCase() === translated.trim().toLowerCase() &&
+    /[a-z]{3,}/i.test(source)
+  );
+}
+
+const UNTRANSLATED_RETRIES = 2;
+
+/**
+ * Collapses duplicate terminal punctuation LibreTranslate has been seen to
+ * produce when it translates a Latin `?`/`!` to its Arabic counterpart
+ * *and* leaves the original — e.g. "What are the contraindications?" came
+ * back as "...المخالفات؟?" (Arabic `؟` immediately followed by an ASCII `?`).
+ */
+function cleanupPunctuation(text) {
+  return text.replace(/([?!])\s*([؟])/g, "$2").replace(/([؟])\s*([?!])/g, "$1");
+}
+
+/**
  * Translate one string, cached per locale run (many labels repeat — "Login",
  * "Sign Up for Free", CTA labels shared across sections — so this cuts real
  * request volume against a rate-limited free endpoint). `cache` is a plain
  * `Map` created fresh per locale by the caller.
  */
-async function translateSegment(text, target) {
-  const translated = await callLibreTranslate(text, target);
+async function translateRaw(text, target, attempt = 1) {
+  const translated = cleanupPunctuation(await callLibreTranslate(text, target));
   await sleep(REQUEST_DELAY_MS);
+  if (looksUntranslated(text, translated) && attempt <= UNTRANSLATED_RETRIES) {
+    return translateRaw(text, target, attempt + 1);
+  }
   return translated;
+}
+
+/**
+ * Splits on sentence-ending punctuation + whitespace, keeping the
+ * punctuation with its sentence. A live run caught `translate.disroot.org`
+ * translating only the *first* sentence of a multi-sentence Live Demo
+ * message and silently echoing the rest back in English, with a 200 and no
+ * error — one sentence per request sidesteps that failure mode instead of
+ * trying to detect it after the fact.
+ */
+function splitSentences(text) {
+  return text.split(/(?<=[.!?])\s+(?=\S)/);
+}
+
+async function translateSegment(text, target) {
+  const sentences = splitSentences(text);
+  if (sentences.length <= 1) return translateRaw(text, target);
+
+  const translated = [];
+  for (const sentence of sentences) {
+    translated.push(await translateRaw(sentence, target));
+  }
+  return translated.join(" ");
+}
+
+/**
+ * Translates `segment`'s trimmed core and reattaches its original
+ * leading/trailing whitespace verbatim. LibreTranslate's response strips
+ * surrounding whitespace, so a segment translated right up against a
+ * spliced-in protected phrase (see `findProtectedSpans`) came back glued to
+ * it with no space at all — caught live in `aidoctor.study/app` output
+ * (`"...بنفسكaidoctor.study/app"`, no space before the domain).
+ */
+async function translateWithSpacing(segment, target) {
+  const leading = segment.match(/^\s*/)[0];
+  const trailing = segment.match(/\s*$/)[0];
+  const core = segment.slice(leading.length, segment.length - trailing.length);
+  if (!core) return segment;
+  return leading + (await translateSegment(core, target)) + trailing;
 }
 
 async function t(text, target, cache) {
@@ -319,21 +410,19 @@ async function t(text, target, cache) {
   const spans = findProtectedSpans(text);
   let result;
   if (spans.length === 0) {
-    result = await translateSegment(text, target);
+    result = await translateWithSpacing(text, target);
   } else {
     const parts = [];
     let cursor = 0;
     for (const span of spans) {
       if (span.start > cursor) {
-        const segment = text.slice(cursor, span.start);
-        parts.push(segment.trim() ? await translateSegment(segment, target) : segment);
+        parts.push(await translateWithSpacing(text.slice(cursor, span.start), target));
       }
       parts.push(text.slice(span.start, span.end));
       cursor = span.end;
     }
     if (cursor < text.length) {
-      const segment = text.slice(cursor);
-      parts.push(segment.trim() ? await translateSegment(segment, target) : segment);
+      parts.push(await translateWithSpacing(text.slice(cursor), target));
     }
     result = parts.join("");
   }

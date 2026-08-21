@@ -13,7 +13,7 @@
         "href": "/app"
       }
     ],
-    "trustLine": "Vertraut von 50.000+ Medizinstudenten weltweit",
+    "trustLine": "Vertraut von 50,000+ studierende weltweit",
     "serviceChips": [
       "MUSTER",
       "Klinische Fälle",
@@ -23,7 +23,7 @@
     ]
   },
   "why": {
-    "eyebrow": "WarumAI Doctor Study",
+    "eyebrow": "Warum AI Doctor Study",
     "title": "Ein KI, jedes Thema, immer verfügbar",
     "description": "Nicht mehr durch Lehrbücher suchen. Fragen Sie, wie Sie einen Arzt fragen würden.",
     "actions": [
@@ -49,7 +49,7 @@
     "mockup": {
       "url": "aidoctor.study/app",
       "question": "Was ist die erste Zeile für einen STEMI?",
-      "answer": "Aspirin 300mg kaut sofort, dann dringende PCI innerhalb 90 Minuten, wenn vorhanden — Thrombolyse, wenn nicht."
+      "answer": "Aspirin 300mg sofort gekaut, dann dringende PCI innerhalb 90 minuten, wenn vorhanden — thrombolyse, wenn nicht."
     }
   },
   "servicesIntro": {
@@ -99,7 +99,7 @@
   "liveDemo": {
     "eyebrow": "Live Demo",
     "title": "Fragen Sie, wie Sie einen Arzt fragen würden",
-    "description": "Ein echter Austausch, kein Mockup — genau wieAI Doctor Studyantworten.",
+    "description": "Ein echter Austausch, kein Mockup — genau wie AI Doctor Study antworten.",
     "messages": [
       {
         "role": "user",
@@ -107,7 +107,7 @@
       },
       {
         "role": "ai",
-        "text": "Metformin arbeitet in erster Linie durch die Aktivierung von AMPK in der Leber, die Gluconogenese hemmt – die Reduzierung der Leberzuckerproduktion um bis zu 30%. Es verbessert auch die periphere Insulinempfindlichkeit und reduziert die Darmglukoseabsorption."
+        "text": "Metformin arbeitet in erster Linie durch die Aktivierung von AMPK in der Leber, die Gluconogenese hemmt — die Hepatische Glukoseproduktion von bis zu 30%. Es verbessert auch die periphere Insulinempfindlichkeit und reduziert die Darmglukoseabsorption."
       },
       {
         "role": "user",
@@ -115,10 +115,10 @@
       },
       {
         "role": "ai",
-        "text": "Wichtige Kontraindikationen: eGFR <30 mL/min (Milchsäurerisiko), akute Herzinsuffizienz, schwere Lebererkrankungen und jede akute Erkrankung, die der Hypoxie oder der Gewebehypoperfusion vorkommt."
+        "text": "Schlüsselangaben: eGFR <30 mL/min (Milchsäure-Risiko), akute Herzinsuffizienz, schwere Lebererkrankungen und jede akute Erkrankung, die der Hypoxie oder der Gewebehyperfusion vorkommt."
       }
     ],
-    "ctaLabel": "Probieren Sie es selbstaidoctor.study/app",
+    "ctaLabel": "Probieren Sie es selbst aidoctor.study/app",
     "ctaHref": "/app"
   },
   "about": {
@@ -143,15 +143,15 @@
     ],
     "paragraph": [
       {
-        "text": "AI Doctor Studyist der KI-Studienbegleiter für medizinische Studenten gebaut:",
+        "text": "AI Doctor Study ist der KI-Studienbegleiter für medizinische Studenten gebaut:",
         "muted": true
       },
       {
-        "text": "eine frage stellen, eine doktor-level-erklärung bekommen.",
+        "text": " eine frage stellen, eine doktor-level-erklärung bekommen. ",
         "muted": false
       },
       {
-        "text": "Von der Anatomie des ersten Jahres bis zu den Abschlussprüfungen,",
+        "text": "Von der Anatomie des ersten Jahres bis zu den Abschlussprüfungen, ",
         "muted": true
       },
       {
@@ -208,8 +208,8 @@
       },
       {
         "name": "Priya Sharma",
-        "role": "USMLE Schritt 1 Geklärt, Indien",
-        "quote": "Gefragt 200+ Fragen während Schritt 1 Prep. Jede Antwort war vor Ort.",
+        "role": "USMES Schritt 1 Geklärt, Indien",
+        "quote": "Fragen 200+ Fragen während Schritt 1 prep. Jede Antwort war vor Ort.",
         "initials": "PS"
       },
       {
@@ -220,7 +220,7 @@
       },
       {
         "name": "Sarah Chen",
-        "role": "Med Student Jahr 3, UK",
+        "role": "Studentenjahr 3, UK",
         "quote": "Der Drogenmnemonics-Modus hat meine Apothekenprüfung gerettet. Wirklich.",
         "initials": "SC"
       },
@@ -232,7 +232,7 @@
       }
     ],
     "more": {
-      "title": "Lernen Sie 50.000+ Studierende smarter",
+      "title": "Mitglied 50,000+ studierende, die intelligenter studieren",
       "cta": "Erste Schritte",
       "href": "/app"
     }
@@ -240,7 +240,7 @@
   "pricing": {
     "eyebrow": "Preis",
     "title": "Starten Sie kostenlos. Upgrade, wenn die Prüfungssaison trifft.",
-    "description": "Keine Kreditkarte für Kostenlos. Abbrechen Pro jederzeit.",
+    "description": "Keine Kreditkarte kostenlos. Pro jederzeit abbrechen.",
     "plans": [
       {
         "name": "Kostenlos",
@@ -248,7 +248,7 @@
         "period": "/month",
         "description": "Genug, um durch eine normale Studienwoche zu kommen.",
         "features": [
-          "20 fragen pro tag",
+          "20 fragen am tag",
           "Grundbegriffe",
           "Standard AI"
         ],
@@ -281,12 +281,12 @@
         "note": "Registrieren Sie sich oder melden Sie sich zuerst an – Sie werden weiterhin von dort aus checkout."
       }
     ],
-    "discountNote": "Student? VerwendungscodeMED20bei der Kasse für 20% off Pro."
+    "discountNote": "Student? Verwendungscode MED20 beim check-out 20% off Pro."
   },
   "contact": {
     "eyebrow": "Erste Schritte",
     "title": "Bereit, intelligenter zu studieren?",
-    "description": "50.000+ medizinische Studenten bereits mitAI Doctor Study.",
+    "description": "Mitglied 50,000+ bereits genutzte medizinische studierende AI Doctor Study.",
     "actions": [
       {
         "label": "Kostenlos starten",

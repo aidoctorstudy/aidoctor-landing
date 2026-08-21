@@ -1,3 +1,5 @@
+import type { Locale } from "@/lib/i18n/locales";
+
 /**
  * `/app` — embeds the actual AI Doctor Study web app via iframe, so the
  * marketing site and the product share one domain.
@@ -8,12 +10,15 @@
  * mobile browser's collapsing URL bar, the same reasoning the DNA scene's
  * canvas layer uses ([[dna-ink-scene]]).
  *
- * The iframe target (`/app/index.html` under `public/app/`) is not part of
- * this repo yet — see decisions-log ADR-0028.
+ * `?locale=` is the only way the embedded static app can know which
+ * `[locale]` route it's being viewed under — `public/app/index.html` is a
+ * single static path with no router of its own, so it can't read a URL
+ * segment the way this page can. `public/app/i18n/i18n.js` reads this query
+ * param (ADR-0033) to pick a translation dictionary and set `dir`.
  */
-export const StudyAppFrame = () => (
+export const StudyAppFrame = ({ locale }: { locale: Locale }) => (
   <iframe
-    src="/app/index.html"
+    src={`/app/index.html?locale=${locale}`}
     title="AI Doctor Study"
     className="block h-dvh w-dvw border-0"
   />
