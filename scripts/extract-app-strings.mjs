@@ -156,6 +156,9 @@ const MANUAL_STRINGS = [
   "Share My Stats",
   "No mistakes yet — keep going!",
   "Making your 8 nibble cards...",
+  // showAchievement()'s two args (auth.js) — same "no call-pattern to
+  // anchor a regex on" gap as the rest of this list.
+  "Pro Activated!",
 ];
 for (const s of MANUAL_STRINGS) strings.add(s);
 

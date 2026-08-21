@@ -10,6 +10,68 @@ This is a human-curated log — not a mirror of `git log`.
 
 ## 2026-08-21
 
+- **Built a self-contained Pro-activation system: `/api/gumroad-webhook` +
+  `/api/check-pro`.** See [[decisions-log]] ADR-0036. Replaces the old
+  check against a separate Cloudflare Worker
+  (`aidoctorstudy.workers.dev/checkpro`) with same-origin Next.js routes.
+  New `src/lib/gumroad/pro-users.ts` (a JSON-file store, deliberately
+  behind a two-function interface so it's a one-file swap to a real
+  persistent store — see below), `GUMROAD_SELLER_ID`/
+  `GUMROAD_PRODUCT_PERMALINK` env vars (webhook verification — Gumroad
+  doesn't sign these, so `seller_id` is the only signal available).
+  `public/app/auth.js`'s login flow now calls `/api/check-pro` and shows
+  the "Pro Activated!" celebration (built last entry) the first time it
+  sees Pro for a user, sharing a "already celebrated" flag with the
+  `?pro=activated` redirect path so the two can't double-fire.
+  Functionally tested end-to-end against the dev server (grant, wrong
+  seller_id, wrong product, refund-not-revoked, missing config) — all
+  behaved correctly. **Two things still need doing before this actually
+  works in production:** `GUMROAD_SELLER_ID` needs to be set from the real
+  Gumroad account, and — more importantly — **the JSON-file store will not
+  reliably persist on Vercel's serverless deployment** (read-only
+  filesystem outside `/tmp`, not shared across instances). Needs swapping
+  for a real persistent store before this is relied on for revenue; see
+  `pro-users.ts`'s header comment for exactly what to change.
+- **Mobile navigation audit + fix for `public/app/`, and a Gumroad-return
+  "Pro Activated!" celebration.** See [[decisions-log]] ADR-0035.
+  - Found ~25 selectors in `styles.css`'s mobile media query targeting
+    classes/ids that don't exist in the current `index.html` — leftover
+    from panels (leaderboard, SRS, deck manager, import center, public
+    decks) that were built once and later removed, never cleaned up from
+    the CSS. Rewrote the block against the real markup.
+  - Found and fixed a genuinely dead nav link: the bottom nav's "Review"
+    button called `goPanel('srs')` — the exact removed SRS panel — so
+    tapping it silently did nothing. Repointed to "Mistakes"/`mistakebook`.
+    Verified with a script cross-referencing every `goPanel()` call against
+    every real panel id: zero dead links remain.
+  - `.qg-diff-row`/`.lec-tabs`/`.drug-tabs` squeezed their tab buttons to
+    equal width (`flex:1`) instead of scrolling, crushing labels like
+    "Interactions" on narrow phones — switched to the horizontal-scroll
+    pattern already used elsewhere, at the mobile breakpoint only.
+    `.bottom-nav` gained scroll-as-safety-net plus guaranteed minimum tap
+    target sizing on its buttons.
+  - Added a Gumroad-purchase-return flow: `?pro=activated` on the URL (set
+    by Gumroad's own post-purchase redirect, once configured — see below)
+    triggers the app's existing achievement-popup + confetti + XP-gain
+    animation (`showAchievement`/`updateXP`, already built for other
+    unlocks) showing "Pro Activated! 🎉" and +1000 XP. Fixed a real gap
+    this surfaced: the iframe embedding `public/app/` didn't forward *any*
+    query params from its own page, so `?pro=activated` on
+    `aidoctor.study/app` was invisible to the iframe's JS — `[locale]/app/page.tsx`
+    and `StudyAppFrame` now forward it through.
+  - **Follow-up required, not done here:** Gumroad only redirects to a URL
+    the seller configures in their own product settings — whoever manages
+    the `hyperai3` Gumroad account needs to set the post-purchase redirect
+    to `https://aidoctor.study/app?pro=activated`. The in-app half works
+    independent of that step once it's set.
+- **Fixed `public/app/`'s "Get Pro"/"Upgrade to Pro" checkout links** —
+  both Gumroad buttons (`Get Med Pro on Gumroad` in the Pro modal every
+  "Go Pro"/"Upgrade to Pro" button opens; `Get Pro on Gumroad` on the
+  landing pricing card) pointed at `studebot.gumroad.com/l/jlpryj`, a
+  different/stale Gumroad product — corrected to
+  `https://hyperai3.gumroad.com/l/aidoctorstudypro`, the same URL the
+  marketing site's `PRO_CHECKOUT_URL` already uses. Confirmed no other
+  reference to the old URL anywhere in `public/app/` or `src/`.
 - **Removed the "Invite Friends, Get Pro Free" referral panel from
   `public/app/`** — sidebar nav button, the whole panel (hero copy, the
   `MED-XXXX` referral code display, Copy Code / Share on WhatsApp / Copy

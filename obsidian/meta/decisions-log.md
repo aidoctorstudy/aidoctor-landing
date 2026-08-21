@@ -10,6 +10,252 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0036 — Pro-activation webhook: `/api/gumroad-webhook` + `/api/check-pro`
+
+- **Status:** Accepted — implemented and functionally tested end-to-end
+  against the local dev server; **not** yet deployed/configured (see
+  Consequences)
+- **Date:** 2026-08-21
+
+**Context.** Requested: a self-contained Pro-activation system inside this
+Next.js app — a webhook Gumroad calls on sale, an endpoint the study app
+calls to check Pro-by-email, and wiring so login auto-activates Pro and
+shows the celebration ADR-0035 already built. This **replaces** the
+existing check against `aidoctorstudy.workers.dev/checkpro` (a separate
+Cloudflare Worker outside this repo, whose implementation and storage are
+unknown here) — `auth.js`'s `checkProStatus()` now calls the new
+same-origin `/api/check-pro` instead. The Worker's other endpoints (`/ai`,
+`/transcribe`) are untouched; only `/checkpro` had a replacement built.
+
+**Decision — a real, working system, with one honestly-disclosed gap
+rather than a silently-broken one.** Two things needed resolving before
+writing any code, both because getting them wrong would make the feature
+*look* done while quietly not working for a paying customer:
+
+1. **Storage.** The request offered "a simple JSON file or database."
+   `.gitignore`'s existing `.vercel` entry, and this repo having zero
+   database/KV dependencies, both point at Vercel's default serverless
+   deployment — where a JSON file **does not reliably work**: function
+   instances have a read-only filesystem outside `/tmp`, and `/tmp` isn't
+   shared across instances or guaranteed to survive between invocations. A
+   webhook write and a later check-pro read can land on different
+   instances and see different (or no) data — and this fails *silently*,
+   no error, purchases just don't reliably grant Pro. Built it anyway,
+   as asked, but behind a two-function interface
+   (`isProEmail`/`grantPro` in `src/lib/gumroad/pro-users.ts`) specifically
+   so swapping the file for Vercel KV/Postgres/etc. later is a one-file
+   change, and said so loudly in that file's own header comment — not
+   buried in this ADR alone. Verified locally end-to-end (grant → read
+   back → case-insensitive match, see Consequences) precisely because "it
+   ran without erroring" isn't evidence it'll persist correctly once this
+   app is actually deployed serverless.
+2. **Webhook verification.** Gumroad's Ping webhooks aren't HMAC-signed
+   the way Stripe's are — there's no signature header to check. The only
+   available signal is the ping's `seller_id` field, which only matches a
+   value visible in the *seller's own* Gumroad account settings, not the
+   public storefront. Not cryptographic proof (anyone who somehow learned
+   the seller ID could still spoof a ping), but it's what Gumroad actually
+   offers, and it's what stops a stranger who merely discovers the webhook
+   URL from granting themselves Pro by POSTing arbitrary form data.
+   `GUMROAD_SELLER_ID` is **required**, not best-effort: if it's unset, the
+   route rejects every ping with 503 rather than accept unverified ones —
+   the alternative (accept everything until configured) would mean anyone
+   could grant themselves Pro during that window.
+
+**Implementation.**
+- `src/lib/gumroad/pro-users.ts` — the storage module above. Emails
+  normalized (trimmed + lowercased) before storing/checking, since Gumroad
+  and Google both send them as typed, not normalized.
+- `POST /api/gumroad-webhook` (`src/app/api/gumroad-webhook/route.ts`) —
+  parses Gumroad's `application/x-www-form-urlencoded` body (not JSON —
+  a real gotcha if assumed otherwise), checks `seller_id` and
+  `product_permalink` (env `GUMROAD_PRODUCT_PERMALINK`, defaults to
+  `aidoctorstudypro`, matching `PRO_CHECKOUT_URL`), then `grantPro(email)`.
+  Uses the project's existing `handle()`/`ApiError` convention
+  (`{ data }` / `{ error }` envelope, per AGENTS.md hard rule #9) — not a
+  hand-rolled response shape, even though Gumroad itself only checks the
+  status code. Refund/chargeback pings are detected and logged but Pro is
+  **not revoked** — out of scope of what was asked (activate on sale); a
+  real gap if this ever needs to claw back access, flagged rather than
+  silently absent.
+- `GET /api/check-pro?email=` (`src/app/api/check-pro/route.ts`) — same
+  envelope convention, `zod`-validated email, same-origin from the study
+  app's iframe (ADR-0028) so no CORS handling needed.
+- `public/app/auth.js` — `checkProStatus()` rewritten to call
+  `/api/check-pro` instead of the old Worker endpoint. Introduced
+  `hasCelebratedPro()`/`markProCelebrated()`/`celebratePro()`, shared with
+  ADR-0035's `celebrateGumroadReturnIfNeeded()`, so whichever of the two
+  Pro-detection paths (the `?pro=activated` URL redirect, or this
+  login-time check) fires first "wins" the celebration and the other just
+  confirms quietly (`showToast`) — without this, a user who both returns
+  via the Gumroad redirect *and* has `/api/check-pro` independently
+  confirm Pro on the same visit would see the achievement popup, confetti,
+  and XP gain fire twice.
+- `src/env.ts` — `GUMROAD_SELLER_ID` (optional in the schema, but the
+  route itself treats absence as a hard failure — see above) and
+  `GUMROAD_PRODUCT_PERMALINK` (defaults to `"aidoctorstudypro"`), both
+  through the `""` → unset preprocessing every optional variable in this
+  file uses.
+
+**Consequences.**
+- New: `src/lib/gumroad/pro-users.ts`, `src/app/api/gumroad-webhook/route.ts`,
+  `src/app/api/check-pro/route.ts`. `data/pro-users.json` gitignored — it's
+  runtime state, not source.
+- Functionally tested end-to-end against the local dev server (not just
+  typechecked): correct `seller_id` + product + email → granted, confirmed
+  readable via check-pro, case-insensitively; wrong `seller_id` → ignored,
+  200 (so Gumroad doesn't retry-storm a spoofed/misdirected ping), not
+  granted; wrong product → ignored, not granted; `refunded=true` → ignored,
+  not granted (correctly *never* grants on a refund ping, though it also
+  doesn't revoke an *existing* grant — see above); missing
+  `GUMROAD_SELLER_ID` → 503 on every ping. Test data cleared from
+  `data/pro-users.json` afterward.
+- **Follow-up required, not done here, in order:**
+  1. Set `GUMROAD_SELLER_ID` (and `GUMROAD_PRODUCT_PERMALINK` if it's ever
+     not `aidoctorstudypro`) in the real deployment's env — the seller ID
+     is in the Gumroad account's own settings, not something this repo can
+     know.
+  2. Point the Gumroad product's Ping webhook URL at
+     `https://aidoctor.study/api/gumroad-webhook` (Gumroad seller
+     dashboard — same "external, credentialed action" category as
+     ADR-0035's post-purchase redirect URL, which is the *other* Gumroad
+     dashboard setting this feature depends on).
+  3. **Before relying on this for real revenue:** replace the JSON-file
+     store with an actual persistent one if deploying to Vercel serverless
+     — see `pro-users.ts`'s header for exactly what to swap.
+  4. Decide whether refund/chargeback should revoke Pro, and implement it
+     in `pro-users.ts`/`gumroad-webhook/route.ts` if so.
+
+## Related
+
+[[decisions-log]] · [[environment-variables]] · [[api-architecture]]
+
+---
+
+## ADR-0035 — Mobile nav audit + fix, and a Gumroad-return celebration for `/app`
+
+- **Status:** Accepted
+- **Date:** 2026-08-21
+
+**Context.** Two reports: the app's mobile navigation (bottom nav, in-panel
+tab rows) was hard to use; and after buying Pro on Gumroad, nothing brings
+the user back to the app or acknowledges the purchase.
+
+**Finding — roughly half of `public/app/styles.css`'s mobile
+(`@media(max-width:600px)`) block was dead CSS, not a UX-polish gap.**
+Auditing every selector in it against the actual HTML found ~25 of them
+target classes/ids that don't exist anywhere in `index.html` —
+`.mode-btns-row`, `.today-goals`/`.today-actions`/`.rank-card`,
+`.lb-item`/`.lb-xp` (leaderboard), `.srs-stats`/`.srs-rate-*` (SRS),
+`.deck-grid`, `.imp-source-grid`, `.pub-tabs`/`.pub-tab`, `#shareBtn`,
+`.freeChip`, `.hero-title`/`.hero-sub`, `.fc-nav-btn`, `.topbar` (the real
+class is `.app-topbar` — `.topbar` alone matches nothing). Cross-checking
+against `public/app/05-exam-prep.js`'s `goPanel()` confirmed why: several
+of these belong to panels that were built once and later deliberately
+removed (`if(id==='srs'){/* SRS removed */}` is explicit about it) —
+leaderboard, SRS review queue, deck manager, import center, and public
+decks were all commented-out empty placeholders in the current
+`index.html`, not missing features, just never-finished ones the CSS never
+got cleaned up after. Rewrote the block: dropped the dead selectors,
+corrected the ones with a real but renamed equivalent (`.features-grid` →
+`.feat-grid`, `.fc-count-grid` → `.fc-count-row`), and added the panels
+that existed but had no entry (`growth`, `bug`, `review`).
+
+**A second, more direct bug: the bottom nav's "Review" button was a dead
+link.** `onclick="goPanel('srs')"` — the exact removed panel above.
+`goPanel()` has a defensive `if(!panel){ console.warn(...); return; }`
+guard, so tapping it did *nothing at all*, silently — no error, no visual
+feedback, the nav just failed to respond. Given only 7 slots exist in the
+bottom nav (the sidebar is hidden below 600px), one of them pointing
+nowhere is a meaningfully broken fraction of the primary mobile navigation,
+not a cosmetic issue. Repointed it to the "Mistake Book" panel (`Review` →
+`Mistakes`, `repeat` icon → `book-open`, matching the sidebar's own icon
+for that panel) — a working, semantically close substitute rather than
+just deleting the slot. Verified with a script cross-referencing every
+`goPanel('...')` call site against every real `id="panel-..."` in the
+file: zero dead links remain.
+
+**Third: `.qg-diff-row`/`.lec-tabs`/`.drug-tabs` used `flex:1` (equal-width
+squeeze) instead of the scroll pattern `.subject-bar`/`.controls-bar`/
+`.growth-tabs`/`.lib-filter-row` already use.** On a narrow phone this
+doesn't overflow (flex:1 always fits, by definition) but does crush a
+label like "Interactions" into an unreadably narrow, easy-to-mistap
+button. Switched these three specifically to the established scroll
+pattern (`overflow-x:auto` + `flex:none` + `white-space:nowrap`) at the
+mobile breakpoint only — desktop keeps the full-width equal-tab look.
+`.bottom-nav` itself also gained `overflow-x:auto` as a safety net plus
+`flex-shrink:0`/`min-width`/`min-height` on `.bnav-btn` so buttons can't
+be squeezed below a comfortable tap target on the very narrowest screens.
+
+**Gumroad-return celebration.** `public/app/auth.js` already had almost
+everything needed: `enterMedApp()` runs on every app entry (fresh login
+*and* a restored Firebase session — the path a user takes returning from a
+new tab), `checkProStatus()` already round-trips to a backend
+(`aidoctorstudy.workers.dev/checkpro`) to confirm Pro by email, and
+`showAchievement(icon, name)` / `updateXP(amount)` already exist,
+fully styled, for exactly this kind of moment (the "secret code" unlock
+path already uses `showAchievement` + `fireConfetti`). Added
+`celebrateGumroadReturnIfNeeded()`, called at the end of `enterMedApp()`:
+reads `?pro=activated` off the URL, and if present, strips it immediately
+(`history.replaceState`, so a refresh can't replay the celebration), sets
+`isPro = true` optimistically, and fires `showAchievement('🎉', 'Pro
+Activated!')` followed by `updateXP(1000)` ~400ms later (staggered so the
+two celebrations read as a sequence, not a collision). Optimistic
+deliberately: doesn't wait on `checkProStatus()`'s webhook-backed round
+trip (which still runs, and remains the source of truth if the two ever
+disagree) — a user who just paid shouldn't wait to see it acknowledged.
+
+**A real integration gap this surfaced: the iframe embed didn't forward
+any query params from the page it's rendered on.** `?pro=activated` on
+`aidoctor.study/app` (where Gumroad would redirect) lands on the *Next.js*
+`[locale]/app` route — but the celebration logic lives inside the
+iframe's own JS, which only ever sees the iframe's own `src` query string
+(same class of problem `?locale=` already solved in ADR-0033, just not
+noticed for a second param until this feature needed one). Fixed the same
+way: `[locale]/app/page.tsx` now also reads `searchParams`, and
+`StudyAppFrame` appends `&pro=activated` to the iframe `src` when present.
+
+**What this repo cannot do: configure Gumroad itself.** Gumroad only
+redirects a buyer to a URL the *seller* has set in their own Gumroad
+product settings (Content → "redirect to a URL after successful
+purchase," in Gumroad's current UI) — there is no buyer-facing checkout
+URL parameter that overrides this from our side, and I have no access to
+the Gumroad seller account to configure it. **Follow-up required, not
+done here:** whoever manages the `hyperai3` Gumroad account needs to set
+that product's post-purchase redirect to
+`https://aidoctor.study/app?pro=activated`. Until that's set, purchasing
+still works exactly as before (Gumroad's own receipt page), it just won't
+auto-return to the app — the in-app half of this feature is complete and
+tested independent of that step (the URL param, and everything it
+triggers, works regardless of how a user arrives at it).
+
+**Consequences.**
+- `public/app/styles.css`: mobile media-query block rewritten (see above);
+  `.bottom-nav`/`.bnav-btn` hardened.
+- `public/app/index.html`: bottom-nav's dead "Review"/`srs` entry
+  repointed to "Mistakes"/`mistakebook`.
+- `public/app/auth.js`: `celebrateGumroadReturnIfNeeded()` added, called
+  from `enterMedApp()`.
+- `src/app/[locale]/app/page.tsx`, `src/views/app/study-app-frame.tsx`:
+  `searchParams` read and forwarded into the iframe `src`.
+- `scripts/extract-app-strings.mjs`: `"Pro Activated!"` added to
+  `MANUAL_STRINGS` (ADR-0033's escape hatch) for future translation —
+  not translated this pass, so it currently renders in English on every
+  locale until `translate-app-content.mjs` is next run for it.
+- Not done: the Gumroad seller-dashboard redirect-URL configuration above;
+  a full mobile pass beyond navigation (individual panel layouts were
+  spot-checked, not exhaustively audited); live browser verification of
+  either fix — the Chrome extension was disconnected for this session, so
+  this rests on static/code-level verification (dead-link cross-reference
+  script, CSS selector audit, `tsc`/`eslint`) rather than an in-browser
+  visual pass. Worth a manual check next session.
+
+## Related
+
+[[decisions-log]] · [[environment-variables]] · [[routing]]
+
+---
+
 ## ADR-0034 — Locale-prefixed `/app` links, and language switchers inside `public/app/`
 
 - **Status:** Accepted

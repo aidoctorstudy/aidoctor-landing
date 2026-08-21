@@ -23,6 +23,10 @@ import { z } from "zod";
 const optionalUrl = () =>
   z.preprocess((v) => (v === "" ? undefined : v), z.url().optional());
 
+/** Same `""` → unset treatment as `optionalUrl()`, for plain (non-URL) strings. */
+const optionalString = () =>
+  z.preprocess((v) => (v === "" ? undefined : v), z.string().optional());
+
 const publicSchema = z.object({
   NEXT_PUBLIC_SITE_URL: optionalUrl(),
 });
@@ -30,6 +34,21 @@ const publicSchema = z.object({
 const serverSchema = z.object({
   /** Optional upstream the contact endpoint forwards leads to (CRM / webhook). */
   CONTACT_ENDPOINT: optionalUrl(),
+  /**
+   * The seller's own Gumroad account ID (Gumroad Settings → Advanced), used
+   * by `/api/gumroad-webhook` to check an incoming ping's `seller_id` field
+   * matches — Gumroad doesn't HMAC-sign webhooks the way Stripe does, so
+   * this is the only verification available, not cryptographic proof. See
+   * `app/api/gumroad-webhook/route.ts`.
+   */
+  GUMROAD_SELLER_ID: optionalString(),
+  /** Restricts which product's sales grant Pro (in case this Gumroad
+   *  account ever sells more than one thing). Matches the checkout URL's
+   *  `/l/<permalink>` — see `PRO_CHECKOUT_URL` in `data/mocks/home.ts`. */
+  GUMROAD_PRODUCT_PERMALINK: z.preprocess(
+    (v) => (v === "" ? undefined : v),
+    z.string().default("aidoctorstudypro"),
+  ),
 });
 
 /** Public env — safe to read anywhere (server or client). */
@@ -46,6 +65,8 @@ let cachedServerEnv: z.infer<typeof serverSchema> | undefined;
 export function getServerEnv() {
   cachedServerEnv ??= serverSchema.parse({
     CONTACT_ENDPOINT: process.env.CONTACT_ENDPOINT,
+    GUMROAD_SELLER_ID: process.env.GUMROAD_SELLER_ID,
+    GUMROAD_PRODUCT_PERMALINK: process.env.GUMROAD_PRODUCT_PERMALINK,
   });
   return cachedServerEnv;
 }

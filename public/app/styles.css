@@ -345,24 +345,22 @@ footer p{font-size:13px;color:var(--tx3);margin-bottom:1rem}
  MOBILE VERTICAL OPTIMIZATION
 ══════════════════════════════ */
 @media(max-width:600px){
- /* Hide sidebar completely on mobile */
+ /* Hide sidebar completely on mobile — bottom-nav + command palette take over */
  .sidebar{display:none !important}
- 
+
  /* Full width main content */
  .app-main{margin-left:0 !important;width:100% !important;padding-bottom:0}
- 
+
  /* Topbar */
- .topbar{padding:.6rem .8rem}
- .topbar-title{font-size:14px}
- .freeChip{display:none}
- 
+ .app-topbar{padding:.6rem .8rem}
+
  /* All panels full width */
  .tab-panel{padding:.8rem !important}
  #panel-chat{padding:0 !important}
- .ep-layout,.sim-layout,.mock-layout,.mb-layout,.sp-layout,.lb-layout,
+ .ep-layout,.sim-layout,.mock-layout,.mb-layout,.sp-layout,
  .drug-layout,.calc-layout,.pdf-layout,.pod-layout,.snap-layout,
- .lec-layout,.les-layout,.yt-layout,.lib-layout,.settings-layout,
- .deck-layout,.imp-layout,.srs-layout,.pub-layout,.ana-layout{
+ .lec-layout,.les-layout,.lib-layout,.settings-layout,
+ .growth-layout,.bug-layout,.review-layout,.nibble-layout,.ana-layout{
  padding:.8rem !important;max-width:100% !important
  }
 
@@ -372,27 +370,18 @@ footer p{font-size:13px;color:var(--tx3);margin-bottom:1rem}
  .qa-btn{padding:.6rem .3rem}
  .qa-btn-icon{font-size:20px}
  .qa-btn-lbl{font-size:10px}
- .today-goals{grid-template-columns:repeat(3,1fr) !important}
- .today-actions{grid-template-columns:repeat(2,1fr) !important}
- .rank-card{flex-direction:column;text-align:center}
 
  /* Chat */
  .chat-layout{height:100% !important}
  .chat-msgs{flex:1;min-height:0;overflow-y:auto}
  .inp-area{flex-shrink:0;padding:.6rem .8rem;padding-bottom:env(safe-area-inset-bottom,.6rem)}
- .mode-btns-row{overflow-x:auto;flex-wrap:nowrap !important;scrollbar-width:none;-webkit-overflow-scrolling:touch}
- .mode-btns-row::-webkit-scrollbar{display:none}
- .quick-chips{overflow-x:auto;flex-wrap:nowrap !important;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:.4rem .6rem}
- .quick-chips::-webkit-scrollbar{display:none}
- .msg-input-row{gap:6px}
  #msgInput{font-size:16px} /* Prevents iOS zoom */
 
  /* Flashcards */
  .fc-card{min-height:180px;padding:1.2rem}
  .fc-act-btn{padding:14px 6px;font-size:12px}
  .fc-btn-row{gap:6px}
- .fc-nav-btn{width:48px;height:48px}
- .fc-count-grid{grid-template-columns:repeat(2,1fr) !important;gap:6px}
+ .fc-count-row{gap:6px}
 
  /* Exam prep */
  .ep-grid{grid-template-columns:repeat(2,1fr) !important;gap:6px}
@@ -411,48 +400,22 @@ footer p{font-size:13px;color:var(--tx3);margin-bottom:1rem}
  .sim-type-grid{grid-template-columns:repeat(2,1fr) !important;gap:6px}
  .sim-vitals{grid-template-columns:repeat(3,1fr) !important}
 
- /* SRS */
- .srs-stats{grid-template-columns:repeat(2,1fr) !important}
- .srs-rate-row{grid-template-columns:repeat(2,1fr) !important;gap:8px}
- .srs-rate-btn{padding:14px 8px;font-size:13px}
-
  /* Analytics */
  .ana-grid{grid-template-columns:repeat(2,1fr) !important}
 
- /* Deck manager */
- .deck-grid{grid-template-columns:1fr !important}
-
  /* Landing page */
- .hero-title{font-size:1.8rem !important}
- .hero-sub{font-size:13px !important}
- .features-grid{grid-template-columns:1fr !important}
  .stats-row{gap:1rem}
  .lp-counter-row{gap:1.2rem}
  .sec-h{font-size:1.3rem}
-
- /* Leaderboard */
- .lb-item{gap:8px}
- .lb-xp{font-size:12px}
 
  /* Pro modal */
  .modal-box{padding:1.2rem;max-height:88vh;overflow-y:auto;margin:.5rem}
  .price-highlight{padding:.8rem}
 
- /* Drug checker */
- .drug-tabs{gap:4px}
- .drug-tab{font-size:11px;padding:8px 6px}
-
  /* Podcast */
  .pod-controls{gap:10px}
  .pod-play-btn{width:50px;height:50px;font-size:20px}
  .pod-ctrl-btn{width:36px;height:36px}
-
- /* Import center */
- .imp-source-grid{grid-template-columns:repeat(3,1fr) !important;gap:6px}
-
- /* Public decks tabs */
- .pub-tabs{gap:4px}
- .pub-tab{font-size:11px;padding:8px 4px}
 
  /* Share card */
  .share-card{margin:.5rem;padding:1.5rem}
@@ -463,17 +426,22 @@ footer p{font-size:13px;color:var(--tx3);margin-bottom:1rem}
 
  /* Topbar buttons */
  .topbar-right{gap:6px}
- #shareBtn{width:32px;height:32px;font-size:14px}
 
  /* Language selector */
  .lang-selector{gap:5px}
  .lang-btn{padding:5px 8px;font-size:11px}
 
- /* General text */
- .today-card{padding:1rem}
- .today-continue-btn{padding:12px}
- .srs-card{padding:1.2rem}
- .srs-card-front{font-size:14px}
+ /* ── Feature tabs — horizontally scrollable, not squeezed ──
+    .qg-diff-btn/.lec-tab/.drug-tab use flex:1 on desktop (even-width tab
+    bar); at this width that squeezes labels like "Interactions" into an
+    unreadable/mistap-prone sliver instead. Below 600px they switch to
+    natural width + horizontal scroll, the same pattern .subject-bar,
+    .controls-bar, .growth-tabs and .lib-filter-row already use. */
+ .qg-diff-row,.lec-tabs,.drug-tabs{
+ overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch
+ }
+ .qg-diff-row::-webkit-scrollbar,.lec-tabs::-webkit-scrollbar,.drug-tabs::-webkit-scrollbar{display:none}
+ .qg-diff-btn,.lec-tab,.drug-tab{flex:none;white-space:nowrap;padding-left:16px;padding-right:16px}
 }
 
 /* Fix iOS safe area */
@@ -1446,14 +1414,15 @@ footer p{font-size:13px;color:var(--tx3);margin-bottom:1rem}
 .fab svg{width:24px;height:24px}
 .fab:hover{transform:scale(1.1)}
 @media(max-width:480px){body.app-active .fab{display:flex}}
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:60px;background:var(--bg2);border-top:1px solid var(--bd);display:none;align-items:center;justify-content:space-around;z-index:100;padding-bottom:env(safe-area-inset-bottom,0)}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:60px;background:var(--bg2);border-top:1px solid var(--bd);display:none;align-items:center;justify-content:space-around;z-index:100;padding-bottom:env(safe-area-inset-bottom,0);overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.bottom-nav::-webkit-scrollbar{display:none}
 @media(max-width:480px){
  body.app-active .bottom-nav{display:flex}
  body.app-active .app-main{padding-bottom:0}
  body.app-active .tab-panel{padding-bottom:70px}
  body.app-active #panel-chat{padding-bottom:0!important}
 }
-.bnav-btn{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;padding:6px 12px;border-radius:10px;transition:all .2s;color:var(--tx3)}
+.bnav-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:10px;transition:all .2s;color:var(--tx3);flex-shrink:0;min-width:56px;min-height:48px}
 .bnav-btn.on{color:var(--p)}
 .bnav-btn-icon{font-size:20px;display:flex}
 .bnav-btn-icon svg{width:20px;height:20px;stroke-width:2}
