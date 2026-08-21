@@ -43,6 +43,18 @@
   var RTL_LOCALES = ["ar", "ur"];
   var SUPPORTED_LOCALES = ["en", "ar", "ur", "es", "fr", "hi", "pt", "de", "zh"];
   var STORAGE_KEY = "aid_locale";
+  /** Native display names — mirrors LOCALE_LABELS in src/lib/i18n/locales.ts. */
+  var LOCALE_LABELS = {
+    en: "English",
+    ar: "العربية",
+    ur: "اردو",
+    es: "Español",
+    fr: "Français",
+    hi: "हिन्दी",
+    pt: "Português",
+    de: "Deutsch",
+    zh: "中文",
+  };
 
   function detectLocale() {
     try {
@@ -147,7 +159,55 @@
     });
   }
 
+  /**
+   * `/app` has no `[locale]` segment of its own (it's one static path — see
+   * the header docstring), so "update the URL to the correct locale prefix"
+   * means navigating the *top-level* window, not this iframe: the visible
+   * address bar belongs to the Next.js `[locale]/app` route that embeds
+   * this page, and only that window can show `/ar/app` in it. Matches
+   * `localizedPath()` in src/lib/i18n/locales.ts — unprefixed for `en`,
+   * `/<locale>/app` otherwise. Works the same if this file is ever loaded
+   * outside the iframe (`window.top === window`).
+   */
+  function switchLocale(newLocale) {
+    if (SUPPORTED_LOCALES.indexOf(newLocale) === -1 || newLocale === locale) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, newLocale);
+    } catch (e) {}
+    var path = newLocale === "en" ? "/app" : "/" + newLocale + "/app";
+    (window.top || window).location.href = path;
+  }
+
+  var SWITCHER_CONTAINER_IDS = ["langSwitcherNav", "langSwitcherTopbar", "langSwitcherOnboard"];
+
+  /** A plain `<select>` — keyboard-operable and localized by the OS/browser for free. */
+  function buildSwitcher() {
+    var select = document.createElement("select");
+    select.className = "lang-switcher-select";
+    select.setAttribute("aria-label", "Language");
+    for (var i = 0; i < SUPPORTED_LOCALES.length; i++) {
+      var code = SUPPORTED_LOCALES[i];
+      var option = document.createElement("option");
+      option.value = code;
+      option.textContent = LOCALE_LABELS[code] || code;
+      if (code === locale) option.selected = true;
+      select.appendChild(option);
+    }
+    select.addEventListener("change", function () {
+      switchLocale(select.value);
+    });
+    return select;
+  }
+
+  function mountLanguageSwitchers() {
+    for (var i = 0; i < SWITCHER_CONTAINER_IDS.length; i++) {
+      var container = document.getElementById(SWITCHER_CONTAINER_IDS[i]);
+      if (container && !container.firstChild) container.appendChild(buildSwitcher());
+    }
+  }
+
   function start() {
+    mountLanguageSwitchers();
     runInitialPass();
     observeFutureContent();
   }
@@ -157,4 +217,13 @@
   } else {
     start();
   }
+
+  window.AID_I18N = {
+    locale: locale,
+    isRtl: isRtl,
+    locales: SUPPORTED_LOCALES,
+    localeLabels: LOCALE_LABELS,
+    switchLocale: switchLocale,
+    t: t,
+  };
 })();

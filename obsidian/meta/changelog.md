@@ -10,6 +10,17 @@ This is a human-curated log — not a mirror of `git log`.
 
 ## 2026-08-21
 
+- **Marketing-site `/app` CTAs are now locale-prefixed, and `public/app/`
+  has in-app language switchers.** See [[decisions-log]] ADR-0034.
+  `getHomeContent`/`getSiteChrome` (`src/lib/i18n/content.ts`) now rewrite
+  any CTA `href` equal to `/app` to `/<locale>/app` (unprefixed for `en`)
+  before returning content, so "Sign Up for Free" on `/ar` correctly links
+  to `/ar/app` instead of bare `/app`. Inside `public/app/`, three
+  `<select>` language switchers (landing nav, app topbar, onboarding card)
+  mounted by `i18n.js` navigate the *top-level* window to switch locale —
+  the study app has no `[locale]` route of its own to update in place.
+  Confirmed live: switching language from the signup screen took the whole
+  tab from `/app` to `/ar/app` and back.
 - **Three reported `/ar` bugs fixed, plus a `public/app/` i18n system
   added (9 locales, RTL for ar/ur).** See [[decisions-log]] ADR-0033 for
   the full account. Summary:

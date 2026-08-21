@@ -10,6 +10,85 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0034 — Locale-prefixed `/app` links, and language switchers inside `public/app/`
+
+- **Status:** Accepted
+- **Date:** 2026-08-21
+
+**Context.** ADR-0033 made `public/app/` translatable and passed the active
+locale into it via `?locale=`, but two gaps remained: every marketing-site
+CTA ("Sign Up for Free", "Login", …) still linked to bare `/app` regardless
+of locale, and once inside the app there was no way to change language
+except editing the URL by hand.
+
+**Decision — locale-prefixing happens once, in the content layer, not at
+every render site or in the translation script.** Every CTA's `href` in
+`data/mocks/home.ts` is the literal `APP_URL` constant (`"/app"`), and
+`translate-content.mjs` correctly copies `href` fields through unchanged
+(ADR-0032/0033 — structural fields are never translated), so every
+locale's JSON has the same unprefixed value. Rather than teaching the
+translation script about routing, or threading `locale` down into every
+component that renders a CTA, `getHomeContent`/`getSiteChrome` in
+`src/lib/i18n/content.ts` now run the resolved bundle through
+`localizeAppLinks()` before returning it: a generic recursive walk that
+rewrites any string value *exactly equal to* `APP_URL` to
+`localizedPath(locale, APP_URL)` — the same helper `LanguageSwitcher` and
+`sitemap.ts` already use, so `/app` for `en`, `/ar/app` for `ar`, etc. Safe
+as an exact-match rewrite: grepped the mocks — `"/app"` is never a
+substring of prose, only ever this one constant's value.
+
+**Decision — the in-app language switcher navigates the top-level window,
+not the iframe.** `public/app/` is one static path with no `[locale]`
+route of its own (ADR-0033), so there is no URL for it to update *within
+itself* — the address bar a user sees belongs to the Next.js `[locale]/app`
+route embedding it. `i18n.js`'s `switchLocale()` therefore sets
+`(window.top || window).location.href` to `/app` or `/<locale>/app` —
+same-origin, so no cross-frame restriction — which reloads the whole
+Next.js page with a fresh `?locale=` on the iframe. Falls back to
+`window` when not embedded (`window.top === window`), so the same code
+path works if this file is ever loaded outside the iframe.
+
+**Three switcher instances, not one shared component.** `public/app/` has
+no client-side router or shared layout — the landing nav, the post-login
+app topbar, and the onboarding/signup card are three separate DOM regions
+present in the same static `index.html`, each visible only when its `page`
+is active. `i18n.js` mounts an identical `<select>` (built once,
+`buildSwitcher()`) into three placeholder containers
+(`#langSwitcherNav`, `#langSwitcherTopbar`, `#langSwitcherOnboard`) added
+to `index.html`, each pre-selected to the detected locale. A plain
+`<select>` rather than a custom dropdown — keyboard operability and native
+mobile picker UI for free, matching `LanguageSwitcher`'s reasoning on the
+marketing site for using a native disclosure over a hand-rolled one.
+
+**Consequences.**
+- `src/lib/i18n/content.ts`: `APP_URL` imported, `localizeAppLinks()`
+  added, applied in `getHomeContent`/`getSiteChrome`. Confirmed live: `en`
+  CTAs still resolve to bare `/app`, `ar` CTAs to `/ar/app` (including the
+  "Get Pro" button that intentionally routes through `/app` per
+  ADR-0031 pending real auth — correctly locale-prefixed too, not a
+  special case).
+- `public/app/index.html`: three new empty containers (no visual change
+  until `i18n.js` populates them). `public/app/i18n/i18n.js`: `LOCALE_LABELS`,
+  `switchLocale()`, `buildSwitcher()`, `mountLanguageSwitchers()`, and a new
+  `window.AID_I18N` surface (`locale`, `isRtl`, `locales`, `localeLabels`,
+  `switchLocale`, `t`) for any future in-app UI that wants locale info
+  without re-parsing the query string. `public/app/styles.css`: a
+  `.lang-switcher-select` rule matching `.theme-toggle`'s pill treatment.
+- Confirmed live end-to-end: switching to Arabic from the onboarding card
+  navigated the top-level tab from `/app` to `/ar/app`, and the app
+  re-rendered fully in Arabic RTL with the switcher itself now showing
+  "العربية" selected.
+- Not done: a shared/deduplicated switcher component — three call sites
+  building the same `<select>` was judged simpler than introducing any
+  kind of templating for a codebase with no build step, given there are
+  only three and they're identical.
+
+## Related
+
+[[decisions-log]] · [[environment-variables]] · [[routing]]
+
+---
+
 ## ADR-0033 — RTL scroll-direction fix, translation-pipeline hardening, and a dictionary-based i18n system for `public/app/`
 
 - **Status:** Accepted

@@ -3,6 +3,7 @@ import { join } from "node:path";
 
 import {
   ABOUT_CONTENT,
+  APP_URL,
   BRAND_NAME,
   CONTACT_CONTENT,
   FLOATING_CTA,
@@ -38,7 +39,7 @@ import {
   type LegalPageContent,
 } from "@/data/mocks/legal";
 
-import type { Locale } from "./locales";
+import { localizedPath, type Locale } from "./locales";
 
 /**
  * Locale-resolved content — the bridge between the props-driven data layer
@@ -130,14 +131,42 @@ const readLocaleJson = <T>(locale: Locale, file: string): T | null => {
   }
 };
 
+/**
+ * The content layer (English source, or a translated JSON override) only
+ * ever knows the bare `APP_URL` ("/app") — `scripts/translate-content.mjs`
+ * copies `href` fields through unchanged by construction (they're
+ * structural, never translated), so every locale's JSON has the same
+ * unprefixed value. Locale-prefixing happens here, once, on the way out,
+ * rather than teaching every render site (or the translation script) about
+ * routing — walks the whole bundle and rewrites any string value that is
+ * *exactly* `APP_URL` to `localizedPath(locale, APP_URL)` (`/app` for
+ * `en`, `/ar/app` etc. otherwise). Safe as an exact-match rewrite: nothing
+ * else in this content is ever the literal string `"/app"` (prose never
+ * is, and every other href is a distinct path or an external URL).
+ */
+const localizeAppLinks = <T>(value: T, locale: Locale): T => {
+  if (typeof value === "string") {
+    return (value === APP_URL ? localizedPath(locale, APP_URL) : value) as T;
+  }
+  if (Array.isArray(value)) {
+    return value.map((entry) => localizeAppLinks(entry, locale)) as T;
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => [key, localizeAppLinks(entry, locale)]),
+    ) as T;
+  }
+  return value;
+};
+
 export const getHomeContent = (locale: Locale): HomeContentBundle => {
-  if (locale === "en") return ENGLISH_HOME;
-  return readLocaleJson<HomeContentBundle>(locale, "home") ?? ENGLISH_HOME;
+  const bundle = locale === "en" ? ENGLISH_HOME : (readLocaleJson<HomeContentBundle>(locale, "home") ?? ENGLISH_HOME);
+  return localizeAppLinks(bundle, locale);
 };
 
 export const getSiteChrome = (locale: Locale): SiteChromeBundle => {
-  if (locale === "en") return ENGLISH_CHROME;
-  return readLocaleJson<SiteChromeBundle>(locale, "chrome") ?? ENGLISH_CHROME;
+  const bundle = locale === "en" ? ENGLISH_CHROME : (readLocaleJson<SiteChromeBundle>(locale, "chrome") ?? ENGLISH_CHROME);
+  return localizeAppLinks(bundle, locale);
 };
 
 export const getLegalContent = (locale: Locale, page: LegalPage): LegalPageContent => {
