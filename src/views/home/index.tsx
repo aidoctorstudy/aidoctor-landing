@@ -45,6 +45,7 @@ export const HomeView = ({ locale }: HomeViewProps) => {
         brandName={chrome.brandName}
         navLinks={chrome.siteNav}
         cta={chrome.headerCta}
+        loginCta={chrome.loginCta}
         locale={locale}
       />
       <main>

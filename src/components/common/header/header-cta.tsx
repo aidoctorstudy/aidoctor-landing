@@ -17,7 +17,7 @@
 import { animated, useSpring } from "@react-spring/web";
 import { useEffect, useRef } from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button, type ButtonVariant } from "@/components/ui/button";
 import type { CtaLink } from "@/data/mocks/home";
 
 const REVEAL_CONFIG = { tension: 210, friction: 30 };
@@ -28,9 +28,15 @@ export interface HeaderCtaProps {
   cta: CtaLink;
   /** Element whose visibility hides the button — the Contact section. */
   hideWhenVisibleId: string;
+  /** Pill fill — `"primary"` (default) or the outline `"secondary"` treatment. */
+  variant?: ButtonVariant;
 }
 
-export const HeaderCta = ({ cta, hideWhenVisibleId }: HeaderCtaProps) => {
+export const HeaderCta = ({
+  cta,
+  hideWhenVisibleId,
+  variant = "primary",
+}: HeaderCtaProps) => {
   const [style, api] = useSpring(() => ({
     opacity: 1,
     y: 0,
@@ -68,7 +74,7 @@ export const HeaderCta = ({ cta, hideWhenVisibleId }: HeaderCtaProps) => {
         ),
       }}
     >
-      <Button href={cta.href} withArrow>
+      <Button href={cta.href} variant={variant} withArrow>
         {cta.label}
       </Button>
     </animated.div>

@@ -10,6 +10,7 @@ import {
   HEADER_CTA,
   HERO_CONTENT,
   LIVE_DEMO_CONTENT,
+  LOGIN_CTA,
   PRICING_CONTENT,
   SERVICE_CARDS,
   SERVICES_INTRO,
@@ -82,6 +83,7 @@ export interface SiteChromeBundle {
   brandName: string;
   siteNav: readonly NavLink[];
   headerCta: CtaLink;
+  loginCta: CtaLink;
   floatingCta: CtaLink;
   footerLinks: readonly FooterLink[];
 }
@@ -102,6 +104,7 @@ const ENGLISH_CHROME: SiteChromeBundle = {
   brandName: BRAND_NAME,
   siteNav: SITE_NAV,
   headerCta: HEADER_CTA,
+  loginCta: LOGIN_CTA,
   floatingCta: FLOATING_CTA,
   footerLinks: FOOTER_LINKS,
 };

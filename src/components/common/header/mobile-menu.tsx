@@ -33,6 +33,8 @@ const PANEL_SPRING = { tension: 260, friction: 30 };
 export interface MobileMenuProps {
   navLinks: readonly NavLink[];
   cta: CtaLink;
+  /** Secondary pill next to `cta` — see `LOGIN_CTA` in `data/mocks/home.ts`. */
+  loginCta: CtaLink;
   locale: Locale;
   /** Same frosted-panel treatment as the rest of the header. */
   panelClassName: string;
@@ -41,6 +43,7 @@ export interface MobileMenuProps {
 export const MobileMenu = ({
   navLinks,
   cta,
+  loginCta,
   locale,
   panelClassName,
 }: MobileMenuProps) => {
@@ -130,6 +133,14 @@ export const MobileMenu = ({
                 className="w-full justify-between"
               >
                 {cta.label}
+              </Button>
+              <Button
+                href={loginCta.href}
+                variant="secondary"
+                withArrow
+                className="w-full justify-between"
+              >
+                {loginCta.label}
               </Button>
               <LanguageSwitcher locale={locale} className="self-start" />
             </animated.nav>

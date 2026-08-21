@@ -88,7 +88,7 @@ export const About = ({ content }: AboutProps) => (
         <div className="flex flex-wrap items-center gap-4">
           {content.actions.map((action, index) => (
             <Button
-              key={action.href}
+              key={`${action.label}-${action.href}`}
               href={action.href}
               variant={index === 0 ? "primary" : "secondary"}
               className={index === 0 ? "w-[15rem]" : "w-[11.25rem]"}

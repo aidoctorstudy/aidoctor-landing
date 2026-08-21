@@ -8,6 +8,19 @@ updated: 2026-08-10
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-20 (6)
+
+- **CTA relabel across the landing page** — added a "Login" pill next to
+  the header's "Start for Free" (`HeaderCta` gained an optional `variant`
+  prop, rendered twice); Hero's secondary button became "Login", primary
+  became "Sign Up for Free" (same `/app` link); About's "Start Free Trial"
+  split into "Sign Up for Free" + "Login"; Pricing's "Get Pro" now points
+  at `/app` with an explanatory note instead of straight to Gumroad
+  checkout, since there's no auth-gated post-signup redirect yet. Caught
+  and fixed a duplicate-`key` bug in Hero's/About's action-button lists
+  before it shipped (two actions can now legitimately share the same
+  `/app` href). See [[decisions-log]] ADR-0031.
+
 ## 2026-08-20 (5)
 
 - **Real logo replaces the placeholder `DnaIcon` mark everywhere** —

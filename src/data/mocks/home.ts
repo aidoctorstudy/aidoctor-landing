@@ -137,6 +137,12 @@ export interface PricingPlan {
   badge?: string;
   /** Pro's cyan-glow treatment. */
   highlighted?: boolean;
+  /**
+   * Small caption under the CTA button — used by Pro to explain that the
+   * button leads to sign-up/login first, not straight to checkout (no
+   * auth-gated checkout redirect exists yet; see decisions-log).
+   */
+  note?: string;
 }
 
 export interface PricingContent extends SectionIntro {
@@ -173,6 +179,12 @@ export const HEADER_CTA: CtaLink = {
   href: APP_URL,
 };
 
+/** Navbar's secondary pill, next to `HEADER_CTA` — same `/app` destination. */
+export const LOGIN_CTA: CtaLink = {
+  label: "Login",
+  href: APP_URL,
+};
+
 /** Fixed bottom-right pill, shown once the visitor has scrolled past the hero. */
 export const FLOATING_CTA: CtaLink = {
   label: "Try Free →",
@@ -187,8 +199,8 @@ export const HERO_CONTENT: HeroContent = {
   description:
     "The AI study companion built for MBBS and medical students. Ask anything, get expert explanations instantly.",
   actions: [
-    { label: "Start for Free", href: APP_URL },
-    { label: "See Pro Features", href: "#features" },
+    { label: "Sign Up for Free", href: APP_URL },
+    { label: "Login", href: APP_URL },
   ],
   trustLine: "Trusted by 50,000+ medical students worldwide",
   serviceChips: [
@@ -319,7 +331,8 @@ export const ABOUT_CONTENT: AboutContent = {
     },
   ],
   actions: [
-    { label: "Start Free Trial", href: APP_URL },
+    { label: "Sign Up for Free", href: APP_URL },
+    { label: "Login", href: APP_URL },
     { label: "See Pricing", href: PRO_CHECKOUT_URL },
   ],
 };
@@ -402,7 +415,11 @@ export const PRICING_CONTENT: PricingContent = {
         "USMLE/PLAB prep",
         "Flashcards",
       ],
-      cta: { label: "Get Pro", href: PRO_CHECKOUT_URL },
+      // Not a direct checkout link yet: there's no auth-gated redirect to
+      // Gumroad after sign-up/login, so this sends the visitor to /app
+      // first (see decisions-log) — the `note` explains why.
+      cta: { label: "Get Pro", href: APP_URL },
+      note: "Sign up or log in first — you'll continue to checkout from there.",
       badge: "Most Popular",
       highlighted: true,
     },

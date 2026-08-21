@@ -10,6 +10,72 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0031 — CTA relabel: Login pill in the header, Sign Up for Free in the Hero, Pro's "Get Pro" routes through /app until auth exists
+
+- **Status:** Accepted
+- **Date:** 2026-08-20
+
+**Context.** Requested: a "Login" pill next to the header's "Start for Free";
+the Hero's secondary button ("See Pro Features") replaced with "Login"; the
+Hero's primary button relabelled "Sign Up for Free" (same `/app` href); the
+Pricing section's "Get Pro" pointed at `/app` instead of straight to
+Gumroad checkout, since there's no auth-gated redirect from sign-up to
+checkout yet — "for now just link to /app with a note"; and every remaining
+"Start Free Trial" button (found only in the About section's action row)
+replaced with the same "Sign Up for Free" + "Login" pair.
+
+**Decision.**
+- New `LOGIN_CTA: CtaLink` in `data/mocks/home.ts` (`{ label: "Login", href:
+  APP_URL }`), threaded through `SiteChromeBundle`
+  (`lib/i18n/content.ts`) alongside the existing `headerCta`, so it
+  resolves per-locale the same way every other chrome string does.
+- `HeaderCta` (`components/common/header/header-cta.tsx`) gained an
+  optional `variant?: ButtonVariant` prop (default `"primary"`, unchanged
+  behaviour for existing callers). `SiteHeader` now renders it **twice** —
+  `variant="secondary"` for Login, the default for Start-for-Free — so both
+  pills share the exact same Contact-visibility fade/lift spring instead of
+  duplicating that logic for a second button. `MobileMenu` renders both as
+  plain `<Button withArrow>` (no fade needed — the panel itself is already
+  conditionally rendered).
+- `HERO_CONTENT.actions`: `"Start for Free"` → `"Sign Up for Free"` (href
+  unchanged, still `APP_URL`); `"See Pro Features"` (`#features`) →
+  `"Login"` (`APP_URL`).
+- `ABOUT_CONTENT.actions`: the lone `"Start Free Trial"` entry became two —
+  `"Sign Up for Free"` and `"Login"`, both `APP_URL` — with the existing
+  third action, `"See Pricing"` → `PRO_CHECKOUT_URL`, left in place (not
+  mentioned in the request, so not touched).
+- `PricingPlan` gained an optional `note?: string`. Pro's `cta.href` moved
+  from `PRO_CHECKOUT_URL` to `APP_URL`; `note` is
+  `"Sign up or log in first — you'll continue to checkout from there."`,
+  rendered by `PlanCard` (`pricing.tsx`) directly under the button when
+  present (`undefined` for Free, so nothing renders there). `CONTACT_CONTENT`'s
+  own separate "Get Pro" button was deliberately **not** touched — the
+  request scoped this to "the Pricing section" specifically.
+
+**A real bug caught while implementing, not after.** Hero's and About's
+action lists now legitimately contain two `CtaLink`s pointing at the same
+`APP_URL` (Sign Up for Free / Login). Both components' `.map()` used
+`key={action.href}` — correct when every href in the array was unique, but
+a silent duplicate-key bug the moment two entries share one. Fixed by
+switching both to `key={`${action.label}-${action.href}`}` before this
+ever rendered, not discovered via a runtime warning. `contact.tsx` and
+`why-dantora.tsx` still key by `action.href` alone — left alone since
+neither array can currently produce a duplicate, but the next content edit
+to either should re-check that assumption.
+
+**Consequences.** The Pricing→Gumroad flow is now a known two-step
+placeholder (browse pricing → `/app` → manually navigate to Gumroad) rather
+than a one-click checkout; a real fix requires an actual auth-gated
+post-signup redirect to `PRO_CHECKOUT_URL`; `pricing.tsx`'s catalog note
+(home-sections.md) flags this explicitly so it isn't mistaken for a
+finished flow later.
+
+## Related
+
+[[home-sections]] · [[components/common]] · [[components/ui]]
+
+---
+
 ## ADR-0030 — SEO hardening, four legal pages, full i18n routing (9 locales), and the real logo replacing the placeholder mark
 
 - **Status:** Accepted — logo/SEO/legal-pages/i18n-infra shipped and

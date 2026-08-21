@@ -27,6 +27,8 @@ export interface SiteHeaderProps {
   brandName: string;
   navLinks: readonly NavLink[];
   cta: CtaLink;
+  /** Secondary pill next to `cta` — see `LOGIN_CTA` in `data/mocks/home.ts`. */
+  loginCta: CtaLink;
   locale: Locale;
 }
 
@@ -37,6 +39,7 @@ export const SiteHeader = ({
   brandName,
   navLinks,
   cta,
+  loginCta,
   locale,
 }: SiteHeaderProps) => (
   <header className="pointer-events-none fixed inset-x-0 top-4 z-50 px-5 md:px-10">
@@ -95,12 +98,14 @@ export const SiteHeader = ({
           own glass pill (mobile carries it inside the burger panel). */}
       <div className="hidden items-center gap-3 lg:flex">
         <LanguageSwitcher locale={locale} className={`${GLASS_PANEL} px-4 py-2`} />
+        <HeaderCta cta={loginCta} variant="secondary" hideWhenVisibleId="contact" />
         <HeaderCta cta={cta} hideWhenVisibleId="contact" />
       </div>
 
       <MobileMenu
         navLinks={navLinks}
         cta={cta}
+        loginCta={loginCta}
         locale={locale}
         panelClassName={GLASS_PANEL}
       />

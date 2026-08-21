@@ -73,6 +73,11 @@ const PlanCard = ({ plan, delayIn }: { plan: PricingPlan; delayIn: number }) => 
     >
       {plan.cta.label}
     </Button>
+    {plan.note && (
+      <p className="-mt-4 text-center text-xs leading-body font-light text-foreground-subtle">
+        {plan.note}
+      </p>
+    )}
   </Inview>
 );
 

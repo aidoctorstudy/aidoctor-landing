@@ -76,8 +76,8 @@ composition; below it, a flow layout.
 
 | Piece | Below `lg` |
 |-------|-----------|
-| Header nav | moves into `MobileMenu` — a burger panel with the same links plus the Contact action |
-| Header CTA pill | hidden. Collapsing it to a bare arrow disc read as a broken control; the burger carries the action instead. |
+| Header nav | moves into `MobileMenu` — a burger panel with the same links plus the Start-for-Free and Login actions |
+| Header CTA pills | hidden. Collapsing them to bare arrow discs read as a broken control; the burger carries both actions instead. |
 | Contact's DNA scene | not rendered — a second WebGL context is a real cost on a phone, and the form is what matters on that screen |
 
 > [!warning] The adaptive grid is desktop-only now
@@ -256,6 +256,18 @@ role `--glow-accent`) and a `plan.badge` pill ("Most Popular").
 table above: Pricing sits directly after the sticky Team rail and needed the
 same treatment Contact already had, or Team bled through underneath it.
 
+> [!note] Pro's "Get Pro" goes to `/app`, not straight to Gumroad (ADR-0031)
+> There's no auth-gated redirect from sign-up/login to the Gumroad checkout
+> yet, so `plan.cta.href` is `APP_URL` for both plans now, and Pro carries
+> an optional `plan.note` — a small caption rendered under the button
+> (`PlanCard`, `-mt-4 text-xs text-foreground-subtle`) explaining "Sign up
+> or log in first — you'll continue to checkout from there." `PricingPlan.note`
+> is `undefined` for Free, so nothing renders there. Update `cta.href` back
+> to `PRO_CHECKOUT_URL` (or a real post-auth redirect endpoint) and drop the
+> note once that flow exists — `CONTACT_CONTENT`'s own "Get Pro" button was
+> deliberately left pointing straight at `PRO_CHECKOUT_URL`, out of this
+> change's scope.
+
 ## `FloatingCta` — the scroll-triggered pill (ADR-0029)
 
 `components/common/floating-cta.tsx` — `common/`, not a section file, since
@@ -328,16 +340,28 @@ page that can actually scroll.
 The panel scales and fades from the toggle via `useTransition` rather than
 sliding in, which keeps it anchored to the button that opened it.
 
+Carries both header pills (`cta` primary, `loginCta` secondary — ADR-0031)
+as plain `<Button withArrow>` elements, not `HeaderCta`: the panel is
+already conditionally rendered (`isOpen &&`), so there's no separate
+Contact-visibility fade to reproduce here.
+
 ## `HeaderCta` — the button that steps aside
 
-`components/common/header/header-cta.tsx`. The Contact screen's form panel now
-reaches the header's own top edge (`top-4`), which is exactly where the header's
-"Contact Us" button sits — and on that screen the button is redundant anyway.
+`components/common/header/header-cta.tsx`. The Contact section rides up over
+Team and reaches the header's own top edge (`top-4`), which is exactly where
+the header's CTA pills sit — and on that screen they're redundant anyway
+(Contact's own buttons offer the same actions).
 
 An `IntersectionObserver` on `#contact` springs it out (opacity + a 24px lift)
-and drops `pointer-events` with it, so a faded button is never clickable. This
-is the **only** client leaf in the header; `SiteHeader` stays a Server
-Component.
+and drops `pointer-events` with it, so a faded button is never clickable.
+
+Rendered **twice** in `SiteHeader` (ADR-0031): once with `cta={loginCta}
+variant="secondary"` (the "Login" pill), once with `cta={cta}` (the default
+`variant="primary"`, "Start for Free"). The `variant` prop (`ButtonVariant`,
+default `"primary"`) exists so both share the exact same fade/lift mechanics
+and pill shape — "same glass pill style," just a different fill — instead of
+duplicating the spring logic for a second button. `SiteHeader` stays a Server
+Component; `HeaderCta` and `LanguageSwitcher` are its two client leaves.
 
 ## Text motion — one vocabulary, not per-section effects
 

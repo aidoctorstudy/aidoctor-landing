@@ -132,6 +132,7 @@ export const LegalPageView = ({ content, locale }: LegalPageProps) => {
         brandName={chrome.brandName}
         navLinks={chrome.siteNav}
         cta={chrome.headerCta}
+        loginCta={chrome.loginCta}
         locale={locale}
       />
     <main className="bg-background px-5 pt-32 pb-20 md:px-10">
