@@ -8,6 +8,45 @@ updated: 2026-08-10
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-21
+
+- **`scripts/translate-content.mjs` rewritten to use LibreTranslate instead
+  of the Anthropic API** — since a plain MT engine has no concept of JSON
+  structure (unlike an instruction-following LLM), the script now has one
+  small field-level translator function per content shape instead of
+  sending one JSON blob with a "preserve this structure" prompt; hrefs,
+  ids, enum fields, prices, and proper names are copied through by
+  construction rather than by asking the engine to leave them alone.
+  `ANTHROPIC_API_KEY` is gone; replaced by an optional
+  `LIBRETRANSLATE_API_KEY`. Two things verified live, not assumed: the
+  official `libretranslate.com` now requires a free-tier API key for
+  `/translate` (only `/languages` is open), so the script's default now
+  points at `translate.disroot.org`, a community instance confirmed to
+  accept anonymous requests across all 8 target locales; and
+  LibreTranslate has no bare `zh` target (only `zh-Hans`/`zh-Hant`), which
+  would have made the script's own supported-language safety check
+  silently skip Chinese every run — fixed with a small locale→target
+  mapping. See [[decisions-log]] ADR-0032 for the full account, including
+  the other public mirrors tried and found dead/unreachable.
+- A full 8-locale translation run against `translate.disroot.org` completed
+  with zero `FAILED` log lines — but manually inspecting the output (not
+  just the exit code) found the placeholder-token scheme protecting
+  `MED20`/"AI Doctor Study"/`aidoctor.study` had been silently mangled by
+  the MT engine in at least two files: `ar/legal-terms.json` (leftover
+  `XPROTECTEDX` fragments) and `fr/home.json`'s `MED20` discount line
+  (token corrupted to `XPROTETEDX0X`). Neither surfaced as an error.
+  Fixed by removing token injection entirely — protected phrases are now
+  split out of the string and never sent to the MT engine at all, then
+  spliced back in verbatim after translating only the surrounding text.
+  See [[decisions-log]] ADR-0032. All 8 locales regenerated with the fixed
+  script and verified: 48/48 files valid JSON, zero `FAILED` lines, zero
+  leftover placeholder artifacts (broad scan, not just the one exact
+  string that first gave it away), `MED20`/"AI Doctor Study" intact in
+  every locale, `href`s untouched. `npm run lint` / `npx tsc --noEmit`
+  clean (aside from one pre-existing, unrelated error in
+  `public/app/05-exam-prep.js`). Not yet checked: how `ar`/`ur` actually
+  render RTL in the browser — only the underlying JSON was verified.
+
 ## 2026-08-20 (6)
 
 - **CTA relabel across the landing page** — added a "Login" pill next to

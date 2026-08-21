@@ -1,0 +1,350 @@
+{
+  "eyebrow": "Jurídico",
+  "title": "Política de Cookies",
+  "lastUpdated": "17 August 2026",
+  "scope": "Aplica-seaidoctor.studye aAI Doctor Studyapp",
+  "summary": [
+    [
+      {
+        "text": "Usamos um pequeno conjunto de cookies e armazenamento local para"
+      },
+      {
+        "text": "manter você assinado",
+        "bold": true
+      },
+      {
+        "text": "e"
+      },
+      {
+        "text": "lembrar o seu perfil de estudo",
+        "bold": true
+      },
+      {
+        "text": "— são essenciais e sempre em curso."
+      }
+    ],
+    [
+      {
+        "text": "A análise só é executada se disser que sim",
+        "bold": true
+      },
+      {
+        "text": "no banner de biscoitos. Diga não e o aplicativo funciona exatamente o mesmo."
+      }
+    ],
+    [
+      {
+        "text": "Gumroad (pagamentos) e YouTube (vídeos) podem definir seus próprios cookies quando você usa esses recursos."
+      }
+    ],
+    [
+      {
+        "text": "Você pode mudar de idéia a qualquer momento através"
+      },
+      {
+        "text": "Configuração dos cookies",
+        "bold": true
+      },
+      {
+        "text": "ou o seu navegador."
+      }
+    ]
+  ],
+  "sections": [
+    {
+      "id": "what",
+      "number": "01",
+      "title": "O que são cookies e armazenamento local",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Cookies",
+              "bold": true
+            },
+            {
+              "text": "são pequenos arquivos de texto um site armazena em seu dispositivo para que ele possa reconhecê-lo entre páginas e visitas."
+            },
+            {
+              "text": "Armazenagem local",
+              "bold": true
+            },
+            {
+              "text": "é um recurso de navegador semelhante que usamos para salvar dados (como seu perfil de estudo) diretamente em seu dispositivo em vez de em nossos servidores. Esta política abrange ambos, além de tecnologias semelhantes como identificadores SDK em nosso aplicativo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "why",
+      "number": "02",
+      "title": "Como os usamos",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Essencial",
+                "bold": true
+              },
+              {
+                "text": "— assinando com o Google (Autenticação Firebase), mantendo sua sessão segura e lembrando sua escolha de cookies. O Serviço não pode trabalhar sem estes, por isso não requerem consentimento."
+              }
+            ],
+            [
+              {
+                "text": "Funcional",
+                "bold": true
+              },
+              {
+                "text": "— recordando o seu nome, ano de estudo e exame, para aterrar directamente no seu espaço de estudo em vez de voltar a fazer a bordo."
+              }
+            ],
+            [
+              {
+                "text": "Análise (opcional)",
+                "bold": true
+              },
+              {
+                "text": "— estatísticas de uso de estilo anônimo via Google Analytics / Firebase Analytics, para que possamos ver quais recursos ajudam os alunos e quais precisam ser corrigidos. Estes corrida"
+              },
+              {
+                "text": "apenas com o seu consentimento",
+                "bold": true
+              },
+              {
+                "text": "."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Não usamos cookies publicitários e não vendemos os seus dados."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "list",
+      "number": "03",
+      "title": "Cookies e armazenamento que definimos",
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            "Nome",
+            "Definir por",
+            "Objecto",
+            "Duração"
+          ],
+          "rows": [
+            [
+              "Sessão de autenticação Firebase (IDB / armazenamento)",
+              "Firebase (Google)",
+              "Mantém você conectado com sua conta do Google e assegura sua sessão.",
+              "Até que assines a saída"
+            ],
+            [
+              "aid_cookie_consent",
+              "AI Doctor Study",
+              "Lembra-se se você aceitou ou recusou cookies opcionais, então não continuamos perguntando.",
+              "Até estar limpo"
+            ],
+            [
+              "aid_name_*, aid_year_*, aid_exam_*",
+              "AI Doctor Study",
+              "Guarda o seu nome, ano de estudo e exame (por exemplo MBBS) no seu dispositivo para que o aplicativo abra diretamente para o seu espaço de estudo.",
+              "Até estar limpo"
+            ],
+            [
+              "Preferências da aplicação",
+              "AI Doctor Study",
+              "Lembra as configurações e preferências no aplicativo em seu dispositivo.",
+              "Até estar limpo"
+            ],
+            [
+              "_ga, _ga_*",
+              "Google Analytics",
+              "Distingue visitantes e mede como o aplicativo é usado (páginas visualizadas, recursos grampeados) para que possamos melhorá-lo. Só com o consentimento.",
+              "Até 2 anos"
+            ],
+            [
+              "Identificadores de análise Firebase",
+              "Firebase (Google)",
+              "Medição de uso agregada no aplicativo. Só com o consentimento.",
+              "Varies"
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Você pode ler como o Google usa esses dados em"
+            },
+            {
+              "text": "políticas.google.com/tecnologias/parceiros-sites",
+              "href": "https://policies.google.com/technologies/partner-sites"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thirdparty",
+      "number": "04",
+      "title": "Cookies de terceiros",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Gumroad",
+                "bold": true
+              },
+              {
+                "text": "— quando você abrir o checkout Pro ou gerenciar sua assinatura, Gumroad define seus próprios cookies para processar seu pagamento de forma segura. Veja"
+              },
+              {
+                "text": "Política de Privacidade da Gumroad",
+                "href": "https://gumroad.com/privacy"
+              },
+              {
+                "text": "."
+              }
+            ],
+            [
+              {
+                "text": "YouTube",
+                "bold": true
+              },
+              {
+                "text": "— alguns vídeos de estudo são incorporados no YouTube. Quando você joga um, o YouTube (Google) pode definir cookies e coletar dados sob o"
+              },
+              {
+                "text": "Política de Privacidade do Google",
+                "href": "https://policies.google.com/privacy"
+              },
+              {
+                "text": "."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Esses terceiros controlam seus próprios cookies — não podemos desligá-los do nosso lado, mas eles só carregam quando você usa esses recursos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "choices",
+      "number": "05",
+      "title": "Suas escolhas",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "O banner das bolachas.",
+              "bold": true
+            },
+            {
+              "text": "Na sua primeira visita você pode escolher Aceitar tudo ou Essencial apenas. O Analytics fica desligado a menos que aceite. Sua escolha é salva em seu dispositivo, e você pode alterá-lo a qualquer momento a partir do controle de configurações de cookies no rodapé do site."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "O teu navegador.",
+              "bold": true
+            },
+            {
+              "text": "Você também pode bloquear ou excluir cookies e dados do site nas configurações do seu navegador — note que excluir o armazenamento essencial irá assinar com você e redefinir seu perfil de estudo no dispositivo."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Opt-out do Google.",
+              "bold": true
+            },
+            {
+              "text": "Para o Google Analytics especificamente, o Google oferece"
+            },
+            {
+              "text": "complemento de opt-out do navegador",
+              "href": "https://tools.google.com/dlpage/gaoptout"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "number": "06",
+      "title": "Alterações a esta política",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Se adicionarmos novos cookies ou alterarmos a forma como os utilizamos, atualizaremos esta página e, onde a alteração for significativa, pediremos seu consentimento novamente através do banner. A data “Última atualização” acima mostra a versão atual."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "number": "07",
+      "title": "Contacto",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Perguntas sobre cookies ou seus dados? E- mail"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "Para a forma como lidamos com os dados pessoais de forma mais ampla, ver o nosso"
+            },
+            {
+              "text": "Política de Privacidade",
+              "href": "/privacy"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

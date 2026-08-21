@@ -1,0 +1,55 @@
+{
+  "brandName": "AI Doctor Study",
+  "siteNav": [
+    {
+      "label": "内容",
+      "href": "#hero"
+    },
+    {
+      "label": "特征",
+      "href": "#features"
+    },
+    {
+      "label": "如何运作",
+      "href": "#why"
+    },
+    {
+      "label": "定价",
+      "href": "#pricing"
+    },
+    {
+      "label": "联系人",
+      "href": "#contact"
+    }
+  ],
+  "headerCta": {
+    "label": "免费启动",
+    "href": "/app"
+  },
+  "loginCta": {
+    "label": "登录",
+    "href": "/app"
+  },
+  "floatingCta": {
+    "label": "尝试自由 ~",
+    "href": "/app"
+  },
+  "footerLinks": [
+    {
+      "label": "术语",
+      "href": "/terms"
+    },
+    {
+      "label": "退款",
+      "href": "/refunds"
+    },
+    {
+      "label": "饼干",
+      "href": "/cookies"
+    },
+    {
+      "label": "隐私",
+      "href": "/privacy"
+    }
+  ]
+}

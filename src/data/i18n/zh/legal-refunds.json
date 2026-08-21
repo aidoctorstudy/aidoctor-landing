@@ -1,0 +1,401 @@
+{
+  "eyebrow": "法律",
+  "title": "退款政策",
+  "lastUpdated": "17 August 2026",
+  "scope": "适用于AI Doctor Study通过Gumroad进行采购",
+  "summary": [
+    [
+      {
+        "text": "第一个月没成功吗?",
+        "bold": true
+      },
+      {
+        "text": "在你第一次采购后7天内发邮件给我们 我们会退钱的,别闹了."
+      }
+    ],
+    [
+      {
+        "text": "取消退款.",
+        "bold": true
+      },
+      {
+        "text": "随时取消——你保留Pro直到月薪结束,你只是不会再次被收取."
+      }
+    ],
+    [
+      {
+        "text": "更新",
+        "bold": true
+      },
+      {
+        "text": "通常每个新月一开始就不得退款,除非有错误或法律另有规定."
+      }
+    ],
+    [
+      {
+        "text": "退款通常在五至十个工作日内通过Gumroad恢复到原来的支付方式."
+      }
+    ],
+    [
+      {
+        "text": "一旦退款或退款,"
+      },
+      {
+        "text": "Pro 访问立即结束",
+        "bold": true
+      },
+      {
+        "text": "。 。 。 ."
+      }
+    ]
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "number": "01",
+      "title": "计费方法",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "AI Doctor StudyPro是每月的订阅费"
+            },
+            {
+              "text": "口香糖",
+              "href": "https://gumroad.com"
+            },
+            {
+              "text": "我们的付款提供者和记录商 Gumroad 向您的支付方式收费, 签发您的收据, 并处理任何适用的税收。 我们批准的退款通过Gumroad发放回你使用的支付方法."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "number": "02",
+      "title": "取消订阅",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "任何时间都可以取消——没有通知期,没有问题:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            [
+              {
+                "text": "打开应用程序"
+              },
+              {
+                "text": "设置 订阅 取消订阅",
+                "bold": true
+              },
+              {
+                "text": "(这需要你去Gumroad, 在那里取消),或"
+              }
+            ],
+            [
+              {
+                "text": "从您直接取消"
+              },
+              {
+                "text": "口香糖订阅页面",
+                "href": "https://gumroad.com/subscriptions"
+              },
+              {
+                "text": "或您的 Gumroad 收件电子邮件中的链接 ."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "取消所有未来收费."
+            },
+            {
+              "text": "在你已经付了钱的期末之前 你一直保持完全的Pro访问权",
+              "bold": true
+            },
+            {
+              "text": ",然后您的账户自动移动回自由计划。 取消不是本期退款,我们不给未用日的部分退款."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "guarantee",
+      "number": "03",
+      "title": "7天的首次购买担保",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "我们希望Pro能帮助你学习 如果不是你,请给我们发邮件"
+            },
+            {
+              "text": "7天的首笔付款",
+              "bold": true
+            },
+            {
+              "text": "我们会全额退还的 这适用于每个人一次,只适用于你的第一次付款——这是一次正确尝试Pro的机会,而不是反复出现的免费月."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "renewals",
+      "number": "04",
+      "title": "续付款",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "因为续约前你可以取消 续约一般都是"
+            },
+            {
+              "text": "不可退还",
+              "bold": true
+            },
+            {
+              "text": "一旦新的计费期开始。 当我们的一方出事时,我们例外,例如:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "在续约日期前被取消的,您需缴纳费用;"
+              }
+            ],
+            [
+              {
+                "text": "(a) 同一期间两次受到指控;"
+              }
+            ],
+            [
+              {
+                "text": "一个严重的技术问题 使得Pro无法使用 在相当大一段时间 我们无法修复它."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "如果发生这种情况,请联系我们,我们将纠正它——对受影响的期间给予退款或账户信贷."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "request",
+      "number": "05",
+      "title": "如何要求退款",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "电子邮件"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "包括:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "页:1"
+              },
+              {
+                "text": "在您的 Gumroad 收据上发送电子邮件地址",
+                "bold": true
+              },
+              {
+                "text": "· ;"
+              }
+            ],
+            [
+              {
+                "text": "大约"
+              },
+              {
+                "text": "指控日期",
+                "bold": true
+              },
+              {
+                "text": "(或有Gumroad命令/接收号码);"
+              }
+            ],
+            [
+              {
+                "text": "判决"
+              },
+              {
+                "text": "发生什么事了",
+                "bold": true
+              },
+              {
+                "text": "它真正帮助我们改进应用."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "我们的目标是在"
+            },
+            {
+              "text": "2个工作日",
+              "bold": true
+            },
+            {
+              "text": "。核准的退款通过Gumroad发放,并通常出现在您的报表中"
+            },
+            {
+              "text": "5至10个工作日",
+              "bold": true
+            },
+            {
+              "text": "取决于你的银行."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "after",
+      "number": "06",
+      "title": "退款后怎么办",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "当付款被退还时, Pro访问它支付结束"
+            },
+            {
+              "text": "马上",
+              "bold": true
+            },
+            {
+              "text": "——你的账户返回自由计划,你的学习数据保持不变. 如果退款又被错误处理 联系我们,我们会倒置."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chargebacks",
+      "number": "07",
+      "title": "回扣",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "warning",
+          "label": "先跟我们谈谈",
+          "paragraphs": [
+            [
+              {
+                "text": "充值(质疑与你的银行的充值)在收费上花费了像我们这样的小产品真正的金钱,即使解决了. 如果在你的笔录上有什么问题,在争论之前发电子邮件给我们——我们几乎总能比你的银行更快地修好它."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "起诉后 Gumroad通知我们"
+            },
+            {
+              "text": "Pro 访问自动并立即被取消",
+              "bold": true
+            },
+            {
+              "text": "我们可能会减少今后从滥用收费活动的账户购买。 当然,这里没有任何限制你对真正未经批准的指控进行争议的合法权利."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rights",
+      "number": "08",
+      "title": "您的法定权利",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "这项政策与你作为消费者的权利并列——它永远不会减少这些权利。 如果居住地的消费者保护法赋予你更强的退款或取消权(例如,一些国家的数字订阅的冷却权),则这些权利适用. 在本地法律要求的情况下,通过立即开始订阅,你同意立即提供数字服务,并承认这将如何影响任何法定取款权."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "number": "09",
+      "title": "这项政策的改变",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "我们可以不时更新退款政策。 你被起诉时生效的版本就是适用于该罪名的版本. 上面的“最后更新”日期显示了目前的版本."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "number": "10",
+      "title": "联系人",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "不清楚,还是这页没有报道? 电子邮件"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "——一个人类阅读它,我们宁可整理出来,也不愿争论."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

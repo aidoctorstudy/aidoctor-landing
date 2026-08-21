@@ -1,0 +1,55 @@
+{
+  "brandName": "AI Doctor Study",
+  "siteNav": [
+    {
+      "label": "Principal",
+      "href": "#hero"
+    },
+    {
+      "label": "Características",
+      "href": "#features"
+    },
+    {
+      "label": "Como Funciona",
+      "href": "#why"
+    },
+    {
+      "label": "Preços",
+      "href": "#pricing"
+    },
+    {
+      "label": "Contacto",
+      "href": "#contact"
+    }
+  ],
+  "headerCta": {
+    "label": "Iniciar de Graça",
+    "href": "/app"
+  },
+  "loginCta": {
+    "label": "Login",
+    "href": "/app"
+  },
+  "floatingCta": {
+    "label": "Tente Free →",
+    "href": "/app"
+  },
+  "footerLinks": [
+    {
+      "label": "Termos",
+      "href": "/terms"
+    },
+    {
+      "label": "Montante das restituições",
+      "href": "/refunds"
+    },
+    {
+      "label": "Cookies",
+      "href": "/cookies"
+    },
+    {
+      "label": "Privacidade",
+      "href": "/privacy"
+    }
+  ]
+}

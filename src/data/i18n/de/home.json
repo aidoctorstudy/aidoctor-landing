@@ -1,0 +1,301 @@
+{
+  "hero": {
+    "eyebrow": "AI-Powered Medical Learning",
+    "title": "Lerne intelligenter. Passen Sie Ihre Prüfungen.",
+    "description": "Der KI-Studienbegleiter für MBBS und medizinische Studierende. Fragen Sie etwas, erhalten Sie sofort Expertenerklärungen.",
+    "actions": [
+      {
+        "label": "Kostenlos anmelden",
+        "href": "/app"
+      },
+      {
+        "label": "Anmelden",
+        "href": "/app"
+      }
+    ],
+    "trustLine": "Vertraut von 50.000+ Medizinstudenten weltweit",
+    "serviceChips": [
+      "MUSTER",
+      "Klinische Fälle",
+      "Droge Mnemonics",
+      "USMLE/PLAB",
+      "Flashcards"
+    ]
+  },
+  "why": {
+    "eyebrow": "WarumAI Doctor Study",
+    "title": "Ein KI, jedes Thema, immer verfügbar",
+    "description": "Nicht mehr durch Lehrbücher suchen. Fragen Sie, wie Sie einen Arzt fragen würden.",
+    "actions": [
+      {
+        "label": "Entdecken Sie die Features",
+        "href": "#features"
+      },
+      {
+        "label": "Siehe Ergebnisse",
+        "href": "#about"
+      }
+    ],
+    "trailImages": [
+      "/assets/Why Dantora/01.png",
+      "/assets/Why Dantora/02.png",
+      "/assets/Why Dantora/03.png",
+      "/assets/Why Dantora/04.png",
+      "/assets/Why Dantora/05.png",
+      "/assets/Why Dantora/06.png",
+      "/assets/Why Dantora/07.png",
+      "/assets/Why Dantora/08.png"
+    ],
+    "mockup": {
+      "url": "aidoctor.study/app",
+      "question": "Was ist die erste Zeile für einen STEMI?",
+      "answer": "Aspirin 300mg kaut sofort, dann dringende PCI innerhalb 90 Minuten, wenn vorhanden — Thrombolyse, wenn nicht."
+    }
+  },
+  "servicesIntro": {
+    "eyebrow": "Eigenschaften",
+    "title": "Alles, was Sie brauchen, um medizinische Schule zu ace",
+    "description": "Von einer schnellen Antwort auf volle Prüfungsvorschrift — fünf Werkzeuge, die Verständnis, Praxis und Rückruf abdecken."
+  },
+  "serviceCards": [
+    {
+      "index": "01",
+      "title": "KI Q&A",
+      "items": [
+        "Fragen Sie jederzeit ein Thema",
+        "Schritt für Schritt Erklärungen",
+        "Quellen, denen Sie vertrauen können"
+      ],
+      "variant": "lime"
+    },
+    {
+      "index": "02",
+      "title": "Bildanalyse",
+      "emoji": "🩻",
+      "cta": "Entdecken",
+      "variant": "photo"
+    },
+    {
+      "index": "03",
+      "title": "Klinische Fälle",
+      "cta": "Entdecken",
+      "variant": "brand"
+    },
+    {
+      "index": "04",
+      "title": "Droge Mnemonics",
+      "emoji": "💊",
+      "cta": "Entdecken",
+      "variant": "photo"
+    },
+    {
+      "index": "05",
+      "title": "Prüfungsvorschlag",
+      "emoji": "📝",
+      "cta": "Entdecken",
+      "variant": "photo"
+    }
+  ],
+  "liveDemo": {
+    "eyebrow": "Live Demo",
+    "title": "Fragen Sie, wie Sie einen Arzt fragen würden",
+    "description": "Ein echter Austausch, kein Mockup — genau wieAI Doctor Studyantworten.",
+    "messages": [
+      {
+        "role": "user",
+        "text": "Erklären Sie den Mechanismus von Metformin"
+      },
+      {
+        "role": "ai",
+        "text": "Metformin arbeitet in erster Linie durch die Aktivierung von AMPK in der Leber, die Gluconogenese hemmt – die Reduzierung der Leberzuckerproduktion um bis zu 30%. Es verbessert auch die periphere Insulinempfindlichkeit und reduziert die Darmglukoseabsorption."
+      },
+      {
+        "role": "user",
+        "text": "Was sind die Gegenanzeigen?"
+      },
+      {
+        "role": "ai",
+        "text": "Wichtige Kontraindikationen: eGFR <30 mL/min (Milchsäurerisiko), akute Herzinsuffizienz, schwere Lebererkrankungen und jede akute Erkrankung, die der Hypoxie oder der Gewebehypoperfusion vorkommt."
+      }
+    ],
+    "ctaLabel": "Probieren Sie es selbstaidoctor.study/app",
+    "ctaHref": "/app"
+  },
+  "about": {
+    "eyebrow": "Warum Studenten vertrauen uns",
+    "stats": [
+      {
+        "value": "50K+",
+        "label": "Studenten"
+      },
+      {
+        "value": "98%",
+        "label": "Preis"
+      },
+      {
+        "value": "24/7",
+        "label": "Verfügbar"
+      },
+      {
+        "value": "5★",
+        "label": "Bewertung"
+      }
+    ],
+    "paragraph": [
+      {
+        "text": "AI Doctor Studyist der KI-Studienbegleiter für medizinische Studenten gebaut:",
+        "muted": true
+      },
+      {
+        "text": "eine frage stellen, eine doktor-level-erklärung bekommen.",
+        "muted": false
+      },
+      {
+        "text": "Von der Anatomie des ersten Jahres bis zu den Abschlussprüfungen,",
+        "muted": true
+      },
+      {
+        "text": "jede antwort ist gebaut, um ihnen zu helfen, zu verstehen, nicht nur zu erinnern.",
+        "muted": false
+      }
+    ],
+    "actions": [
+      {
+        "label": "Kostenlos anmelden",
+        "href": "/app"
+      },
+      {
+        "label": "Anmelden",
+        "href": "/app"
+      },
+      {
+        "label": "Siehe Pricing",
+        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+      }
+    ]
+  },
+  "team": {
+    "eyebrow": "Zeugnisse",
+    "title": "Vertraut von Studenten, die bestanden mussten.",
+    "socials": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com",
+        "icon": "instagram"
+      },
+      {
+        "label": "Facebook",
+        "href": "https://facebook.com",
+        "icon": "facebook"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com",
+        "icon": "linkedin"
+      },
+      {
+        "label": "X",
+        "href": "https://x.com",
+        "icon": "twitter"
+      }
+    ],
+    "members": [
+      {
+        "name": "Ahmed Al-Rashidi",
+        "role": "MBBS Jahr 4, VAE",
+        "quote": "Erklärte Pharmakologie besser als mein Professor. Unterschieden.",
+        "initials": "AA"
+      },
+      {
+        "name": "Priya Sharma",
+        "role": "USMLE Schritt 1 Geklärt, Indien",
+        "quote": "Gefragt 200+ Fragen während Schritt 1 Prep. Jede Antwort war vor Ort.",
+        "initials": "PS"
+      },
+      {
+        "name": "Omar Hassan",
+        "role": "PLAB-Kandidaten, Ägypten",
+        "quote": "Die klinischen Fälle sind unrealistisch. Wie einen Berater in Ihrer Tasche.",
+        "initials": "OH"
+      },
+      {
+        "name": "Sarah Chen",
+        "role": "Med Student Jahr 3, UK",
+        "quote": "Der Drogenmnemonics-Modus hat meine Apothekenprüfung gerettet. Wirklich.",
+        "initials": "SC"
+      },
+      {
+        "name": "Khalid Mansoor",
+        "role": "Letztes Jahr MBBS, Pakistan",
+        "quote": "Ich benutze es jeden Tag. Jeder Penny von Pro wert.",
+        "initials": "KM"
+      }
+    ],
+    "more": {
+      "title": "Lernen Sie 50.000+ Studierende smarter",
+      "cta": "Erste Schritte",
+      "href": "/app"
+    }
+  },
+  "pricing": {
+    "eyebrow": "Preis",
+    "title": "Starten Sie kostenlos. Upgrade, wenn die Prüfungssaison trifft.",
+    "description": "Keine Kreditkarte für Kostenlos. Abbrechen Pro jederzeit.",
+    "plans": [
+      {
+        "name": "Kostenlos",
+        "price": "$0",
+        "period": "/month",
+        "description": "Genug, um durch eine normale Studienwoche zu kommen.",
+        "features": [
+          "20 fragen pro tag",
+          "Grundbegriffe",
+          "Standard AI"
+        ],
+        "cta": {
+          "label": "Kostenlos starten",
+          "href": "/app"
+        }
+      },
+      {
+        "name": "Pro",
+        "price": "$2.99",
+        "period": "/month",
+        "description": "Alles entsperrt für die Prüfungssaison.",
+        "features": [
+          "Unbegrenzte Fragen",
+          "Alle Themen",
+          "Claude KI",
+          "Bildanalyse",
+          "Klinische Fälle",
+          "Drogenmoniken",
+          "USMLE/PLAB Prep",
+          "Flashcards"
+        ],
+        "cta": {
+          "label": "Holen Sie sich Pro",
+          "href": "/app"
+        },
+        "badge": "Am meisten beliebt",
+        "highlighted": true,
+        "note": "Registrieren Sie sich oder melden Sie sich zuerst an – Sie werden weiterhin von dort aus checkout."
+      }
+    ],
+    "discountNote": "Student? VerwendungscodeMED20bei der Kasse für 20% off Pro."
+  },
+  "contact": {
+    "eyebrow": "Erste Schritte",
+    "title": "Bereit, intelligenter zu studieren?",
+    "description": "50.000+ medizinische Studenten bereits mitAI Doctor Study.",
+    "actions": [
+      {
+        "label": "Kostenlos starten",
+        "href": "/app"
+      },
+      {
+        "label": "Holen Sie sich Pro",
+        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+      }
+    ]
+  }
+}

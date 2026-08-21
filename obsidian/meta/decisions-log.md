@@ -10,6 +10,142 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0032 — Translation pipeline switched from the Anthropic API to LibreTranslate
+
+- **Status:** Accepted — script rewritten and verified with a real,
+  complete 8-locale translation run
+- **Date:** 2026-08-21
+
+**Context.** Requested: rewrite `scripts/translate-content.mjs` (ADR-0030)
+to use LibreTranslate instead of the Anthropic API, targeting the free
+public instance at `https://libretranslate.com`, no API key, translating
+`en` → `ar, ur, es, fr, hi, pt, de, zh`, preserving URLs/hrefs/prices/the
+`MED20` code, writing the same `src/data/i18n/<locale>/` file layout.
+
+**Decision — why this couldn't be the same script with a different API
+call.** The Anthropic version sent each content bundle as one JSON payload
+with a system prompt asking the model to preserve structure and skip
+protected fields — that only works because an instruction-following LLM
+understands "don't touch this key." LibreTranslate is a plain
+text-to-text MT engine with no concept of JSON or field semantics, so
+"translate the whole JSON blob" was never viable here. The rewrite
+therefore has one small translator function per content shape (`translateHero`,
+`translatePlan`, `translateBlock`, …) in `scripts/translate-content.mjs`
+that explicitly rebuilds each object field by field: natural-language
+strings go through `t()`; everything structural (`href`, `url`, enum
+discriminators, anchor `id`s, prices, `period`, proper names, emoji,
+booleans) is copied through unchanged, by construction — not by asking an
+engine to leave it alone. Protected literal phrases that must survive
+*inside* a translated sentence (`MED20`, "AI Doctor Study", the bare
+domain "aidoctor.study") are never sent to the MT engine at all — see the
+third bug below for why, and the split-and-splice approach that replaced
+the original placeholder-token design.
+
+**A real, live-verified problem with the literal request: the official
+public instance now requires a key.** `https://libretranslate.com`'s
+`/languages` endpoint is open, but every `/translate` call returns
+`400 {"error":"Visit https://portal.libretranslate.com to get an API
+key"}` — confirmed by actually running the rewritten script against it,
+not assumed. Raised with the project owner (`AskUserQuestion`: get a free
+key / point at a different free instance / ship unrun) — **point at a
+different free instance** was chosen. Several other commonly-cited public
+LibreTranslate mirrors were tried live and found dead, cert-mismatched, or
+DNS-unresolvable (`translate.argosopentech.com`, `libretranslate.pussthecat.org`,
+`translate.mentality.rip`, `lt.blitzw.in`, and others — free public MT
+mirrors are notoriously short-lived). `https://translate.disroot.org`
+verified working anonymously — `/translate` for all 7 non-Chinese target
+languages, `zh-Hans` for Chinese, and the placeholder-token protection
+mechanism all confirmed live — and is now the script's default
+`LIBRETRANSLATE_URL`. Both `LIBRETRANSLATE_URL` and an optional
+`LIBRETRANSLATE_API_KEY` (for the official instance, or a self-host)
+remain overridable via env, so this default can be swapped the moment
+disroot.org's instance changes or goes down too — a real risk with any
+free community-run mirror, disclosed in the script's own header comment.
+
+**A second real bug caught live, not assumed.** LibreTranslate has no bare
+`zh` target — only `zh-Hans` (Simplified) and `zh-Hant` (Traditional),
+confirmed by reading the actual `/languages` response. Our own locale code
+is `zh` (matching `lib/i18n/locales.ts`, and the output directory
+`src/data/i18n/zh/`). Without a mapping layer, the script's own
+supported-languages guard would have silently **skipped Chinese entirely**
+every run, reporting nothing wrong — a correctly-designed safety check
+would have masked a real bug instead of catching one. Fixed with a small
+`LOCALE_TO_LIBRETRANSLATE_TARGET = { zh: "zh-Hans" }` map: the API request's
+`target` field goes through it, everything else (file paths, CLI args, log
+messages) still uses our own `zh`.
+
+**A third real bug, the most serious, caught by actually reading the
+output — not just checking exit codes.** The first implementation
+protected literal phrases with an injected placeholder token
+(`XPROTECTEDX0X`) sent through LibreTranslate and swapped back afterwards.
+The full 8-locale run completed with **zero `FAILED` log lines**, which
+looked like a clean pass — but manually inspecting the written JSON found
+the MT engine had silently mangled the token in at least two places:
+`ar/legal-terms.json` came back with literal `XPROTECTEDX` fragments left
+in the Arabic text (the exact-string swap-back couldn't find its token
+anymore), and `fr/home.json`'s pricing `discountNote` — the `MED20` coupon
+line — came back as `"...code XPROTETEDX0X..."` (the engine had dropped a
+letter from the token itself). Neither failure surfaced as an error
+anywhere; both would have shipped as visibly broken, untranslated-looking
+text in production. Retrying with a letters-only token (no digits, on the
+theory that Arabic digit-shape handling was the cause) still failed
+differently on the same Arabic string, showing the real problem is
+structural: **no black-box MT engine can be trusted to pass an arbitrary
+synthetic token through untouched**, especially into a different script.
+Fixed by removing token injection entirely — `findProtectedSpans()` now
+splits each string around every protected phrase/URL/email, translates
+only the surrounding fragments, and splices the original protected text
+back in untouched, so it never reaches the MT engine and cannot come back
+corrupted. `t()`'s `restore()` step and its exact-match assumption are
+gone. Trade-off: slightly less fluent phrasing immediately around a
+protected phrase (the model translates fragments instead of one whole
+sentence), in exchange for a hard content-correctness guarantee — judged
+the right trade for a coupon code and a brand name. All locale files
+already written by the token-based run were regenerated with the fixed
+script.
+
+**Politeness toward a free, unauthenticated, shared instance.** Every
+LibreTranslate call now runs **strictly sequentially** — no `Promise.all`
+fan-out anywhere in the translator functions, one request in flight at a
+time globally — with a delay after each call (`TRANSLATE_DELAY_MS`,
+default 300 ms) and retry-with-backoff on 429/5xx. A per-locale cache
+(`Map`) avoids re-translating repeated strings (CTA labels like "Login"
+appear in several places). A full 8-locale run is consequently slow by
+design; `--locales=` translates a subset.
+
+**Consequences.** `ANTHROPIC_API_KEY` is no longer read or required by
+this script — removed from `.env.example` and environment-variables.md,
+replaced with the optional `LIBRETRANSLATE_API_KEY`. All 8 locales were
+(re-)generated with the fixed split-and-splice script and the full set —
+48 files (`{home,chrome,legal-terms,legal-refunds,legal-cookies,
+legal-privacy}.json` × `ar, ur, es, fr, hi, pt, de, zh`) — is confirmed
+committed and verified: all valid JSON, zero `FAILED` log lines, zero
+leftover placeholder artifacts (broad `XPROTE`/`PROTETE` scan across every
+file, not just the exact original token string), and `MED20`/"AI Doctor
+Study" both present and intact in every locale's `home.json` (1 and 4
+occurrences respectively, matching the English source count). `href`
+values spot-checked untouched (`/app` × 8 per locale). `npm run lint` and
+`npx tsc --noEmit` both clean (the one lint error that exists,
+`public/app/05-exam-prep.js:293`, predates and is unrelated to this
+change). A slow sequential run against a shared free instance can still
+partially fail per file without failing the whole script (each
+`try`/`catch` in `main()` is independent) — that's a legitimate `FAILED`
+log line now, distinct from the silent corruption this ADR fixes; none
+occurred in the final run. Translation quality here is machine-translated
+(Argos/LibreTranslate via `translate.disroot.org`), not reviewed by a
+native speaker — treat it as a solid first pass, not a final localization
+sign-off, and note the protected-phrase splice can make phrasing
+immediately around "AI Doctor Study"/`MED20` slightly less fluent than a
+single unbroken MT pass would have produced. RTL rendering (`ar`, `ur`)
+and the visual result in-browser have not been checked — only the JSON
+content itself has been verified.
+
+## Related
+
+[[decisions-log]] · [[environment-variables]] · [[tech-stack]]
+
+---
+
 ## ADR-0031 — CTA relabel: Login pill in the header, Sign Up for Free in the Hero, Pro's "Get Pro" routes through /app until auth exists
 
 - **Status:** Accepted
@@ -262,11 +398,13 @@ locale/route addition doesn't reintroduce the same class of bug.
 - `next.config.ts` gained an explicit `productionBrowserSourceMaps: false`
   — Next's own default, made explicit so a future edit can't silently flip
   it on.
-- **Follow-up required, not done here:** run `npm run translate` with a
-  real `ANTHROPIC_API_KEY` to populate the 8 locale JSON files; consider
-  RTL logical-property adoption in the handful of components where
-  left/right is meaningful (button icon order, chip lists) if Arabic/Urdu
-  visual QA surfaces layout issues beyond `dir="rtl"` alone.
+- **Follow-up required, not done here:** run `npm run translate` to
+  populate the 8 locale JSON files (superseded by ADR-0032 — the script no
+  longer uses Anthropic/`ANTHROPIC_API_KEY` at all, see that entry for the
+  actual run and its outcome); consider RTL logical-property adoption in
+  the handful of components where left/right is meaningful (button icon
+  order, chip lists) if Arabic/Urdu visual QA surfaces layout issues beyond
+  `dir="rtl"` alone.
 
 ## Related
 

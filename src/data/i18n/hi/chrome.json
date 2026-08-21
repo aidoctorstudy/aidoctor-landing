@@ -1,0 +1,55 @@
+{
+  "brandName": "AI Doctor Study",
+  "siteNav": [
+    {
+      "label": "घर",
+      "href": "#hero"
+    },
+    {
+      "label": "सुविधाएँ",
+      "href": "#features"
+    },
+    {
+      "label": "यह कैसे काम करता है",
+      "href": "#why"
+    },
+    {
+      "label": "मूल्य निर्धारण",
+      "href": "#pricing"
+    },
+    {
+      "label": "संपर्क",
+      "href": "#contact"
+    }
+  ],
+  "headerCta": {
+    "label": "मुफ्त में शुरू",
+    "href": "/app"
+  },
+  "loginCta": {
+    "label": "लॉग इन",
+    "href": "/app"
+  },
+  "floatingCta": {
+    "label": "मुफ्त आज़माएं →",
+    "href": "/app"
+  },
+  "footerLinks": [
+    {
+      "label": "नियम",
+      "href": "/terms"
+    },
+    {
+      "label": "रिफंड",
+      "href": "/refunds"
+    },
+    {
+      "label": "कुकी",
+      "href": "/cookies"
+    },
+    {
+      "label": "गोपनीयता",
+      "href": "/privacy"
+    }
+  ]
+}

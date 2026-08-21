@@ -62,9 +62,11 @@ import type { Locale } from "./locales";
  * simpler and safer than a merge that could silently mix two languages
  * inside one sentence if a nested object were only half-translated.
  *
- * No locale JSON files are committed yet — every locale currently renders
- * the English bundle until `scripts/translate-content.mjs` is run with a
- * real `ANTHROPIC_API_KEY` (decisions-log ADR-0029).
+ * `scripts/translate-content.mjs` (ADR-0032) generates the locale JSON
+ * files via LibreTranslate — no API key required by default. A locale with
+ * no file yet (or a failed/partial run — each file's translation is
+ * independent, see that script) simply falls back to the English bundle
+ * above, exactly as designed.
  */
 
 export interface HomeContentBundle {

@@ -1,0 +1,442 @@
+{
+  "eyebrow": "Jurídico",
+  "title": "Política de Privacidade",
+  "lastUpdated": "20 August 2026",
+  "scope": "Aplica-seaidoctor.studye aAI Doctor Studyapp",
+  "summary": [
+    [
+      {
+        "text": "Coletamos o mínimo necessário para executar sua conta e perfil de estudo",
+        "bold": true
+      },
+      {
+        "text": "— seu nome, e-mail, ano de estudo e foco de exame."
+      }
+    ],
+    [
+      {
+        "text": "Suas perguntas e atividades de estudo são processadas para gerar respostas e nunca são vendidas aos anunciantes."
+      }
+    ],
+    [
+      {
+        "text": "Entrar, armazenar e analisar através do Google/Firebase; os pagamentos são executados através do Gumroad",
+        "bold": true
+      },
+      {
+        "text": "— ver a política de cada prestador para a forma como lida com os dados."
+      }
+    ],
+    [
+      {
+        "text": "Você pode solicitar uma cópia de seus dados ou pedir-nos para excluir sua conta a qualquer momento."
+      }
+    ],
+    [
+      {
+        "text": "Ver o"
+      },
+      {
+        "text": "Política de Cookies",
+        "href": "/cookies"
+      },
+      {
+        "text": "para os cookies específicos e armazenamento local que usamos."
+      }
+    ]
+  ],
+  "sections": [
+    {
+      "id": "scope",
+      "number": "01",
+      "title": "Quem esta política cobre",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Esta Política de Privacidade explica quais dados pessoaisAI Doctor Study(“nós”, “nós”) coleta quando você usa"
+            },
+            {
+              "text": "aidoctor.study",
+              "href": "https://aidoctor.study"
+            },
+            {
+              "text": "e aAI Doctor Studyapp (juntos, o “Serviço”), por que nós coletamos, e as escolhas que você tem. Deve ser lido ao lado do nosso"
+            },
+            {
+              "text": "Termos de serviço",
+              "href": "/terms"
+            },
+            {
+              "text": "e"
+            },
+            {
+              "text": "Política de Cookies",
+              "href": "/cookies"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "number": "02",
+      "title": "Dados que recolhemos",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Dados da conta",
+                "bold": true
+              },
+              {
+                "text": "— seu nome, endereço de e-mail e foto de perfil do Google sign-in; seu ano de estudo e foco de exame (por exemplo, MBBS, USMLE) de onboarding."
+              }
+            ],
+            [
+              {
+                "text": "Actividade do estudo",
+                "bold": true
+              },
+              {
+                "text": "— as perguntas que faz, os assuntos e modos que utiliza, e características como cartões de memória ou casos salvos, para que o Serviço possa responder a si e manter o seu progresso."
+              }
+            ],
+            [
+              {
+                "text": "Dados de pagamento",
+                "bold": true
+              },
+              {
+                "text": "— se subscrever o Pro, o Gumroad trata directamente dos seus dados de pagamento; recebemos a confirmação do seu estatuto de subscrição, não os dados do seu cartão."
+              }
+            ],
+            [
+              {
+                "text": "Dados de & utilização do dispositivo",
+                "bold": true
+              },
+              {
+                "text": "— tipo de dispositivo, navegador, e, apenas se consentir com a análise, estatísticas de utilização agregadas (ver"
+              },
+              {
+                "text": "Política de Cookies",
+                "href": "/cookies"
+              },
+              {
+                "text": ")."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use",
+      "number": "03",
+      "title": "Como usamos seus dados",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "para criar e proteger sua conta, e deixá-lo entrar;"
+              }
+            ],
+            [
+              {
+                "text": "gerar as explicações, respostas e material de estudo de IA que solicitar;"
+              }
+            ],
+            [
+              {
+                "text": "para lembrar o seu perfil de estudo para que o aplicativo abre diretamente para ele;"
+              }
+            ],
+            [
+              {
+                "text": "processar assinaturas Pro e responder aos pedidos de faturamento/reembolso;"
+              }
+            ],
+            [
+              {
+                "text": "para corrigir bugs, entender quais recursos ajudam os alunos e melhorar o Serviço (apenas usando análises que você consentiu);"
+              }
+            ],
+            [
+              {
+                "text": "para responder quando contactar o suporte."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Nós não vendemos seus dados pessoais, e não os usamos para servi-lo de publicidade."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sharing",
+      "number": "04",
+      "title": "Com quem partilhamos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Compartilhamos dados apenas com os provedores de serviços que executam partes do Serviço em nosso nome, e apenas o que cada um precisa para fazer seu trabalho:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Google / Firebase",
+                "bold": true
+              },
+              {
+                "text": "— autenticação, armazenamento de dados e análise (com consentimento). Ver o"
+              },
+              {
+                "text": "Política de Privacidade do Google",
+                "href": "https://policies.google.com/privacy"
+              },
+              {
+                "text": "."
+              }
+            ],
+            [
+              {
+                "text": "Gumroad",
+                "bold": true
+              },
+              {
+                "text": "— processamento de pagamentos para as assinaturas Pro. Veja"
+              },
+              {
+                "text": "Política de Privacidade da Gumroad",
+                "href": "https://gumroad.com/privacy"
+              },
+              {
+                "text": "."
+              }
+            ],
+            [
+              {
+                "text": "YouTube",
+                "bold": true
+              },
+              {
+                "text": "— quando se reproduz um vídeo de estudo incorporado. Ver o"
+              },
+              {
+                "text": "Política de Privacidade do Google",
+                "href": "https://policies.google.com/privacy"
+              },
+              {
+                "text": "."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Nós também podemos divulgar dados se exigido por lei, ou para proteger os direitos, segurança ou segurança deAI Doctor Study, nossos usuários, ou o público."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "retention",
+      "number": "05",
+      "title": "Quanto tempo o guardamos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Nós mantemos sua conta e dados de estudo enquanto sua conta estiver ativa, então seu progresso e histórico permanecem disponíveis para você. Se você excluir sua conta (ver"
+            },
+            {
+              "text": "Os seus direitos",
+              "href": "#rights"
+            },
+            {
+              "text": "abaixo), nós apagamos ou anonimizamos seus dados pessoais dentro de um período razoável, exceto quando somos obrigados a manter registros por razões legais, fiscais ou de prevenção de fraude."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "number": "06",
+      "title": "Segurança",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Confiamos na infraestrutura e nas práticas de segurança do Google/Firebase para autenticação e armazenamento, e não lidamos diretamente com os detalhes do seu cartão de pagamento — o Gumroad cuida. Nenhum método de transmissão ou armazenamento é 100% seguro, mas tomamos medidas razoáveis para proteger seus dados e limitar quem pode acessá-lo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rights",
+      "number": "07",
+      "title": "Os seus direitos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Dependendo de onde você mora, você pode ter o direito de:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "solicitar uma cópia dos dados pessoais que mantemos sobre si;"
+              }
+            ],
+            [
+              {
+                "text": "pedir que corrijamos dados inexactos;"
+              }
+            ],
+            [
+              {
+                "text": "nos peça para excluir sua conta e dados associados;"
+              }
+            ],
+            [
+              {
+                "text": "retirar o consentimento de análise a qualquer momento, do controle de configurações de cookies no rodapé do site;"
+              }
+            ],
+            [
+              {
+                "text": "opor-se, ou pedir-nos para restringir, certo processamento."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Para exercer qualquer um destes, e-mail"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "- responderemos dentro de um tempo razoável."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "children",
+      "number": "08",
+      "title": "Privacidade das crianças",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "O Serviço destina-se aos utilizadores com 16 anos ou mais (ver"
+            },
+            {
+              "text": "Termos de serviço",
+              "href": "/terms"
+            },
+            {
+              "text": "). Não coletamos dados pessoais de ninguém mais jovem. Se você acredita que uma pessoa mais jovem criou uma conta, entre em contato conosco e tomaremos as medidas apropriadas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "law",
+      "number": "09",
+      "title": "Transferências internacionais e direito de governo",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "warning",
+          "label": "Substituição — finalizar com aconselhamento jurídico antes do lançamento",
+          "paragraphs": [
+            [
+              {
+                "text": "Quando os dados são tratados, e qual a legislação da jurisdição que rege esta política, depende de onde a entidade operadora está registrada e onde os seus prestadores de serviços hospedam dados — tanto a serem confirmados como revistos antes de se basear nessa política."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "number": "10",
+      "title": "Alterações a esta política",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Podemos atualizar esta Política de Privacidade de tempos em tempos. Se uma mudança for material, tomaremos medidas razoáveis para notificá-lo antes que faça efeito. A data “Última atualização” acima mostra a versão atual."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "number": "11",
+      "title": "Contacto",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Perguntas sobre esta política ou seus dados? E- mail"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "eyebrow": "法律",
+  "title": "隐私政策",
+  "lastUpdated": "20 August 2026",
+  "scope": "适用于aidoctor.study编辑AI Doctor Study应用",
+  "summary": [
+    [
+      {
+        "text": "我们收集了运行您的账户和研究简介所需的最低金额",
+        "bold": true
+      },
+      {
+        "text": "你的名字,电子邮件,学习年, 和考试焦点."
+      }
+    ],
+    [
+      {
+        "text": "您的提问和学习活动被处理生成答案,并且从未被出售给广告商."
+      }
+    ],
+    [
+      {
+        "text": "登录、存储和分析通过Google/Firebase运行;支付通过Gumroad运行",
+        "bold": true
+      },
+      {
+        "text": "——看每个提供者自己如何处理数据的政策."
+      }
+    ],
+    [
+      {
+        "text": "您可在任何时候请求复制您的数据或要求我们删除您的账户."
+      }
+    ],
+    [
+      {
+        "text": "见"
+      },
+      {
+        "text": "Cookie 策略",
+        "href": "/cookies"
+      },
+      {
+        "text": "我们使用的饼干和本地存储器."
+      }
+    ]
+  ],
+  "sections": [
+    {
+      "id": "scope",
+      "number": "01",
+      "title": "保险对象",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "这项隐私政策解释了哪些个人数据AI Doctor Study(“我们”、“我们”)"
+            },
+            {
+              "text": "aidoctor.study",
+              "href": "https://aidoctor.study"
+            },
+            {
+              "text": "编辑AI Doctor Study我们为什么收集它,以及你们的选择。 应该和我们一起读"
+            },
+            {
+              "text": "服务条件",
+              "href": "/terms"
+            },
+            {
+              "text": "和"
+            },
+            {
+              "text": "Cookie 策略",
+              "href": "/cookies"
+            },
+            {
+              "text": "。 。 。 ."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "number": "02",
+      "title": "我们收集的数据",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "账户数据",
+                "bold": true
+              },
+              {
+                "text": "——您的姓名,电子邮件地址,以及来自Google登录的剖面照片;您的学习年份和考试焦点(如MBBS,USMLE)来自入职."
+              }
+            ],
+            [
+              {
+                "text": "学习活动",
+                "bold": true
+              },
+              {
+                "text": "——您所问的问题,您使用的主题和模式,以及诸如闪卡或被保存的大小写等特性,这样服务处就可以回复您,保持您的进步."
+              }
+            ],
+            [
+              {
+                "text": "付款数据",
+                "bold": true
+              },
+              {
+                "text": "——如果你订阅Pro,Gumroad直接处理你的支付细节;我们收到你的订阅状态的确认,而不是你的卡的细节."
+              }
+            ],
+            [
+              {
+                "text": "设备使用数据( U)",
+                "bold": true
+              },
+              {
+                "text": "——设备类型,浏览器,并只有在你同意分析时,才进行汇总使用统计(参见:"
+              },
+              {
+                "text": "Cookie 策略",
+                "href": "/cookies"
+              },
+              {
+                "text": ") (中文(简体) )."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use",
+      "number": "03",
+      "title": "我们如何使用你的数据",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "以便你们建立自己的账户,然后,你们可以登记;"
+              }
+            ],
+            [
+              {
+                "text": "生成你所要求的AI解释、答复和研究材料;"
+              }
+            ],
+            [
+              {
+                "text": "要记住你的学习简介 所以应用程序直接打开它;"
+              }
+            ],
+            [
+              {
+                "text": "pro订阅并答复账单/退款要求;"
+              }
+            ],
+            [
+              {
+                "text": "修补错误,了解哪些特征有助于学生,并改善服务(只使用你同意的分析);"
+              }
+            ],
+            [
+              {
+                "text": "当您联系到支援时回复."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "我们不出售你的个人资料,我们不使用它为您服务广告."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sharing",
+      "number": "04",
+      "title": "我们分享给谁",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "我们只与代表我们管理服务部分的服务提供者分享数据,并且只分享各自需要的工作:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Google / 消防基地",
+                "bold": true
+              },
+              {
+                "text": "认证、数据储存和(经同意)分析。 见"
+              },
+              {
+                "text": "谷歌隐私政策",
+                "href": "https://policies.google.com/privacy"
+              },
+              {
+                "text": "。 。 。 ."
+              }
+            ],
+            [
+              {
+                "text": "口香糖",
+                "bold": true
+              },
+              {
+                "text": "——Pro订阅的支付处理. 见"
+              },
+              {
+                "text": "Gumroad的隐私政策",
+                "href": "https://gumroad.com/privacy"
+              },
+              {
+                "text": "。 。 。 ."
+              }
+            ],
+            [
+              {
+                "text": "YouTube (英语)",
+                "bold": true
+              },
+              {
+                "text": "- 当你播放一个嵌入式学习视频。 见"
+              },
+              {
+                "text": "谷歌隐私政策",
+                "href": "https://policies.google.com/privacy"
+              },
+              {
+                "text": "。 。 。 ."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "如果法律要求,我们也可以披露数据,或者为了保护人权、安全或保障,我们也可以披露数据AI Doctor Study我们的用户,或公众."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "retention",
+      "number": "05",
+      "title": "我们保存多久",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "只要您的账户在运行中,我们就保留您的账户并研究数据,所以您的进步和历史仍然可供您使用. 如果您删除您的账户( 请参见"
+            },
+            {
+              "text": "你的权利",
+              "href": "#rights"
+            },
+            {
+              "text": "我们删除或匿名 您的个人数据 在合理的时间内, 除非我们被要求 保存记录 法律,税收,或防止欺诈."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "number": "06",
+      "title": "警卫",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "我们依赖Google/Firebase的基础设施和安全做法进行认证和存储,我们不直接处理你的支付卡细节——Gumroad确实如此. 没有百分之百的传输或存储方法是安全的,但我们采取合理的步骤保护您的数据,并限制谁可以访问数据."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rights",
+      "number": "07",
+      "title": "你的权利",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "取决于居住地,你可能有权:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "请提供我们掌握的有关你的个人资料的副本;"
+              }
+            ],
+            [
+              {
+                "text": "请我们纠正不准确的数据;"
+              }
+            ],
+            [
+              {
+                "text": "请我们删除您的账户和相关数据;"
+              }
+            ],
+            [
+              {
+                "text": "随时从站台脚下饼干设置控制中撤回分析同意;"
+              }
+            ],
+            [
+              {
+                "text": "反对或要求我们限制某些处理."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "为了行使其中任何一项,电子邮件"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "- 我们会在合理时间内回复."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "children",
+      "number": "08",
+      "title": "儿童的隐私",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "服务对象为16岁及以上的用户(见《公约》附件)"
+            },
+            {
+              "text": "服务条件",
+              "href": "/terms"
+            },
+            {
+              "text": ") (中文(简体) ). 我们不会在知情的情况下从任何年轻人那里收集个人资料。 如果你相信一个年轻人创造了一个账户, 请联系我们,我们会采取适当的行动."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "law",
+      "number": "09",
+      "title": "国际转让和管辖法律",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "warning",
+          "label": "占位者——启动前与法律顾问最后敲定",
+          "paragraphs": [
+            [
+              {
+                "text": "在处理数据时,由哪个法域的法律管辖这一政策,这取决于经营实体的注册地点及其服务提供者的数据存放地——在依赖这一政策之前,必须加以确认和审查."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "number": "10",
+      "title": "这项政策的改变",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "我们可以不时更新隐私政策。 如果改变是实质性的,我们会采取合理的步骤,在它生效前通知你. 上面的“最后更新”日期显示了目前的版本."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "number": "11",
+      "title": "联系人",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "关于这项政策或你的数据的问题? 电子邮件"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "。 。 。 ."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

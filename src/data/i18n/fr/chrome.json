@@ -1,0 +1,55 @@
+{
+  "brandName": "AI Doctor Study",
+  "siteNav": [
+    {
+      "label": "Sommaire",
+      "href": "#hero"
+    },
+    {
+      "label": "Caractéristiques",
+      "href": "#features"
+    },
+    {
+      "label": "Comment ça marche",
+      "href": "#why"
+    },
+    {
+      "label": "Prix",
+      "href": "#pricing"
+    },
+    {
+      "label": "Personne à contacter",
+      "href": "#contact"
+    }
+  ],
+  "headerCta": {
+    "label": "Démarrer gratuitement",
+    "href": "/app"
+  },
+  "loginCta": {
+    "label": "Connexion",
+    "href": "/app"
+  },
+  "floatingCta": {
+    "label": "Essayez gratuitement →",
+    "href": "/app"
+  },
+  "footerLinks": [
+    {
+      "label": "Termes",
+      "href": "/terms"
+    },
+    {
+      "label": "Montant des restitutions",
+      "href": "/refunds"
+    },
+    {
+      "label": "Cookies",
+      "href": "/cookies"
+    },
+    {
+      "label": "Vie privée",
+      "href": "/privacy"
+    }
+  ]
+}

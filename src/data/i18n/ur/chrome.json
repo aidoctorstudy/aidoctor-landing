@@ -1,0 +1,55 @@
+{
+  "brandName": "AI Doctor Study",
+  "siteNav": [
+    {
+      "label": "گھر",
+      "href": "#hero"
+    },
+    {
+      "label": "محفوظات",
+      "href": "#features"
+    },
+    {
+      "label": "یہ کیسے کام کرتا ہے",
+      "href": "#why"
+    },
+    {
+      "label": "پرنٹ",
+      "href": "#pricing"
+    },
+    {
+      "label": "رابطہ",
+      "href": "#contact"
+    }
+  ],
+  "headerCta": {
+    "label": "آزاد کیلئے آغاز",
+    "href": "/app"
+  },
+  "loginCta": {
+    "label": "لاگ ان",
+    "href": "/app"
+  },
+  "floatingCta": {
+    "label": "مفت کوشش کریں",
+    "href": "/app"
+  },
+  "footerLinks": [
+    {
+      "label": "مدت",
+      "href": "/terms"
+    },
+    {
+      "label": "طےشدہ",
+      "href": "/refunds"
+    },
+    {
+      "label": "رنگ",
+      "href": "/cookies"
+    },
+    {
+      "label": "روایتی",
+      "href": "/privacy"
+    }
+  ]
+}

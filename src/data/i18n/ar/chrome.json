@@ -1,0 +1,55 @@
+{
+  "brandName": "AI Doctor Study",
+  "siteNav": [
+    {
+      "label": "البيت",
+      "href": "#hero"
+    },
+    {
+      "label": "المعالم",
+      "href": "#features"
+    },
+    {
+      "label": "كيف يعمل",
+      "href": "#why"
+    },
+    {
+      "label": "الخصخصة",
+      "href": "#pricing"
+    },
+    {
+      "label": "الاتصال",
+      "href": "#contact"
+    }
+  ],
+  "headerCta": {
+    "label": "ابدأوا بالمجان",
+    "href": "/app"
+  },
+  "loginCta": {
+    "label": "Login",
+    "href": "/app"
+  },
+  "floatingCta": {
+    "label": "حاول مجاناً",
+    "href": "/app"
+  },
+  "footerLinks": [
+    {
+      "label": "المصطلحات",
+      "href": "/terms"
+    },
+    {
+      "label": "المبالغ المردودة",
+      "href": "/refunds"
+    },
+    {
+      "label": "الكوكيز",
+      "href": "/cookies"
+    },
+    {
+      "label": "الخصوصية",
+      "href": "/privacy"
+    }
+  ]
+}

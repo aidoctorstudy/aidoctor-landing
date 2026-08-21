@@ -1,0 +1,401 @@
+{
+  "eyebrow": "Legal",
+  "title": "Política de reembolso",
+  "lastUpdated": "17 August 2026",
+  "scope": "Aplicaciones aAI Doctor StudyPro compras realizadas a través de Gumroad",
+  "summary": [
+    [
+      {
+        "text": "¿El primer mes no funcionó?",
+        "bold": true
+      },
+      {
+        "text": "Envíenos un correo electrónico dentro de 7 días de su primera compra de Pro y lo devolveremos, sin drama."
+      }
+    ],
+    [
+      {
+        "text": "Cancelación de la devolución.",
+        "bold": true
+      },
+      {
+        "text": "Cancelar en cualquier momento - mantiene Pro hasta que termine su mes pagado, y no se le cobrará de nuevo."
+      }
+    ],
+    [
+      {
+        "text": "Renovaciones",
+        "bold": true
+      },
+      {
+        "text": "generalmente no son reembolsables una vez que comienza un nuevo mes, excepto por errores de facturación o donde la ley dice lo contrario."
+      }
+    ],
+    [
+      {
+        "text": "Los reembolsos vuelven a su método de pago original a través de Gumroad, generalmente dentro de 5–10 días hábiles."
+      }
+    ],
+    [
+      {
+        "text": "Una vez que el pago sea devuelto o devuelto,"
+      },
+      {
+        "text": "Acceso Pro termina inmediatamente",
+        "bold": true
+      },
+      {
+        "text": "."
+      }
+    ]
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "number": "01",
+      "title": "Cómo funciona la facturación",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "AI Doctor StudyPro es una suscripción mensual facturada por"
+            },
+            {
+              "text": "Gumroad",
+              "href": "https://gumroad.com"
+            },
+            {
+              "text": ", nuestro proveedor de pago y comerciante de registro. Gumroad cobra su método de pago, emite su recibo y maneja cualquier impuesto aplicable. Los reembolsos que aprobamos se publican a través de Gumroad de vuelta al método de pago que usaste."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "number": "02",
+      "title": "Cancelando su suscripción",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Usted puede cancelar en cualquier momento, sin período de aviso, sin preguntas:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            [
+              {
+                "text": "Abrir la aplicación →"
+              },
+              {
+                "text": "Ajustes → Suscripción → Cancelar Suscripción",
+                "bold": true
+              },
+              {
+                "text": "(esto te lleva a Gumroad, donde se termina la cancelación), o"
+              }
+            ],
+            [
+              {
+                "text": "Cancelar directamente desde tu"
+              },
+              {
+                "text": "Página de suscripción a Gumroad",
+                "href": "https://gumroad.com/subscriptions"
+              },
+              {
+                "text": "o el enlace en su correo electrónico de recepción Gumroad."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Cancelar detiene todos los cargos futuros."
+            },
+            {
+              "text": "Usted mantiene el acceso Pro completo hasta el final del período que ya ha pagado por",
+              "bold": true
+            },
+            {
+              "text": ", entonces su cuenta vuelve al plan libre automáticamente. Cancelación no es un reembolso del período actual, y no damos reembolsos parciales por días no utilizados."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "guarantee",
+      "number": "03",
+      "title": "garantía de 7 días en su primera compra",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Queremos que Pro realmente te ayude a estudiar. Si no es para ti, envíanos un correo electrónico dentro"
+            },
+            {
+              "text": "7 días de su primer pago Pro",
+              "bold": true
+            },
+            {
+              "text": "y lo devolveremos en su totalidad. Esto se aplica una vez por persona, a su primer pago solamente — es una oportunidad de probar Pro correctamente, no un mes libre recurrente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "renewals",
+      "number": "04",
+      "title": "Pagos de renovación",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Debido a que puede cancelar en cualquier momento antes de una renovación, los pagos de renovación son generalmente"
+            },
+            {
+              "text": "no reembolsables",
+              "bold": true
+            },
+            {
+              "text": "una vez que haya comenzado el nuevo período de facturación. Hacemos excepciones cuando algo de nuestro lado salió mal, por ejemplo:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "fue acusado después de cancelar antes de la fecha de renovación;"
+              }
+            ],
+            [
+              {
+                "text": "usted fue acusado dos veces por el mismo período;"
+              }
+            ],
+            [
+              {
+                "text": "un grave problema técnico de nuestro lado hizo que Pro fuera inutilizable para una parte sustancial del período y no podíamos arreglarlo."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Si alguno de ellos sucede, póngase en contacto con nosotros y lo haremos bien, con un reembolso o crédito de cuenta para el período afectado."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "request",
+      "number": "05",
+      "title": "Cómo solicitar un reembolso",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Email"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "desde cualquier dirección, e incluyen:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "el"
+              },
+              {
+                "text": "dirección de correo electrónico en su recibo de Gumroad",
+                "bold": true
+              },
+              {
+                "text": ";"
+              }
+            ],
+            [
+              {
+                "text": "el aproximado"
+              },
+              {
+                "text": "fecha del cargo",
+                "bold": true
+              },
+              {
+                "text": "(o el número de pedido/recibo de Gumroad si lo tiene);"
+              }
+            ],
+            [
+              {
+                "text": "a sentence on"
+              },
+              {
+                "text": "lo que salió mal",
+                "bold": true
+              },
+              {
+                "text": "— realmente nos ayuda a mejorar la aplicación."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Nos proponemos responder dentro de"
+            },
+            {
+              "text": "2 días laborables",
+              "bold": true
+            },
+            {
+              "text": ". Los reembolsos aprobados se emiten a través de Gumroad y normalmente aparecen en su declaración dentro de"
+            },
+            {
+              "text": "5 a 10 días hábiles",
+              "bold": true
+            },
+            {
+              "text": ", dependiendo de tu banco."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "after",
+      "number": "06",
+      "title": "Lo que sucede después de un reembolso",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Cuando se reembolsa un pago, el acceso Pro que pagó por los extremos"
+            },
+            {
+              "text": "inmediatamente",
+              "bold": true
+            },
+            {
+              "text": "— su cuenta vuelve al plan libre y sus datos de estudio permanecen intactos. Si un cargo reembolsado es de alguna manera procesado de nuevo por error, contáctenos y lo revertimos."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chargebacks",
+      "number": "07",
+      "title": "Cargadores",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "warning",
+          "label": "Por favor, háblanos primero",
+          "paragraphs": [
+            [
+              {
+                "text": "Los fondos de carga (disputando un cargo con su banco) cuestan productos pequeños como el dinero real de nuestros honorarios, incluso cuando se resuelve. Si algo se ve mal en su declaración, envíenos un correo electrónico antes de disputar — casi siempre podemos arreglarlo más rápido de lo que su banco puede."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Cuando se presenta una denuncia, Gumroad nos notifica y"
+            },
+            {
+              "text": "El acceso Pro es revocado automáticamente e inmediatamente",
+              "bold": true
+            },
+            {
+              "text": ". Podemos declinar futuras compras de cuentas con actividad de recarga abusiva. Por supuesto, nada aquí limita su derecho legal a disputar cargos genuinamente no autorizados."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rights",
+      "number": "08",
+      "title": "Sus derechos legales",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Esta política se encuentra junto a sus derechos como consumidor, nunca los reduce. Si la ley de protección del consumidor en donde vive le da más derechos de reembolso o cancelación (por ejemplo, derechos de enfriamiento para suscripciones digitales en algunos países), esos derechos se aplican. Cuando la ley local lo requiera, al iniciar su suscripción inmediatamente usted acepta el suministro inmediato del servicio digital y reconoce cómo esto puede afectar a cualquier derecho de retiro legal."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "number": "09",
+      "title": "Cambios en esta política",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Podemos actualizar esta Política de Reembolso de vez en cuando. La versión en vigor cuando te cobraron es la que se aplica a ese cargo. La fecha “Última actualización” muestra la versión actual."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "number": "10",
+      "title": "Contacto",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "¿Algo inmundo, o una situación que esta página no cubre? Email"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "— un humano lo lee, y preferiría resolverlo que discutirlo."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

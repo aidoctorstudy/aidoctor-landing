@@ -1,0 +1,301 @@
+{
+  "hero": {
+    "eyebrow": "AI-Powered Medical Learning",
+    "title": "دراسة أذكى مرر امتحاناتك.",
+    "description": "The AI study companion built for MBS and medical students. إسأل أي شيء، إحصل على تفسيرات الخبراء فوراً.",
+    "actions": [
+      {
+        "label": "التوقيع مجانا",
+        "href": "/app"
+      },
+      {
+        "label": "Login",
+        "href": "/app"
+      }
+    ],
+    "trustLine": "مثق من 000 50 طالب طبي في جميع أنحاء العالم",
+    "serviceChips": [
+      "MBBS",
+      "القضايا السريرية",
+      "أطباء المخدرات",
+      "USMLE/PLAB",
+      "بطاقات الاشتباك"
+    ]
+  },
+  "why": {
+    "eyebrow": "لماذاAI Doctor Study",
+    "title": "AI واحد، كل موضوع متاح دائما",
+    "description": "لا مزيد من البحث في الكتب المدرسية اسألي وكأنك ستسألين طبيباً.",
+    "actions": [
+      {
+        "label": "المتفجرات",
+        "href": "#features"
+      },
+      {
+        "label": "انظر النتائج",
+        "href": "#about"
+      }
+    ],
+    "trailImages": [
+      "/assets/Why Dantora/01.png",
+      "/assets/Why Dantora/02.png",
+      "/assets/Why Dantora/03.png",
+      "/assets/Why Dantora/04.png",
+      "/assets/Why Dantora/05.png",
+      "/assets/Why Dantora/06.png",
+      "/assets/Why Dantora/07.png",
+      "/assets/Why Dantora/08.png"
+    ],
+    "mockup": {
+      "url": "aidoctor.study/app",
+      "question": "ما هو الخط الأول لSTEMI؟?",
+      "answer": "وقد مضغ الأسبرين ٠٠٣ ملغ على الفور، ثم طارئ PCI في غضون ٠٩ دقيقة إذا كان متاحا - التحلل الحراري إن لم يكن."
+    }
+  },
+  "servicesIntro": {
+    "eyebrow": "المعالم",
+    "title": "كل ما تحتاجه من كلية الطب",
+    "description": "ومن جواب سريع إلى الإعداد الكامل للامتحان - خمسة أدوات تغطي التفاهم والممارسة والتذكر."
+  },
+  "serviceCards": [
+    {
+      "index": "01",
+      "title": "AI QA",
+      "items": [
+        "إسأل أي موضوع في أي وقت",
+        "التفسيرات التدريجية",
+        "مصادر يمكنك الوثوق بها"
+      ],
+      "variant": "lime"
+    },
+    {
+      "index": "02",
+      "title": "تحليل الصور",
+      "emoji": "🩻",
+      "cta": "سرية",
+      "variant": "photo"
+    },
+    {
+      "index": "03",
+      "title": "القضايا السريرية",
+      "cta": "سرية",
+      "variant": "brand"
+    },
+    {
+      "index": "04",
+      "title": "أطباء المخدرات",
+      "emoji": "💊",
+      "cta": "سرية",
+      "variant": "photo"
+    },
+    {
+      "index": "05",
+      "title": "Exam Prep",
+      "emoji": "📝",
+      "cta": "سرية",
+      "variant": "photo"
+    }
+  ],
+  "liveDemo": {
+    "eyebrow": "Live Demo",
+    "title": "إسألْ مثل أنت سَتَسْألُ الطبيبَ",
+    "description": "تبادل حقيقي، وليس مسخرا - وهذا هو بالضبط كيفAI Doctor Studyأجوبة.",
+    "messages": [
+      {
+        "role": "user",
+        "text": "Explain the mechanism of metformin"
+      },
+      {
+        "role": "ai",
+        "text": "ويعمل الميتسومين في المقام الأول بتفعيل شركة AMPK في الكبد، التي تثبط الغلوكونيس - مما يقلل من ناتج الجلوكوز الكبدي بنسبة تصل إلى 30 في المائة. It also improves peripheral insulin sensitivity and modestly reduces intestinal glucose absorption."
+      },
+      {
+        "role": "user",
+        "text": "ما هي المخالفات؟?"
+      },
+      {
+        "role": "ai",
+        "text": "Key contraindications: eGFR 30 mL/min (lactic acidosis risk), acute heart failure, severe hepatic disease, and any acute condition predisposing to hypoxia or curriculum hypoperfusion."
+      }
+    ],
+    "ctaLabel": "جربها بنفسكaidoctor.study/app",
+    "ctaHref": "/app"
+  },
+  "about": {
+    "eyebrow": "لماذا يثق الطلاب بنا",
+    "stats": [
+      {
+        "value": "50K+",
+        "label": "الطلاب"
+      },
+      {
+        "value": "98%",
+        "label": "معدل النجاح"
+      },
+      {
+        "value": "24/7",
+        "label": "Available"
+      },
+      {
+        "value": "5★",
+        "label": "Rating"
+      }
+    ],
+    "paragraph": [
+      {
+        "text": "AI Doctor Study(أ) مرافقة الدراسة التابعة لمؤسسة AI التي تم بناؤها للطلاب الطبيين:",
+        "muted": true
+      },
+      {
+        "text": "اطرح سؤالاً، واحصل على تفسير على مستوى الطبيب.",
+        "muted": false
+      },
+      {
+        "text": "من السنة الأولى إلى امتحانات الترخيص النهائية,",
+        "muted": true
+      },
+      {
+        "text": "كل إجابة بنيت لمساعدتك على فهمها ليس فقط حفظها.",
+        "muted": false
+      }
+    ],
+    "actions": [
+      {
+        "label": "التوقيع مجانا",
+        "href": "/app"
+      },
+      {
+        "label": "Login",
+        "href": "/app"
+      },
+      {
+        "label": "See Pricing",
+        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+      }
+    ]
+  },
+  "team": {
+    "eyebrow": "شهادات",
+    "title": "مؤمنة بالطلاب الذين يحتاجون للمرور.",
+    "socials": [
+      {
+        "label": "Instagram",
+        "href": "https://instagram.com",
+        "icon": "instagram"
+      },
+      {
+        "label": "الفيسبوك",
+        "href": "https://facebook.com",
+        "icon": "facebook"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com",
+        "icon": "linkedin"
+      },
+      {
+        "label": "X",
+        "href": "https://x.com",
+        "icon": "twitter"
+      }
+    ],
+    "members": [
+      {
+        "name": "Ahmed Al-Rashidi",
+        "role": "MBBS Year 4, UAE",
+        "quote": "شرح الصيدلة أفضل من أستاذي مرّت بتميز.",
+        "initials": "AA"
+      },
+      {
+        "name": "Priya Sharma",
+        "role": "USMLE Step 1 Cleared, India",
+        "quote": "سأل 200 سؤال خلال المرحلة الأولى كُلّ إجابة كَانتْ مُراقبة.",
+        "initials": "PS"
+      },
+      {
+        "name": "Omar Hassan",
+        "role": "PLAB Candidate, Egypt",
+        "quote": "وميزة الحالات السريرية غير حقيقية. مثل وجود مستشار في جيبك.",
+        "initials": "OH"
+      },
+      {
+        "name": "Sarah Chen",
+        "role": "السنة الدراسية الطبية 3، المملكة المتحدة",
+        "quote": "انقذت طريقة المخدرات امتحاني للصيدلة بلطف.",
+        "initials": "SC"
+      },
+      {
+        "name": "Khalid Mansoor",
+        "role": "السنة النهائية",
+        "quote": "أستخدمه كل يوم يستحق كل قرش من برو.",
+        "initials": "KM"
+      }
+    ],
+    "more": {
+      "title": "انضم إلى 000 50 طالب يدرسون أذكى",
+      "cta": "ابدأ",
+      "href": "/app"
+    }
+  },
+  "pricing": {
+    "eyebrow": "الخصخصة",
+    "title": "ابدأوا ترتقي عندما ينتهي موسم الامتحان.",
+    "description": "لا بطاقة إئتمان مجاناً ألغي برنامج \"برو\" في أي وقت.",
+    "plans": [
+      {
+        "name": "مجانا",
+        "price": "$0",
+        "period": "/month",
+        "description": "يكفي للحصول على أسبوع دراسي عادي.",
+        "features": [
+          "20 سؤالا في اليوم",
+          "الموضوعات الأساسية",
+          "المعيار AI"
+        ],
+        "cta": {
+          "label": "ابدأوا بالمجان",
+          "href": "/app"
+        }
+      },
+      {
+        "name": "Pro",
+        "price": "$2.99",
+        "period": "/month",
+        "description": "كل شيء مفتوح لموسم الامتحانات.",
+        "features": [
+          "أسئلة غير محدودة",
+          "جميع المواضيع",
+          "كلود آي",
+          "تحليل الصور",
+          "القضايا السريرية",
+          "المخدرات",
+          "USMLE/PLAB Prep",
+          "بطاقات الاشتباك"
+        ],
+        "cta": {
+          "label": "إحصلْ على Pro",
+          "href": "/app"
+        },
+        "badge": "معظم الناس",
+        "highlighted": true,
+        "note": "وقّع أو سجل في البداية ستستمرين بالمغادرة من هناك."
+      }
+    ],
+    "discountNote": "أيها الطالب؟ رمز الاستخدامMED20عند خروج 20% من برو."
+  },
+  "contact": {
+    "eyebrow": "ابدأ",
+    "title": "هل أنت مستعد للدراسة أكثر ذكاء؟?",
+    "description": "انضم إلى 000 50 طالب طبيAI Doctor Study.",
+    "actions": [
+      {
+        "label": "ابدأوا بالمجان",
+        "href": "/app"
+      },
+      {
+        "label": "إحصلْ على Pro",
+        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+      }
+    ]
+  }
+}

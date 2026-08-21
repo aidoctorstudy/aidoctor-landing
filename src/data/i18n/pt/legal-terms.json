@@ -1,0 +1,718 @@
+{
+  "eyebrow": "Jurídico",
+  "title": "Termos de serviço",
+  "lastUpdated": "17 August 2026",
+  "scope": "Aplica-seaidoctor.studye aAI Doctor Studyapp",
+  "summary": [
+    [
+      {
+        "text": "AI Doctor Studyé um"
+      },
+      {
+        "text": "ferramenta de estudo para estudantes de medicina",
+        "bold": true
+      },
+      {
+        "text": "— não é um conselho médico e nunca deve ser utilizado para prestar cuidados reais aos doentes."
+      }
+    ],
+    [
+      {
+        "text": "As respostas da IA podem estar erradas."
+      },
+      {
+        "text": "Verificar sempre",
+        "bold": true
+      },
+      {
+        "text": "contra seus livros didáticos, professores e diretrizes oficiais."
+      }
+    ],
+    [
+      {
+        "text": "O plano livre é grátis."
+      },
+      {
+        "text": "Pro renova mensalmente",
+        "bold": true
+      },
+      {
+        "text": "através de Gumroad e você pode cancelar a qualquer momento — você mantém Pro até que seu período pago termine."
+      }
+    ],
+    [
+      {
+        "text": "Não compartilhe contas, raspe nosso conteúdo ou use o aplicativo para quebrar as regras de sua universidade ou comissão de exames."
+      }
+    ],
+    [
+      {
+        "text": "Sê justo connosco e seremos justos contigo. Perguntas?"
+      },
+      {
+        "text": "support@aidoctor.study",
+        "href": "mailto:support@aidoctor.study"
+      },
+      {
+        "text": "."
+      }
+    ]
+  ],
+  "sections": [
+    {
+      "id": "agreement",
+      "number": "01",
+      "title": "Acordo com estes Termos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Estes Termos de Serviço (“Termos”) são um acordo entre você e o operador deAI Doctor Study(“AI Doctor Study“, “nós”, “nós”). Eles cobrem o seu uso do site em"
+            },
+            {
+              "text": "aidoctor.study",
+              "href": "https://aidoctor.study"
+            },
+            {
+              "text": ", nossos aplicativos, e tudo o que fornecemos através deles (em conjunto, o “Serviço”)."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Ao criar uma conta, adquirir uma subscrição ou simplesmente utilizar o Serviço, você concorda com estes Termos e com os nossos"
+            },
+            {
+              "text": "Política de Privacidade",
+              "href": "/privacy"
+            },
+            {
+              "text": ","
+            },
+            {
+              "text": "Política de Cookies",
+              "href": "/cookies"
+            },
+            {
+              "text": ", e"
+            },
+            {
+              "text": "Política de restituições",
+              "href": "/refunds"
+            },
+            {
+              "text": "Se você não concordar, por favor, não use o Serviço."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Você deve ser pelo menos"
+            },
+            {
+              "text": "16 anos",
+              "bold": true
+            },
+            {
+              "text": "para usar o Serviço, e idade suficiente para formar um contrato vinculativo em seu país para comprar uma assinatura."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "service",
+      "number": "02",
+      "title": "O Serviço",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "AI Doctor Studyé um companheiro de estudo alimentado por IA para estudantes de medicina. Dependendo do seu plano, o Serviço pode incluir explicações e respostas geradas por IA, prática de perguntas, material de estudo organizado por ano e exame (como MBBS), vídeos educacionais incorporados e recursos de progresso."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "O Serviço destina-se aos alunos que se preparam para cursos e exames médicos. É um"
+            },
+            {
+              "text": "ajuda à aprendizagem",
+              "bold": true
+            },
+            {
+              "text": "— nada mais."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medical",
+      "number": "03",
+      "title": "Utilização educativa apenas — não aconselhamento médico",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "danger",
+          "label": "Leia este com cuidado",
+          "paragraphs": [
+            [
+              {
+                "text": "AI Doctor Studyé para"
+              },
+              {
+                "text": "apenas preparação de exames e educação",
+                "bold": true
+              },
+              {
+                "text": "É, sim"
+              },
+              {
+                "text": "não aconselhamento médico",
+                "bold": true
+              },
+              {
+                "text": ", não uma ferramenta diagnóstica, e não um sistema de apoio à decisão clínica. Ele nunca deve ser usado para diagnosticar, tratar ou gerenciar pacientes reais, ou para tomar qualquer decisão sobre a saúde de uma pessoa real."
+              }
+            ],
+            [
+              {
+                "text": "Se for um doente ou necessitar de ajuda médica, fale com um médico qualificado. Em caso de emergência, contacte os serviços de emergência locais."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "O conteúdo no Serviço — incluindo a saída de IA — pode estar incompleto, desatualizado ou simplesmente errado. A prática clínica também varia entre países, hospitais e diretrizes. Você é responsável por verificar tudo contra fontes autoritárias: seu currículo oficial, livros didáticos, professores e diretrizes nacionais atuais."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "number": "04",
+      "title": "Teor gerado por IA",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Grandes partes do Serviço são geradas por inteligência artificial. Modelos de IA podem produzir conteúdo que parece confiante, mas é impreciso, incompleto ou tendenciosa (“alucinações”). Não garantimos a precisão, completude, ou adequação a exames de qualquer saída de IA."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Tratar as respostas da IA como ponto de partida para o estudo, não como a palavra final."
+              }
+            ],
+            [
+              {
+                "text": "Cruze qualquer coisa importante antes de contar com isso em um exame ou atribuição."
+              }
+            ],
+            [
+              {
+                "text": "Se você encontrar uma resposta errada, nós realmente gostaríamos de saber — relate-a para"
+              },
+              {
+                "text": "support@aidoctor.study",
+                "href": "mailto:support@aidoctor.study"
+              },
+              {
+                "text": "."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "account",
+      "number": "05",
+      "title": "A sua conta",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Você assina paraAI Doctor Studycom a sua conta Google. Concorda em:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "fornecer informações precisas (como o seu nome, ano de estudo e exame) durante a integração;"
+              }
+            ],
+            [
+              {
+                "text": "manter sua conta do Google segura — qualquer coisa feita através de sua conta é sua responsabilidade;"
+              }
+            ],
+            [
+              {
+                "text": "usar uma conta por pessoa e não compartilhar, vender ou transferir sua conta ou acesso Pro;"
+              }
+            ],
+            [
+              {
+                "text": "diga-nos imediatamente em"
+              },
+              {
+                "text": "support@aidoctor.study",
+                "href": "mailto:support@aidoctor.study"
+              },
+              {
+                "text": "se acredita que a sua conta foi comprometida."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plans",
+      "number": "06",
+      "title": "Assinatura livre de plano e Pro",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "O plano gratuito dá-lhe acesso limitado ao Serviço sem custos."
+            },
+            {
+              "text": "Pro",
+              "bold": true
+            },
+            {
+              "text": "é uma assinatura mensal paga que desbloqueia recursos adicionais e limites de uso superiores, conforme descrito no aplicativo no momento da compra."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "A pagar.",
+                "bold": true
+              },
+              {
+                "text": "Os pagamentos pro são processados por"
+              },
+              {
+                "text": "Gumroad",
+                "href": "https://gumroad.com"
+              },
+              {
+                "text": ", nosso provedor de pagamento e comerciante de registro. Seu recibo, fatura e quaisquer impostos aplicáveis (como IVA/GST) vêm da Gumroad."
+              }
+            ],
+            [
+              {
+                "text": "Renovação automática.",
+                "bold": true
+              },
+              {
+                "text": "Pro renova automaticamente a cada mês até que você cancele. O preço de renovação é o preço mostrado quando você assinou, a menos que o informemos de uma mudança com antecedência."
+              }
+            ],
+            [
+              {
+                "text": "A cancelar.",
+                "bold": true
+              },
+              {
+                "text": "Você pode cancelar a qualquer momento de Configurações → Assinatura no aplicativo, que leva você para Gumroad para concluir o cancelamento. Você mantém Pro até o fim do período pelo qual já pagou, e então volta para o plano gratuito automaticamente."
+              }
+            ],
+            [
+              {
+                "text": "O preço muda.",
+                "bold": true
+              },
+              {
+                "text": "Se alterarmos o preço Pro, daremos um aviso prévio razoável. O novo preço só se aplica a partir de sua próxima renovação, e você pode cancelar antes que ele faça efeito."
+              }
+            ],
+            [
+              {
+                "text": "Uso justo.",
+                "bold": true
+              },
+              {
+                "text": "Os recursos “ilimitados” estão sujeitos a uso justo, pessoal e não automatizado. Podemos aplicar limites razoáveis para proteger o Serviço de abusos."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "refunds",
+      "number": "07",
+      "title": "Cancelamento e reembolsos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "As restituições são cobertas pelo nosso"
+            },
+            {
+              "text": "Política de restituições",
+              "href": "/refunds"
+            },
+            {
+              "text": ", que faz parte destes Termos. Resumindo: cancelar para futuras renovações, mas não é um reembolso do período atual; as compras pela primeira vez têm uma janela de devolução de dinheiro curta; e pagamentos reembolsados ou cobrados terminam o acesso Pro imediatamente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "acceptable",
+      "number": "08",
+      "title": "Utilização aceitável",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Concordas em não:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "usar o Serviço para qualquer coisa ilegal, ou de uma forma que nos prejudique, outros usuários, ou qualquer outra pessoa;"
+              }
+            ],
+            [
+              {
+                "text": "usar o Serviço para enganar — por exemplo, usá-lo durante um exame ou avaliação onde ajuda externa ou ferramentas de IA são proibidas pela sua universidade ou conselho de exame. As regras de integridade acadêmica da sua instituição são da sua responsabilidade;"
+              }
+            ],
+            [
+              {
+                "text": "raspar, descarregar a granel, ou extrair sistematicamente o nosso conteúdo ou bancos de perguntas, ou usar o Serviço para construir um produto concorrente ou treinar um modelo de IA;"
+              }
+            ],
+            [
+              {
+                "text": "engenharia reversa, sonda, ou interferir com o Serviço, contornar limites de utilização ou paywalls, ou acessá-lo por qualquer meio automatizado;"
+              }
+            ],
+            [
+              {
+                "text": "vender, alugar ou explorar comercialmente o Serviço ou sua conta;"
+              }
+            ],
+            [
+              {
+                "text": "tentar gerar conteúdo através do Serviço que seja ilegal, prejudicial ou infrinja os direitos de qualquer pessoa."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Podemos suspender ou encerrar contas que violem essas regras (ver Terminação abaixo)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ip",
+      "number": "09",
+      "title": "Seu conteúdo e nosso conteúdo",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "O teu conteúdo.",
+              "bold": true
+            },
+            {
+              "text": "Você mantém a propriedade de qualquer coisa que você digita no Serviço (como perguntas e notas). Você nos dá uma licença limitada para armazenar e processá-lo puramente para executar e melhorar o Serviço para você."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "O nosso conteúdo.",
+              "bold": true
+            },
+            {
+              "text": "O Serviço — incluindo seu design, marca, logotipo, software e o conteúdo de estudo que criamos ou organizamos — pertence a nós ou aos nossos licenciantes e está protegido por leis de propriedade intelectual. Nós lhe damos uma licença pessoal, não transferível e não exclusiva para usá-la para seus próprios estudos enquanto estes Termos se aplicam. Essa licença não permite copiar, republicar ou redistribuir nosso conteúdo."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Saída de IA.",
+              "bold": true
+            },
+            {
+              "text": "Sujeito a estes Termos e quaisquer direitos de terceiros, você pode usar a saída de IA gerada para você em seus estudos pessoais. Você é responsável pela forma como a usa, incluindo o cumprimento das regras da sua instituição sobre o trabalho assistido por IA."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "thirdparty",
+      "number": "10",
+      "title": "Serviços de terceiros",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "O Serviço é construído sobre, e se conecta a, serviços geridos por outras empresas. Os seus termos aplicam-se às suas partes da experiência:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "Google / Firebase",
+                "bold": true
+              },
+              {
+                "text": "— registo, armazenamento de dados e análise. Ver o"
+              },
+              {
+                "text": "Política de Privacidade do Google",
+                "href": "https://policies.google.com/privacy"
+              },
+              {
+                "text": "."
+              }
+            ],
+            [
+              {
+                "text": "Gumroad",
+                "bold": true
+              },
+              {
+                "text": "— processamento de pagamentos para a Pro. Ver"
+              },
+              {
+                "text": "Termos da Gumroad",
+                "href": "https://gumroad.com/terms"
+              },
+              {
+                "text": "."
+              }
+            ],
+            [
+              {
+                "text": "YouTube",
+                "bold": true
+              },
+              {
+                "text": "— alguns vídeos no Serviço são fornecidos através do YouTube API Services. Ao usar esses recursos você também concorda com o"
+              },
+              {
+                "text": "Termos de serviço do YouTube",
+                "href": "https://www.youtube.com/t/terms"
+              },
+              {
+                "text": ", e o tratamento de dados do Google é descrito no"
+              },
+              {
+                "text": "Política de Privacidade do Google",
+                "href": "https://policies.google.com/privacy"
+              },
+              {
+                "text": "."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Não somos responsáveis por serviços de terceiros, seu conteúdo ou sua disponibilidade."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "availability",
+      "number": "11",
+      "title": "Disponibilidade e alterações ao Serviço",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Trabalhamos duro para manterAI Doctor Studyrápido e disponível, mas não podemos prometer que será ininterrupta ou livre de erros. Podemos adicionar, alterar ou remover recursos, e podemos impor ou ajustar limites de uso, a qualquer momento. Se fizermos uma mudança que reduz materialmente o que o Pro inclui, você sempre pode cancelar antes de sua próxima renovação."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disclaimer",
+      "number": "12",
+      "title": "Limitações",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Na medida máxima permitida por lei, o Serviço é prestado"
+            },
+            {
+              "text": "“como está” e “como disponível”",
+              "bold": true
+            },
+            {
+              "text": ", sem garantias de qualquer tipo, expressas ou implícitas — incluindo quaisquer garantias implícitas de comercialização, adequação para uma finalidade específica, precisão ou não-infração. Não garantimos que o Serviço atenderá às suas necessidades, que o conteúdo é preciso ou relevante para exames, ou que o uso do Serviço produzirá qualquer resultado acadêmico específico."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "liability",
+      "number": "13",
+      "title": "Limitação da responsabilidade",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Na medida máxima permitida pela lei: não somos responsáveis por danos indiretos, incidentais, especiais, conseqüentes ou punitivos, ou por lucros perdidos, dados perdidos ou resultados acadêmicos (incluindo resultados de exames), decorrentes do seu uso ou incapacidade de usar o Serviço."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "A nossa responsabilidade total por todas as reclamações relativas ao Serviço está limitada ao maior de (a) o montante que nos pagou pelo Serviço nos 12 meses anteriores ao pedido, ou (b) USD 20."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Nada nestes Termos exclui ou limita a responsabilidade que não pode ser excluída ou limitada ao abrigo da lei aplicável, e nada afeta seus direitos legais como consumidor."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "termination",
+      "number": "14",
+      "title": "Rescisão",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Você pode parar de usar o Serviço e excluir sua conta a qualquer momento. Podemos suspender ou encerrar o seu acesso se violar materialmente estes Termos (por exemplo, partilha de contas, raspagem ou abuso de pagamento), se exigido por lei, ou se interrompermos o Serviço. Se terminarmos sem causa enquanto você tiver um período de pagamento ativo, reembolsaremos a parte não utilizada desse período. Seções que por sua natureza devem sobreviver (como 09, 12, 13 e 16) sobreviver ao término."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "number": "15",
+      "title": "Alterações a estes Termos",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Podemos atualizar estes Termos de tempos em tempos. Se uma alteração for material, tomaremos medidas razoáveis para notificá-lo — como um aviso no aplicativo ou um e-mail — antes que faça efeito. A data “Última atualização” no topo mostra a versão atual. Continuar a usar o Serviço após uma alteração fazer efeito significa que você aceita os Termos atualizados."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "law",
+      "number": "16",
+      "title": "Lei aplicável",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "warning",
+          "label": "Substituição — finalizar com aconselhamento jurídico antes do lançamento",
+          "paragraphs": [
+            [
+              {
+                "text": "Esta secção designa a lei e jurisdição que regem os litígios. Isso depende de onde a entidade operacional está registrada, que ainda não foi finalizada — preenchê-la (e revê-la) antes de esta política ser baseada."
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "number": "17",
+      "title": "Contacto",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Perguntas sobre estes Termos? Envie-nos um e-mail para"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "— nós também somos estudantes deste material, e nós realmente lemos nossa caixa de entrada."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

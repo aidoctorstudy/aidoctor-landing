@@ -1,0 +1,401 @@
+{
+  "eyebrow": "Droit",
+  "title": "Politique de remboursement",
+  "lastUpdated": "17 August 2026",
+  "scope": "S'appliqueAI Doctor StudyAchats pro effectués par Gumroad",
+  "summary": [
+    [
+      {
+        "text": "Le premier mois n'a pas marché ?",
+        "bold": true
+      },
+      {
+        "text": "Envoyez-nous un e-mail dans les 7 jours suivant votre premier achat Pro et nous vous rembourserons, pas de drame."
+      }
+    ],
+    [
+      {
+        "text": "Annulation du remboursement.",
+        "bold": true
+      },
+      {
+        "text": "Annuler à tout moment — vous gardez Pro jusqu'à ce que votre mois payé se termine, et vous ne serez tout simplement pas facturé à nouveau."
+      }
+    ],
+    [
+      {
+        "text": "Renouvellements",
+        "bold": true
+      },
+      {
+        "text": "généralement ne sont pas remboursables une fois un nouveau mois commence, sauf pour les erreurs de facturation ou où la loi dit le contraire."
+      }
+    ],
+    [
+      {
+        "text": "Les remboursements reviennent à votre mode de paiement original via Gumroad, généralement dans les 5-10 jours ouvrables."
+      }
+    ],
+    [
+      {
+        "text": "Une fois un paiement remboursé ou remboursé,"
+      },
+      {
+        "text": "L'accès pro se termine immédiatement",
+        "bold": true
+      },
+      {
+        "text": "."
+      }
+    ]
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "number": "01",
+      "title": "Comment fonctionne la facturation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "AI Doctor StudyPro est un abonnement mensuel facturé par"
+            },
+            {
+              "text": "Gumroad",
+              "href": "https://gumroad.com"
+            },
+            {
+              "text": ", notre fournisseur de paiement et marchand de documents. Gumroad facture votre mode de paiement, émet votre reçu et traite les taxes applicables. Les remboursements que nous agréons sont émis par Gumroad retour au mode de paiement que vous avez utilisé."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "number": "02",
+      "title": "Annulation de votre abonnement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Vous pouvez annuler à tout moment — aucun délai de préavis, aucune question:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            [
+              {
+                "text": "Ouvrir l'application →"
+              },
+              {
+                "text": "Paramètres → Abonnement → Annuler l'abonnement",
+                "bold": true
+              },
+              {
+                "text": "(ceci vous amène à Gumroad, où l'annulation est terminée), ou"
+              }
+            ],
+            [
+              {
+                "text": "Annuler directement de votre"
+              },
+              {
+                "text": "Page des abonnements Gumroad",
+                "href": "https://gumroad.com/subscriptions"
+              },
+              {
+                "text": "ou le lien dans votre email de réception Gumroad."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "L'annulation arrête toutes les charges futures."
+            },
+            {
+              "text": "Vous gardez un accès Pro complet jusqu'à la fin de la période que vous avez déjà payé",
+              "bold": true
+            },
+            {
+              "text": ", puis votre compte revient au plan libre automatiquement. L'annulation n'est pas un remboursement de la période actuelle, et nous ne donnons pas de remboursement partiel pour les jours non utilisés."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "guarantee",
+      "number": "03",
+      "title": "garantie de 7 jours sur votre premier achat",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Nous voulons que Pro vous aide à étudier. Si ce n'est pas pour vous, envoyez-nous un mail"
+            },
+            {
+              "text": "7 jours de votre premier paiement Pro",
+              "bold": true
+            },
+            {
+              "text": "et nous le rembourserons en entier. Cela s'applique une fois par personne, à votre premier paiement seulement — c'est une chance d'essayer Pro correctement, pas un mois libre récurrent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "renewals",
+      "number": "04",
+      "title": "Paiements de renouvellement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Parce que vous pouvez annuler n'importe quand avant un renouvellement, les paiements de renouvellement sont généralement"
+            },
+            {
+              "text": "non remboursable",
+              "bold": true
+            },
+            {
+              "text": "une fois la nouvelle période de facturation commencée. Nous faisons des exceptions quand quelque chose de notre côté a mal tourné, par exemple:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "vous avez été facturé après avoir annulé avant la date de renouvellement;"
+              }
+            ],
+            [
+              {
+                "text": "vous avez été inculpé deux fois pour la même période;"
+              }
+            ],
+            [
+              {
+                "text": "un grave problème technique de notre côté a rendu Pro inutilisable pour une partie substantielle de la période et nous ne pouvions pas le réparer."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Si l'un d'eux se produit, contactez-nous et nous le rendrons bien — avec un remboursement ou un crédit de compte pour la période touchée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "request",
+      "number": "05",
+      "title": "Comment demander un remboursement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Courriel"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "à partir de toute adresse, et inclure:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "des"
+              },
+              {
+                "text": "adresse email sur votre reçu Gumroad",
+                "bold": true
+              },
+              {
+                "text": ";"
+              }
+            ],
+            [
+              {
+                "text": "la valeur approximative"
+              },
+              {
+                "text": "date de la redevance",
+                "bold": true
+              },
+              {
+                "text": "(ou le numéro d'ordre ou de reçu Gumroad si vous l'avez);"
+              }
+            ],
+            [
+              {
+                "text": "une phrase sur"
+              },
+              {
+                "text": "ce qui a mal tourné",
+                "bold": true
+              },
+              {
+                "text": "— elle nous aide vraiment à améliorer l'application."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Nous voulons répondre dans"
+            },
+            {
+              "text": "2 jours ouvrables",
+              "bold": true
+            },
+            {
+              "text": ". Les remboursements approuvés sont émis par l'entremise de Gumroad et figurent généralement sur votre déclaration"
+            },
+            {
+              "text": "5-10 jours ouvrables",
+              "bold": true
+            },
+            {
+              "text": ", selon votre banque."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "after",
+      "number": "06",
+      "title": "Ce qui se passe après un remboursement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Lorsqu'un paiement est remboursé, l'accès Pro qu'il a payé pour les fins"
+            },
+            {
+              "text": "immédiatement",
+              "bold": true
+            },
+            {
+              "text": "— votre compte retourne au forfait gratuit et vos données d'étude restent intactes. Si une charge remboursée est traitée de nouveau par erreur, contactez-nous et nous l'inverserons."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chargebacks",
+      "number": "07",
+      "title": "Remboursements",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "warning",
+          "label": "Parlez-nous d'abord",
+          "paragraphs": [
+            [
+              {
+                "text": "Les remises en charges (discutant une charge avec votre banque) coûtent de petits produits comme notre argent réel en frais, même lorsqu'ils sont résolus. Si quelque chose semble mal sur votre déclaration, envoyez-nous un courriel avant de contester — nous pouvons presque toujours le réparer plus rapidement que votre banque."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Quand une chargeback est déposée, Gumroad nous avise et"
+            },
+            {
+              "text": "L'accès pro est révoqué automatiquement et immédiatement",
+              "bold": true
+            },
+            {
+              "text": ". Nous risquons de décliner les achats futurs de comptes avec une activité de remise abusive. Bien sûr, rien ici ne limite votre droit légal de contester des accusations réellement non autorisées."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rights",
+      "number": "08",
+      "title": "Vos droits statutaires",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Cette politique s'ajoute à vos droits en tant que consommateur — elle ne les réduit jamais. Si la loi sur la protection des consommateurs où vous vivez vous donne des droits de remboursement ou d'annulation plus élevés (par exemple, des droits d'annulation pour les abonnements numériques dans certains pays), ces droits s'appliquent. Lorsque la législation locale l'exige, en commençant votre abonnement immédiatement vous consentez à la fourniture immédiate du service numérique et reconnaissez comment cela peut affecter tout droit de retrait légal."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "number": "09",
+      "title": "Changements apportés à cette politique",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Nous pouvons mettre à jour cette politique de remboursement de temps à autre. La version en vigueur lorsque vous avez été inculpé est celle qui s'applique à cette accusation. La date de la dernière mise à jour ci-dessus montre la version actuelle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "number": "10",
+      "title": "Personne à contacter",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Rien de clair, ou une situation que cette page ne couvre pas ? Courriel"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "— un humain le lit, et nous préférerions le trier plutôt que de discuter."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

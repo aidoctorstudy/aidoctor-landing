@@ -1,0 +1,401 @@
+{
+  "eyebrow": "Recht",
+  "title": "Rückerstattungspolitik",
+  "lastUpdated": "17 August 2026",
+  "scope": "Gilt fürAI Doctor StudyPro-Einkäufe durch Gumroad gemacht",
+  "summary": [
+    [
+      {
+        "text": "Der erste Monat hat nicht funktioniert?",
+        "bold": true
+      },
+      {
+        "text": "Senden Sie uns innerhalb von 7 Tagen nach Ihrem ersten Pro-Kauf und wir erstatten es, kein Drama."
+      }
+    ],
+    [
+      {
+        "text": "Stornierung ≠ Rückerstattung.",
+        "bold": true
+      },
+      {
+        "text": "Abbrechen Sie jederzeit — Sie halten Pro, bis Ihr bezahlter Monat endet, und Sie werden einfach nicht wieder berechnet."
+      }
+    ],
+    [
+      {
+        "text": "Erneuerungen",
+        "bold": true
+      },
+      {
+        "text": "in der regel sind nicht rückerstattungsfähig, wenn ein neuer monat beginnt, außer bei abrechnungsfehlern oder wenn das gesetz anders sagt."
+      }
+    ],
+    [
+      {
+        "text": "Rückerstattungen gehen zurück zu Ihrer ursprünglichen Zahlungsmethode über Gumroad, in der Regel innerhalb von 5-10 Werktagen."
+      }
+    ],
+    [
+      {
+        "text": "Sobald eine Zahlung zurückerstattet oder zurückgezahlt wird,"
+      },
+      {
+        "text": "Pro Access endet sofort",
+        "bold": true
+      },
+      {
+        "text": "."
+      }
+    ]
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "number": "01",
+      "title": "Wie Abrechnung funktioniert",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "AI Doctor StudyPro ist ein monatliches Abonnement durch"
+            },
+            {
+              "text": "Gumroad",
+              "href": "https://gumroad.com"
+            },
+            {
+              "text": ", unser Zahlungsanbieter und Händler von Rekord. Gumroad berechnet Ihre Zahlungsmethode, stellt Ihren Empfang aus und behandelt alle anwendbaren Steuern. Rückerstattungen, die wir genehmigen, werden über Gumroad zurück an die von Ihnen verwendete Zahlungsmethode ausgegeben."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "number": "02",
+      "title": "Stornierung Ihres Abonnements",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Sie können jederzeit stornieren — keine Kündigungsfrist, keine Fragen:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            [
+              {
+                "text": "App öffnen →"
+              },
+              {
+                "text": "Einstellungen → Abonnement → Abbrechen Abonnement",
+                "bold": true
+              },
+              {
+                "text": "(dies führt Sie nach Gumroad, wo die Stornierung abgeschlossen ist), oder"
+              }
+            ],
+            [
+              {
+                "text": "Direkt abbrechen"
+              },
+              {
+                "text": "Gumroad Abonnements Seite",
+                "href": "https://gumroad.com/subscriptions"
+              },
+              {
+                "text": "oder den Link in Ihrer Gumroad-E-Mail."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Die Stornierung hält alle zukünftigen Gebühren."
+            },
+            {
+              "text": "Sie halten vollen Pro-Zugriff bis zum Ende der Zeit, die Sie bereits bezahlt haben für",
+              "bold": true
+            },
+            {
+              "text": ", dann wird Ihr Konto automatisch wieder zum kostenlosen Plan. Stornierung ist keine Rückerstattung der aktuellen Periode, und wir geben keine teilweise Rückerstattung für ungenutzte Tage."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "guarantee",
+      "number": "03",
+      "title": "7-tägige garantie für ihren ersten kauf",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Wir wollen, dass Pro Ihnen hilft zu studieren. Wenn es nicht für Sie ist, mailen Sie uns innerhalb"
+            },
+            {
+              "text": "7 Tage Ihrer ersten Pro-Zahlung",
+              "bold": true
+            },
+            {
+              "text": "und wir erstatten es vollständig. Dies gilt einmal pro Person, nur für Ihre erste Zahlung — es ist eine Chance, Pro richtig zu versuchen, nicht einen wiederkehrenden freien Monat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "renewals",
+      "number": "04",
+      "title": "Verlängerungszahlungen",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Weil Sie jederzeit vor einer Verlängerung stornieren können, sind die Verlängerungszahlungen in der Regel"
+            },
+            {
+              "text": "nicht rückerstattungsfähig",
+              "bold": true
+            },
+            {
+              "text": "sobald die neue Abrechnungsperiode begonnen hat. Wir machen Ausnahmen, wenn etwas auf unserer Seite schief ging, zum Beispiel:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "sie wurden nach stornierung vor dem verlängerungsdatum berechnet;"
+              }
+            ],
+            [
+              {
+                "text": "sie wurden zweimal für den gleichen zeitraum berechnet;"
+              }
+            ],
+            [
+              {
+                "text": "ein ernstes technisches Problem auf unserer Seite machte Pro für einen wesentlichen Teil der Zeit unbrauchbar und wir konnten es nicht beheben."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Wenn einer von denen passiert, kontaktieren Sie uns und wir machen es richtig - mit einer Rückerstattung oder Kontogutschrift für den betroffenen Zeitraum."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "request",
+      "number": "05",
+      "title": "Wie eine Rückerstattung anfordern",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "E-Mail senden"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "von jeder adresse und beinhalten:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            [
+              {
+                "text": "die"
+              },
+              {
+                "text": "e-Mail-Adresse auf Ihrem Gumroad-Empfang",
+                "bold": true
+              },
+              {
+                "text": ";"
+              }
+            ],
+            [
+              {
+                "text": "die nähe"
+              },
+              {
+                "text": "datum der gebühr",
+                "bold": true
+              },
+              {
+                "text": "(oder die Gumroad Order/Receipt Nummer, wenn Sie es haben);"
+              }
+            ],
+            [
+              {
+                "text": "einen satz auf"
+              },
+              {
+                "text": "was schief ging",
+                "bold": true
+              },
+              {
+                "text": "— es hilft uns wirklich, die app zu verbessern."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Wir wollen innerhalb von"
+            },
+            {
+              "text": "2 werktage",
+              "bold": true
+            },
+            {
+              "text": ". Genehmigte Erstattungen werden durch Gumroad ausgegeben und erscheinen in der Regel auf Ihrer Erklärung innerhalb"
+            },
+            {
+              "text": "5–10 werktage",
+              "bold": true
+            },
+            {
+              "text": "je nach bank."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "after",
+      "number": "06",
+      "title": "Was passiert nach einer Rückerstattung",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Wenn eine Zahlung zurückerstattet wird, der Pro-Zugang, den es für die Enden bezahlt"
+            },
+            {
+              "text": "sofort",
+              "bold": true
+            },
+            {
+              "text": "— Ihr Konto kehrt zum kostenlosen Plan zurück und Ihre Studiendaten bleiben intakt. Wenn eine zurückerstattete Gebühr irgendwie wieder fälschlich verarbeitet wird, kontaktieren Sie uns und wir werden sie umkehren."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chargebacks",
+      "number": "07",
+      "title": "Rückmeldungen",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "warning",
+          "label": "Bitte sprechen Sie uns zuerst",
+          "paragraphs": [
+            [
+              {
+                "text": "Chargebacks (die Zahlung einer Gebühr mit Ihrer Bank) kosten kleine Produkte wie unser echtes Geld in Gebühren, auch wenn aufgelöst. Wenn etwas schief auf Ihrer Aussage aussieht, schicken Sie uns eine E-Mail vor dem Disputing – wir können es fast immer schneller beheben als Ihre Bank kann."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Wenn eine Rückmeldung eingereicht wird, benachrichtigt Gumroad uns und"
+            },
+            {
+              "text": "Pro Zugriff wird automatisch und sofort widerrufen",
+              "bold": true
+            },
+            {
+              "text": ". Wir können zukünftige Einkäufe von Konten mit belastenden Rückbuchungsaktivitäten ablehnen. Natürlich beschränkt hier nichts Ihr rechtliches Recht auf Auseinandersetzung mit wirklich unbefugten Gebühren."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rights",
+      "number": "08",
+      "title": "Ihre gesetzlichen Rechte",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Diese Politik steht neben Ihren Rechten als Verbraucher – sie reduziert sie nie. Wenn das Verbraucherschutzrecht, in dem Sie leben, Ihnen stärkere Erstattungs- oder Löschungsrechte (z.B. Abkühlrechte für digitale Abonnements in einigen Ländern) gewährt, gelten diese Rechte. Wenn das lokale Recht es erfordert, erklären Sie sich, indem Sie Ihr Abonnement sofort mit der sofortigen Lieferung des digitalen Dienstes beginnen und bestätigen, wie sich dies auf ein gesetzliches Widerrufsrecht auswirken kann."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "changes",
+      "number": "09",
+      "title": "Änderungen an dieser Politik",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Wir können diese Rückerstattungsrichtlinie von Zeit zu Zeit aktualisieren. Die Version, in der Sie geladen wurden, ist diejenige, die für diese Gebühr gilt. Das „Letzte aktualisierte“ Datum oben zeigt die aktuelle Version."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "contact",
+      "number": "10",
+      "title": "Kontakt",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "runs": [
+            {
+              "text": "Etwas Unklares oder eine Situation, die diese Seite nicht abdeckt? E-Mail senden"
+            },
+            {
+              "text": "support@aidoctor.study",
+              "href": "mailto:support@aidoctor.study"
+            },
+            {
+              "text": "— ein mensch liest es, und wir würden es lieber klären, als darüber zu argumentieren."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

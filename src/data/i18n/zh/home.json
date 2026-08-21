@@ -1,0 +1,301 @@
+{
+  "hero": {
+    "eyebrow": "AI 授权医学学习",
+    "title": "学习聪明。 通过考试.",
+    "description": "AI研究伴生为MBBS和医学生所建. 问什么,立刻得到专家的解释.",
+    "actions": [
+      {
+        "label": "注册免费",
+        "href": "/app"
+      },
+      {
+        "label": "登录",
+        "href": "/app"
+      }
+    ],
+    "trustLine": "由全世界50 000多名医科学生信任",
+    "serviceChips": [
+      "甲基溴",
+      "临床病例",
+      "药物",
+      "USMLE/PLAB 导弹",
+      "闪卡"
+    ]
+  },
+  "why": {
+    "eyebrow": "为什么AI Doctor Study",
+    "title": "一个AI,每个主题,总是可用",
+    "description": "不再搜索教科书。 问如来问医.",
+    "actions": [
+      {
+        "label": "探索特性",
+        "href": "#features"
+      },
+      {
+        "label": "见结果",
+        "href": "#about"
+      }
+    ],
+    "trailImages": [
+      "/assets/Why Dantora/01.png",
+      "/assets/Why Dantora/02.png",
+      "/assets/Why Dantora/03.png",
+      "/assets/Why Dantora/04.png",
+      "/assets/Why Dantora/05.png",
+      "/assets/Why Dantora/06.png",
+      "/assets/Why Dantora/07.png",
+      "/assets/Why Dantora/08.png"
+    ],
+    "mockup": {
+      "url": "aidoctor.study/app",
+      "question": "STEMI的一线是什么?",
+      "answer": "Aspirin 300mg被立即咀嚼,然后在90分钟内(如果有的话)紧急PCI被咀嚼——如果没有血解."
+    }
+  },
+  "servicesIntro": {
+    "eyebrow": "特征",
+    "title": "所有你需要的Ace医学院",
+    "description": "从快速回答到完整的考试准备——涵盖理解,实践和召回的五个工具."
+  },
+  "serviceCards": [
+    {
+      "index": "01",
+      "title": "大赦国际",
+      "items": [
+        "随时问任何话题",
+        "分步骤解释",
+        "您可以信任的来源"
+      ],
+      "variant": "lime"
+    },
+    {
+      "index": "02",
+      "title": "图像分析",
+      "emoji": "🩻",
+      "cta": "发现",
+      "variant": "photo"
+    },
+    {
+      "index": "03",
+      "title": "临床病例",
+      "cta": "发现",
+      "variant": "brand"
+    },
+    {
+      "index": "04",
+      "title": "药物",
+      "emoji": "💊",
+      "cta": "发现",
+      "variant": "photo"
+    },
+    {
+      "index": "05",
+      "title": "考试准备",
+      "emoji": "📝",
+      "cta": "发现",
+      "variant": "photo"
+    }
+  ],
+  "liveDemo": {
+    "eyebrow": "现场直播",
+    "title": "问得好像你问医生一样",
+    "description": "真正的交换,而不是假冒 这正是如何AI Doctor Study答对.",
+    "messages": [
+      {
+        "role": "user",
+        "text": "解释元信息机制"
+      },
+      {
+        "role": "ai",
+        "text": "Metformin主要通过激活肝脏中的AMPK来工作,这抑制了葡萄糖的生成——将肝糖原的出产减少30%. 它还能提高外围胰岛素敏感性并适度地减少肠道葡萄糖吸收."
+      },
+      {
+        "role": "user",
+        "text": "什么是反证?"
+      },
+      {
+        "role": "ai",
+        "text": "关键禁忌:eGFR < 30 mL/min(乳酸化风险),急性心力衰竭,严重的肝病,以及任何急性病预发性下氧或组织下咽."
+      }
+    ],
+    "ctaLabel": "你自己试试看aidoctor.study/app",
+    "ctaHref": "/app"
+  },
+  "about": {
+    "eyebrow": "为什么学生信任我们",
+    "stats": [
+      {
+        "value": "50K+",
+        "label": "学生"
+      },
+      {
+        "value": "98%",
+        "label": "通行率"
+      },
+      {
+        "value": "24/7",
+        "label": "可用"
+      },
+      {
+        "value": "5★",
+        "label": "评级"
+      }
+    ],
+    "paragraph": [
+      {
+        "text": "AI Doctor Study为医科学生建造的AI学习伴:",
+        "muted": true
+      },
+      {
+        "text": "问一个问题,得到医生一级的解释.",
+        "muted": false
+      },
+      {
+        "text": "从第一年的解剖学到最后的许可考试,",
+        "muted": true
+      },
+      {
+        "text": "每一个答案都是用来帮助你理解的 不只是记忆.",
+        "muted": false
+      }
+    ],
+    "actions": [
+      {
+        "label": "注册免费",
+        "href": "/app"
+      },
+      {
+        "label": "登录",
+        "href": "/app"
+      },
+      {
+        "label": "见定价",
+        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+      }
+    ]
+  },
+  "team": {
+    "eyebrow": "证词",
+    "title": "由需要通过的学生信任.",
+    "socials": [
+      {
+        "label": "内存",
+        "href": "https://instagram.com",
+        "icon": "instagram"
+      },
+      {
+        "label": "脸书",
+        "href": "https://facebook.com",
+        "icon": "facebook"
+      },
+      {
+        "label": "链接",
+        "href": "https://linkedin.com",
+        "icon": "linkedin"
+      },
+      {
+        "label": "页:1",
+        "href": "https://x.com",
+        "icon": "twitter"
+      }
+    ],
+    "members": [
+      {
+        "name": "Ahmed Al-Rashidi",
+        "role": "MBBS 第4年,阿联酋",
+        "quote": "比我的教授更能解释药理学 以分相过.",
+        "initials": "AA"
+      },
+      {
+        "name": "Priya Sharma",
+        "role": "USMLE 第1步,印度清理",
+        "quote": "在步骤一准备期间询问了200+问题. 每一个答案都亮相.",
+        "initials": "PS"
+      },
+      {
+        "name": "Omar Hassan",
+        "role": "PLAB 候选人,埃及",
+        "quote": "临床病例特征不真实. 就像有个顾问在你口袋里.",
+        "initials": "OH"
+      },
+      {
+        "name": "Sarah Chen",
+        "role": "医学学生3年级,联合王国",
+        "quote": "药效模式救了我的药检 诚相取相.",
+        "initials": "SC"
+      },
+      {
+        "name": "Khalid Mansoor",
+        "role": "巴基斯坦,MBBS最后一年",
+        "quote": "我每天都用这个 一分钱都值.",
+        "initials": "KM"
+      }
+    ],
+    "more": {
+      "title": "加入5万名以上学习聪明的学生",
+      "cta": "开始",
+      "href": "/app"
+    }
+  },
+  "pricing": {
+    "eyebrow": "定价",
+    "title": "开始免费。 当考试季开始升级.",
+    "description": "没有免费信用卡,随时取消Pro.",
+    "plans": [
+      {
+        "name": "免费",
+        "price": "$0",
+        "period": "/month",
+        "description": "足以度过正常的学习周.",
+        "features": [
+          "一天20个问题",
+          "基本主题",
+          "标准AI"
+        ],
+        "cta": {
+          "label": "免费启动",
+          "href": "/app"
+        }
+      },
+      {
+        "name": "赞成",
+        "price": "$2.99",
+        "period": "/month",
+        "description": "一切都解锁 考试季.",
+        "features": [
+          "无限制的问题",
+          "所有主题",
+          "克劳德·艾尔",
+          "图像分析",
+          "临床病例",
+          "药物",
+          "USMLE/PLAB 准备",
+          "闪卡"
+        ],
+        "cta": {
+          "label": "获取 Pro",
+          "href": "/app"
+        },
+        "badge": "最受欢迎的",
+        "highlighted": true,
+        "note": "先报名或登录——从那里继续退房."
+      }
+    ],
+    "discountNote": "学生? 使用代码MED20在退约20%的Pro."
+  },
+  "contact": {
+    "eyebrow": "开始",
+    "title": "准备好学聪明了吗?",
+    "description": "加入已经使用过的5万多医学学生AI Doctor Study。 。 。 .",
+    "actions": [
+      {
+        "label": "免费启动",
+        "href": "/app"
+      },
+      {
+        "label": "获取 Pro",
+        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+      }
+    ]
+  }
+}
