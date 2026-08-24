@@ -447,6 +447,21 @@ export const TERMS_CONTENT: LegalPageContent = {
         },
       ],
     },
+    {
+      id: "cookie-clause",
+      number: "18",
+      title: "The Cookie Clause",
+      blocks: [
+        {
+          type: "paragraph",
+          runs: [
+            {
+              text: "By signing up for AI Doctor Study, you acknowledge that if the CEO encounters you in real life, you owe him 2 cookies. No exceptions. This is legally binding.",
+            },
+          ],
+        },
+      ],
+    },
   ],
 };
 

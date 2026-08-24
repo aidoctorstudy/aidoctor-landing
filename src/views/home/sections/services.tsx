@@ -8,10 +8,11 @@
  * cards spaced 10px apart. The opener is 561 wide, the rest 447.
  */
 
+import Link from "next/link";
 import TextEngine from "spring-text-engine";
 
 import { ArrowUpRightIcon } from "@/components/ui/icons";
-import type { SectionIntro, ServiceCard } from "@/data/mocks/home";
+import { APP_URL, type SectionIntro, type ServiceCard } from "@/data/mocks/home";
 import {
   BODY_MOTION,
   EYEBROW_MOTION,
@@ -139,18 +140,20 @@ export const Services = ({ intro, cards }: ServicesProps) => (
             </ul>
           )}
 
-          {/* `items-end`, not `items-center`: Figma places the label at y 48 of
-              the 72-tall row (node 1574:611), i.e. sitting on the row's
-              baseline next to the ring — centring it drops the word below the
-              line the lime card's last list row sits on. */}
+          {/* `items-end`: Figma places the ring at y 48 of the 72-tall row
+              (node 1574:611), sitting on the row's baseline. */}
           {card.cta && (
-            <div className="flex items-end justify-between">
-              <p className="text-base leading-body lg:text-xl">{card.cta}</p>
+            <div className="flex items-end justify-end">
               {/* Node 1558:347: a 72px ring — 1px white stroke, no fill — not
-                  the filled lime disc the buttons use. */}
-              <span className="grid size-14 place-items-center rounded-full border border-white text-white lg:size-[4.5rem]">
+                  the filled lime disc the buttons use. Links straight to
+                  sign-up, same as every other CTA on the page. */}
+              <Link
+                href={APP_URL}
+                aria-label="Sign up for free"
+                className="grid size-14 place-items-center rounded-full border border-white text-white transition-colors duration-[var(--duration-fast)] ease-entrance hover:bg-white hover:text-accent lg:size-[4.5rem]"
+              >
                 <ArrowUpRightIcon className="size-[1.1875rem]" />
-              </span>
+              </Link>
             </div>
           )}
         </article>

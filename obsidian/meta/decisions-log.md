@@ -10,6 +10,178 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0038 — Topic chips in Ask AI, and Arabic/Urdu output for the clinical-simulation AI prompt
+
+- **Status:** Accepted — implemented, not live-verified in a browser this
+  session (Chrome extension unavailable, same limitation as ADR-0037)
+- **Date:** 2026-08-22
+
+**Context.** Two requests against `public/app/`: (1) selecting a subject
+in the Ask AI chat (`.subject-bar` in `#panel-chat`) should reveal a
+comprehensive list of topics for that subject as selectable chips, single-
+selected topic gets woven into the AI system prompt so answers/questions
+stay focused on it; (2) the clinical-simulation quiz (`simulation` panel,
+`07-mock-dashboard.js`) generates its case JSON via a single AI call with
+no locale awareness, so in Arabic mode (`/ar/app`) the question stem and
+MCQ options came back in English even though the rest of the UI is
+translated.
+
+**Why the existing i18n system doesn't cover either of these.** Per
+`i18n.js`'s own header, `public/app/i18n/`'s translation approach is a
+DOM dictionary keyed by exact English source strings — it rewrites text
+already on the page (or injected later, via `MutationObserver`), it does
+not and cannot change what an AI call *generates*. Both of these needed
+the AI prompt itself changed, not the translation layer.
+
+**Decision — topic chips.**
+- New `SUBJECT_TOPICS` map (`05-exam-prep.js`, next to the existing
+  `.subj-btn` wiring) with the exact topic lists given for all 13
+  subjects. 8 of those subjects already had a `.subj-btn` in the chat's
+  `.subject-bar`; the other 5 (Paediatrics, Gynaecology & Obstetrics,
+  Psychiatry, ENT, Ophthalmology) didn't exist as selectable chat
+  subjects at all, so buttons for them were added too — the request
+  supplied topic lists for all 13, which only makes sense if all 13 are
+  selectable. `General Medicine` (the default subject) has no topics
+  list, so the topic bar just stays hidden for it, same as before this
+  change.
+- New `curTopic` global (alongside the existing `curMode`/`curSubj` in
+  `01-core-utils.js`) and a new `#topicBar` element between
+  `.subject-bar` and `.controls-bar`, populated by `renderTopicBar()` on
+  every subject change (which also clears any previously selected topic
+  — topics are subject-scoped, carrying one over to an unrelated subject
+  would silently mis-focus the AI). Click toggles selection (`.on` class,
+  single-select, click-again-to-deselect) via one delegated listener on
+  `#topicBar` — delegated because `renderTopicBar()` replaces the chips'
+  `innerHTML` on every subject switch, and a direct per-chip listener
+  would need re-attaching every time.
+- `getSys()` (`01-core-utils.js`) gained a 6th `topic` parameter; when
+  set, it appends "Focus specifically on the topic..." to the system
+  prompt. `sendMsg()` now passes `curTopic` through.
+- New reusable `.topic-bar`/`.topic-chip` CSS, matching the existing
+  `.subj-btn`/`.qchip` look. Deliberately `flex-wrap:wrap` rather than
+  the single-row `overflow-x:auto` scroll `.subject-bar`/`.controls-bar`
+  use — the request asked for a *comprehensive, visible* list (up to 23
+  entries for Anatomy), and a single scrolling row would hide most of it.
+  Given `#panel-chat`'s `.chat-layout` is a real fixed-height flex column
+  (ADR-0037), `.topic-bar` needed `flex-shrink:0` like every other bar in
+  that column, or flexbox would compress it instead of letting it take
+  its natural (possibly multi-row) height — got this right by copying
+  the existing bars' pattern instead of missing it, which would have
+  reintroduced a variant of the ADR-0037 bug for this specific element.
+
+**Decision — Arabic/Urdu clinical-simulation output.** Same technique as
+ADR-0033 already used for `?tlang=` translation elsewhere in this app:
+detect the active locale (`window.AID_I18N.locale`, populated by
+`i18n.js`) and append an explicit instruction to the case-generation
+system prompt in `simStart()` when it's `ar` or `ur` — write every
+patient-facing value (name, complaint, vitals, question text, options,
+feedback) in that language, but **keep the JSON keys themselves in
+English** so the response stays parseable by the existing
+`JSON.parse(raw)` call. Scoped to only the clinical-simulation prompt, as
+asked — the app's other AI prompts (chat `getSys()`, quiz generator,
+flashcards, etc.) are untouched and still respond in whatever language
+the user's own message is in (already true for chat, per the
+language-matching instruction `02-file-media.js` uses for file uploads).
+
+**Consequences.**
+- New UI strings (5 subject-button labels, ~150 topic-chip labels) have
+  no entries in `translations.js`'s dictionary — same graceful fallback
+  every other untranslated string in this app already has (`t()` returns
+  the original English text when no dictionary entry matches), not a
+  regression, but a known gap if full 8-language coverage is wanted
+  later; `scripts/translate-content.mjs` / the extraction script
+  (ADR-0032/0033) would need a pass over these new strings.
+- Only the clinical-simulation prompt got the locale-aware instruction.
+  If Arabic/Urdu output for AI-generated content in *other* modes (quiz
+  generator, flashcards, exam prep) turns out to matter too, that's the
+  same pattern to replicate, not done here — out of scope of what was
+  asked.
+- Not live-verified in a browser this session (Chrome extension
+  unavailable). **Follow-up: visually confirm** topic chips render/toggle
+  correctly for each of the 13 subjects, and that a fresh clinical-sim
+  case in `/ar/app` actually comes back with Arabic question stems and
+  options end-to-end (not just that the prompt instruction was added).
+
+## Related
+
+[[decisions-log]] · [[design-system]]
+
+---
+
+## ADR-0037 — Fixed unscrollable Ask AI chat panel in `public/app/`
+
+- **Status:** Accepted — implemented, verified by static CSS/layout analysis
+  (no live browser check possible this session — Chrome extension wasn't
+  connected)
+- **Date:** 2026-08-22
+
+**Context.** Reported bug: users couldn't scroll down to read AI responses
+in the Ask AI panel (`#panel-chat` in `public/app/index.html`), on both
+desktop and mobile.
+
+**Root cause.** `.chat-layout{height:100%}` (`public/app/styles.css`) can
+never resolve to a real number: every ancestor in the chain up to `body`
+(`.app-layout`, `.app-main`, `body`) declares `min-height:100vh`, never
+`height`. A percentage height against an ancestor with no definite height
+computes as `auto`, so `.chat-layout` — and `.chat-msgs{flex:1}` inside
+it — just grow to fit however many messages are in the conversation
+instead of being capped to the viewport. `scrollChat()`
+(`05-exam-prep.js`, `c.scrollTop = c.scrollHeight`) was a no-op because
+`scrollHeight === clientHeight` on an unbounded element. On mobile
+specifically, `#panel-chat` also opts out of the `padding-bottom:70px`
+every other tab-panel gets for bottom-nav clearance (`padding-bottom:0
+!important`), so even a correctly-bounded chat-layout would have its
+composer sitting behind the fixed 60px `.bottom-nav`.
+
+**Decision — anchor to the viewport instead of relying on the (broken)
+percentage chain**, following the precedent already working elsewhere in
+this file for the same reason (`.nibble-layout{height:calc(100vh -
+57px)}`): give `.chat-layout` an explicit `height:calc(100vh - 57px)`
+(57px = `.app-topbar`'s height, the constant this codebase already
+trusts). Fixing the shared `.app-main`/`.tab-panel` min-height model
+instead was considered and rejected as out of scope — every other panel
+(dashboard, library, flashcards, …) currently relies on page-level scroll
+as a side effect of that same "bug," and changing it globally risked
+regressing panels nobody asked to have touched, without a way to visually
+verify them this session.
+
+**Implementation** (`public/app/styles.css`):
+- `.chat-layout` (base rule) — `height:100%` → `height:calc(100vh - 57px)`.
+- `@media(max-width:600px) .chat-layout` — same swap, kept `!important`
+  to match the existing specificity.
+- New `@media(max-width:480px)` rule, scoped to `body.app-active
+  #panel-chat .chat-layout`, subtracting the fixed 60px `.bottom-nav` too:
+  `height:calc(100vh - 57px - 60px) !important`. Higher specificity
+  (id selector) than the 600px rule so it correctly wins at ≤480px.
+
+`.chat-msgs` already had `min-height:0` (required for a flex child to
+shrink below its content size and actually scroll) — no change needed
+there; it was correct, just fed an unbounded parent.
+
+**Consequences.**
+- `.chat-msgs` now gets a real bounded box, so `overflow-y:auto` and
+  `scrollChat()`'s `scrollTop` assignment both do something. The
+  subject/mode bars and composer (`.inp-area`, `flex-shrink:0` siblings
+  of `.chat-msgs` in the same flex column) stay pinned in view while only
+  the message list scrolls.
+- Not live-verified in a browser this session (Chrome extension
+  unavailable) — `next dev` was started, `/app/index.html` confirmed
+  reachable (200), but no visual/interaction check was done. **Follow-up:
+  visually confirm on both a desktop viewport and a ≤480px mobile
+  viewport** (long conversation, several AI replies) before considering
+  this closed.
+- The same `min-height:100vh`-not-`height` pattern likely affects
+  page-level scroll behavior on other tab-panels (dashboard, library,
+  etc.) too, but they don't have a pinned composer so the symptom is far
+  less noticeable there. Not touched — flagged here if it's ever worth a
+  broader layout pass.
+
+## Related
+
+[[decisions-log]] · [[design-system]]
+
+---
+
 ## ADR-0036 — Pro-activation webhook: `/api/gumroad-webhook` + `/api/check-pro`
 
 - **Status:** Accepted — implemented and functionally tested end-to-end

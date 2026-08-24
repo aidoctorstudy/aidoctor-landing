@@ -69,7 +69,7 @@ var sName='', sYear='1', sExam='MBBS', qLeft=9999, isPro=true; // BETA: all free
 var hist=[], attTxt='', attFileName='';
 var cards=[], cardIdx=0, fcCount=8;
 var totalXP=0, totalQs=0, totalCards=0, totalCases=0;
-var curMode='explain', curSubj='General Medicine', caseType='diagnose';
+var curMode='explain', curSubj='General Medicine', curTopic='', caseType='diagnose';
 
 var LEVELS=[
  {name:'Medical Student',min:0,max:100},
@@ -89,8 +89,8 @@ var modeDescs = {
  cram: '<b>Exam Cram</b> — High yield points, must-knows, memory tricks'
 };
 
-function getSys(mode, name, year, exam, subj) {
- var ctx = 'You are AI Doctor AI, an expert medical tutor. Student: '+name+', Year '+year+', '+exam+' focused. Subject: '+subj+'.\n';
+function getSys(mode, name, year, exam, subj, topic) {
+ var ctx = 'You are AI Doctor AI, an expert medical tutor. Student: '+name+', Year '+year+', '+exam+' focused. Subject: '+subj+'.'+(topic?' Focus specifically on the topic “'+topic+'” — keep all explanations, examples, and questions centered on it unless the student explicitly asks about something else.':'')+'\n';
  if(mode==='explain') return ctx+'EXPLAIN MODE. Give a clear, clinically relevant explanation. Include: mechanism, clinical significance, key points to remember. Use proper medical terminology appropriate for Year '+year+'.';
  if(mode==='exam') return ctx+'EXAM ANSWER MODE. Give a perfect '+exam+'-style answer. Format:\n\nDiagnosis/Answer: [direct answer]\nKey Points:\n1. [point]\n2. [point]\n3. [point]\nWhat to write in exam: [model answer for full marks]\nHigh Yield Fact: [one must-know fact]';
  if(mode==='case') return ctx+'CASE MODE. Analyze the clinical case provided. Format:\n\nMost Likely Diagnosis: [diagnosis]\nReasoning: [why this diagnosis]\nKey Differentials:\n1. [differential]\n2. [differential]\nInvestigations: [what to order]\nManagement: [treatment plan]\nPearl: [one clinical pearl]';

@@ -129,7 +129,47 @@ function goPanel(id){
 document.querySelectorAll('.side-btn[data-panel]').forEach(function(btn){btn.onclick=function(){goPanel(this.dataset.panel);};});
 
 // Subjects
-document.querySelectorAll('.subj-btn').forEach(function(btn){btn.onclick=function(){document.querySelectorAll('.subj-btn').forEach(function(b){b.classList.remove('on');});this.classList.add('on');curSubj=this.dataset.subj;};});
+var SUBJECT_TOPICS = {
+ 'Anatomy': ['Heart','Lungs','Brain','Kidney','Liver','Bones','Muscles','Spinal Cord','Peripheral Nerves','Blood Vessels','Lymphatics','GI Tract','Reproductive System','Endocrine Glands','Eye','Ear','Skin','Upper Limb','Lower Limb','Thorax','Abdomen','Pelvis','Head & Neck'],
+ 'Pathology': ['Inflammation','Neoplasia','Cell Injury','Infections','Cardiovascular Pathology','Respiratory Pathology','Renal Pathology','Hepatic Pathology','CNS Pathology','Haematology','Immunopathology','Genetic Disorders','Environmental Pathology'],
+ 'Pharmacology': ['Antibiotics','Antifungals','Antivirals','Cardiovascular Drugs','CNS Drugs','Autonomic Drugs','Analgesics','Antidiabetics','Respiratory Drugs','GI Drugs','Endocrine Drugs','Chemotherapy','Antiparasitics','Anticoagulants','Drug Interactions'],
+ 'Physiology': ['Cardiac Physiology','Renal Physiology','Respiratory Physiology','Neurophysiology','GI Physiology','Endocrine Physiology','Reproductive Physiology','Haematology','Muscle Physiology','Acid-Base Balance','Fluid Balance','Exercise Physiology'],
+ 'Biochemistry': ['Enzymes','Carbohydrate Metabolism','Lipid Metabolism','Protein Metabolism','Genetics','Molecular Biology','Vitamins','Minerals','DNA Replication','Transcription','Translation','Metabolic Disorders'],
+ 'Microbiology': ['Gram Positive Bacteria','Gram Negative Bacteria','Anaerobes','Mycobacteria','Spirochetes','DNA Viruses','RNA Viruses','Retroviruses','Fungi','Protozoa','Helminths','Prions','Antimicrobial Resistance'],
+ 'Clinical Medicine': ['Cardiology','Neurology','Endocrinology','Gastroenterology','Nephrology','Respiratory Medicine','Rheumatology','Haematology','Oncology','Infectious Disease','Dermatology','Geriatrics','Emergency Medicine'],
+ 'Surgery': ['General Surgery','Orthopaedics','Neurosurgery','Vascular Surgery','Cardiothoracic','Urology','Plastic Surgery','Paediatric Surgery','Trauma','Surgical Oncology','Hepatobiliary','Colorectal'],
+ 'Paediatrics': ['Neonatal','Growth & Development','Paediatric Infections','Nutrition','Congenital Disorders','Paediatric Cardiology','Paediatric Neurology','Paediatric Oncology','Immunology','Genetics'],
+ 'Gynaecology & Obstetrics': ['Antenatal Care','Labour & Delivery','Postnatal Care','Gynaecological Infections','Menstrual Disorders','Fertility & IVF','Gynaecological Oncology','Contraception','Menopause','Ectopic Pregnancy'],
+ 'Psychiatry': ['Mood Disorders','Psychosis','Anxiety Disorders','OCD','PTSD','Eating Disorders','Personality Disorders','Substance Abuse','Child Psychiatry','Forensic Psychiatry','Psychopharmacology','Sleep Disorders'],
+ 'ENT': ['Ear Disorders','Hearing Loss','Vertigo','Nose & Sinuses','Throat & Larynx','Head & Neck Tumours','Salivary Glands','Facial Nerve','Paediatric ENT','Rhinoplasty'],
+ 'Ophthalmology': ['Retina','Glaucoma','Cornea','Lens & Cataract','Uveitis','Strabismus','Neuro-ophthalmology','Paediatric Ophthalmology','Ocular Trauma','Dry Eye','Refractive Errors']
+};
+function renderTopicBar(subj) {
+ var bar = document.getElementById('topicBar');
+ if(!bar) return;
+ curTopic = '';
+ var topics = SUBJECT_TOPICS[subj];
+ if(!topics || !topics.length) { bar.innerHTML=''; bar.classList.remove('on'); return; }
+ bar.innerHTML = topics.map(function(t){ return '<button class="topic-chip" data-topic="'+esc(t)+'">'+esc(t)+'</button>'; }).join('');
+ bar.classList.add('on');
+}
+(function(){
+ var bar = document.getElementById('topicBar');
+ if(bar) bar.onclick = function(e){
+  var btn = e.target.closest('.topic-chip');
+  if(!btn) return;
+  var t = btn.dataset.topic;
+  if(curTopic === t) {
+   curTopic = '';
+   btn.classList.remove('on');
+  } else {
+   bar.querySelectorAll('.topic-chip.on').forEach(function(b){b.classList.remove('on');});
+   curTopic = t;
+   btn.classList.add('on');
+  }
+ };
+})();
+document.querySelectorAll('.subj-btn').forEach(function(btn){btn.onclick=function(){document.querySelectorAll('.subj-btn').forEach(function(b){b.classList.remove('on');});this.classList.add('on');curSubj=this.dataset.subj;renderTopicBar(curSubj);};});
 
 // Modes
 function setMode(m){
@@ -217,7 +257,7 @@ async function sendMsg(){
  if(!isPro){qLeft--;updateBadge();}
  totalQs++;document.getElementById('sc-qs').textContent=totalQs;
  hist.push({role:'user',content:full});showTyping();
- var sys=getSys(curMode,sName,sYear,sExam,curSubj);
+ var sys=getSys(curMode,sName,sYear,sExam,curSubj,curTopic);
  try{
  var reply=await callWorker(sys,hist);
  hist.push({role:'assistant',content:reply});

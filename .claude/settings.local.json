@@ -23,7 +23,13 @@
       "PowerShell(Get-Command *)",
       "Bash(nohup /c/Users/shahi/AppData/Local/Programs/Python/Python311/python -m http.server 8834)",
       "Bash(pkill -f \"http.server 8834\")",
-      "PowerShell(Stop-Job *)"
+      "PowerShell(Stop-Job *)",
+      "Bash(break)",
+      "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty OwningProcess\" 2>/dev/null)",
+      "Bash(powershell -Command \"Stop-Process -Id 3428 -Force\")",
+      "Bash(node --check 05-exam-prep.js)",
+      "Bash(node --check 01-core-utils.js)",
+      "Bash(node --check 07-mock-dashboard.js)"
     ]
   }
 }

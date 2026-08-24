@@ -1,12 +1,43 @@
 ---
 tags: [meta, changelog]
-updated: 2026-08-10
+updated: 2026-08-22
 ---
 
 # Changelog
 
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
+
+## 2026-08-22
+
+- **Fixed unscrollable Ask AI chat panel.** See [[decisions-log]] ADR-0037.
+  `.chat-layout{height:100%}` in `public/app/styles.css` could never
+  resolve — every ancestor up to `body` uses `min-height:100vh`, not
+  `height`, so the chat message list grew unbounded instead of scrolling,
+  on both desktop and mobile. Anchored `.chat-layout` to the viewport
+  (`calc(100vh - 57px)`, matching the existing `.nibble-layout` pattern)
+  and carved out the fixed 60px `.bottom-nav` on mobile. Not visually
+  verified this session (Chrome extension unavailable) — follow-up needed.
+- **Topic chips in Ask AI, and Arabic/Urdu clinical-sim output.** See
+  [[decisions-log]] ADR-0038. Selecting a subject in the Ask AI chat now
+  reveals a full list of selectable topic chips for it (single-select,
+  click again to deselect); the selected topic gets woven into the AI
+  system prompt (`getSys()` in `01-core-utils.js`) so answers stay
+  focused on it. Added 5 new chat subjects (Paediatrics, Gynaecology &
+  Obstetrics, Psychiatry, ENT, Ophthalmology) that only had topic lists
+  and no chat button before. Also: the clinical-simulation case generator
+  (`simStart()`, `07-mock-dashboard.js`) now appends an explicit
+  Arabic/Urdu instruction to its system prompt when the app locale is
+  `ar`/`ur`, so quiz questions and MCQ options generate in that language
+  instead of always English — the DOM-dictionary translation layer
+  (`i18n.js`) only rewrites existing text, it can't touch what an AI call
+  generates. New UI strings from this change aren't yet in
+  `translations.js`'s dictionary (fall back to English, same as any other
+  untranslated string). Not visually verified this session (Chrome
+  extension unavailable).
+- **Added "The Cookie Clause" to the Terms of Service.** A closing joke
+  section (section 18) in `TERMS_CONTENT` (`src/data/mocks/legal.ts`) —
+  requested verbatim, no content schema changes.
 
 ## 2026-08-21
 
