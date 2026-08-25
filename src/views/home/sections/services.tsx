@@ -131,9 +131,8 @@ export const Services = ({ intro, cards }: ServicesProps) => (
                       className="h-px w-full bg-border-card"
                     />
                   )}
-                  <span className="flex items-center justify-between text-base leading-body lg:text-xl">
+                  <span className="text-base leading-body lg:text-xl">
                     {item}
-                    <ArrowUpRightIcon className="size-[1.1875rem]" />
                   </span>
                 </li>
               ))}

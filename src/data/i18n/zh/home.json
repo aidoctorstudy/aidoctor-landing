@@ -265,20 +265,14 @@
         "features": [
           "无限制的问题",
           "所有主题",
-          "克劳德·艾尔",
           "图像分析",
           "临床病例",
           "药物",
           "USMLE/PLAB 准备",
           "闪卡"
         ],
-        "cta": {
-          "label": "获取 Pro",
-          "href": "/app"
-        },
         "badge": "最受欢迎的",
-        "highlighted": true,
-        "note": "先报名或登录——从那里继续退房."
+        "highlighted": true
       }
     ],
     "discountNote": "学生? 使用代码 MED20 退出时 20{\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}从Pro那拿来."
@@ -291,10 +285,6 @@
       {
         "label": "免费启动",
         "href": "/app"
-      },
-      {
-        "label": "获取 Pro",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
       }
     ]
   }

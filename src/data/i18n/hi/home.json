@@ -265,20 +265,14 @@
         "features": [
           "असीमित प्रश्न",
           "सभी विषय",
-          "क्लाउड एआई",
           "छवि विश्लेषण",
           "नैदानिक मामलों",
           "दवा Mnemonics",
           "USMLE/PLAB तैयारी",
           "फ्लैशकार्ड"
         ],
-        "cta": {
-          "label": "प्रो",
-          "href": "/app"
-        },
         "badge": "लोकप्रिय",
-        "highlighted": true,
-        "note": "पहले साइन अप करें या लॉग इन करें - आप वहां से चेकआउट करना जारी रखेंगे।."
+        "highlighted": true
       }
     ],
     "discountNote": "छात्र? कोड MED20 के लिए चेकआउट 20Pro."
@@ -291,10 +285,6 @@
       {
         "label": "मुफ्त में शुरू",
         "href": "/app"
-      },
-      {
-        "label": "प्रो",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
       }
     ]
   }

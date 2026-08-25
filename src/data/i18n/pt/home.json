@@ -265,20 +265,14 @@
         "features": [
           "Perguntas ilimitadas",
           "Todos os indivíduos",
-          "Claude AI",
           "Análise de imagens",
           "Casos clínicos",
           "Mnemónica das drogas",
           "Preparação USMLE/PLAB",
           "Cartões"
         ],
-        "cta": {
-          "label": "Obter Pro",
-          "href": "/app"
-        },
         "badge": "Mais Popular",
-        "highlighted": true,
-        "note": "Inscreva-se ou faça o login primeiro — você continuará a sair daí."
+        "highlighted": true
       }
     ],
     "discountNote": "Estudante? Usar código MED20 no checkout para 20% de desconto Pro."
@@ -291,10 +285,6 @@
       {
         "label": "Iniciar de Graça",
         "href": "/app"
-      },
-      {
-        "label": "Obter Pro",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
       }
     ]
   }

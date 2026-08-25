@@ -10,6 +10,61 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0039 — Removed all "Get Pro" buttons, dropped "Claude AI" from Pro's feature list, and reverted the AI Q&A row links back to plain text
+
+- **Status:** Accepted
+- **Date:** 2026-08-25
+
+**Context.** Requested directly: remove every "Get Pro" button on the
+landing page; drop "Claude AI" from the pricing/features list; and remove
+the arrow buttons that had just been added (same session, prior turn) to
+the AI Q&A feature card's three rows, keeping the row text but dropping the
+link/arrow entirely.
+
+**Decision.**
+- `PricingPlan.cta` (`data/mocks/home.ts`) changed from required to
+  optional (`cta?: CtaLink`). Pro's `cta` and its explanatory `note`
+  (`"Sign up or log in first…"`, from ADR-0031) were both deleted — the note
+  only made sense as a caption under a button that no longer exists.
+  `pricing.tsx`'s `PlanCard` now wraps the `<Button>`/`note` block in
+  `{plan.cta && (…)}`; Free's card is unaffected (still has its `cta`).
+- `CONTACT_CONTENT.actions` (same file) dropped its second entry (`"Get
+  Pro"` → `PRO_CHECKOUT_URL`) — Contact now renders a single "Start for
+  Free" button. `contact.tsx` needed no code change, since `actions.map()`
+  was already data-driven.
+- `PRICING_CONTENT.plans[1].features` dropped the `"Claude AI"` entry (7
+  items now, was 8). `public/llms.txt`'s Pro-plan line (the site's
+  machine-readable summary) was updated to match, since it's a separate
+  hand-maintained mirror of this same list, not generated from it.
+- **All 8 translated locale JSON mirrors** (`data/i18n/{ar,de,es,fr,hi,pt,ur,zh}/home.json`)
+  were hand-edited to match — same 3 structural removals (Pro's `cta`+`note`,
+  Pro's third feature item, Contact's second action), each in that locale's
+  own translated strings, not re-run through `scripts/translate-content.mjs`.
+  Justified because these are pure structural deletions (no new copy needs
+  translating) and the script requires a running dev server plus a live
+  call to a public LibreTranslate instance for every string in the
+  bundle — reckless for a change that touches zero new prose. If new Pro-plan
+  copy is ever added, re-run the script rather than continuing to hand-edit
+  the JSON mirrors piecemeal.
+- `services.tsx`'s `card.items.map()` row (AI Q&A card, "Ask any topic,
+  anytime" / "Step-by-step explanations" / "Sources you can trust") reverted
+  from the `<Link href={APP_URL}>` + `ArrowUpRightIcon` added earlier this
+  session back to a plain `<span>` — text only, no link, no icon. The
+  `ArrowUpRightIcon` import stays in the file; the other cards' ring CTA
+  buttons still use it.
+
+**Consequences.** `PRO_CHECKOUT_URL` is still exported and still used by
+`TEAM_CONTENT`'s "See Pricing" action (untouched, out of scope) — not dead
+code. The AI Q&A rows are back to being non-interactive, matching every
+other card's item list (only the ring CTA in the corner is ever clickable);
+no card in this section has per-row links anymore.
+
+## Related
+
+[[home-sections]] · [[decisions-log]] ADR-0031
+
+---
+
 ## ADR-0038 — Topic chips in Ask AI, and Arabic/Urdu output for the clinical-simulation AI prompt
 
 - **Status:** Accepted — implemented, not live-verified in a browser this

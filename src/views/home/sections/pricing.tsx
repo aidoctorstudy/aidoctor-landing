@@ -66,13 +66,15 @@ const PlanCard = ({ plan, delayIn }: { plan: PricingPlan; delayIn: number }) => 
       ))}
     </ul>
 
-    <Button
-      href={plan.cta.href}
-      variant={plan.highlighted ? "primary" : "secondary"}
-      className="w-full"
-    >
-      {plan.cta.label}
-    </Button>
+    {plan.cta && (
+      <Button
+        href={plan.cta.href}
+        variant={plan.highlighted ? "primary" : "secondary"}
+        className="w-full"
+      >
+        {plan.cta.label}
+      </Button>
+    )}
     {plan.note && (
       <p className="-mt-4 text-center text-xs leading-body font-light text-foreground-subtle">
         {plan.note}

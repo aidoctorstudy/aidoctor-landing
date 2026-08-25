@@ -265,20 +265,14 @@
         "features": [
           "أسئلة غير محدودة",
           "جميع المواضيع",
-          "كلود آي",
           "تحليل الصور",
           "القضايا السريرية",
           "المخدرات",
           "USMLE/PLAB Prep",
           "بطاقات الاشتباك"
         ],
-        "cta": {
-          "label": "إحصلْ على Pro",
-          "href": "/app"
-        },
         "badge": "معظم الناس",
-        "highlighted": true,
-        "note": "وقّع أو سجل في البداية ستستمرين بالمغادرة من هناك."
+        "highlighted": true
       }
     ],
     "discountNote": "أيها الطالب؟ رمز الاستخدام MED20 عند المغادرة 20% قبالة Pro."
@@ -291,10 +285,6 @@
       {
         "label": "ابدأوا بالمجان",
         "href": "/app"
-      },
-      {
-        "label": "إحصلْ على Pro",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
       }
     ]
   }

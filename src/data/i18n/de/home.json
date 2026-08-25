@@ -265,20 +265,14 @@
         "features": [
           "Unbegrenzte Fragen",
           "Alle Themen",
-          "Claude KI",
           "Bildanalyse",
           "Klinische Fälle",
           "Drogenmoniken",
           "USMLE/PLAB Prep",
           "Flashcards"
         ],
-        "cta": {
-          "label": "Holen Sie sich Pro",
-          "href": "/app"
-        },
         "badge": "Am meisten beliebt",
-        "highlighted": true,
-        "note": "Registrieren Sie sich oder melden Sie sich zuerst an – Sie werden weiterhin von dort aus checkout."
+        "highlighted": true
       }
     ],
     "discountNote": "Student? Verwendungscode MED20 beim check-out 20% off Pro."
@@ -291,10 +285,6 @@
       {
         "label": "Kostenlos starten",
         "href": "/app"
-      },
-      {
-        "label": "Holen Sie sich Pro",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
       }
     ]
   }

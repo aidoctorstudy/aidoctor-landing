@@ -132,7 +132,7 @@ export interface PricingPlan {
   period: string;
   description: string;
   features: readonly string[];
-  cta: CtaLink;
+  cta?: CtaLink;
   /** Renders a small pill above the card, e.g. `"Most Popular"`. */
   badge?: string;
   /** Pro's cyan-glow treatment. */
@@ -408,18 +408,12 @@ export const PRICING_CONTENT: PricingContent = {
       features: [
         "Unlimited questions",
         "All subjects",
-        "Claude AI",
         "Image analysis",
         "Clinical cases",
         "Drug mnemonics",
         "USMLE/PLAB prep",
         "Flashcards",
       ],
-      // Not a direct checkout link yet: there's no auth-gated redirect to
-      // Gumroad after sign-up/login, so this sends the visitor to /app
-      // first (see decisions-log) — the `note` explains why.
-      cta: { label: "Get Pro", href: APP_URL },
-      note: "Sign up or log in first — you'll continue to checkout from there.",
       badge: "Most Popular",
       highlighted: true,
     },
@@ -433,10 +427,7 @@ export const CONTACT_CONTENT: ContactContent = {
   eyebrow: "Get Started",
   title: "Ready to study smarter?",
   description: "Join 50,000+ medical students already using AI Doctor Study.",
-  actions: [
-    { label: "Start for Free", href: APP_URL },
-    { label: "Get Pro", href: PRO_CHECKOUT_URL },
-  ],
+  actions: [{ label: "Start for Free", href: APP_URL }],
 };
 
 // These four routes don't have pages yet — see SiteFooter's docstring.

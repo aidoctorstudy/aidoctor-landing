@@ -265,20 +265,14 @@
         "features": [
           "Questions illimitées",
           "Tous les sujets",
-          "Claude AI",
           "Analyse des images",
           "Cas cliniques",
           "Médicaments",
           "Préparation USMLE/PLAB",
           "Cartes-éclair"
         ],
-        "cta": {
-          "label": "Obtenez Pro",
-          "href": "/app"
-        },
         "badge": "Les plus populaires",
-        "highlighted": true,
-        "note": "Inscrivez-vous ou connectez-vous d'abord — vous continuerez à commander à partir de là."
+        "highlighted": true
       }
     ],
     "discountNote": "Étudiant ? Utiliser le code MED20 à la caisse pour 20% sur Pro."
@@ -291,10 +285,6 @@
       {
         "label": "Démarrer gratuitement",
         "href": "/app"
-      },
-      {
-        "label": "Obtenez Pro",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
       }
     ]
   }

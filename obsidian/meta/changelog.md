@@ -8,6 +8,27 @@ updated: 2026-08-22
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-25
+
+- **Removed all "Get Pro" buttons, dropped "Claude AI" from Pro's feature
+  list, and un-linked the AI Q&A rows again.** See [[decisions-log]]
+  ADR-0039. Pro's pricing-card CTA+note and Contact's second "Get Pro"
+  button are both gone (`PricingPlan.cta` is now optional); Pro's feature
+  list lost "Claude AI" (7 items, was 8), also fixed in `public/llms.txt`
+  and hand-mirrored into all 8 translated `data/i18n/*/home.json` files.
+  Also reverts yesterday's AI Q&A row fix below: the three rows are back to
+  plain text, no link, no arrow icon — a same-day follow-up request.
+
+## 2026-08-24
+
+- **Fixed dead arrow buttons on the AI Q&A service card.** The three rows
+  ("Ask any topic, anytime", "Step-by-step explanations", "Sources you can
+  trust") in the Services section's first card were static `<span>`s with a
+  decorative `ArrowUpRightIcon` — the arrows didn't link anywhere.
+  `src/views/home/sections/services.tsx`'s `card.items.map` now renders each
+  row as a `next/link` `<Link href={APP_URL}>` (same `/app` target as every
+  other CTA on the page), with a token-backed hover-color transition.
+
 ## 2026-08-22
 
 - **Fixed unscrollable Ask AI chat panel.** See [[decisions-log]] ADR-0037.

@@ -256,17 +256,15 @@ role `--glow-accent`) and a `plan.badge` pill ("Most Popular").
 table above: Pricing sits directly after the sticky Team rail and needed the
 same treatment Contact already had, or Team bled through underneath it.
 
-> [!note] Pro's "Get Pro" goes to `/app`, not straight to Gumroad (ADR-0031)
-> There's no auth-gated redirect from sign-up/login to the Gumroad checkout
-> yet, so `plan.cta.href` is `APP_URL` for both plans now, and Pro carries
-> an optional `plan.note` — a small caption rendered under the button
-> (`PlanCard`, `-mt-4 text-xs text-foreground-subtle`) explaining "Sign up
-> or log in first — you'll continue to checkout from there." `PricingPlan.note`
-> is `undefined` for Free, so nothing renders there. Update `cta.href` back
-> to `PRO_CHECKOUT_URL` (or a real post-auth redirect endpoint) and drop the
-> note once that flow exists — `CONTACT_CONTENT`'s own "Get Pro" button was
-> deliberately left pointing straight at `PRO_CHECKOUT_URL`, out of this
-> change's scope.
+> [!note] Pro has no CTA button at all now (ADR-0039, supersedes ADR-0031)
+> ADR-0031 gave Pro a `cta.href` of `APP_URL` plus an explanatory `note`
+> ("no auth-gated Gumroad redirect yet"). Both were removed outright per a
+> direct request to drop every "Get Pro" button site-wide — `PricingPlan.cta`
+> is now optional (`cta?: CtaLink`), and `PlanCard` only renders the
+> `<Button>`/`note` block when `plan.cta` is set. Free's card is unaffected.
+> `CONTACT_CONTENT.actions` lost its own separate "Get Pro" entry the same
+> way — Contact now renders one button. If a real post-auth checkout flow
+> ever ships, that's a new CTA to design, not a revert of this note.
 
 ## `FloatingCta` — the scroll-triggered pill (ADR-0029)
 
