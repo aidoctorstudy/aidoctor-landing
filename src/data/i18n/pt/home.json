@@ -170,7 +170,7 @@
       },
       {
         "label": "Ver Preços",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+        "href": "#pricing"
       }
     ]
   },
@@ -227,7 +227,7 @@
       {
         "name": "Khalid Mansoor",
         "role": "Ano Final MBBS, Paquistão",
-        "quote": "Uso-o todos os dias. Vale cada centavo do Pro.",
+        "quote": "Uso-o todos os dias. Nem acredito que é completamente gratuito.",
         "initials": "KM"
       }
     ],
@@ -239,43 +239,33 @@
   },
   "pricing": {
     "eyebrow": "Preços",
-    "title": "Comecem de graça. Atualize quando chegar a temporada de exames.",
-    "description": "Sem cartão de crédito de graça. Cancela o Pro quando quiseres.",
+    "title": "100% gratuito. Para sempre.",
+    "description": "Sem necessidade de cartão de crédito. Apenas um uso justo para manter tudo gratuito para todos.",
     "plans": [
       {
-        "name": "Livre",
+        "name": "Gratuito Para Sempre",
         "price": "$0",
-        "period": "/month",
-        "description": "O suficiente para uma semana normal de estudo.",
-        "features": [
-          "20 perguntas por dia",
-          "Sujeitos básicos",
-          "IA padrão"
-        ],
-        "cta": {
-          "label": "Iniciar de Graça",
-          "href": "/app"
-        }
-      },
-      {
-        "name": "Pro",
-        "price": "$2.99",
-        "period": "/month",
-        "description": "Tudo destrancado para a época dos exames.",
+        "period": "",
+        "description": "Tudo destrancado, sem pegadinhas.",
         "features": [
           "Perguntas ilimitadas",
-          "Todos os indivíduos",
+          "Todos os assuntos",
           "Análise de imagens",
           "Casos clínicos",
           "Mnemónica das drogas",
           "Preparação USMLE/PLAB",
-          "Cartões"
+          "Cartões",
+          "Limite de uso justo para manter tudo a funcionar bem para todos"
         ],
+        "cta": {
+          "label": "Iniciar de Graça",
+          "href": "/app"
+        },
         "badge": "Mais Popular",
         "highlighted": true
       }
     ],
-    "discountNote": "Estudante? Usar código MED20 no checkout para 20% de desconto Pro."
+    "discountNote": ""
   },
   "contact": {
     "eyebrow": "Começar",

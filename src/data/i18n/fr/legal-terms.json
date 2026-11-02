@@ -30,14 +30,14 @@
     ],
     [
       {
-        "text": "Le forfait gratuit est gratuit. "
+        "text": "AI Doctor Study est "
       },
       {
-        "text": "Pro renouvelle mensuellement",
+        "text": "entièrement gratuit",
         "bold": true
       },
       {
-        "text": " par Gumroad et vous pouvez annuler à tout moment — vous gardez Pro jusqu'à la fin de votre période de paiement."
+        "text": " — aucun abonnement, aucune donnée de paiement. Une limite d'usage raisonnable permet à tout de bien fonctionner pour tout le monde."
       }
     ],
     [
@@ -83,7 +83,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "En créant un compte, en achetant un abonnement ou simplement en utilisant le Service, vous acceptez les présentes Conditions et notre "
+              "text": "En créant un compte ou simplement en utilisant le Service, vous acceptez les présentes Conditions et notre "
             },
             {
               "text": "Politique de confidentialité",
@@ -119,7 +119,7 @@
               "bold": true
             },
             {
-              "text": " pour utiliser le Service, et assez vieux pour former un contrat contraignant dans votre pays pour acheter un abonnement."
+              "text": " pour utiliser le Service."
             }
           ]
         }
@@ -271,7 +271,7 @@
             ],
             [
               {
-                "text": "utiliser un compte par personne et ne pas partager, vendre ou transférer votre compte ou accès Pro;"
+                "text": "utiliser un compte par personne et ne pas partager, vendre ou transférer votre compte;"
               }
             ],
             [
@@ -293,20 +293,13 @@
     {
       "id": "plans",
       "number": "06",
-      "title": "Abonnement gratuit au forfait & Pro",
+      "title": "Gratuit à utiliser",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "Le forfait gratuit vous donne un accès limité au Service sans frais. "
-            },
-            {
-              "text": "Pour",
-              "bold": true
-            },
-            {
-              "text": " est un abonnement mensuel payant qui débloque des fonctionnalités supplémentaires et des limites d'utilisation plus élevées, comme décrit dans l'application au moment où vous achetez."
+              "text": "AI Doctor Study est gratuit — toutes les fonctionnalités décrites dans l'application sont disponibles sans frais, sans abonnement et sans donnée de paiement requise."
             }
           ]
         },
@@ -315,54 +308,20 @@
           "items": [
             [
               {
-                "text": "Facturation.",
+                "text": "Usage raisonnable.",
                 "bold": true
               },
               {
-                "text": " Les paiements pro sont traités par "
-              },
-              {
-                "text": "Gumroad",
-                "href": "https://gumroad.com"
-              },
-              {
-                "text": ", notre fournisseur de paiement et marchand de documents. Votre reçu, votre facture et les taxes applicables (telles que la TVA/TPS) proviennent de Gumroad."
+                "text": " Pour garder le Service rapide et disponible pour tout le monde, les fonctionnalités alimentées par l'IA sont soumises à une limite d'utilisation raisonnable (par exemple, un plafond de requêtes par heure). Ce n'est pas un quota payant — c'est une mesure anti-abus, et nous pouvons ajuster la limite à tout moment."
               }
             ],
             [
               {
-                "text": "Renouvellement automatique.",
+                "text": "Aucune facturation.",
                 "bold": true
               },
               {
-                "text": " Pro renouvelle automatiquement chaque mois jusqu'à votre annulation. Le prix de renouvellement est le prix indiqué lorsque vous avez souscrit, à moins que nous vous avisions d'un changement à l'avance."
-              }
-            ],
-            [
-              {
-                "text": "Annulation.",
-                "bold": true
-              },
-              {
-                "text": " Vous pouvez annuler à tout moment à partir de Paramètres → Abonnement dans l'application, qui vous emmène à Gumroad pour compléter l'annulation. Vous gardez Pro jusqu'à la fin de la période pour laquelle vous avez déjà payé, puis revenir au plan gratuit automatiquement."
-              }
-            ],
-            [
-              {
-                "text": "Les prix changent.",
-                "bold": true
-              },
-              {
-                "text": " Si nous changeons le prix Pro, nous vous donnerons un préavis raisonnable. Le nouveau prix ne s'applique qu'à partir de votre prochain renouvellement, et vous pouvez annuler avant qu'il ne prenne effet."
-              }
-            ],
-            [
-              {
-                "text": "Bonne utilisation.",
-                "bold": true
-              },
-              {
-                "text": " Les caractéristiques non limitées sont soumises à une utilisation équitable, personnelle et non automatisée. Nous pouvons appliquer des limites raisonnables pour protéger le Service contre les abus."
+                "text": " Nous ne facturons pas l'accès au Service et ne stockons pas de données de paiement."
               }
             ]
           ]
@@ -372,20 +331,20 @@
     {
       "id": "refunds",
       "number": "07",
-      "title": "Annulation & remboursements",
+      "title": "Remboursements",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "Les remboursements sont couverts par notre "
+              "text": "Comme le Service est gratuit, il n'y a rien à rembourser. Consultez notre "
             },
             {
               "text": "Politique de remboursement",
               "href": "/refunds"
             },
             {
-              "text": ", qui fait partie des présentes Conditions. En bref: l'annulation arrête les renouvellements futurs mais n'est pas un remboursement de la période en cours; les achats pour la première fois ont une fenêtre de remboursement courte; et les paiements remboursés ou facturés finissent l'accès Pro immédiatement."
+              "text": " pour plus de détails, y compris quoi faire si vous avez été facturé sous l'ancien forfait payant."
             }
           ]
         }
@@ -424,7 +383,7 @@
             ],
             [
               {
-                "text": "l'ingénieur inverse, la sonde, ou interférer avec le Service, les limites d'utilisation de contournement ou les murs de paye, ou y accéder par tout moyen automatisé;"
+                "text": "l'ingénieur inverse, la sonde, ou interférer avec le Service, contourner les limites d'utilisation, ou y accéder par tout moyen automatisé;"
               }
             ],
             [
@@ -526,22 +485,6 @@
             ],
             [
               {
-                "text": "Gumroad",
-                "bold": true
-              },
-              {
-                "text": " — traitement des paiements pour Pro. Voir "
-              },
-              {
-                "text": "Termes de Gumroad",
-                "href": "https://gumroad.com/terms"
-              },
-              {
-                "text": "."
-              }
-            ],
-            [
-              {
                 "text": "YouTube",
                 "bold": true
               },
@@ -584,7 +527,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Nous travaillons dur pour garder AI Doctor Study rapide et disponible, mais nous ne pouvons pas promettre qu'il sera ininterrompu ou sans erreur. Nous pouvons ajouter, modifier ou supprimer des fonctionnalités, et nous pouvons imposer ou ajuster des limites d'utilisation, à tout moment. Si nous faisons un changement qui réduit considérablement ce que Pro inclut, vous pouvez toujours annuler avant votre prochain renouvellement."
+              "text": "Nous travaillons dur pour garder AI Doctor Study rapide et disponible, mais nous ne pouvons pas promettre qu'il sera ininterrompu ou sans erreur. Nous pouvons ajouter, modifier ou supprimer des fonctionnalités, et nous pouvons imposer ou ajuster des limites d'utilisation, à tout moment."
             }
           ]
         }
@@ -652,7 +595,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Vous pouvez arrêter d'utiliser le Service et supprimer votre compte à tout moment. Nous pouvons suspendre ou résilier votre accès si vous violez matériellement ces Conditions (par exemple, le partage de compte, la suppression ou l'abus de paiement), si la loi l'exige, ou si nous arrêtons le Service. Si nous terminons sans raison pendant que vous avez une période de paiement active, nous rembourserons la partie inutilisée de cette période. Sections qui, de par leur nature, devraient survivre (comme 09, 12, 13et 16) survivent à la fin."
+              "text": "Vous pouvez arrêter d'utiliser le Service et supprimer votre compte à tout moment. Nous pouvons suspendre ou résilier votre accès si vous violez matériellement ces Conditions (par exemple, le partage de compte, le scraping ou l'abus des limites d'utilisation), si la loi l'exige, ou si nous arrêtons le Service. Les sections qui, de par leur nature, doivent survivre (comme les sections 09, 12, 13 et 16) restent applicables après la résiliation."
             }
           ]
         }

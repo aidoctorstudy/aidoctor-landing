@@ -20,7 +20,7 @@
     ],
     [
       {
-        "text": "登录、存储和分析通过Google/Firebase运行;支付通过Gumroad运行",
+        "text": "登录、存储和分析通过 Google/Firebase 运行",
         "bold": true
       },
       {
@@ -110,15 +110,6 @@
             ],
             [
               {
-                "text": "付款数据",
-                "bold": true
-              },
-              {
-                "text": " ——如果你订阅Pro,Gumroad直接处理你的支付细节;我们收到你的订阅状态的确认,而不是你的卡的细节."
-              }
-            ],
-            [
-              {
                 "text": "设备使用数据( U)",
                 "bold": true
               },
@@ -158,11 +149,6 @@
             [
               {
                 "text": "要记住你的学习简介 所以应用程序直接打开它;"
-              }
-            ],
-            [
-              {
-                "text": "pro订阅并答复账单/退款要求;"
               }
             ],
             [
@@ -214,22 +200,6 @@
               {
                 "text": "谷歌隐私政策",
                 "href": "https://policies.google.com/privacy"
-              },
-              {
-                "text": "。 。 。 ."
-              }
-            ],
-            [
-              {
-                "text": "口香糖",
-                "bold": true
-              },
-              {
-                "text": " ——Pro订阅的支付处理. 见 "
-              },
-              {
-                "text": "Gumroad的隐私政策",
-                "href": "https://gumroad.com/privacy"
               },
               {
                 "text": "。 。 。 ."
@@ -294,7 +264,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "我们依赖Google/Firebase的基础设施和安全做法进行认证和存储,我们不直接处理你的支付卡细节——Gumroad确实如此. 没有传输或存储方法 100安全,但我们采取合理步骤 保护你的数据 并限制谁可以访问它."
+              "text": "我们依赖 Google/Firebase 的基础设施和安全做法进行认证和存储. AI Doctor Study 是免费的,因此我们完全不收集或处理任何支付信息. 没有任何传输或存储方法是100%安全的,但我们采取合理步骤保护你的数据并限制谁可以访问它."
             }
           ]
         }

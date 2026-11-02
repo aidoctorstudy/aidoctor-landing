@@ -73,9 +73,9 @@ export const TERMS_CONTENT: LegalPageContent = {
       { text: " against your textbooks, lecturers, and official guidelines." },
     ],
     [
-      { text: "The free plan is free. " },
-      { text: "Pro renews monthly", bold: true },
-      { text: " through Gumroad and you can cancel anytime — you keep Pro until your paid period ends." },
+      { text: "AI Doctor Study is " },
+      { text: "completely free", bold: true },
+      { text: " — no subscription, no payment details. A fair-use rate limit keeps things running smoothly for everyone." },
     ],
     [{ text: "Don't share accounts, scrape our content, or use the app to break your university's or exam board's rules." }],
     [{ text: "Be fair to us and we'll be fair to you. Questions? " }, SUPPORT_LINK, { text: "." }],
@@ -97,7 +97,7 @@ export const TERMS_CONTENT: LegalPageContent = {
         {
           type: "paragraph",
           runs: [
-            { text: "By creating an account, purchasing a subscription, or simply using the Service, you agree to these Terms and to our " },
+            { text: "By creating an account or simply using the Service, you agree to these Terms and to our " },
             { text: "Privacy Policy", href: "/privacy" },
             { text: ", " },
             { text: "Cookie Policy", href: "/cookies" },
@@ -111,7 +111,7 @@ export const TERMS_CONTENT: LegalPageContent = {
           runs: [
             { text: "You must be at least " },
             { text: "16 years old", bold: true },
-            { text: " to use the Service, and old enough to form a binding contract in your country to purchase a subscription." },
+            { text: " to use the Service." },
           ],
         },
       ],
@@ -197,7 +197,7 @@ export const TERMS_CONTENT: LegalPageContent = {
           items: [
             [{ text: "provide accurate information (like your name, study year, and exam) during onboarding;" }],
             [{ text: "keep your Google account secure — anything done through your account is your responsibility;" }],
-            [{ text: "use one account per person and not share, sell, or transfer your account or Pro access;" }],
+            [{ text: "use one account per person and not share, sell, or transfer your account;" }],
             [{ text: "tell us promptly at " }, SUPPORT_LINK, { text: " if you believe your account has been compromised." }],
           ],
         },
@@ -206,40 +206,24 @@ export const TERMS_CONTENT: LegalPageContent = {
     {
       id: "plans",
       number: "06",
-      title: "Free plan & Pro subscription",
+      title: "Free to use",
       blocks: [
         {
           type: "paragraph",
           runs: [
-            { text: "The free plan gives you limited access to the Service at no cost. " },
-            { text: "Pro", bold: true },
-            { text: " is a paid monthly subscription that unlocks additional features and higher usage limits, as described in the app at the time you purchase." },
+            { text: "AI Doctor Study is free — every feature described in the app is available at no cost, with no subscription and no payment details required." },
           ],
         },
         {
           type: "list",
           items: [
             [
-              { text: "Billing.", bold: true },
-              { text: " Pro payments are processed by " },
-              { text: "Gumroad", href: "https://gumroad.com" },
-              { text: ", our payment provider and merchant of record. Your receipt, invoice, and any applicable taxes (such as VAT/GST) come from Gumroad." },
-            ],
-            [
-              { text: "Auto-renewal.", bold: true },
-              { text: " Pro renews automatically each month until you cancel. The renewal price is the price shown when you subscribed, unless we notify you of a change in advance." },
-            ],
-            [
-              { text: "Cancelling.", bold: true },
-              { text: " You can cancel anytime from Settings → Subscription in the app, which takes you to Gumroad to complete the cancellation. You keep Pro until the end of the period you've already paid for, then move back to the free plan automatically." },
-            ],
-            [
-              { text: "Price changes.", bold: true },
-              { text: " If we change the Pro price, we'll give you reasonable advance notice. The new price only applies from your next renewal, and you can cancel before it takes effect." },
-            ],
-            [
               { text: "Fair use.", bold: true },
-              { text: " “Unlimited” features are subject to fair, personal, non-automated use. We may apply reasonable limits to protect the Service from abuse." },
+              { text: " To keep the Service fast and available for everyone, AI-powered features are subject to a reasonable rate limit (for example, a cap on requests per hour). This is not a paid quota — it's an anti-abuse measure, and we may adjust the limit at any time." },
+            ],
+            [
+              { text: "No billing.", bold: true },
+              { text: " We don't charge for access to the Service and don't store payment details." },
             ],
           ],
         },
@@ -248,14 +232,14 @@ export const TERMS_CONTENT: LegalPageContent = {
     {
       id: "refunds",
       number: "07",
-      title: "Cancellation & refunds",
+      title: "Refunds",
       blocks: [
         {
           type: "paragraph",
           runs: [
-            { text: "Refunds are covered by our " },
+            { text: "Since the Service is free, there is nothing to refund. See our " },
             { text: "Refund Policy", href: "/refunds" },
-            { text: ", which forms part of these Terms. In short: cancelling stops future renewals but isn't a refund of the current period; first-time purchases have a short money-back window; and refunded or charged-back payments end Pro access immediately." },
+            { text: " for details, including what to do if you were charged under the previous paid plan." },
           ],
         },
       ],
@@ -272,7 +256,7 @@ export const TERMS_CONTENT: LegalPageContent = {
             [{ text: "use the Service for anything unlawful, or in a way that harms us, other users, or anyone else;" }],
             [{ text: "use the Service to cheat — for example, using it during an exam or assessment where outside help or AI tools are prohibited by your university or exam board. Your institution's academic-integrity rules are your responsibility;" }],
             [{ text: "scrape, bulk-download, or systematically extract our content or question banks, or use the Service to build a competing product or train an AI model;" }],
-            [{ text: "reverse engineer, probe, or interfere with the Service, bypass usage limits or paywalls, or access it by any automated means;" }],
+            [{ text: "reverse engineer, probe, or interfere with the Service, bypass rate limits, or access it by any automated means;" }],
             [{ text: "resell, rent, or commercially exploit the Service or your account;" }],
             [{ text: "attempt to generate content through the Service that is illegal, harmful, or infringes anyone's rights." }],
           ],
@@ -324,12 +308,6 @@ export const TERMS_CONTENT: LegalPageContent = {
               { text: "." },
             ],
             [
-              { text: "Gumroad", bold: true },
-              { text: " — payment processing for Pro. See " },
-              { text: "Gumroad's Terms", href: "https://gumroad.com/terms" },
-              { text: "." },
-            ],
-            [
               { text: "YouTube", bold: true },
               { text: " — some videos in the Service are provided via YouTube API Services. By using those features you also agree to the " },
               { text: "YouTube Terms of Service", href: "https://www.youtube.com/t/terms" },
@@ -350,7 +328,7 @@ export const TERMS_CONTENT: LegalPageContent = {
         {
           type: "paragraph",
           runs: [
-            { text: "We work hard to keep AI Doctor Study fast and available, but we can't promise it will be uninterrupted or error-free. We may add, change, or remove features, and we may impose or adjust usage limits, at any time. If we make a change that materially reduces what Pro includes, you can always cancel before your next renewal." },
+            { text: "We work hard to keep AI Doctor Study fast and available, but we can't promise it will be uninterrupted or error-free. We may add, change, or remove features, and we may impose or adjust rate limits, at any time." },
           ],
         },
       ],
@@ -401,7 +379,7 @@ export const TERMS_CONTENT: LegalPageContent = {
         {
           type: "paragraph",
           runs: [
-            { text: "You can stop using the Service and delete your account at any time. We may suspend or terminate your access if you materially breach these Terms (for example, account sharing, scraping, or payment abuse), if required by law, or if we discontinue the Service. If we terminate without cause while you have an active paid period, we'll refund the unused portion of that period. Sections that by their nature should survive (like 09, 12, 13, and 16) survive termination." },
+            { text: "You can stop using the Service and delete your account at any time. We may suspend or terminate your access if you materially breach these Terms (for example, account sharing, scraping, or abusing rate limits), if required by law, or if we discontinue the Service. Sections that by their nature should survive (like 09, 12, 13, and 16) survive termination." },
           ],
         },
       ],
@@ -472,213 +450,66 @@ export const TERMS_CONTENT: LegalPageContent = {
 export const REFUNDS_CONTENT: LegalPageContent = {
   eyebrow: "Legal",
   title: "Refund Policy",
-  lastUpdated: "17 August 2026",
-  scope: "Applies to AI Doctor Study Pro purchases made through Gumroad",
+  lastUpdated: "31 October 2026",
+  scope: "Applies to aidoctor.study and the AI Doctor Study app",
   summary: [
     [
-      { text: "First month didn't work out?", bold: true },
-      { text: " Email us within 7 days of your first Pro purchase and we'll refund it, no drama." },
+      { text: "AI Doctor Study is 100% free.", bold: true },
+      { text: " There is no Pro tier and nothing to buy, so there is nothing to refund." },
     ],
-    [
-      { text: "Cancelling ≠ refund.", bold: true },
-      { text: " Cancel anytime — you keep Pro until your paid month ends, and you just won't be charged again." },
-    ],
-    [
-      { text: "Renewals", bold: true },
-      { text: " generally aren't refundable once a new month starts, except for billing mistakes or where the law says otherwise." },
-    ],
-    [{ text: "Refunds go back to your original payment method via Gumroad, usually within 5–10 business days." }],
-    [
-      { text: "Once a payment is refunded or charged back, " },
-      { text: "Pro access ends immediately", bold: true },
-      { text: "." },
-    ],
+    [{ text: "We don't take payments, store card details, or bill anyone for using the app." }],
+    [{ text: "A fair-use rate limit keeps the AI features running smoothly for everyone — it is not a paid quota." }],
   ],
   sections: [
     {
       id: "overview",
       number: "01",
-      title: "How billing works",
+      title: "No billing, no refunds",
       blocks: [
         {
           type: "paragraph",
           runs: [
-            { text: "AI Doctor Study Pro is a monthly subscription billed through " },
-            { text: "Gumroad", href: "https://gumroad.com" },
-            { text: ", our payment provider and merchant of record. Gumroad charges your payment method, issues your receipt, and handles any applicable taxes. Refunds we approve are issued through Gumroad back to the payment method you used." },
+            { text: "AI Doctor Study used to offer a paid Pro subscription through Gumroad. That subscription no longer exists — every feature is free for every user, with no plans to reintroduce payments. Since nothing is purchased, this policy is simple: there is nothing to request a refund for." },
           ],
         },
       ],
     },
     {
-      id: "cancel",
+      id: "legacy",
       number: "02",
-      title: "Cancelling your subscription",
-      blocks: [
-        { type: "paragraph", runs: [{ text: "You can cancel anytime — no notice period, no questions:" }] },
-        {
-          type: "list",
-          ordered: true,
-          items: [
-            [
-              { text: "Open the app → " },
-              { text: "Settings → Subscription → Cancel Subscription", bold: true },
-              { text: " (this takes you to Gumroad, where the cancellation is completed), or" },
-            ],
-            [
-              { text: "Cancel directly from your " },
-              { text: "Gumroad subscriptions page", href: "https://gumroad.com/subscriptions" },
-              { text: " or the link in your Gumroad receipt email." },
-            ],
-          ],
-        },
-        {
-          type: "paragraph",
-          runs: [
-            { text: "Cancelling stops all future charges. " },
-            { text: "You keep full Pro access until the end of the period you've already paid for", bold: true },
-            { text: ", then your account moves back to the free plan automatically. Cancelling is not a refund of the current period, and we don't give partial refunds for unused days." },
-          ],
-        },
-      ],
-    },
-    {
-      id: "guarantee",
-      number: "03",
-      title: "7-day guarantee on your first purchase",
+      title: "If you were previously charged",
       blocks: [
         {
           type: "paragraph",
           runs: [
-            { text: "We want Pro to actually help you study. If it's not for you, email us within " },
-            { text: "7 days of your first Pro payment", bold: true },
-            { text: " and we'll refund it in full. This applies once per person, to your first payment only — it's a chance to try Pro properly, not a recurring free month." },
-          ],
-        },
-      ],
-    },
-    {
-      id: "renewals",
-      number: "04",
-      title: "Renewal payments",
-      blocks: [
-        {
-          type: "paragraph",
-          runs: [
-            { text: "Because you can cancel anytime before a renewal, renewal payments are generally " },
-            { text: "non-refundable", bold: true },
-            { text: " once the new billing period has started. We make exceptions when something on our side went wrong, for example:" },
-          ],
-        },
-        {
-          type: "list",
-          items: [
-            [{ text: "you were charged after cancelling before the renewal date;" }],
-            [{ text: "you were charged twice for the same period;" }],
-            [{ text: "a serious technical problem on our side made Pro unusable for a substantial part of the period and we couldn't fix it." }],
-          ],
-        },
-        { type: "paragraph", runs: [{ text: "If any of those happen, contact us and we'll make it right — with a refund or account credit for the affected period." }] },
-      ],
-    },
-    {
-      id: "request",
-      number: "05",
-      title: "How to request a refund",
-      blocks: [
-        { type: "paragraph", runs: [{ text: "Email " }, SUPPORT_LINK, { text: " from any address, and include:" }] },
-        {
-          type: "list",
-          items: [
-            [{ text: "the " }, { text: "email address on your Gumroad receipt", bold: true }, { text: ";" }],
-            [{ text: "the approximate " }, { text: "date of the charge", bold: true }, { text: " (or the Gumroad order/receipt number if you have it);" }],
-            [{ text: "a sentence on " }, { text: "what went wrong", bold: true }, { text: " — it genuinely helps us improve the app." }],
-          ],
-        },
-        {
-          type: "paragraph",
-          runs: [
-            { text: "We aim to reply within " },
-            { text: "2 business days", bold: true },
-            { text: ". Approved refunds are issued through Gumroad and typically appear on your statement within " },
-            { text: "5–10 business days", bold: true },
-            { text: ", depending on your bank." },
-          ],
-        },
-      ],
-    },
-    {
-      id: "after",
-      number: "06",
-      title: "What happens after a refund",
-      blocks: [
-        {
-          type: "paragraph",
-          runs: [
-            { text: "When a payment is refunded, the Pro access it paid for ends " },
-            { text: "immediately", bold: true },
-            { text: " — your account returns to the free plan and your study data stays intact. If a refunded charge is somehow processed again by mistake, contact us and we'll reverse it." },
-          ],
-        },
-      ],
-    },
-    {
-      id: "chargebacks",
-      number: "07",
-      title: "Chargebacks",
-      blocks: [
-        {
-          type: "callout",
-          tone: "warning",
-          label: "Please talk to us first",
-          paragraphs: [
-            [
-              { text: "Chargebacks (disputing a charge with your bank) cost small products like ours real money in fees, even when resolved. If anything looks wrong on your statement, email us before disputing — we can almost always fix it faster than your bank can." },
-            ],
-          ],
-        },
-        {
-          type: "paragraph",
-          runs: [
-            { text: "When a chargeback is filed, Gumroad notifies us and " },
-            { text: "Pro access is revoked automatically and immediately", bold: true },
-            { text: ". We may decline future purchases from accounts with abusive chargeback activity. Of course, nothing here limits your legal right to dispute genuinely unauthorised charges." },
-          ],
-        },
-      ],
-    },
-    {
-      id: "rights",
-      number: "08",
-      title: "Your statutory rights",
-      blocks: [
-        {
-          type: "paragraph",
-          runs: [
-            { text: "This policy sits alongside your rights as a consumer — it never reduces them. If the consumer-protection law where you live gives you stronger refund or cancellation rights (for example, cooling-off rights for digital subscriptions in some countries), those rights apply. Where local law requires it, by starting your subscription immediately you consent to immediate supply of the digital service and acknowledge how this may affect any statutory withdrawal right." },
+            { text: "If you paid for a Pro subscription before it was discontinued and still see a charge or active subscription, cancel it directly from your " },
+            { text: "Gumroad subscriptions page", href: "https://gumroad.com/subscriptions" },
+            { text: " or the link in your Gumroad receipt email — that stops any future billing immediately. For a refund on a past charge, contact Gumroad support or email " },
+            SUPPORT_LINK,
+            { text: " and we'll help sort it out." },
           ],
         },
       ],
     },
     {
       id: "changes",
-      number: "09",
+      number: "03",
       title: "Changes to this policy",
       blocks: [
         {
           type: "paragraph",
-          runs: [{ text: "We may update this Refund Policy from time to time. The version in force when you were charged is the one that applies to that charge. The “Last updated” date above shows the current version." }],
+          runs: [{ text: "We may update this page if anything about pricing ever changes. The “Last updated” date above shows the current version." }],
         },
       ],
     },
     {
       id: "contact",
-      number: "10",
+      number: "04",
       title: "Contact",
       blocks: [
         {
           type: "paragraph",
-          runs: [{ text: "Anything unclear, or a situation this page doesn't cover? Email " }, SUPPORT_LINK, { text: " — a human reads it, and we'd rather sort it out than argue about it." }],
+          runs: [{ text: "Anything unclear? Email " }, SUPPORT_LINK, { text: "." }],
         },
       ],
     },
@@ -706,7 +537,7 @@ export const COOKIES_CONTENT: LegalPageContent = {
       { text: "Analytics only runs if you say yes", bold: true },
       { text: " in the cookie banner. Say no and the app works exactly the same." },
     ],
-    [{ text: "Gumroad (payments) and YouTube (videos) may set their own cookies when you use those features." }],
+    [{ text: "YouTube (videos) may set its own cookies when you use that feature." }],
     [
       { text: "You can change your mind anytime via " },
       { text: "Cookie settings", bold: true },
@@ -792,12 +623,6 @@ export const COOKIES_CONTENT: LegalPageContent = {
         {
           type: "list",
           items: [
-            [
-              { text: "Gumroad", bold: true },
-              { text: " — when you open the Pro checkout or manage your subscription, Gumroad sets its own cookies to process your payment securely. See " },
-              { text: "Gumroad's Privacy Policy", href: "https://gumroad.com/privacy" },
-              { text: "." },
-            ],
             [
               { text: "YouTube", bold: true },
               { text: " — some study videos are embedded from YouTube. When you play one, YouTube (Google) may set cookies and collect data under the " },
@@ -886,8 +711,8 @@ export const PRIVACY_CONTENT: LegalPageContent = {
     ],
     [{ text: "Your questions and study activity are processed to generate answers and are never sold to advertisers." }],
     [
-      { text: "Sign-in, storage, and analytics run through Google/Firebase; payments run through Gumroad", bold: true },
-      { text: " — see each provider's own policy for how they handle data." },
+      { text: "Sign-in, storage, and analytics run through Google/Firebase", bold: true },
+      { text: " — see their policy for how they handle data. AI Doctor Study is free — we don't collect payment data." },
     ],
     [{ text: "You can request a copy of your data or ask us to delete your account at any time." }],
     [{ text: "See the " }, { text: "Cookie Policy", href: "/cookies" }, { text: " for the specific cookies and local storage we use." }],
@@ -929,10 +754,6 @@ export const PRIVACY_CONTENT: LegalPageContent = {
               { text: " — the questions you ask, the subjects and modes you use, and features like flashcards or saved cases, so the Service can respond to you and keep your progress." },
             ],
             [
-              { text: "Payment data", bold: true },
-              { text: " — if you subscribe to Pro, Gumroad handles your payment details directly; we receive confirmation of your subscription status, not your card details." },
-            ],
-            [
               { text: "Device & usage data", bold: true },
               { text: " — device type, browser, and, only if you consent to analytics, aggregated usage statistics (see the " },
               { text: "Cookie Policy", href: "/cookies" },
@@ -953,7 +774,6 @@ export const PRIVACY_CONTENT: LegalPageContent = {
             [{ text: "to create and secure your account, and let you sign in;" }],
             [{ text: "to generate the AI explanations, answers, and study material you ask for;" }],
             [{ text: "to remember your study profile so the app opens straight into it;" }],
-            [{ text: "to process Pro subscriptions and respond to billing/refund requests;" }],
             [{ text: "to fix bugs, understand which features help students, and improve the Service (only using analytics you've consented to);" }],
             [{ text: "to reply when you contact support." }],
           ],
@@ -980,12 +800,6 @@ export const PRIVACY_CONTENT: LegalPageContent = {
               { text: "Google / Firebase", bold: true },
               { text: " — authentication, data storage, and (with consent) analytics. See the " },
               { text: "Google Privacy Policy", href: "https://policies.google.com/privacy" },
-              { text: "." },
-            ],
-            [
-              { text: "Gumroad", bold: true },
-              { text: " — payment processing for Pro subscriptions. See " },
-              { text: "Gumroad's Privacy Policy", href: "https://gumroad.com/privacy" },
               { text: "." },
             ],
             [
@@ -1025,7 +839,7 @@ export const PRIVACY_CONTENT: LegalPageContent = {
         {
           type: "paragraph",
           runs: [
-            { text: "We rely on Google/Firebase's infrastructure and security practices for authentication and storage, and we don't handle your payment card details directly — Gumroad does. No method of transmission or storage is 100% secure, but we take reasonable steps to protect your data and limit who can access it." },
+            { text: "We rely on Google/Firebase's infrastructure and security practices for authentication and storage. AI Doctor Study is free, so we never collect or handle payment details at all. No method of transmission or storage is 100% secure, but we take reasonable steps to protect your data and limit who can access it." },
           ],
         },
       ],

@@ -34,7 +34,7 @@
     ],
     [
       {
-        "text": "Gumroad (Zahlungen) und YouTube (Videos) können ihre eigenen Cookies setzen, wenn Sie diese Funktionen nutzen."
+        "text": "YouTube (Videos) kann eigene Cookies setzen, wenn Sie diese Funktion nutzen."
       }
     ],
     [
@@ -208,22 +208,6 @@
         {
           "type": "list",
           "items": [
-            [
-              {
-                "text": "Gumroad",
-                "bold": true
-              },
-              {
-                "text": " — wenn Sie den Pro Checkout öffnen oder Ihr Abonnement verwalten, setzt Gumroad eigene Cookies ein, um Ihre Zahlung sicher zu bearbeiten. Vgl "
-              },
-              {
-                "text": "Gumroad's Datenschutzrichtlinie",
-                "href": "https://gumroad.com/privacy"
-              },
-              {
-                "text": "."
-              }
-            ],
             [
               {
                 "text": "YouTube",

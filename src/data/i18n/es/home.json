@@ -170,7 +170,7 @@
       },
       {
         "label": "Ver precios",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+        "href": "#pricing"
       }
     ]
   },
@@ -227,7 +227,7 @@
       {
         "name": "Khalid Mansoor",
         "role": "Final Year MBBS, Pakistan",
-        "quote": "Lo uso todos los días. Vale cada centavo de Pro.",
+        "quote": "Lo uso todos los días. No puedo creer que sea completamente gratis.",
         "initials": "KM"
       }
     ],
@@ -239,43 +239,33 @@
   },
   "pricing": {
     "eyebrow": "Precios",
-    "title": "Empieza libre. Actualizar cuando la temporada de examen golpea.",
-    "description": "Sin tarjeta de crédito para Free. Cancelar Pro en cualquier momento.",
+    "title": "100% gratis. Para siempre.",
+    "description": "No se requiere tarjeta de crédito. Solo un uso justo para mantenerlo gratis para todos.",
     "plans": [
       {
-        "name": "Gratis",
+        "name": "Gratis para siempre",
         "price": "$0",
-        "period": "/month",
-        "description": "Lo suficiente para pasar una semana normal de estudio.",
+        "period": "",
+        "description": "Todo desbloqueado, sin trampa.",
         "features": [
-          "20 preguntas al día",
-          "Temas básicos",
-          "Standard AI"
+          "Preguntas ilimitadas",
+          "Todos los temas",
+          "Análisis de imágenes",
+          "Casos clínicos",
+          "Mnemotecnia de medicamentos",
+          "Preparación USMLE/PLAB",
+          "Flashcards",
+          "Límite de uso justo para mantener todo funcionando sin problemas para todos"
         ],
         "cta": {
           "label": "Inicio gratis",
           "href": "/app"
-        }
-      },
-      {
-        "name": "Pro",
-        "price": "$2.99",
-        "period": "/month",
-        "description": "Todo desbloqueado para la temporada de exámenes.",
-        "features": [
-          "Cuestiones ilimitadas",
-          "Todos los temas",
-          "Análisis de imágenes",
-          "Casos clínicos",
-          "Medicamentos",
-          "Preparatoria USMLE/PLAB",
-          "Flashcards"
-        ],
+        },
         "badge": "Más populares",
         "highlighted": true
       }
     ],
-    "discountNote": "Estudiante? Código de uso MED20 en el checkout 20% fuera de Pro."
+    "discountNote": ""
   },
   "contact": {
     "eyebrow": "Empieza",

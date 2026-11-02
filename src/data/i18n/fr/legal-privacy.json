@@ -20,11 +20,11 @@
     ],
     [
       {
-        "text": "Connexion, stockage et analyse passent par Google/Firebase; les paiements passent par Gumroad",
+        "text": "Connexion, stockage et analyse passent par Google/Firebase",
         "bold": true
       },
       {
-        "text": " — voir la politique de chaque fournisseur quant à la manière dont il traite les données."
+        "text": " — voir leur politique quant à la manière dont ils traitent les données. AI Doctor Study est gratuit — nous ne collectons aucune donnée de paiement."
       }
     ],
     [
@@ -110,15 +110,6 @@
             ],
             [
               {
-                "text": "Données de paiement",
-                "bold": true
-              },
-              {
-                "text": " — si vous vous abonnez à Pro, Gumroad s'occupe directement de vos données de paiement; nous recevons confirmation de votre statut d'abonnement, et non de vos données de carte."
-              }
-            ],
-            [
-              {
                 "text": "Données d'utilisation du périphérique",
                 "bold": true
               },
@@ -158,11 +149,6 @@
             [
               {
                 "text": "pour se souvenir de votre profil d'étude afin que l'application s'ouvre directement dedans;"
-              }
-            ],
-            [
-              {
-                "text": "traiter les abonnements Pro et répondre aux demandes de facturation/remboursement;"
               }
             ],
             [
@@ -214,22 +200,6 @@
               {
                 "text": "Politique de confidentialité de Google",
                 "href": "https://policies.google.com/privacy"
-              },
-              {
-                "text": "."
-              }
-            ],
-            [
-              {
-                "text": "Gumroad",
-                "bold": true
-              },
-              {
-                "text": " — traitement des paiements pour les abonnements Pro. Voir "
-              },
-              {
-                "text": "Politique de confidentialité de Gumroad",
-                "href": "https://gumroad.com/privacy"
               },
               {
                 "text": "."
@@ -294,7 +264,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Nous comptons sur l'infrastructure et les pratiques de sécurité de Google/Firebase pour l'authentification et le stockage, et nous ne traitons pas directement vos données de carte de paiement — Gumroad le fait. Aucune méthode de transmission ou de stockage n'est 100% sécurisé, mais nous prenons des mesures raisonnables pour protéger vos données et limiter qui peut y accéder."
+              "text": "Nous comptons sur l'infrastructure et les pratiques de sécurité de Google/Firebase pour l'authentification et le stockage. AI Doctor Study est gratuit, nous ne collectons donc jamais de données de paiement. Aucune méthode de transmission ou de stockage n'est 100% sécurisé, mais nous prenons des mesures raisonnables pour protéger vos données et limiter qui peut y accéder."
             }
           ]
         }

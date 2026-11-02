@@ -170,7 +170,7 @@
       },
       {
         "label": "Voir prix",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+        "href": "#pricing"
       }
     ]
   },
@@ -227,7 +227,7 @@
       {
         "name": "Khalid Mansoor",
         "role": "Dernière année MBBS, Pakistan",
-        "quote": "Je l'utilise tous les jours. Ça vaut chaque centime de Pro.",
+        "quote": "Je l'utilise tous les jours. Je n'arrive pas à croire que c'est totalement gratuit.",
         "initials": "KM"
       }
     ],
@@ -239,43 +239,33 @@
   },
   "pricing": {
     "eyebrow": "Prix",
-    "title": "Commencez gratuitement. Mise à niveau quand la saison des examens arrive.",
-    "description": "Pas de carte de crédit gratuite. Annuler Pro à tout moment.",
+    "title": "100% gratuit. Pour toujours.",
+    "description": "Aucune carte de crédit requise. Juste un usage raisonnable pour que ça reste gratuit pour tout le monde.",
     "plans": [
       {
-        "name": "Gratuit",
+        "name": "Gratuit pour toujours",
         "price": "$0",
-        "period": "/month",
-        "description": "Assez pour passer une semaine d'étude normale.",
-        "features": [
-          "20 questions par jour",
-          "Sujets fondamentaux",
-          "Norme AI"
-        ],
-        "cta": {
-          "label": "Démarrer gratuitement",
-          "href": "/app"
-        }
-      },
-      {
-        "name": "Pour",
-        "price": "$2.99",
-        "period": "/month",
-        "description": "Tout est ouvert pour la saison des examens.",
+        "period": "",
+        "description": "Tout est débloqué, sans piège.",
         "features": [
           "Questions illimitées",
           "Tous les sujets",
           "Analyse des images",
           "Cas cliniques",
-          "Médicaments",
+          "Moyens mnémotechniques pour les médicaments",
           "Préparation USMLE/PLAB",
-          "Cartes-éclair"
+          "Cartes-éclair",
+          "Limite d'usage raisonnable pour que tout fonctionne bien pour tout le monde"
         ],
+        "cta": {
+          "label": "Démarrer gratuitement",
+          "href": "/app"
+        },
         "badge": "Les plus populaires",
         "highlighted": true
       }
     ],
-    "discountNote": "Étudiant ? Utiliser le code MED20 à la caisse pour 20% sur Pro."
+    "discountNote": ""
   },
   "contact": {
     "eyebrow": "Commencez",

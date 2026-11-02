@@ -34,7 +34,7 @@
     ],
     [
       {
-        "text": "使用这些功能时."
+        "text": "YouTube(视频)在您使用该功能时可能会设置自己的 cookie."
       }
     ],
     [
@@ -208,22 +208,6 @@
         {
           "type": "list",
           "items": [
-            [
-              {
-                "text": "口香糖",
-                "bold": true
-              },
-              {
-                "text": " ——当您打开 Pro 报到或管理您的订阅时, Gumroad 设置自己的 cookie 来安全处理您的支付. 见 "
-              },
-              {
-                "text": "Gumroad的隐私政策",
-                "href": "https://gumroad.com/privacy"
-              },
-              {
-                "text": "。 。 。 ."
-              }
-            ],
             [
               {
                 "text": "YouTube (英语)",

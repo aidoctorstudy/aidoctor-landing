@@ -163,8 +163,6 @@ export interface ContactContent extends SectionIntro {
  * client-side navigation instead of a full page load to another origin.
  */
 export const APP_URL = "/app";
-/** Pro checkout (Gumroad) — linked from pricing-adjacent CTAs. */
-export const PRO_CHECKOUT_URL = "https://hyperai3.gumroad.com/l/aidoctorstudypro";
 
 export const SITE_NAV: readonly NavLink[] = [
   { label: "Home", href: "#hero" },
@@ -333,7 +331,7 @@ export const ABOUT_CONTENT: AboutContent = {
   actions: [
     { label: "Sign Up for Free", href: APP_URL },
     { label: "Login", href: APP_URL },
-    { label: "See Pricing", href: PRO_CHECKOUT_URL },
+    { label: "See Pricing", href: "#pricing" },
   ],
 };
 
@@ -376,7 +374,7 @@ export const TEAM_CONTENT: TeamContent = {
     {
       name: "Khalid Mansoor",
       role: "Final Year MBBS, Pakistan",
-      quote: "I use it every single day. Worth every penny of Pro.",
+      quote: "I use it every single day. Can't believe it's completely free.",
       initials: "KM",
     },
   ],
@@ -389,22 +387,14 @@ export const TEAM_CONTENT: TeamContent = {
 
 export const PRICING_CONTENT: PricingContent = {
   eyebrow: "Pricing",
-  title: "Start free. Upgrade when exam season hits.",
-  description: "No credit card for Free. Cancel Pro anytime.",
+  title: "100% free. Forever.",
+  description: "No credit card required. Just fair use to keep it free for everyone.",
   plans: [
     {
-      name: "Free",
+      name: "Free Forever",
       price: "$0",
-      period: "/month",
-      description: "Enough to get through a normal study week.",
-      features: ["20 questions a day", "Basic subjects", "Standard AI"],
-      cta: { label: "Start for Free", href: APP_URL },
-    },
-    {
-      name: "Pro",
-      price: "$2.99",
-      period: "/month",
-      description: "Everything unlocked for exam season.",
+      period: "",
+      description: "Everything unlocked, no catch.",
       features: [
         "Unlimited questions",
         "All subjects",
@@ -413,12 +403,14 @@ export const PRICING_CONTENT: PricingContent = {
         "Drug mnemonics",
         "USMLE/PLAB prep",
         "Flashcards",
+        "Fair-use rate limit to keep things running smoothly for everyone",
       ],
+      cta: { label: "Start for Free", href: APP_URL },
       badge: "Most Popular",
       highlighted: true,
     },
   ],
-  discountNote: "Student? Use code MED20 at checkout for 20% off Pro.",
+  discountNote: "",
 };
 
 // Formerly a lead-capture form (POST /api/contact) — replaced with a plain

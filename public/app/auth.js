@@ -168,7 +168,6 @@ function enterMedApp() {
  localStorage.setItem('aid_name_' + user.uid, sName);
  localStorage.setItem('aid_year_' + user.uid, sYear);
  localStorage.setItem('aid_exam_' + user.uid, sExam);
- checkProStatus(user.email);
  }
  document.getElementById('sideAvatar').textContent = (sName && sName.length > 0) ? sName[0].toUpperCase() : 'D';
  document.getElementById('dashName').textContent = sName;
@@ -178,80 +177,6 @@ function enterMedApp() {
  goTo('pg-app'); goPanel('dash');
  if(!document.getElementById('chatMsgs').children.length) {
  addAI('Welcome Dr. ' + sName + '! What would you like to study today?', false);
- }
- celebrateGumroadReturnIfNeeded();
-}
-
-/**
- * Shared by the two Pro-detection paths below so whichever fires first
- * "wins" the celebration and the other just quietly confirms — without
- * this, a user who both returns via `?pro=activated` *and* has
- * `/api/check-pro` independently confirm Pro on the same visit would see
- * the achievement popup + confetti + XP gain twice.
- */
-function hasCelebratedPro() {
- try { return localStorage.getItem('aid_pro_celebrated') === '1'; } catch(e) { return false; }
-}
-function markProCelebrated() {
- try { localStorage.setItem('aid_pro_celebrated', '1'); } catch(e) {}
-}
-function celebratePro() {
- markProCelebrated();
- showAchievement('🎉', 'Pro Activated!');
- setTimeout(function(){ updateXP(1000); }, 400);
-}
-
-/**
- * Gumroad checkout opens in a new tab (see the Pro modal / pricing card
- * buttons in index.html) — coming back to this tab just re-runs
- * `enterMedApp()` via Firebase's persisted-session `onAuthStateChanged`
- * (same path a returning logged-in user always takes), so this is the one
- * place that needs to know "did they just pay?". The signal is
- * `?pro=activated` on the URL: Gumroad's product has a "redirect to URL
- * after successful purchase" setting (seller dashboard → Content), which
- * must be pointed at `https://aidoctor.study/app?pro=activated` — that
- * configuration lives in the Gumroad account, not in this repo, so it's a
- * one-time manual step outside of what this code can do.
- *
- * Optimistic: flips `isPro` on the URL signal alone rather than waiting on
- * `checkProStatus()`'s webhook-backed round trip (already fired above, in
- * `enterMedApp()`, and will correct this if the two ever disagree) — a
- * paying user shouldn't have to wait to see their own purchase confirmed.
- * Strips the query param immediately via `history.replaceState` so a
- * refresh or back-navigation can't replay the celebration.
- */
-function celebrateGumroadReturnIfNeeded() {
- var params = new URLSearchParams(location.search);
- if(params.get('pro') !== 'activated') return;
- history.replaceState(null, '', location.pathname + location.hash);
- isPro = true;
- updateBadge();
- if(!hasCelebratedPro()) celebratePro();
-}
-
-/**
- * Asks our own `/api/gumroad-webhook`-fed store (not the old
- * aidoctorstudy.workers.dev worker — same-origin, so no CORS handling
- * needed) whether this email has a Gumroad purchase on file. Runs on every
- * login/session-restore via `enterMedApp()`, so it's also what catches a
- * purchase for a user who closed the Gumroad tab instead of following its
- * redirect back — celebrates the first time it sees Pro for this browser,
- * quietly re-confirms after that (see `hasCelebratedPro`).
- */
-async function checkProStatus(email) {
- if(!email) return;
- try {
-  var res = await fetch('/api/check-pro?email=' + encodeURIComponent(email));
-  var json = await res.json();
-  if(json.data && json.data.isPro) {
-   var alreadyCelebrated = hasCelebratedPro();
-   isPro = true;
-   updateBadge();
-   if(!alreadyCelebrated) celebratePro();
-   else showToast('Pro unlocked!', 'success');
-  }
- } catch(e) {
-  console.log('Pro check failed:', e.message);
  }
 }
 

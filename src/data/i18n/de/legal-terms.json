@@ -30,14 +30,14 @@
     ],
     [
       {
-        "text": "Der kostenlose Plan ist kostenlos. "
+        "text": "AI Doctor Study ist "
       },
       {
-        "text": "Pro erneuert monatlich",
+        "text": "komplett kostenlos",
         "bold": true
       },
       {
-        "text": " durch Gumroad und Sie können jederzeit stornieren - Sie halten Pro, bis Ihre bezahlte Zeit endet."
+        "text": " — kein Abonnement, keine Zahlungsdaten. Eine faire Nutzungsgrenze hält alles für jeden reibungslos am Laufen."
       }
     ],
     [
@@ -83,7 +83,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Durch die Erstellung eines Kontos, den Kauf eines Abonnements oder einfach die Nutzung des Dienstes erklären Sie sich mit diesen Bedingungen und unseren "
+              "text": "Durch die Erstellung eines Kontos oder einfach die Nutzung des Dienstes erklären Sie sich mit diesen Bedingungen und unseren "
             },
             {
               "text": "Datenschutz",
@@ -119,7 +119,7 @@
               "bold": true
             },
             {
-              "text": " zur Nutzung des Dienstes und alt genug, um einen verbindlichen Vertrag in Ihrem Land zum Kauf eines Abonnements zu bilden."
+              "text": " zur Nutzung des Dienstes."
             }
           ]
         }
@@ -271,7 +271,7 @@
             ],
             [
               {
-                "text": "ein Konto pro Person nutzen und Ihr Konto oder Pro-Zugang nicht teilen, verkaufen oder übertragen;"
+                "text": "ein Konto pro Person nutzen und Ihr Konto nicht teilen, verkaufen oder übertragen;"
               }
             ],
             [
@@ -293,20 +293,13 @@
     {
       "id": "plans",
       "number": "06",
-      "title": "Kostenloser Plan und Pro Abonnement",
+      "title": "Kostenlos nutzbar",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "Der kostenlose Plan bietet Ihnen einen eingeschränkten Zugang zum Service ohne Kosten. "
-            },
-            {
-              "text": "Pro",
-              "bold": true
-            },
-            {
-              "text": " ist ein bezahltes monatliches abonnement, das zusätzliche funktionen und höhere nutzungslimits freischaltet, wie in der app zum zeitpunkt des kaufs beschrieben."
+              "text": "AI Doctor Study ist kostenlos — jede in der App beschriebene Funktion ist ohne Kosten verfügbar, ohne Abonnement und ohne erforderliche Zahlungsdaten."
             }
           ]
         },
@@ -315,54 +308,20 @@
           "items": [
             [
               {
-                "text": "Billing.",
+                "text": "Faire Nutzung.",
                 "bold": true
               },
               {
-                "text": " Pro-Zahlungen werden von "
-              },
-              {
-                "text": "Gumroad",
-                "href": "https://gumroad.com"
-              },
-              {
-                "text": ", unser zahlungsanbieter und händler von rekord. Ihr Empfang, Ihre Rechnung und alle anwendbaren Steuern (z.B. Mehrwertsteuer/GST) stammen aus Gumroad."
+                "text": " Um den Service schnell und für alle verfügbar zu halten, unterliegen KI-gestützte Funktionen einer angemessenen Nutzungsgrenze (zum Beispiel einer Obergrenze für Anfragen pro Stunde). Dies ist keine bezahlte Quote — es ist eine Maßnahme gegen Missbrauch, und wir können die Grenze jederzeit anpassen."
               }
             ],
             [
               {
-                "text": "Auto-Erneuerung.",
+                "text": "Keine Abrechnung.",
                 "bold": true
               },
               {
-                "text": " Pro erneuert sich automatisch jeden Monat, bis Sie abbrechen. Der Erneuerungspreis ist der Preis, den Sie abonniert haben, es sei denn, wir benachrichtigen Sie vorab."
-              }
-            ],
-            [
-              {
-                "text": "Abbrechen.",
-                "bold": true
-              },
-              {
-                "text": " Sie können jederzeit von Settings → Abonnieren in der App, die Sie nach Gumroad bringt, um die Stornierung abzuschließen. Du hältst Pro bis zum Ende der Zeit, für die Sie bereits bezahlt haben, dann zurück zum kostenlosen Plan automatisch."
-              }
-            ],
-            [
-              {
-                "text": "Preisänderungen.",
-                "bold": true
-              },
-              {
-                "text": " Wenn wir den Pro-Preis ändern, geben wir Ihnen eine angemessene Vorankündigung. Der neue Preis gilt nur für Ihre nächste Erneuerung, und Sie können stornieren, bevor es funktioniert."
-              }
-            ],
-            [
-              {
-                "text": "Gute Nutzung.",
-                "bold": true
-              },
-              {
-                "text": " „Unbegrenzte“ Funktionen unterliegen einer fairen, persönlichen, nicht automatisierten Nutzung. Wir können angemessene Grenzen setzen, um den Service vor Missbrauch zu schützen."
+                "text": " Wir berechnen keine Gebühren für den Zugang zum Service und speichern keine Zahlungsdaten."
               }
             ]
           ]
@@ -372,20 +331,20 @@
     {
       "id": "refunds",
       "number": "07",
-      "title": "Stornierung & Rückerstattung",
+      "title": "Rückerstattungen",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "Rückerstattungen werden von unseren "
+              "text": "Da der Service kostenlos ist, gibt es nichts zu erstatten. Siehe unsere "
             },
             {
               "text": "Rückerstattungspolitik",
               "href": "/refunds"
             },
             {
-              "text": ", die Teil dieser Bedingungen ist. Kurz gesagt: Die Stornierung hält zukünftige Erneuerungen auf, ist aber keine Rückerstattung des aktuellen Zeitraums; erstmalige Einkäufe haben ein kurzes Geld-zurück-Fenster; und erstattete oder zurückgezahlte Zahlungen Ende Pro-Zugriff sofort."
+              "text": " für Details, einschließlich was zu tun ist, wenn Ihnen im vorherigen kostenpflichtigen Plan etwas berechnet wurde."
             }
           ]
         }
@@ -424,7 +383,7 @@
             ],
             [
               {
-                "text": "reverse-Ingenieur, Sonde oder Störung des Dienstes, Bypass-Nutzungslimits oder Paywalls, oder Zugriff auf diese mittels automatisierter Mittel;"
+                "text": "reverse-Ingenieur, Sonde oder Störung des Dienstes, Umgehung von Nutzungslimits, oder Zugriff auf diese mittels automatisierter Mittel;"
               }
             ],
             [
@@ -526,22 +485,6 @@
             ],
             [
               {
-                "text": "Gumroad",
-                "bold": true
-              },
-              {
-                "text": " — Zahlungsabwicklung für Pro. Vgl "
-              },
-              {
-                "text": "AGB von Gumroad",
-                "href": "https://gumroad.com/terms"
-              },
-              {
-                "text": "."
-              }
-            ],
-            [
-              {
                 "text": "YouTube",
                 "bold": true
               },
@@ -584,7 +527,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Wir arbeiten hart daran zu halten AI Doctor Study schnell und verfügbar, aber wir können nicht versprechen, dass es unterbrechungsfrei oder fehlerfrei ist. Wir können Funktionen hinzufügen, ändern oder entfernen, und wir können Nutzungslimits jederzeit aufzwingen oder anpassen. Wenn wir eine Änderung vornehmen, die wesentlich reduziert, was Pro beinhaltet, können Sie immer vor Ihrer nächsten Erneuerung abbrechen."
+              "text": "Wir arbeiten hart daran, AI Doctor Study schnell und verfügbar zu halten, aber wir können nicht versprechen, dass es unterbrechungsfrei oder fehlerfrei ist. Wir können Funktionen jederzeit hinzufügen, ändern oder entfernen, und wir können Nutzungslimits jederzeit festlegen oder anpassen."
             }
           ]
         }
@@ -652,7 +595,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Sie können die Nutzung des Dienstes stoppen und Ihr Konto jederzeit löschen. Wir können Ihren Zugriff aussetzen oder beenden, wenn Sie diese Bedingungen (z.B. Kontofreigabe, Abschaben oder Zahlungsmissbrauch) erheblich verletzen, wenn dies gesetzlich vorgeschrieben ist, oder wenn wir den Dienst einstellen. Wenn wir ohne Grund kündigen, während Sie einen aktiven bezahlten Zeitraum haben, erstatten wir den ungenutzten Teil dieser Frist. Abschnitte, die von ihrer Natur überleben sollten (wie 09, 12, 13, und 16) die beendigung überleben."
+              "text": "Sie können die Nutzung des Dienstes stoppen und Ihr Konto jederzeit löschen. Wir können Ihren Zugriff aussetzen oder beenden, wenn Sie diese Bedingungen erheblich verletzen (z. B. Kontofreigabe, Scraping oder Missbrauch der Nutzungslimits), wenn dies gesetzlich vorgeschrieben ist, oder wenn wir den Dienst einstellen. Abschnitte, die ihrer Natur nach fortbestehen sollten (wie 09, 12, 13 und 16), bleiben auch nach der Beendigung in Kraft."
             }
           ]
         }

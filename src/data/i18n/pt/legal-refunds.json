@@ -1,51 +1,26 @@
 {
-  "eyebrow": "Jurídico",
-  "title": "Política de restituições",
-  "lastUpdated": "17 August 2026",
-  "scope": "Aplica-se AI Doctor Study Pro compras feitas através de Gumroad",
+  "eyebrow": "Legal",
+  "title": "Política de Reembolso",
+  "lastUpdated": "31 October 2026",
+  "scope": "Aplica-se a aidoctor.study e ao aplicativo AI Doctor Study",
   "summary": [
     [
       {
-        "text": "O primeiro mês não resultou?",
+        "text": "O AI Doctor Study é 100% gratuito.",
         "bold": true
       },
       {
-        "text": " Enviar-nos por e- mail dentro 7 dias da sua primeira compra Pro e vamos reembolsá-lo, sem drama."
+        "text": " Não há um nível Pro nem nada para comprar, então não há nada para reembolsar."
       }
     ],
     [
       {
-        "text": "Cancelar o reembolso.",
-        "bold": true
-      },
-      {
-        "text": " Cancele a qualquer hora — você mantém o Pro até que seu mês pago termine, e você simplesmente não será cobrado novamente."
+        "text": "Não aceitamos pagamentos, não armazenamos dados de cartão, nem cobramos ninguém por usar o aplicativo."
       }
     ],
     [
       {
-        "text": "Renovações",
-        "bold": true
-      },
-      {
-        "text": " geralmente não são reembolsáveis uma vez que um novo mês começa, exceto para erros de faturamento ou onde a lei diz o contrário."
-      }
-    ],
-    [
-      {
-        "text": "Reembolsos voltar ao seu método de pagamento original via Gumroad, geralmente dentro 5- Não10 dias úteis."
-      }
-    ],
-    [
-      {
-        "text": "Uma vez que um pagamento é reembolsado ou cobrado de volta, "
-      },
-      {
-        "text": "O acesso pro termina imediatamente",
-        "bold": true
-      },
-      {
-        "text": "."
+        "text": "Um limite de uso justo mantém os recursos de IA funcionando bem para todos — não é uma cota paga."
       }
     ]
   ],
@@ -53,308 +28,42 @@
     {
       "id": "overview",
       "number": "01",
-      "title": "Como funciona a facturação",
+      "title": "Sem cobranças, sem reembolsos",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "AI Doctor Study Pro é uma assinatura mensal faturada através "
-            },
-            {
-              "text": "Gumroad",
-              "href": "https://gumroad.com"
-            },
-            {
-              "text": ", nosso provedor de pagamento e comerciante de registro. Gumroad cobra seu método de pagamento, emite seu recibo e lida com quaisquer impostos aplicáveis. Os reembolsos que aprovamos são emitidos através da Gumroad de volta ao método de pagamento que você usou."
+              "text": "O AI Doctor Study costumava oferecer uma assinatura Pro paga através da Gumroad. Essa assinatura já não existe — todos os recursos são gratuitos para todos os usuários, sem planos de reintroduzir pagamentos. Como nada é comprado, esta política é simples: não há nada a reembolsar."
             }
           ]
         }
       ]
     },
     {
-      "id": "cancel",
+      "id": "legacy",
       "number": "02",
-      "title": "Cancelar a sua subscrição",
+      "title": "Se você foi cobrado anteriormente",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "Você pode cancelar a qualquer momento — sem aviso prévio, sem perguntas:"
-            }
-          ]
-        },
-        {
-          "type": "list",
-          "ordered": true,
-          "items": [
-            [
-              {
-                "text": "Abra o aplicativo → "
-              },
-              {
-                "text": "Configurações → Assinatura → Cancelar assinatura",
-                "bold": true
-              },
-              {
-                "text": " (isso leva você para Gumroad, onde o cancelamento é concluído), ou"
-              }
-            ],
-            [
-              {
-                "text": "Cancelar diretamente de seu "
-              },
-              {
-                "text": "Página de assinaturas Gumroad",
-                "href": "https://gumroad.com/subscriptions"
-              },
-              {
-                "text": " ou o link em seu email de recibo Gumroad."
-              }
-            ]
-          ]
-        },
-        {
-          "type": "paragraph",
-          "runs": [
-            {
-              "text": "Cancelar para todas as futuras acusações. "
+              "text": "Se você pagou por uma assinatura Pro antes de ela ser descontinuada e ainda vê uma cobrança ou assinatura ativa, cancele-a diretamente na sua "
             },
             {
-              "text": "Você mantém acesso Pro completo até o final do período que você já pagou",
-              "bold": true
+              "text": "página de assinaturas da Gumroad",
+              "href": "https://gumroad.com/subscriptions"
             },
             {
-              "text": ", em seguida, sua conta volta para o plano livre automaticamente. Cancelar não é um reembolso do período atual, e não damos reembolsos parciais para dias não utilizados."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "guarantee",
-      "number": "03",
-      "title": "7- garantia do dia em sua primeira compra",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "runs": [
-            {
-              "text": "Queremos que o Pro te ajude a estudar. Se não for para você, envie-nos um e-mail dentro "
-            },
-            {
-              "text": "7 dias do seu primeiro pagamento Pro",
-              "bold": true
-            },
-            {
-              "text": " e vamos reembolsá-lo na totalidade. Isso se aplica uma vez por pessoa, ao seu primeiro pagamento apenas — é uma chance de tentar o Pro corretamente, não um mês livre recorrente."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "renewals",
-      "number": "04",
-      "title": "Pagamentos de renovação",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "runs": [
-            {
-              "text": "Porque você pode cancelar a qualquer momento antes de uma renovação, os pagamentos de renovação são geralmente "
-            },
-            {
-              "text": "não reembolsáveis",
-              "bold": true
-            },
-            {
-              "text": " uma vez iniciado o novo período de faturamento. Fazemos exceções quando algo do nosso lado deu errado, por exemplo:"
-            }
-          ]
-        },
-        {
-          "type": "list",
-          "items": [
-            [
-              {
-                "text": "foi cobrado após cancelamento antes da data de renovação;"
-              }
-            ],
-            [
-              {
-                "text": "foi cobrado duas vezes pelo mesmo período;"
-              }
-            ],
-            [
-              {
-                "text": "um problema técnico sério do nosso lado tornou Pro inutilizável para uma parte substancial do período e não conseguimos corrigi-lo."
-              }
-            ]
-          ]
-        },
-        {
-          "type": "paragraph",
-          "runs": [
-            {
-              "text": "Se alguma dessas situações acontecer, entre em contato conosco e faremos o certo – com um reembolso ou crédito de conta para o período afetado."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "request",
-      "number": "05",
-      "title": "Como solicitar um reembolso",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "runs": [
-            {
-              "text": "E- mail "
+              "text": " ou pelo link no seu e-mail de recibo da Gumroad — isso interrompe qualquer cobrança futura imediatamente. Para um reembolso de uma cobrança anterior, contate o suporte da Gumroad ou envie um e-mail para "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": " de qualquer endereço e incluir:"
-            }
-          ]
-        },
-        {
-          "type": "list",
-          "items": [
-            [
-              {
-                "text": "a "
-              },
-              {
-                "text": "endereço de email no seu recibo Gumroad",
-                "bold": true
-              },
-              {
-                "text": ";"
-              }
-            ],
-            [
-              {
-                "text": "o aproximado "
-              },
-              {
-                "text": "data da cobrança",
-                "bold": true
-              },
-              {
-                "text": " (ou o número de ordem/receito Gumroad, se o tiver);"
-              }
-            ],
-            [
-              {
-                "text": "uma frase sobre "
-              },
-              {
-                "text": "o que correu mal",
-                "bold": true
-              },
-              {
-                "text": " — ajuda-nos verdadeiramente a melhorar a aplicação."
-              }
-            ]
-          ]
-        },
-        {
-          "type": "paragraph",
-          "runs": [
-            {
-              "text": "Pretendemos responder dentro "
-            },
-            {
-              "text": "2 dias úteis",
-              "bold": true
-            },
-            {
-              "text": ". Reembolsos aprovados são emitidos através de Gumroad e normalmente aparecem em sua declaração dentro "
-            },
-            {
-              "text": "5- Não10 dias úteis",
-              "bold": true
-            },
-            {
-              "text": ", dependendo do seu banco."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "after",
-      "number": "06",
-      "title": "O que acontece após um reembolso",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "runs": [
-            {
-              "text": "Quando um pagamento é reembolsado, o acesso Pro pago para fins "
-            },
-            {
-              "text": "imediatamente",
-              "bold": true
-            },
-            {
-              "text": " — a sua conta regressa ao plano gratuito e os dados do seu estudo permanecem intactos. Se uma carga reembolsada for novamente processada por engano, entre em contato conosco e a reverteremos."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "chargebacks",
-      "number": "07",
-      "title": "Carregamentos",
-      "blocks": [
-        {
-          "type": "callout",
-          "tone": "warning",
-          "label": "Por favor, fale connosco primeiro",
-          "paragraphs": [
-            [
-              {
-                "text": "Chargebacks (discutindo uma cobrança com o seu banco) custam pequenos produtos como o nosso dinheiro real em taxas, mesmo quando resolvido. Se alguma coisa parecer errada em seu depoimento, envie-nos um e-mail antes de discutir — podemos quase sempre corrigi-lo mais rápido do que seu banco pode."
-              }
-            ]
-          ]
-        },
-        {
-          "type": "paragraph",
-          "runs": [
-            {
-              "text": "Quando um carregamento é arquivado, Gumroad notifica-nos e "
-            },
-            {
-              "text": "O acesso pro é revogado automaticamente e imediatamente",
-              "bold": true
-            },
-            {
-              "text": ". Podemos recusar futuras compras de contas com atividade de recarga abusiva. Claro que nada aqui limita o seu direito legal de contestar acusações genuinamente não autorizadas."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "rights",
-      "number": "08",
-      "title": "Os seus direitos legais",
-      "blocks": [
-        {
-          "type": "paragraph",
-          "runs": [
-            {
-              "text": "Esta política está ao lado dos seus direitos enquanto consumidor — nunca os reduz. Se a lei de proteção ao consumidor onde você mora lhe der direitos de reembolso ou cancelamento mais fortes (por exemplo, direitos de refrigeração para assinaturas digitais em alguns países), esses direitos se aplicam. Se a lei local o exigir, iniciando imediatamente a sua subscrição, autoriza a prestação imediata do serviço digital e reconhece como isso pode afectar qualquer direito de rescisão legal."
+              "text": " e ajudaremos a resolver."
             }
           ]
         }
@@ -362,14 +71,14 @@
     },
     {
       "id": "changes",
-      "number": "09",
+      "number": "03",
       "title": "Alterações a esta política",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "Podemos atualizar esta Política de reembolso de tempos em tempos. A versão em vigor quando foi acusado é a que se aplica a essa acusação. A data “Última atualização” acima mostra a versão atual."
+              "text": "Podemos atualizar esta página se algo sobre os preços mudar. A data de “Última atualização” acima mostra a versão atual."
             }
           ]
         }
@@ -377,21 +86,21 @@
     },
     {
       "id": "contact",
-      "number": "10",
-      "title": "Contacto",
+      "number": "04",
+      "title": "Contato",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "Alguma coisa não clara, ou uma situação que esta página não cobre? E- mail "
+              "text": "Algo não está claro? Envie um e-mail para "
             },
             {
               "text": "support@aidoctor.study",
               "href": "mailto:support@aidoctor.study"
             },
             {
-              "text": " - um humano lê-o, e preferimos resolver isto do que discutir sobre isso."
+              "text": "."
             }
           ]
         }

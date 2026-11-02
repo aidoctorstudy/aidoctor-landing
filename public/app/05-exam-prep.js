@@ -173,7 +173,6 @@ document.querySelectorAll('.subj-btn').forEach(function(btn){btn.onclick=functio
 
 // Modes
 function setMode(m){
- if(['case','drug','quiz','cram'].indexOf(m)!==-1&&!isPro){openProModal();return;}
  curMode=m;
  document.querySelectorAll('.mode-btn').forEach(function(b){b.classList.remove('on');});
  var btn=document.querySelector('.mode-btn[data-mode="'+m+'"]');
@@ -246,7 +245,6 @@ function sendQuickQ(q) {
 async function sendMsg(){
  var inp=document.getElementById('msgInput'),text=inp.value.trim();
  if((!text||!text.trim())&&!attTxt)return;
- if(!isPro&&qLeft<=0){openProModal();return;}
  var fn=attFileName||null,full=text;
  if(attTxt)full=text?text+' [Attached: '+attTxt+']':'Help with: '+attTxt;
  if(!full)return;
@@ -254,7 +252,6 @@ async function sendMsg(){
  document.getElementById('sendBtn').disabled=true;
  addUser(text||'(file)',fn);
  attTxt='';attFileName='';document.getElementById('fileBar').classList.remove('on');
- if(!isPro){qLeft--;updateBadge();}
  totalQs++;document.getElementById('sc-qs').textContent=totalQs;
  hist.push({role:'user',content:full});showTyping();
  var sys=getSys(curMode,sName,sYear,sExam,curSubj,curTopic);
@@ -263,7 +260,6 @@ async function sendMsg(){
  hist.push({role:'assistant',content:reply});
  addAI(fmtReply(reply),true);
  updateXP(10);
- if(!isPro&&qLeft<=0){setTimeout(function(){addAI('You used all 5 free questions today! Upgrade to <b>AI Doctor Pro</b> for unlimited access.<br><br><button onclick="openProModal()" style="margin-top:6px;background:linear-gradient(135deg,var(--p),var(--p2));color:white;border:none;padding:9px 20px;border-radius:9px;cursor:pointer;font-weight:800;font-size:13px;font-family:var(--f)">Get Pro </button>',true);},400);}
  }catch(err){addAI('Error: '+esc(err.message)+' — please try again!',true);}
  document.getElementById('sendBtn').disabled=false;
  if(typeof trackActivity==='function') trackActivity();
@@ -318,7 +314,7 @@ document.getElementById('fcFile').onchange=async function(e){var f=e.target.file
  showToast(f.name+' uploaded!','success');
  e.target.value='';};
 document.getElementById('fcNotes').addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px';});
-document.querySelectorAll('.fc-cnt-btn').forEach(function(btn){btn.onclick=function(){var n=parseInt(this.dataset.count);if(n>12&&!isPro){openProModal();return;}fcCount=n;document.querySelectorAll('.fc-cnt-btn').forEach(function(b){b.classList.remove('on');});this.classList.add('on');};});
+document.querySelectorAll('.fc-cnt-btn').forEach(function(btn){btn.onclick=function(){fcCount=parseInt(this.dataset.count);document.querySelectorAll('.fc-cnt-btn').forEach(function(b){b.classList.remove('on');});this.classList.add('on');};});
 
 document.getElementById('makeCardsBtn').onclick=async function(){
  var notesEl = document.getElementById('fcNotes');
@@ -329,9 +325,7 @@ document.getElementById('makeCardsBtn').onclick=async function(){
  if(!text){showToast('Paste notes or upload a file first!','error');return;}
 
 
- if(!isPro&&qLeft<=0){openProModal();return;}
- var btn=this;btn.disabled=true;btn.textContent='Generating...';
- if(!isPro){qLeft--;updateBadge();}
+ var btn=document.getElementById('makeCardsBtn');btn.disabled=true;btn.textContent='Generating...';
  var sys='You are a flashcard generator. Create flashcards from the provided content. Return ONLY a raw JSON array, no markdown, no backticks. Format: [{"q":"question or term","a":"answer or definition","image":"wikipedia article name"}]. Create EXACTLY '+fcCount+' flashcards. Focus on high-yield facts. IMAGE RULES: Only set the "image" field when the card is about a CONCRETE VISUAL medical thing that has a clear textbook image — specific diseases (e.g. "Psoriasis"), anatomical structures (e.g. "Femur"), organs, cells, pathology, X-rays, or named drugs. Use the exact medical article name. For ABSTRACT topics (definitions, concepts, statistics, methods, lists, "types of", "tools of", "principles of", classifications, epidemiology concepts) set image to empty string "". When unsure, use empty string. A wrong or unrelated image is much worse than no image.';
  try{
  var res=await fetch(WU+'/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:'Create '+fcCount+' medical flashcards from:\n\n'+text.substring(0,3000), history:[], idToken:await firebase.auth().currentUser?.getIdToken()})});
@@ -438,9 +432,7 @@ function setCaseType(type){
 async function solveCase(){
  var caseText=document.getElementById('caseInput').value.trim();
  if(!caseText){alert('Please describe the patient case!');return;}
- if(!isPro&&qLeft<=0){openProModal();return;}
  var btn=document.getElementById('solveCaseBtn');btn.disabled=true;btn.textContent='Analysing case...';
- if(!isPro){qLeft--;updateBadge();}
  var sys='You are an expert clinical medicine AI tutor. Analyse the given clinical case focusing on: '+caseType+'. Give a thorough clinical answer with proper medical reasoning. Format your answer with clear labeled sections. Include clinical pearls and exam-relevant points.';
  try{
  var reply=await callWorker(sys,[{role:'user',content:'Clinical case (focus on '+caseType+'): '+caseText}]);
@@ -458,9 +450,7 @@ function qMnemonic(text){document.getElementById('mnemonicInput').value=text;gen
 async function genMnemonic(){
  var topic=document.getElementById('mnemonicInput').value.trim();
  if(!topic){alert('Enter a drug, disease, or topic!');return;}
- if(!isPro&&qLeft<=0){openProModal();return;}
  var btn=document.getElementById('genMnemonicBtn');btn.disabled=true;btn.textContent='Generating...';
- if(!isPro){qLeft--;updateBadge();}
  var sys='You are a medical mnemonic expert. Create memorable mnemonics for medical students. For the given topic, create:\n1. A catchy mnemonic (acronym or phrase)\n2. What each letter/word stands for\n3. A quick way to remember it\n4. Any related high-yield facts\nMake it fun, memorable, and clinically relevant.';
  try{
  var reply=await callWorker(sys,[{role:'user',content:'Create a medical mnemonic for: '+topic}]);

@@ -30,14 +30,14 @@
     ],
     [
       {
-        "text": "O plano livre é grátis. "
+        "text": "O AI Doctor Study é "
       },
       {
-        "text": "Pro renova mensalmente",
+        "text": "completamente gratuito",
         "bold": true
       },
       {
-        "text": " através de Gumroad e você pode cancelar a qualquer momento — você mantém Pro até que seu período pago termine."
+        "text": " — sem assinatura, sem dados de pagamento. Um limite de uso justo mantém tudo a funcionar bem para todos."
       }
     ],
     [
@@ -83,7 +83,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Ao criar uma conta, adquirir uma subscrição ou simplesmente utilizar o Serviço, você concorda com estes Termos e com os nossos "
+              "text": "Ao criar uma conta ou simplesmente utilizar o Serviço, você concorda com estes Termos e com os nossos "
             },
             {
               "text": "Política de Privacidade",
@@ -119,7 +119,7 @@
               "bold": true
             },
             {
-              "text": " para usar o Serviço, e idade suficiente para formar um contrato vinculativo em seu país para comprar uma assinatura."
+              "text": " para usar o Serviço."
             }
           ]
         }
@@ -271,7 +271,7 @@
             ],
             [
               {
-                "text": "usar uma conta por pessoa e não compartilhar, vender ou transferir sua conta ou acesso Pro;"
+                "text": "usar uma conta por pessoa e não compartilhar, vender ou transferir sua conta;"
               }
             ],
             [
@@ -293,20 +293,13 @@
     {
       "id": "plans",
       "number": "06",
-      "title": "Assinatura livre de plano e Pro",
+      "title": "Gratuito para usar",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "O plano gratuito dá-lhe acesso limitado ao Serviço sem custos. "
-            },
-            {
-              "text": "Pro",
-              "bold": true
-            },
-            {
-              "text": " é uma assinatura mensal paga que desbloqueia recursos adicionais e limites de uso superiores, conforme descrito no aplicativo no momento da compra."
+              "text": "O AI Doctor Study é gratuito — todos os recursos descritos no aplicativo estão disponíveis sem custo, sem assinatura e sem necessidade de dados de pagamento."
             }
           ]
         },
@@ -315,54 +308,20 @@
           "items": [
             [
               {
-                "text": "A pagar.",
-                "bold": true
-              },
-              {
-                "text": " Os pagamentos pro são processados por "
-              },
-              {
-                "text": "Gumroad",
-                "href": "https://gumroad.com"
-              },
-              {
-                "text": ", nosso provedor de pagamento e comerciante de registro. Seu recibo, fatura e quaisquer impostos aplicáveis (como IVA/GST) vêm da Gumroad."
-              }
-            ],
-            [
-              {
-                "text": "Renovação automática.",
-                "bold": true
-              },
-              {
-                "text": " Pro renova automaticamente a cada mês até que você cancele. O preço de renovação é o preço mostrado quando você assinou, a menos que o informemos de uma mudança com antecedência."
-              }
-            ],
-            [
-              {
-                "text": "A cancelar.",
-                "bold": true
-              },
-              {
-                "text": " Você pode cancelar a qualquer momento de Configurações → Assinatura no aplicativo, que leva você para Gumroad para concluir o cancelamento. Fica com ele. Pro até o final do período que você já pagou, em seguida, volte para o plano livre automaticamente."
-              }
-            ],
-            [
-              {
-                "text": "O preço muda.",
-                "bold": true
-              },
-              {
-                "text": " Se alterarmos o preço Pro, daremos um aviso prévio razoável. O novo preço só se aplica a partir de sua próxima renovação, e você pode cancelar antes que ele faça efeito."
-              }
-            ],
-            [
-              {
                 "text": "Uso justo.",
                 "bold": true
               },
               {
-                "text": " Os recursos “ilimitados” estão sujeitos a uso justo, pessoal e não automatizado. Podemos aplicar limites razoáveis para proteger o Serviço de abusos."
+                "text": " Para manter o Serviço rápido e disponível para todos, os recursos baseados em IA estão sujeitos a um limite de uso razoável (por exemplo, um limite de solicitações por hora). Isto não é uma cota paga — é uma medida contra abusos, e podemos ajustar o limite em qualquer momento."
+              }
+            ],
+            [
+              {
+                "text": "Sem cobranças.",
+                "bold": true
+              },
+              {
+                "text": " Não cobramos pelo acesso ao Serviço e não armazenamos dados de pagamento."
               }
             ]
           ]
@@ -372,20 +331,20 @@
     {
       "id": "refunds",
       "number": "07",
-      "title": "Cancelamento e reembolsos",
+      "title": "Reembolsos",
       "blocks": [
         {
           "type": "paragraph",
           "runs": [
             {
-              "text": "As restituições são cobertas pelo nosso "
+              "text": "Como o Serviço é gratuito, não há nada a reembolsar. Consulte nossa "
             },
             {
-              "text": "Política de restituições",
+              "text": "Política de Reembolso",
               "href": "/refunds"
             },
             {
-              "text": ", que faz parte destes Termos. Resumindo: cancelar para futuras renovações, mas não é um reembolso do período atual; as compras pela primeira vez têm uma janela de devolução de dinheiro curta; e pagamentos reembolsados ou cobrados terminam o acesso Pro imediatamente."
+              "text": " para mais detalhes, incluindo o que fazer se você foi cobrado no plano pago anterior."
             }
           ]
         }
@@ -424,7 +383,7 @@
             ],
             [
               {
-                "text": "engenharia reversa, sonda, ou interferir com o Serviço, contornar limites de utilização ou paywalls, ou acessá-lo por qualquer meio automatizado;"
+                "text": "engenharia reversa, sonda, ou interferir com o Serviço, contornar limites de utilização, ou acessá-lo por qualquer meio automatizado;"
               }
             ],
             [
@@ -526,22 +485,6 @@
             ],
             [
               {
-                "text": "Gumroad",
-                "bold": true
-              },
-              {
-                "text": " — processamento de pagamentos para a Pro. Veja "
-              },
-              {
-                "text": "Termos da Gumroad",
-                "href": "https://gumroad.com/terms"
-              },
-              {
-                "text": "."
-              }
-            ],
-            [
-              {
                 "text": "YouTube",
                 "bold": true
               },
@@ -584,7 +527,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Trabalhamos duro para manter AI Doctor Study rápido e disponível, mas não podemos prometer que será ininterrupta ou livre de erros. Podemos adicionar, alterar ou remover recursos, e podemos impor ou ajustar limites de uso, a qualquer momento. Se fizermos uma mudança que reduz materialmente o que o Pro inclui, você sempre pode cancelar antes de sua próxima renovação."
+              "text": "Trabalhamos duro para manter AI Doctor Study rápido e disponível, mas não podemos prometer que será ininterrupta ou livre de erros. Podemos adicionar, alterar ou remover recursos, e podemos impor ou ajustar limites de uso, a qualquer momento."
             }
           ]
         }
@@ -652,7 +595,7 @@
           "type": "paragraph",
           "runs": [
             {
-              "text": "Você pode parar de usar o Serviço e excluir sua conta a qualquer momento. Podemos suspender ou encerrar o seu acesso se violar materialmente estes Termos (por exemplo, partilha de contas, raspagem ou abuso de pagamento), se exigido por lei, ou se interrompermos o Serviço. Se terminarmos sem causa enquanto você tiver um período de pagamento ativo, reembolsaremos a parte não utilizada desse período. Seções que por sua natureza devem sobreviver (como 09, 12, 13, e 16) sobreviver à cessação."
+              "text": "Você pode parar de usar o Serviço e excluir sua conta a qualquer momento. Podemos suspender ou encerrar o seu acesso se violar materialmente estes Termos (por exemplo, partilha de contas, raspagem de conteúdo ou abuso dos limites de uso), se exigido por lei, ou se interrompermos o Serviço. As seções que, por sua natureza, devem sobreviver (como 09, 12, 13 e 16) continuam em vigor após a cessação."
             }
           ]
         }

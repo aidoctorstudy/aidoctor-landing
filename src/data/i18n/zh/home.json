@@ -170,7 +170,7 @@
       },
       {
         "label": "见定价",
-        "href": "https://hyperai3.gumroad.com/l/aidoctorstudypro"
+        "href": "#pricing"
       }
     ]
   },
@@ -227,7 +227,7 @@
       {
         "name": "Khalid Mansoor",
         "role": "巴基斯坦,MBBS最后一年",
-        "quote": "我每天都用这个. 一分钱都值.",
+        "quote": "我每天都用. 真不敢相信它完全免费.",
         "initials": "KM"
       }
     ],
@@ -239,43 +239,33 @@
   },
   "pricing": {
     "eyebrow": "定价",
-    "title": "开始免费. 当考试季开始升级.",
-    "description": "没有免费信用卡. 随时取消Pro.",
+    "title": "100% 免费. 永久免费.",
+    "description": "无需信用卡. 只需合理使用, 让它对每个人都保持免费.",
     "plans": [
       {
-        "name": "免费",
+        "name": "永久免费",
         "price": "$0",
-        "period": "/month",
-        "description": "足以度过正常的学习周.",
-        "features": [
-          "20 一天的问题",
-          "基本主题",
-          "标准AI"
-        ],
-        "cta": {
-          "label": "免费启动",
-          "href": "/app"
-        }
-      },
-      {
-        "name": "赞成",
-        "price": "$2.99",
-        "period": "/month",
-        "description": "一切都解锁 考试季.",
+        "period": "",
+        "description": "全部解锁, 没有任何附加条件.",
         "features": [
           "无限制的问题",
           "所有主题",
           "图像分析",
           "临床病例",
-          "药物",
-          "USMLE/PLAB 准备",
-          "闪卡"
+          "药物记忆法",
+          "USMLE/PLAB 备考",
+          "闪卡",
+          "合理使用速率限制, 让一切为每个人顺畅运行"
         ],
+        "cta": {
+          "label": "免费启动",
+          "href": "/app"
+        },
         "badge": "最受欢迎的",
         "highlighted": true
       }
     ],
-    "discountNote": "学生? 使用代码 MED20 退出时 20{\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}从Pro那拿来."
+    "discountNote": ""
   },
   "contact": {
     "eyebrow": "开始",

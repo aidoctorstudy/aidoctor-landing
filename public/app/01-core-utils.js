@@ -65,7 +65,7 @@ async function callWorker(sys, msgs, imageBase64) {
 }
 
 var chatHist=[], chatMode='normal';
-var sName='', sYear='1', sExam='MBBS', qLeft=9999, isPro=true; // BETA: all free
+var sName='', sYear='1', sExam='MBBS', qLeft=9999, isPro=true; // Free forever for everyone — no Pro tier. Abuse is handled server-side via per-IP rate limiting in the Worker.
 var hist=[], attTxt='', attFileName='';
 var cards=[], cardIdx=0, fcCount=8;
 var totalXP=0, totalQs=0, totalCards=0, totalCases=0;
@@ -114,9 +114,6 @@ document.getElementById('heroLoginBtn').onclick=function(){goTo('pg-onboard');};
 document.getElementById('priceFreeBtn').onclick=function(){goTo('pg-onboard');};
 document.getElementById('backToLanding').onclick=function(){goTo('pg-landing');};
 
-document.getElementById('skipModal').onclick=function(){document.getElementById('proModal').classList.remove('on');};
-document.getElementById('proChipBtn').onclick=openProModal;
-
 // FAQ
 document.querySelectorAll('.faq-q').forEach(function(q){q.onclick=function(){this.closest('.faq-item').classList.toggle('open');};});
 
@@ -155,30 +152,8 @@ function updateXP(amount){
 }
 
 function updateBadge(){
- var fc=document.getElementById('freeChip'),ub=document.getElementById('proChipBtn');
- if(ub) ub.style.display=isPro?'none':'';
- if(fc){
-  if(isPro){fc.textContent='Pro';fc.style.background='rgba(245,158,11,.15)';fc.style.color='#F59E0B';}
-  else{fc.textContent=qLeft+' left today';fc.style.background=qLeft>2?'rgba(37,99,235,.15)':'rgba(239,68,68,.15)';fc.style.color=qLeft>2?'var(--p-lite)':'#EF4444';}
- }
-}
-
-function openProModal(){document.getElementById('proModal').classList.add('on');}
-
-function applySecret(){
- var code=document.getElementById('secretInput').value.trim().toUpperCase();
- if(code==='MUSTAFASFIRSTWEBSITETHATISMADEBYAIANDTHENAMEISCALLEDSTUDEVOAIWW'||code==='TESTFREETRIAL!WEEKPROFORFREEFORTRYING'||code==='MEDPRO2026'||code==='IGIVEYOUFREEPROFOREVERYIPEEENLYFORRELATIVESANDFRIENDS'){
- isPro=true; updateBadge();
- document.querySelectorAll('.mode-btn.pr').forEach(function(b){b.classList.remove('pr');});
- document.getElementById('proModal').classList.remove('on');
- fireConfetti();
- addAI('Secret code accepted! Welcome to AI Doctor Pro! All modes unlocked including Clinical Case Solver, Drug Mode, and Exam Cram!',false);
- goPanel('chat');
- } else {
- var inp=document.getElementById('secretInput');
- inp.style.borderColor='#EF4444';inp.style.background='rgba(239,68,68,.1)';inp.value='';inp.placeholder='Wrong code!';
- setTimeout(function(){inp.style.borderColor='';inp.style.background='';inp.placeholder='Have a secret code?';},2000);
- }
+ var fc=document.getElementById('freeChip');
+ if(fc){fc.textContent='Free';fc.style.background='rgba(16,185,129,.15)';fc.style.color='var(--ok)';}
 }
 
 
